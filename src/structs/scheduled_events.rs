@@ -2,6 +2,28 @@ use serde::{Deserialize, Serialize};
 use super::*;
 
 #[derive(Serialize, Deserialize)]
+pub struct DaySchedule {
+	#[serde(rename = "hour_of_day")]
+	hour_of_day: i64,
+	#[serde(rename = "minute_of_hour")]
+	minute_of_hour: i64,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct HourSchedule {
+	#[serde(rename = "minute_offset")]
+	minute_offset: i64,
+	#[serde(rename = "multiplier")]
+	multiplier: i64,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct MinuteSchedule {
+	#[serde(rename = "multiplier")]
+	multiplier: i64,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct ScheduledEvent {
 	#[serde(rename = "documentation")]
 	documentation: String,
@@ -30,14 +52,6 @@ pub struct ScheduledEvent {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct DaySchedule {
-	#[serde(rename = "hour_of_day")]
-	hour_of_day: i64,
-	#[serde(rename = "minute_of_hour")]
-	minute_of_hour: i64,
-}
-
-#[derive(Serialize, Deserialize)]
 pub struct WeekSchedule {
 	#[serde(rename = "friday")]
 	friday: bool,
@@ -57,19 +71,5 @@ pub struct WeekSchedule {
 	tuesday: bool,
 	#[serde(rename = "wednesday")]
 	wednesday: bool,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct MinuteSchedule {
-	#[serde(rename = "multiplier")]
-	multiplier: i64,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct HourSchedule {
-	#[serde(rename = "minute_offset")]
-	minute_offset: i64,
-	#[serde(rename = "multiplier")]
-	multiplier: i64,
 }
 

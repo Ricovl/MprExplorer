@@ -2,6 +2,14 @@ use serde::{Deserialize, Serialize};
 use super::*;
 
 #[derive(Serialize, Deserialize)]
+pub struct ConditionSettings {
+	#[serde(rename = "attribute")]
+	attribute: String,
+	#[serde(rename = "new_conditions")]
+	new_conditions: Vec<>,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct DataView {
 	#[serde(rename = "contents")]
 	contents: document_templates::DataViewDropZone,
@@ -14,55 +22,9 @@ pub struct DataView {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct TableCell {
-	#[serde(rename = "col_span")]
-	col_span: i64,
-	#[serde(rename = "is_part_of_span")]
-	is_part_of_span: bool,
-	#[serde(rename = "row_span")]
-	row_span: i64,
-	#[serde(rename = "style")]
-	style: document_templates::Style,
-	#[serde(rename = "widget")]
-	widget: document_templates::DynamicImageViewer,
-}
-
-#[derive(Serialize, Deserialize)]
 pub struct DataViewDropZone {
 	#[serde(rename = "widget")]
 	widget: document_templates::Table,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct DynamicImageViewer {
-	#[serde(rename = "default_image_name")]
-	default_image_name: String,
-	#[serde(rename = "entity_ref")]
-	entity_ref: domain_models::DirectEntityRef,
-	#[serde(rename = "height")]
-	height: i64,
-	#[serde(rename = "name")]
-	name: String,
-	#[serde(rename = "use_thumbnail")]
-	use_thumbnail: bool,
-	#[serde(rename = "width")]
-	width: i64,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ConditionSettings {
-	#[serde(rename = "attribute")]
-	attribute: String,
-	#[serde(rename = "new_conditions")]
-	new_conditions: Vec<>,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct TableRow {
-	#[serde(rename = "cells")]
-	cells: Vec<>,
-	#[serde(rename = "condition_settings")]
-	condition_settings: document_templates::ConditionSettings,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -101,6 +63,22 @@ pub struct DocumentTemplate {
 	style: document_templates::Style,
 	#[serde(rename = "toplevels")]
 	toplevels: Vec<>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct DynamicImageViewer {
+	#[serde(rename = "default_image_name")]
+	default_image_name: String,
+	#[serde(rename = "entity_ref")]
+	entity_ref: domain_models::DirectEntityRef,
+	#[serde(rename = "height")]
+	height: i64,
+	#[serde(rename = "name")]
+	name: String,
+	#[serde(rename = "use_thumbnail")]
+	use_thumbnail: bool,
+	#[serde(rename = "width")]
+	width: i64,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -173,5 +151,27 @@ pub struct Table {
 	rows: Vec<>,
 	#[serde(rename = "style")]
 	style: document_templates::Style,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct TableCell {
+	#[serde(rename = "col_span")]
+	col_span: i64,
+	#[serde(rename = "is_part_of_span")]
+	is_part_of_span: bool,
+	#[serde(rename = "row_span")]
+	row_span: i64,
+	#[serde(rename = "style")]
+	style: document_templates::Style,
+	#[serde(rename = "widget")]
+	widget: document_templates::DynamicImageViewer,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct TableRow {
+	#[serde(rename = "cells")]
+	cells: Vec<>,
+	#[serde(rename = "condition_settings")]
+	condition_settings: document_templates::ConditionSettings,
 }
 

@@ -2,6 +2,42 @@ use serde::{Deserialize, Serialize};
 use super::*;
 
 #[derive(Serialize, Deserialize)]
+pub struct ExportMapping {
+	#[serde(rename = "documentation")]
+	documentation: String,
+	#[serde(rename = "elements")]
+	elements: Vec<>,
+	#[serde(rename = "excluded")]
+	excluded: bool,
+	#[serde(rename = "export_level")]
+	export_level: String,
+	#[serde(rename = "is_header_parameter")]
+	is_header_parameter: bool,
+	#[serde(rename = "json_structure")]
+	json_structure: String,
+	#[serde(rename = "message_definition")]
+	message_definition: String,
+	#[serde(rename = "name")]
+	name: String,
+	#[serde(rename = "null_value_option")]
+	null_value_option: String,
+	#[serde(rename = "operation_name")]
+	operation_name: String,
+	#[serde(rename = "parameter_name")]
+	parameter_name: String,
+	#[serde(rename = "public_name")]
+	public_name: String,
+	#[serde(rename = "service_name")]
+	service_name: String,
+	#[serde(rename = "wsdl_file")]
+	wsdl_file: String,
+	#[serde(rename = "xml_schema")]
+	xml_schema: String,
+	#[serde(rename = "xsd_root_element_name")]
+	xsd_root_element_name: String,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct ObjectMappingElement {
 	#[serde(rename = "association")]
 	association: String,
@@ -75,41 +111,5 @@ pub struct ValueMappingElement {
 	xml_path: String,
 	#[serde(rename = "xml_primitive_type")]
 	xml_primitive_type: String,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ExportMapping {
-	#[serde(rename = "documentation")]
-	documentation: String,
-	#[serde(rename = "elements")]
-	elements: Vec<>,
-	#[serde(rename = "excluded")]
-	excluded: bool,
-	#[serde(rename = "export_level")]
-	export_level: String,
-	#[serde(rename = "is_header_parameter")]
-	is_header_parameter: bool,
-	#[serde(rename = "json_structure")]
-	json_structure: String,
-	#[serde(rename = "message_definition")]
-	message_definition: String,
-	#[serde(rename = "name")]
-	name: String,
-	#[serde(rename = "null_value_option")]
-	null_value_option: String,
-	#[serde(rename = "operation_name")]
-	operation_name: String,
-	#[serde(rename = "parameter_name")]
-	parameter_name: String,
-	#[serde(rename = "public_name")]
-	public_name: String,
-	#[serde(rename = "service_name")]
-	service_name: String,
-	#[serde(rename = "wsdl_file")]
-	wsdl_file: String,
-	#[serde(rename = "xml_schema")]
-	xml_schema: String,
-	#[serde(rename = "xsd_root_element_name")]
-	xsd_root_element_name: String,
 }
 

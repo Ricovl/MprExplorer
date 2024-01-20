@@ -2,19 +2,49 @@ use serde::{Deserialize, Serialize};
 use super::*;
 
 #[derive(Serialize, Deserialize)]
+pub struct BasicParameterType {
+	#[serde(rename = "type")]
+	type: code_actions::ParameterizedEntityType,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct BooleanType {
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct ConcreteEntityType {
+	#[serde(rename = "entity")]
+	entity: String,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct DateTimeType {
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct DecimalType {
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct EntityTypeParameterType {
+	#[serde(rename = "type_parameter_pointer")]
+	type_parameter_pointer: Binary,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct EnumerationType {
 	#[serde(rename = "enumeration")]
 	enumeration: String,
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct StringTemplateParameterType {
-	#[serde(rename = "grammar")]
-	grammar: String,
+pub struct IntegerType {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct StringType {
+pub struct ListType {
+	#[serde(rename = "parameter")]
+	parameter: code_actions::ConcreteEntityType,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -34,27 +64,19 @@ pub struct MicroflowActionInfo {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct ListType {
-	#[serde(rename = "parameter")]
-	parameter: code_actions::ConcreteEntityType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct IntegerType {
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct EntityTypeParameterType {
+pub struct ParameterizedEntityType {
 	#[serde(rename = "type_parameter_pointer")]
 	type_parameter_pointer: Binary,
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct VoidType {
+pub struct StringTemplateParameterType {
+	#[serde(rename = "grammar")]
+	grammar: String,
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct DecimalType {
+pub struct StringType {
 }
 
 #[derive(Serialize, Deserialize)]
@@ -64,28 +86,6 @@ pub struct TypeParameter {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct ConcreteEntityType {
-	#[serde(rename = "entity")]
-	entity: String,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct BooleanType {
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct BasicParameterType {
-	#[serde(rename = "type")]
-	type: code_actions::ParameterizedEntityType,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ParameterizedEntityType {
-	#[serde(rename = "type_parameter_pointer")]
-	type_parameter_pointer: Binary,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct DateTimeType {
+pub struct VoidType {
 }
 

@@ -2,20 +2,6 @@ use serde::{Deserialize, Serialize};
 use super::*;
 
 #[derive(Serialize, Deserialize)]
-pub struct JavaActionParameter {
-	#[serde(rename = "category")]
-	category: String,
-	#[serde(rename = "description")]
-	description: String,
-	#[serde(rename = "is_required")]
-	is_required: bool,
-	#[serde(rename = "name")]
-	name: String,
-	#[serde(rename = "parameter_type")]
-	parameter_type: code_actions::BasicParameterType,
-}
-
-#[derive(Serialize, Deserialize)]
 pub struct JavaAction {
 	#[serde(rename = "action_default_return_name")]
 	action_default_return_name: String,
@@ -35,6 +21,20 @@ pub struct JavaAction {
 	parameters: Vec<>,
 	#[serde(rename = "type_parameters")]
 	type_parameters: Vec<>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct JavaActionParameter {
+	#[serde(rename = "category")]
+	category: String,
+	#[serde(rename = "description")]
+	description: String,
+	#[serde(rename = "is_required")]
+	is_required: bool,
+	#[serde(rename = "name")]
+	name: String,
+	#[serde(rename = "parameter_type")]
+	parameter_type: code_actions::BasicParameterType,
 }
 
 #[derive(Serialize, Deserialize)]

@@ -2,12 +2,6 @@ use serde::{Deserialize, Serialize};
 use super::*;
 
 #[derive(Serialize, Deserialize)]
-pub struct MenuItemCollection {
-	#[serde(rename = "items")]
-	items: Vec<>,
-}
-
-#[derive(Serialize, Deserialize)]
 pub struct MenuDocument {
 	#[serde(rename = "documentation")]
 	documentation: String,
@@ -31,6 +25,12 @@ pub struct MenuItem {
 	caption: texts::Text,
 	#[serde(rename = "icon")]
 	icon: forms::IconCollectionIcon,
+	#[serde(rename = "items")]
+	items: Vec<>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct MenuItemCollection {
 	#[serde(rename = "items")]
 	items: Vec<>,
 }

@@ -3,7 +3,7 @@ use convert_case::Casing;
 use rayon::iter::{IntoParallelRefMutIterator, ParallelIterator};
 use rusqlite::Connection;
 use std::{
-    collections::HashMap,
+    collections::{BTreeMap, HashMap},
     fs::OpenOptions,
     io::{Seek, Write},
     str::FromStr,
@@ -137,7 +137,7 @@ enum SpecialTypes {
 
 fn explore<'a>(
     doc: &'a Document,
-    types: &mut HashMap<String, Box<HashMap<String, Vec<(String, SpecialTypes)>>>>,
+    types: &mut BTreeMap<String, Box<BTreeMap<String, Vec<(String, SpecialTypes)>>>>,
     depth: usize,
 ) -> &'a str {
     let mut attributes: Vec<(String, SpecialTypes)> = Vec::new();
@@ -175,7 +175,7 @@ fn explore<'a>(
 
     types
         .entry(modname.to_string())
-        .or_insert(Box::new(HashMap::new()))
+        .or_insert(Box::new(BTreeMap::new()))
         .insert(structname.to_string(), attributes);
     _type
 }
@@ -189,8 +189,8 @@ fn main() {
 
     println!("Finished reading mpr.");
     println!("Starting mpr file exploring.");
-    let mut types: HashMap<String, Box<HashMap<String, Vec<(String, SpecialTypes)>>>> =
-        HashMap::new();
+    let mut types: BTreeMap<String, Box<BTreeMap<String, Vec<(String, SpecialTypes)>>>> =
+        BTreeMap::new();
     for child in units {
         if let Some(doc) = &child.doc {
             explore(doc, &mut types, 0);

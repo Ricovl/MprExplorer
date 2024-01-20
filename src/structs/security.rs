@@ -2,6 +2,44 @@ use serde::{Deserialize, Serialize};
 use super::*;
 
 #[derive(Serialize, Deserialize)]
+pub struct FileDocumentAccessRuleContainer {
+	#[serde(rename = "access_rules")]
+	access_rules: Vec<>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct ImageAccessRuleContainer {
+	#[serde(rename = "access_rules")]
+	access_rules: Vec<>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct ModuleRole {
+	#[serde(rename = "description")]
+	description: String,
+	#[serde(rename = "name")]
+	name: String,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct ModuleSecurity {
+	#[serde(rename = "module_roles")]
+	module_roles: Vec<>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct PasswordPolicySettings {
+	#[serde(rename = "minimum_length")]
+	minimum_length: i64,
+	#[serde(rename = "require_digit")]
+	require_digit: bool,
+	#[serde(rename = "require_mixed_case")]
+	require_mixed_case: bool,
+	#[serde(rename = "require_symbol")]
+	require_symbol: bool,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct ProjectSecurity {
 	#[serde(rename = "admin_password")]
 	admin_password: String,
@@ -36,18 +74,6 @@ pub struct ProjectSecurity {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct ModuleSecurity {
-	#[serde(rename = "module_roles")]
-	module_roles: Vec<>,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ImageAccessRuleContainer {
-	#[serde(rename = "access_rules")]
-	access_rules: Vec<>,
-}
-
-#[derive(Serialize, Deserialize)]
 pub struct UserRole {
 	#[serde(rename = "check_security")]
 	check_security: bool,
@@ -65,31 +91,5 @@ pub struct UserRole {
 	module_roles: Vec<>,
 	#[serde(rename = "name")]
 	name: String,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ModuleRole {
-	#[serde(rename = "description")]
-	description: String,
-	#[serde(rename = "name")]
-	name: String,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct PasswordPolicySettings {
-	#[serde(rename = "minimum_length")]
-	minimum_length: i64,
-	#[serde(rename = "require_digit")]
-	require_digit: bool,
-	#[serde(rename = "require_mixed_case")]
-	require_mixed_case: bool,
-	#[serde(rename = "require_symbol")]
-	require_symbol: bool,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct FileDocumentAccessRuleContainer {
-	#[serde(rename = "access_rules")]
-	access_rules: Vec<>,
 }
 

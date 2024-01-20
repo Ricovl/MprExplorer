@@ -2,14 +2,6 @@ use serde::{Deserialize, Serialize};
 use super::*;
 
 #[derive(Serialize, Deserialize)]
-pub struct Translation {
-	#[serde(rename = "language_code")]
-	language_code: String,
-	#[serde(rename = "text")]
-	text: String,
-}
-
-#[derive(Serialize, Deserialize)]
 pub struct Language {
 	#[serde(rename = "check_completeness")]
 	check_completeness: bool,
@@ -24,12 +16,6 @@ pub struct Language {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct Text {
-	#[serde(rename = "items")]
-	items: Vec<>,
-}
-
-#[derive(Serialize, Deserialize)]
 pub struct SystemText {
 	#[serde(rename = "internal_key")]
 	internal_key: String,
@@ -41,5 +27,19 @@ pub struct SystemText {
 pub struct SystemTextCollection {
 	#[serde(rename = "system_texts")]
 	system_texts: Vec<>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct Text {
+	#[serde(rename = "items")]
+	items: Vec<>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct Translation {
+	#[serde(rename = "language_code")]
+	language_code: String,
+	#[serde(rename = "text")]
+	text: String,
 }
 

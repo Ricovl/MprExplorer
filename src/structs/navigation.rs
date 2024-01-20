@@ -2,13 +2,17 @@ use serde::{Deserialize, Serialize};
 use super::*;
 
 #[derive(Serialize, Deserialize)]
-pub struct RoleBasedHomePage {
+pub struct HomePage {
 	#[serde(rename = "microflow")]
 	microflow: String,
 	#[serde(rename = "page")]
 	page: String,
-	#[serde(rename = "user_role")]
-	user_role: String,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct NavigationDocument {
+	#[serde(rename = "profiles")]
+	profiles: Vec<>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -36,16 +40,12 @@ pub struct NavigationProfile {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct NavigationDocument {
-	#[serde(rename = "profiles")]
-	profiles: Vec<>,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct HomePage {
+pub struct RoleBasedHomePage {
 	#[serde(rename = "microflow")]
 	microflow: String,
 	#[serde(rename = "page")]
 	page: String,
+	#[serde(rename = "user_role")]
+	user_role: String,
 }
 

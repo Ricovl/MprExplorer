@@ -2,6 +2,14 @@ use serde::{Deserialize, Serialize};
 use super::*;
 
 #[derive(Serialize, Deserialize)]
+pub struct MappingMicroflowCallImpl {
+	#[serde(rename = "microflow")]
+	microflow: String,
+	#[serde(rename = "parameter_mappings")]
+	parameter_mappings: Vec<>,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct MicroflowCallParameterMappingImpl {
 	#[serde(rename = "json_value_element_path")]
 	json_value_element_path: String,
@@ -11,13 +19,5 @@ pub struct MicroflowCallParameterMappingImpl {
 	parameter: String,
 	#[serde(rename = "xml_value_element_path")]
 	xml_value_element_path: String,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct MappingMicroflowCallImpl {
-	#[serde(rename = "microflow")]
-	microflow: String,
-	#[serde(rename = "parameter_mappings")]
-	parameter_mappings: Vec<>,
 }
 
