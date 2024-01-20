@@ -1,10 +1,14 @@
 use bson::Document;
+use convert_case::Casing;
 use rayon::iter::{IntoParallelRefMutIterator, ParallelIterator};
 use rusqlite::Connection;
-use std::{collections::HashMap, fs::OpenOptions, io::{Seek, Write}, str::FromStr};
+use std::{
+    collections::HashMap,
+    fs::OpenOptions,
+    io::{Seek, Write},
+    str::FromStr,
+};
 use uuid::Uuid;
-
-mod structs;
 
 #[derive(Debug, PartialEq)]
 enum UnitType {
@@ -100,10 +104,9 @@ fn get_all_units(conn: &Connection) -> Result<Vec<Unit>, &str> {
     Ok(units)
 }
 
-
 fn bson_to_string(bson: &bson::Bson) -> &'static str {
     match bson {
-        bson::Bson::Double(_) => "Double",
+        bson::Bson::Double(_) => "f64",
         bson::Bson::String(_) => "String",
         bson::Bson::Boolean(_) => "bool",
         bson::Bson::Null => "Null",
@@ -126,6 +129,53 @@ fn bson_to_string(bson: &bson::Bson) -> &'static str {
     }
 }
 
+fn explore<'a>(
+    doc: &'a Document,
+    types: &mut HashMap<String, Box<HashMap<String, Vec<(String, String)>>>>,
+    depth: usize,
+) -> &'a str {
+    let mut attributes: Vec<(String, String)> = Vec::new();
+    let mut dociter = doc.iter();
+    dociter.next();
+    let _type = dociter.next().unwrap().1.as_str().unwrap();
+    let (modname, structname) = _type.split_once("$").unwrap();
+
+    for (key, obj) in dociter {
+        let typestr: String;
+        match obj {
+            bson::Bson::Array(arr) => {
+                let mut array_attrs: Vec<&str> = Vec::new();
+                let mut iter = arr.iter();
+                let first = iter.next().unwrap().as_i32().unwrap(); // 1 = basic type (String, i64), 2 = ?, 3 = ?
+                for el in iter {
+                    let array_attr = match el {
+                        bson::Bson::Document(idoc) => explore(&idoc, types, depth + 1),
+                        bson => bson_to_string(bson),
+                    };
+                    if !array_attrs.contains(&array_attr) {
+                        array_attrs.push(array_attr);
+                    }
+                }
+                if array_attrs.len() == 1 {
+                    typestr = format!("Vec<{}>", array_attrs[0]);
+                }
+                else {
+                    typestr = format!("Vec<{}, {:?}>", first, array_attrs);
+                }
+            }
+            bson::Bson::Document(idoc) => {
+                typestr = explore(&idoc, types, depth + 1).to_string();
+            }
+            bson => typestr = bson_to_string(bson).to_string(),
+        }
+
+        attributes.push((key.to_string(), typestr));
+    }
+
+    types.entry(modname.to_string()).or_insert(Box::new(HashMap::new())).insert(structname.to_string(), attributes);
+    _type
+}
+
 fn main() {
     let mpr = "resources/plarge.mpr";
     let conn = Connection::open(mpr).unwrap();
@@ -133,4 +183,58 @@ fn main() {
     println!("Starting mpr read.");
     let units = get_all_units(&conn).unwrap();
 
+    println!("Finished reading mpr.");
+    println!("Starting mpr file exploring.");
+    let mut types: HashMap<String, Box<HashMap<String, Vec<(String, String)>>>> = HashMap::new();
+    for child in units {
+        if let Some(doc) = &child.doc {
+            explore(doc, &mut types, 0);
+        }
+    }
+
+    let path = "src/structs";
+    std::fs::remove_dir_all(path).unwrap();
+    std::fs::create_dir(path).unwrap();
+
+    println!("Finished exploring mpr file.");
+    println!("Starting struct write.");
+
+    let mut modfile = OpenOptions::new()
+        .write(true)
+        .create(true)
+        .open("src/structs.rs")
+        .unwrap();
+
+    for (_module_name, structs) in types {
+        let module_name = _module_name.to_case(convert_case::Case::Snake);
+        writeln!(modfile, "pub mod {};", module_name).unwrap();
+
+        let mut file = OpenOptions::new()
+            .write(true)
+            .create(true)
+            .open(format!("src/structs/{}.rs", module_name))
+            .unwrap();
+
+        writeln!(file, "use serde::{{Deserialize, Serialize}};").unwrap();
+        writeln!(file, "use super::*;\n").unwrap();
+
+        for (struct_name, attributes) in structs.iter() {
+            writeln!(file, "#[derive(Serialize, Deserialize)]").unwrap();
+            writeln!(file, "pub struct {} {{", struct_name).unwrap();
+
+            for (attr_name, attr_type) in attributes {
+                writeln!(file, "\t#[serde(rename = \"{}\")]", attr_name).unwrap();
+                writeln!(
+                    file,
+                    "\t{}: {},",
+                    attr_name.to_case(convert_case::Case::Snake),
+                    attr_type
+                )
+                .unwrap();
+            }
+
+            writeln!(file, "}}\n").unwrap();
+        }
+    }
+    println!("Finished struct write.");
 }
