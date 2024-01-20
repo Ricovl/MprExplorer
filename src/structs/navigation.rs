@@ -2,50 +2,50 @@ use serde::{Deserialize, Serialize};
 use super::*;
 
 #[derive(Serialize, Deserialize)]
-pub struct NavigationDocument {
-	#[serde(rename = "Profiles")]
-	profiles: Vec<Navigation$NavigationProfile>,
-}
-
-#[derive(Serialize, Deserialize)]
 pub struct RoleBasedHomePage {
-	#[serde(rename = "Microflow")]
+	#[serde(rename = "microflow")]
 	microflow: String,
-	#[serde(rename = "Page")]
+	#[serde(rename = "page")]
 	page: String,
-	#[serde(rename = "UserRole")]
+	#[serde(rename = "user_role")]
 	user_role: String,
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct HomePage {
-	#[serde(rename = "Microflow")]
-	microflow: String,
-	#[serde(rename = "Page")]
-	page: String,
+pub struct NavigationProfile {
+	#[serde(rename = "app_icon")]
+	app_icon: String,
+	#[serde(rename = "app_title")]
+	app_title: texts::Text,
+	#[serde(rename = "home_items")]
+	home_items: Vec<>,
+	#[serde(rename = "home_page")]
+	home_page: navigation::HomePage,
+	#[serde(rename = "kind")]
+	kind: String,
+	#[serde(rename = "login_page_settings")]
+	login_page_settings: forms::FormSettings,
+	#[serde(rename = "menu")]
+	menu: menus::MenuItemCollection,
+	#[serde(rename = "name")]
+	name: String,
+	#[serde(rename = "offline_entity_configs")]
+	offline_entity_configs: Vec<>,
+	#[serde(rename = "progressive_web_app_settings")]
+	progressive_web_app_settings: Null,
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct NavigationProfile {
-	#[serde(rename = "AppIcon")]
-	app_icon: String,
-	#[serde(rename = "AppTitle")]
-	app_title: Texts$Text,
-	#[serde(rename = "HomeItems")]
-	home_items: Vec<Navigation$RoleBasedHomePage>,
-	#[serde(rename = "HomePage")]
-	home_page: Navigation$HomePage,
-	#[serde(rename = "Kind")]
-	kind: String,
-	#[serde(rename = "LoginPageSettings")]
-	login_page_settings: Forms$FormSettings,
-	#[serde(rename = "Menu")]
-	menu: Menus$MenuItemCollection,
-	#[serde(rename = "Name")]
-	name: String,
-	#[serde(rename = "OfflineEntityConfigs")]
-	offline_entity_configs: Vec<3, []>,
-	#[serde(rename = "ProgressiveWebAppSettings")]
-	progressive_web_app_settings: Null,
+pub struct NavigationDocument {
+	#[serde(rename = "profiles")]
+	profiles: Vec<>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct HomePage {
+	#[serde(rename = "microflow")]
+	microflow: String,
+	#[serde(rename = "page")]
+	page: String,
 }
 

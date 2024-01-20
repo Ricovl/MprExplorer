@@ -3,19 +3,19 @@ use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct Constant {
-	#[serde(rename = "DefaultValue")]
+	#[serde(rename = "default_value")]
 	default_value: String,
-	#[serde(rename = "Documentation")]
+	#[serde(rename = "documentation")]
 	documentation: String,
-	#[serde(rename = "Excluded")]
+	#[serde(rename = "excluded")]
 	excluded: bool,
-	#[serde(rename = "ExportLevel")]
+	#[serde(rename = "export_level")]
 	export_level: String,
-	#[serde(rename = "ExposedToClient")]
+	#[serde(rename = "exposed_to_client")]
 	exposed_to_client: bool,
-	#[serde(rename = "Name")]
+	#[serde(rename = "name")]
 	name: String,
-	#[serde(rename = "Type")]
-	type: DataTypes$StringType,
+	#[serde(rename = "type")]
+	type: data_types::StringType,
 }
 

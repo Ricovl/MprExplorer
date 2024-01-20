@@ -2,32 +2,32 @@ use serde::{Deserialize, Serialize};
 use super::*;
 
 #[derive(Serialize, Deserialize)]
+pub struct BasicQueueConfig {
+	#[serde(rename = "cluster_wide")]
+	cluster_wide: bool,
+	#[serde(rename = "parallelism_expression")]
+	parallelism_expression: String,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct Queue {
-	#[serde(rename = "Config")]
-	config: Queues$BasicQueueConfig,
-	#[serde(rename = "Documentation")]
+	#[serde(rename = "config")]
+	config: queues::BasicQueueConfig,
+	#[serde(rename = "documentation")]
 	documentation: String,
-	#[serde(rename = "Excluded")]
+	#[serde(rename = "excluded")]
 	excluded: bool,
-	#[serde(rename = "ExportLevel")]
+	#[serde(rename = "export_level")]
 	export_level: String,
-	#[serde(rename = "Name")]
+	#[serde(rename = "name")]
 	name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct QueueSettings {
-	#[serde(rename = "Queue")]
+	#[serde(rename = "queue")]
 	queue: String,
-	#[serde(rename = "Retry")]
+	#[serde(rename = "retry")]
 	retry: Null,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct BasicQueueConfig {
-	#[serde(rename = "ClusterWide")]
-	cluster_wide: bool,
-	#[serde(rename = "ParallelismExpression")]
-	parallelism_expression: String,
 }
 

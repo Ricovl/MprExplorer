@@ -2,34 +2,34 @@ use serde::{Deserialize, Serialize};
 use super::*;
 
 #[derive(Serialize, Deserialize)]
-pub struct Enumeration {
-	#[serde(rename = "Documentation")]
-	documentation: String,
-	#[serde(rename = "Excluded")]
-	excluded: bool,
-	#[serde(rename = "ExportLevel")]
-	export_level: String,
-	#[serde(rename = "Name")]
-	name: String,
-	#[serde(rename = "Values")]
-	values: Vec<Enumerations$EnumerationValue>,
-}
-
-#[derive(Serialize, Deserialize)]
 pub struct Condition {
-	#[serde(rename = "AttributeValue")]
+	#[serde(rename = "attribute_value")]
 	attribute_value: String,
-	#[serde(rename = "EditableVisible")]
+	#[serde(rename = "editable_visible")]
 	editable_visible: bool,
 }
 
 #[derive(Serialize, Deserialize)]
+pub struct Enumeration {
+	#[serde(rename = "documentation")]
+	documentation: String,
+	#[serde(rename = "excluded")]
+	excluded: bool,
+	#[serde(rename = "export_level")]
+	export_level: String,
+	#[serde(rename = "name")]
+	name: String,
+	#[serde(rename = "values")]
+	values: Vec<>,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct EnumerationValue {
-	#[serde(rename = "Caption")]
-	caption: Texts$Text,
-	#[serde(rename = "Image")]
+	#[serde(rename = "caption")]
+	caption: texts::Text,
+	#[serde(rename = "image")]
 	image: String,
-	#[serde(rename = "Name")]
+	#[serde(rename = "name")]
 	name: String,
 }
 

@@ -3,13 +3,13 @@ use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct FileDocumentExport {
-	#[serde(rename = "TargetDocumentVariableName")]
+	#[serde(rename = "target_document_variable_name")]
 	target_document_variable_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct StringExport {
-	#[serde(rename = "OutputVariableName")]
+	#[serde(rename = "output_variable_name")]
 	output_variable_name: String,
 }
 

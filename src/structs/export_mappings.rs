@@ -3,113 +3,113 @@ use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct ObjectMappingElement {
-	#[serde(rename = "Association")]
+	#[serde(rename = "association")]
 	association: String,
-	#[serde(rename = "Children")]
-	children: Vec<2, ["ExportMappings$ValueMappingElement", "ExportMappings$ObjectMappingElement"]>,
-	#[serde(rename = "CustomHandlerCall")]
+	#[serde(rename = "children")]
+	children: Vec<>,
+	#[serde(rename = "custom_handler_call")]
 	custom_handler_call: Null,
-	#[serde(rename = "Documentation")]
+	#[serde(rename = "documentation")]
 	documentation: String,
-	#[serde(rename = "ElementType")]
+	#[serde(rename = "element_type")]
 	element_type: String,
-	#[serde(rename = "Entity")]
+	#[serde(rename = "entity")]
 	entity: String,
-	#[serde(rename = "ExposedName")]
+	#[serde(rename = "exposed_name")]
 	exposed_name: String,
-	#[serde(rename = "IsDefaultType")]
+	#[serde(rename = "is_default_type")]
 	is_default_type: bool,
-	#[serde(rename = "JsonPath")]
+	#[serde(rename = "json_path")]
 	json_path: String,
-	#[serde(rename = "MaxOccurs")]
+	#[serde(rename = "max_occurs")]
 	max_occurs: i64,
-	#[serde(rename = "MinOccurs")]
+	#[serde(rename = "min_occurs")]
 	min_occurs: i64,
-	#[serde(rename = "Nillable")]
+	#[serde(rename = "nillable")]
 	nillable: bool,
-	#[serde(rename = "ObjectHandling")]
+	#[serde(rename = "object_handling")]
 	object_handling: String,
-	#[serde(rename = "ObjectHandlingBackup")]
+	#[serde(rename = "object_handling_backup")]
 	object_handling_backup: String,
-	#[serde(rename = "ObjectHandlingBackupAllowOverride")]
+	#[serde(rename = "object_handling_backup_allow_override")]
 	object_handling_backup_allow_override: bool,
-	#[serde(rename = "XmlPath")]
+	#[serde(rename = "xml_path")]
 	xml_path: String,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ExportMapping {
-	#[serde(rename = "Documentation")]
-	documentation: String,
-	#[serde(rename = "Elements")]
-	elements: Vec<ExportMappings$ObjectMappingElement>,
-	#[serde(rename = "Excluded")]
-	excluded: bool,
-	#[serde(rename = "ExportLevel")]
-	export_level: String,
-	#[serde(rename = "IsHeaderParameter")]
-	is_header_parameter: bool,
-	#[serde(rename = "JsonStructure")]
-	json_structure: String,
-	#[serde(rename = "MessageDefinition")]
-	message_definition: String,
-	#[serde(rename = "Name")]
-	name: String,
-	#[serde(rename = "NullValueOption")]
-	null_value_option: String,
-	#[serde(rename = "OperationName")]
-	operation_name: String,
-	#[serde(rename = "ParameterName")]
-	parameter_name: String,
-	#[serde(rename = "PublicName")]
-	public_name: String,
-	#[serde(rename = "ServiceName")]
-	service_name: String,
-	#[serde(rename = "WsdlFile")]
-	wsdl_file: String,
-	#[serde(rename = "XmlSchema")]
-	xml_schema: String,
-	#[serde(rename = "XsdRootElementName")]
-	xsd_root_element_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ValueMappingElement {
-	#[serde(rename = "Attribute")]
+	#[serde(rename = "attribute")]
 	attribute: String,
-	#[serde(rename = "Converter")]
+	#[serde(rename = "converter")]
 	converter: String,
-	#[serde(rename = "Documentation")]
+	#[serde(rename = "documentation")]
 	documentation: String,
-	#[serde(rename = "ElementType")]
+	#[serde(rename = "element_type")]
 	element_type: String,
-	#[serde(rename = "ExposedName")]
+	#[serde(rename = "exposed_name")]
 	exposed_name: String,
-	#[serde(rename = "FractionDigits")]
+	#[serde(rename = "fraction_digits")]
 	fraction_digits: i64,
-	#[serde(rename = "IsContent")]
+	#[serde(rename = "is_content")]
 	is_content: bool,
-	#[serde(rename = "IsKey")]
+	#[serde(rename = "is_key")]
 	is_key: bool,
-	#[serde(rename = "IsXmlAttribute")]
+	#[serde(rename = "is_xml_attribute")]
 	is_xml_attribute: bool,
-	#[serde(rename = "JsonPath")]
+	#[serde(rename = "json_path")]
 	json_path: String,
-	#[serde(rename = "MaxLength")]
+	#[serde(rename = "max_length")]
 	max_length: i64,
-	#[serde(rename = "MaxOccurs")]
+	#[serde(rename = "max_occurs")]
 	max_occurs: i64,
-	#[serde(rename = "MinOccurs")]
+	#[serde(rename = "min_occurs")]
 	min_occurs: i64,
-	#[serde(rename = "Nillable")]
+	#[serde(rename = "nillable")]
 	nillable: bool,
-	#[serde(rename = "TotalDigits")]
+	#[serde(rename = "total_digits")]
 	total_digits: i64,
-	#[serde(rename = "Type")]
-	type: DataTypes$IntegerType,
-	#[serde(rename = "XmlPath")]
+	#[serde(rename = "type")]
+	type: data_types::IntegerType,
+	#[serde(rename = "xml_path")]
 	xml_path: String,
-	#[serde(rename = "XmlPrimitiveType")]
+	#[serde(rename = "xml_primitive_type")]
 	xml_primitive_type: String,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct ExportMapping {
+	#[serde(rename = "documentation")]
+	documentation: String,
+	#[serde(rename = "elements")]
+	elements: Vec<>,
+	#[serde(rename = "excluded")]
+	excluded: bool,
+	#[serde(rename = "export_level")]
+	export_level: String,
+	#[serde(rename = "is_header_parameter")]
+	is_header_parameter: bool,
+	#[serde(rename = "json_structure")]
+	json_structure: String,
+	#[serde(rename = "message_definition")]
+	message_definition: String,
+	#[serde(rename = "name")]
+	name: String,
+	#[serde(rename = "null_value_option")]
+	null_value_option: String,
+	#[serde(rename = "operation_name")]
+	operation_name: String,
+	#[serde(rename = "parameter_name")]
+	parameter_name: String,
+	#[serde(rename = "public_name")]
+	public_name: String,
+	#[serde(rename = "service_name")]
+	service_name: String,
+	#[serde(rename = "wsdl_file")]
+	wsdl_file: String,
+	#[serde(rename = "xml_schema")]
+	xml_schema: String,
+	#[serde(rename = "xsd_root_element_name")]
+	xsd_root_element_name: String,
 }
 

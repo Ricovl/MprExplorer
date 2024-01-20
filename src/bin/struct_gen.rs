@@ -129,22 +129,28 @@ fn bson_to_string(bson: &bson::Bson) -> &'static str {
     }
 }
 
+enum SpecialTypes {
+    Normal(String),
+    Array(i32, Vec<String>),
+    Reference(String),
+}
+
 fn explore<'a>(
     doc: &'a Document,
-    types: &mut HashMap<String, Box<HashMap<String, Vec<(String, String)>>>>,
+    types: &mut HashMap<String, Box<HashMap<String, Vec<(String, SpecialTypes)>>>>,
     depth: usize,
 ) -> &'a str {
-    let mut attributes: Vec<(String, String)> = Vec::new();
+    let mut attributes: Vec<(String, SpecialTypes)> = Vec::new();
     let mut dociter = doc.iter();
     dociter.next();
     let _type = dociter.next().unwrap().1.as_str().unwrap();
     let (modname, structname) = _type.split_once("$").unwrap();
 
     for (key, obj) in dociter {
-        let typestr: String;
+        let typestr: SpecialTypes;
         match obj {
             bson::Bson::Array(arr) => {
-                let mut array_attrs: Vec<&str> = Vec::new();
+                let mut array_attrs: Vec<String> = Vec::new();
                 let mut iter = arr.iter();
                 let first = iter.next().unwrap().as_i32().unwrap(); // 1 = basic type (String, i64), 2 = ?, 3 = ?
                 for el in iter {
@@ -152,27 +158,25 @@ fn explore<'a>(
                         bson::Bson::Document(idoc) => explore(&idoc, types, depth + 1),
                         bson => bson_to_string(bson),
                     };
-                    if !array_attrs.contains(&array_attr) {
-                        array_attrs.push(array_attr);
+                    if !array_attrs.contains(&array_attr.to_string()) {
+                        array_attrs.push(array_attr.to_string());
                     }
                 }
-                if array_attrs.len() == 1 {
-                    typestr = format!("Vec<{}>", array_attrs[0]);
-                }
-                else {
-                    typestr = format!("Vec<{}, {:?}>", first, array_attrs);
-                }
+                typestr = SpecialTypes::Array(first, array_attrs);
             }
             bson::Bson::Document(idoc) => {
-                typestr = explore(&idoc, types, depth + 1).to_string();
+                typestr = SpecialTypes::Reference(explore(&idoc, types, depth + 1).to_string());
             }
-            bson => typestr = bson_to_string(bson).to_string(),
+            bson => typestr = SpecialTypes::Normal(bson_to_string(bson).to_string()),
         }
 
         attributes.push((key.to_string(), typestr));
     }
 
-    types.entry(modname.to_string()).or_insert(Box::new(HashMap::new())).insert(structname.to_string(), attributes);
+    types
+        .entry(modname.to_string())
+        .or_insert(Box::new(HashMap::new()))
+        .insert(structname.to_string(), attributes);
     _type
 }
 
@@ -185,7 +189,8 @@ fn main() {
 
     println!("Finished reading mpr.");
     println!("Starting mpr file exploring.");
-    let mut types: HashMap<String, Box<HashMap<String, Vec<(String, String)>>>> = HashMap::new();
+    let mut types: HashMap<String, Box<HashMap<String, Vec<(String, SpecialTypes)>>>> =
+        HashMap::new();
     for child in units {
         if let Some(doc) = &child.doc {
             explore(doc, &mut types, 0);
@@ -222,15 +227,22 @@ fn main() {
             writeln!(file, "#[derive(Serialize, Deserialize)]").unwrap();
             writeln!(file, "pub struct {} {{", struct_name).unwrap();
 
-            for (attr_name, attr_type) in attributes {
+            for (_attr_name, attr_type) in attributes {
+                let attr_name = _attr_name.to_case(convert_case::Case::Snake);
                 writeln!(file, "\t#[serde(rename = \"{}\")]", attr_name).unwrap();
-                writeln!(
-                    file,
-                    "\t{}: {},",
-                    attr_name.to_case(convert_case::Case::Snake),
-                    attr_type
-                )
-                .unwrap();
+                match attr_type {
+                    SpecialTypes::Normal(_type) => {
+                        writeln!(file, "\t{}: {},", attr_name, _type).unwrap();
+                    }
+                    SpecialTypes::Array(_, _) => {
+                        writeln!(file, "\t{}: Vec<>,", attr_name).unwrap();
+                    },
+                    SpecialTypes::Reference(_type) => {
+                        let (_module, structname) = _type.split_once("$").unwrap();
+                        let module = _module.to_case(convert_case::Case::Snake);
+                        writeln!(file, "\t{}: {}::{},", attr_name, module, structname).unwrap();
+                    },
+                }
             }
 
             writeln!(file, "}}\n").unwrap();

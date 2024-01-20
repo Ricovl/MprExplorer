@@ -3,43 +3,43 @@ use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct Translation {
-	#[serde(rename = "LanguageCode")]
+	#[serde(rename = "language_code")]
 	language_code: String,
-	#[serde(rename = "Text")]
+	#[serde(rename = "text")]
 	text: String,
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct SystemTextCollection {
-	#[serde(rename = "SystemTexts")]
-	system_texts: Vec<Texts$SystemText>,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct SystemText {
-	#[serde(rename = "InternalKey")]
-	internal_key: String,
-	#[serde(rename = "Text")]
-	text: Texts$Text,
-}
-
-#[derive(Serialize, Deserialize)]
 pub struct Language {
-	#[serde(rename = "CheckCompleteness")]
+	#[serde(rename = "check_completeness")]
 	check_completeness: bool,
-	#[serde(rename = "Code")]
+	#[serde(rename = "code")]
 	code: String,
-	#[serde(rename = "CustomDateFormat")]
+	#[serde(rename = "custom_date_format")]
 	custom_date_format: String,
-	#[serde(rename = "CustomDateTimeFormat")]
+	#[serde(rename = "custom_date_time_format")]
 	custom_date_time_format: String,
-	#[serde(rename = "CustomTimeFormat")]
+	#[serde(rename = "custom_time_format")]
 	custom_time_format: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Text {
-	#[serde(rename = "Items")]
-	items: Vec<Texts$Translation>,
+	#[serde(rename = "items")]
+	items: Vec<>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct SystemText {
+	#[serde(rename = "internal_key")]
+	internal_key: String,
+	#[serde(rename = "text")]
+	text: texts::Text,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct SystemTextCollection {
+	#[serde(rename = "system_texts")]
+	system_texts: Vec<>,
 }
 

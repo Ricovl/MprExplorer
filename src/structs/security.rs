@@ -3,93 +3,93 @@ use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct ProjectSecurity {
-	#[serde(rename = "AdminPassword")]
+	#[serde(rename = "admin_password")]
 	admin_password: String,
-	#[serde(rename = "AdminUserName")]
+	#[serde(rename = "admin_user_name")]
 	admin_user_name: String,
-	#[serde(rename = "AdminUserRole")]
+	#[serde(rename = "admin_user_role")]
 	admin_user_role: String,
-	#[serde(rename = "CheckSecurity")]
+	#[serde(rename = "check_security")]
 	check_security: bool,
-	#[serde(rename = "DemoUsers")]
-	demo_users: Vec<2, []>,
-	#[serde(rename = "EnableDemoUsers")]
+	#[serde(rename = "demo_users")]
+	demo_users: Vec<>,
+	#[serde(rename = "enable_demo_users")]
 	enable_demo_users: bool,
-	#[serde(rename = "EnableGuestAccess")]
+	#[serde(rename = "enable_guest_access")]
 	enable_guest_access: bool,
-	#[serde(rename = "FileDocumentAccess")]
-	file_document_access: Security$FileDocumentAccessRuleContainer,
-	#[serde(rename = "GuestUserRole")]
+	#[serde(rename = "file_document_access")]
+	file_document_access: security::FileDocumentAccessRuleContainer,
+	#[serde(rename = "guest_user_role")]
 	guest_user_role: String,
-	#[serde(rename = "ImageAccess")]
-	image_access: Security$ImageAccessRuleContainer,
-	#[serde(rename = "PasswordPolicySettings")]
-	password_policy_settings: Security$PasswordPolicySettings,
-	#[serde(rename = "SecurityLevel")]
+	#[serde(rename = "image_access")]
+	image_access: security::ImageAccessRuleContainer,
+	#[serde(rename = "password_policy_settings")]
+	password_policy_settings: security::PasswordPolicySettings,
+	#[serde(rename = "security_level")]
 	security_level: String,
-	#[serde(rename = "StrictMode")]
+	#[serde(rename = "strict_mode")]
 	strict_mode: bool,
-	#[serde(rename = "StrictPageUrlCheck")]
+	#[serde(rename = "strict_page_url_check")]
 	strict_page_url_check: bool,
-	#[serde(rename = "UserRoles")]
-	user_roles: Vec<Security$UserRole>,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ModuleRole {
-	#[serde(rename = "Description")]
-	description: String,
-	#[serde(rename = "Name")]
-	name: String,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct ImageAccessRuleContainer {
-	#[serde(rename = "AccessRules")]
-	access_rules: Vec<3, []>,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct FileDocumentAccessRuleContainer {
-	#[serde(rename = "AccessRules")]
-	access_rules: Vec<3, []>,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct UserRole {
-	#[serde(rename = "CheckSecurity")]
-	check_security: bool,
-	#[serde(rename = "Description")]
-	description: String,
-	#[serde(rename = "GUID")]
-	guid: Binary,
-	#[serde(rename = "ManageableRoles")]
-	manageable_roles: Vec<1, []>,
-	#[serde(rename = "ManageAllRoles")]
-	manage_all_roles: bool,
-	#[serde(rename = "ManageUsersWithoutRoles")]
-	manage_users_without_roles: bool,
-	#[serde(rename = "ModuleRoles")]
-	module_roles: Vec<String>,
-	#[serde(rename = "Name")]
-	name: String,
+	#[serde(rename = "user_roles")]
+	user_roles: Vec<>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ModuleSecurity {
-	#[serde(rename = "ModuleRoles")]
-	module_roles: Vec<Security$ModuleRole>,
+	#[serde(rename = "module_roles")]
+	module_roles: Vec<>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct ImageAccessRuleContainer {
+	#[serde(rename = "access_rules")]
+	access_rules: Vec<>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct UserRole {
+	#[serde(rename = "check_security")]
+	check_security: bool,
+	#[serde(rename = "description")]
+	description: String,
+	#[serde(rename = "guid")]
+	guid: Binary,
+	#[serde(rename = "manageable_roles")]
+	manageable_roles: Vec<>,
+	#[serde(rename = "manage_all_roles")]
+	manage_all_roles: bool,
+	#[serde(rename = "manage_users_without_roles")]
+	manage_users_without_roles: bool,
+	#[serde(rename = "module_roles")]
+	module_roles: Vec<>,
+	#[serde(rename = "name")]
+	name: String,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct ModuleRole {
+	#[serde(rename = "description")]
+	description: String,
+	#[serde(rename = "name")]
+	name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct PasswordPolicySettings {
-	#[serde(rename = "MinimumLength")]
+	#[serde(rename = "minimum_length")]
 	minimum_length: i64,
-	#[serde(rename = "RequireDigit")]
+	#[serde(rename = "require_digit")]
 	require_digit: bool,
-	#[serde(rename = "RequireMixedCase")]
+	#[serde(rename = "require_mixed_case")]
 	require_mixed_case: bool,
-	#[serde(rename = "RequireSymbol")]
+	#[serde(rename = "require_symbol")]
 	require_symbol: bool,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct FileDocumentAccessRuleContainer {
+	#[serde(rename = "access_rules")]
+	access_rules: Vec<>,
 }
 

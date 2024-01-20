@@ -3,15 +3,15 @@ use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct RegularExpression {
-	#[serde(rename = "Documentation")]
+	#[serde(rename = "documentation")]
 	documentation: String,
-	#[serde(rename = "Excluded")]
+	#[serde(rename = "excluded")]
 	excluded: bool,
-	#[serde(rename = "ExportLevel")]
+	#[serde(rename = "export_level")]
 	export_level: String,
-	#[serde(rename = "Expression")]
+	#[serde(rename = "expression")]
 	expression: String,
-	#[serde(rename = "Name")]
+	#[serde(rename = "name")]
 	name: String,
 }
 

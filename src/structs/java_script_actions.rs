@@ -3,39 +3,39 @@ use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct JavaScriptAction {
-	#[serde(rename = "ActionDefaultReturnName")]
+	#[serde(rename = "action_default_return_name")]
 	action_default_return_name: String,
-	#[serde(rename = "Documentation")]
+	#[serde(rename = "documentation")]
 	documentation: String,
-	#[serde(rename = "Excluded")]
+	#[serde(rename = "excluded")]
 	excluded: bool,
-	#[serde(rename = "ExportLevel")]
+	#[serde(rename = "export_level")]
 	export_level: String,
-	#[serde(rename = "JavaReturnType")]
-	java_return_type: CodeActions$VoidType,
-	#[serde(rename = "MicroflowActionInfo")]
+	#[serde(rename = "java_return_type")]
+	java_return_type: code_actions::VoidType,
+	#[serde(rename = "microflow_action_info")]
 	microflow_action_info: Null,
-	#[serde(rename = "Name")]
+	#[serde(rename = "name")]
 	name: String,
-	#[serde(rename = "Parameters")]
-	parameters: Vec<JavaScriptActions$JavaScriptActionParameter>,
-	#[serde(rename = "Platform")]
+	#[serde(rename = "parameters")]
+	parameters: Vec<>,
+	#[serde(rename = "platform")]
 	platform: String,
-	#[serde(rename = "TypeParameters")]
-	type_parameters: Vec<2, []>,
+	#[serde(rename = "type_parameters")]
+	type_parameters: Vec<>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct JavaScriptActionParameter {
-	#[serde(rename = "Category")]
+	#[serde(rename = "category")]
 	category: String,
-	#[serde(rename = "Description")]
+	#[serde(rename = "description")]
 	description: String,
-	#[serde(rename = "IsRequired")]
+	#[serde(rename = "is_required")]
 	is_required: bool,
-	#[serde(rename = "Name")]
+	#[serde(rename = "name")]
 	name: String,
-	#[serde(rename = "ParameterType")]
-	parameter_type: CodeActions$BasicParameterType,
+	#[serde(rename = "parameter_type")]
+	parameter_type: code_actions::BasicParameterType,
 }
 

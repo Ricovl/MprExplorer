@@ -2,74 +2,74 @@ use serde::{Deserialize, Serialize};
 use super::*;
 
 #[derive(Serialize, Deserialize)]
-pub struct WeekSchedule {
-	#[serde(rename = "Friday")]
-	friday: bool,
-	#[serde(rename = "HourOfDay")]
-	hour_of_day: i64,
-	#[serde(rename = "MinuteOfHour")]
-	minute_of_hour: i64,
-	#[serde(rename = "Monday")]
-	monday: bool,
-	#[serde(rename = "Saturday")]
-	saturday: bool,
-	#[serde(rename = "Sunday")]
-	sunday: bool,
-	#[serde(rename = "Thursday")]
-	thursday: bool,
-	#[serde(rename = "Tuesday")]
-	tuesday: bool,
-	#[serde(rename = "Wednesday")]
-	wednesday: bool,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct HourSchedule {
-	#[serde(rename = "MinuteOffset")]
-	minute_offset: i64,
-	#[serde(rename = "Multiplier")]
-	multiplier: i64,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct DaySchedule {
-	#[serde(rename = "HourOfDay")]
-	hour_of_day: i64,
-	#[serde(rename = "MinuteOfHour")]
-	minute_of_hour: i64,
-}
-
-#[derive(Serialize, Deserialize)]
 pub struct ScheduledEvent {
-	#[serde(rename = "Documentation")]
+	#[serde(rename = "documentation")]
 	documentation: String,
-	#[serde(rename = "Enabled")]
+	#[serde(rename = "enabled")]
 	enabled: bool,
-	#[serde(rename = "Excluded")]
+	#[serde(rename = "excluded")]
 	excluded: bool,
-	#[serde(rename = "ExportLevel")]
+	#[serde(rename = "export_level")]
 	export_level: String,
-	#[serde(rename = "Interval")]
+	#[serde(rename = "interval")]
 	interval: i64,
-	#[serde(rename = "IntervalType")]
+	#[serde(rename = "interval_type")]
 	interval_type: String,
-	#[serde(rename = "Microflow")]
+	#[serde(rename = "microflow")]
 	microflow: String,
-	#[serde(rename = "Name")]
+	#[serde(rename = "name")]
 	name: String,
-	#[serde(rename = "OnOverlap")]
+	#[serde(rename = "on_overlap")]
 	on_overlap: String,
-	#[serde(rename = "Schedule")]
-	schedule: ScheduledEvents$HourSchedule,
-	#[serde(rename = "StartDateTime")]
+	#[serde(rename = "schedule")]
+	schedule: scheduled_events::HourSchedule,
+	#[serde(rename = "start_date_time")]
 	start_date_time: DateTime,
-	#[serde(rename = "TimeZone")]
+	#[serde(rename = "time_zone")]
 	time_zone: String,
 }
 
 #[derive(Serialize, Deserialize)]
+pub struct DaySchedule {
+	#[serde(rename = "hour_of_day")]
+	hour_of_day: i64,
+	#[serde(rename = "minute_of_hour")]
+	minute_of_hour: i64,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct WeekSchedule {
+	#[serde(rename = "friday")]
+	friday: bool,
+	#[serde(rename = "hour_of_day")]
+	hour_of_day: i64,
+	#[serde(rename = "minute_of_hour")]
+	minute_of_hour: i64,
+	#[serde(rename = "monday")]
+	monday: bool,
+	#[serde(rename = "saturday")]
+	saturday: bool,
+	#[serde(rename = "sunday")]
+	sunday: bool,
+	#[serde(rename = "thursday")]
+	thursday: bool,
+	#[serde(rename = "tuesday")]
+	tuesday: bool,
+	#[serde(rename = "wednesday")]
+	wednesday: bool,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct MinuteSchedule {
-	#[serde(rename = "Multiplier")]
+	#[serde(rename = "multiplier")]
+	multiplier: i64,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct HourSchedule {
+	#[serde(rename = "minute_offset")]
+	minute_offset: i64,
+	#[serde(rename = "multiplier")]
 	multiplier: i64,
 }
 

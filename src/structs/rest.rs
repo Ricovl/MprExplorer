@@ -2,92 +2,92 @@ use serde::{Deserialize, Serialize};
 use super::*;
 
 #[derive(Serialize, Deserialize)]
-pub struct RestOperationParameter {
-	#[serde(rename = "Description")]
-	description: String,
-	#[serde(rename = "MicroflowParameter")]
-	microflow_parameter: String,
-	#[serde(rename = "Name")]
-	name: String,
-	#[serde(rename = "ParameterType")]
-	parameter_type: String,
-	#[serde(rename = "Type")]
-	type: DataTypes$StringType,
-}
-
-#[derive(Serialize, Deserialize)]
 pub struct PublishedRestServiceResource {
-	#[serde(rename = "Documentation")]
+	#[serde(rename = "documentation")]
 	documentation: String,
-	#[serde(rename = "Name")]
+	#[serde(rename = "name")]
 	name: String,
-	#[serde(rename = "Operations")]
-	operations: Vec<Rest$PublishedRestServiceOperation>,
+	#[serde(rename = "operations")]
+	operations: Vec<>,
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct CorsConfiguration {
-	#[serde(rename = "AllowAuthentication")]
-	allow_authentication: bool,
-	#[serde(rename = "AllowedOrigins")]
-	allowed_origins: String,
-	#[serde(rename = "MaxAge")]
-	max_age: String,
+pub struct RestOperationParameter {
+	#[serde(rename = "description")]
+	description: String,
+	#[serde(rename = "microflow_parameter")]
+	microflow_parameter: String,
+	#[serde(rename = "name")]
+	name: String,
+	#[serde(rename = "parameter_type")]
+	parameter_type: String,
+	#[serde(rename = "type")]
+	type: data_types::StringType,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct PublishedRestServiceOperation {
-	#[serde(rename = "Commit")]
+	#[serde(rename = "commit")]
 	commit: String,
-	#[serde(rename = "Deprecated")]
+	#[serde(rename = "deprecated")]
 	deprecated: bool,
-	#[serde(rename = "Documentation")]
+	#[serde(rename = "documentation")]
 	documentation: String,
-	#[serde(rename = "ExportMapping")]
+	#[serde(rename = "export_mapping")]
 	export_mapping: String,
-	#[serde(rename = "HttpMethod")]
+	#[serde(rename = "http_method")]
 	http_method: String,
-	#[serde(rename = "ImportMapping")]
+	#[serde(rename = "import_mapping")]
 	import_mapping: String,
-	#[serde(rename = "Microflow")]
+	#[serde(rename = "microflow")]
 	microflow: String,
-	#[serde(rename = "ObjectHandlingBackup")]
+	#[serde(rename = "object_handling_backup")]
 	object_handling_backup: String,
-	#[serde(rename = "Parameters")]
-	parameters: Vec<Rest$RestOperationParameter>,
-	#[serde(rename = "Path")]
+	#[serde(rename = "parameters")]
+	parameters: Vec<>,
+	#[serde(rename = "path")]
 	path: String,
-	#[serde(rename = "Summary")]
+	#[serde(rename = "summary")]
 	summary: String,
 }
 
 #[derive(Serialize, Deserialize)]
+pub struct CorsConfiguration {
+	#[serde(rename = "allow_authentication")]
+	allow_authentication: bool,
+	#[serde(rename = "allowed_origins")]
+	allowed_origins: String,
+	#[serde(rename = "max_age")]
+	max_age: String,
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct PublishedRestService {
-	#[serde(rename = "AllowedRoles")]
-	allowed_roles: Vec<1, []>,
-	#[serde(rename = "AuthenticationMicroflow")]
+	#[serde(rename = "allowed_roles")]
+	allowed_roles: Vec<>,
+	#[serde(rename = "authentication_microflow")]
 	authentication_microflow: String,
-	#[serde(rename = "AuthenticationTypes")]
-	authentication_types: Vec<1, []>,
-	#[serde(rename = "CorsConfiguration")]
+	#[serde(rename = "authentication_types")]
+	authentication_types: Vec<>,
+	#[serde(rename = "cors_configuration")]
 	cors_configuration: Null,
-	#[serde(rename = "Documentation")]
+	#[serde(rename = "documentation")]
 	documentation: String,
-	#[serde(rename = "Excluded")]
+	#[serde(rename = "excluded")]
 	excluded: bool,
-	#[serde(rename = "ExportLevel")]
+	#[serde(rename = "export_level")]
 	export_level: String,
-	#[serde(rename = "Name")]
+	#[serde(rename = "name")]
 	name: String,
-	#[serde(rename = "Parameters")]
-	parameters: Vec<2, []>,
-	#[serde(rename = "Path")]
+	#[serde(rename = "parameters")]
+	parameters: Vec<>,
+	#[serde(rename = "path")]
 	path: String,
-	#[serde(rename = "Resources")]
-	resources: Vec<Rest$PublishedRestServiceResource>,
-	#[serde(rename = "ServiceName")]
+	#[serde(rename = "resources")]
+	resources: Vec<>,
+	#[serde(rename = "service_name")]
 	service_name: String,
-	#[serde(rename = "Version")]
+	#[serde(rename = "version")]
 	version: String,
 }
 

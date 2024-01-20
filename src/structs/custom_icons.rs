@@ -3,31 +3,31 @@ use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct CustomIcon {
-	#[serde(rename = "CharacterCode")]
+	#[serde(rename = "character_code")]
 	character_code: i64,
-	#[serde(rename = "Name")]
+	#[serde(rename = "name")]
 	name: String,
-	#[serde(rename = "Tags")]
-	tags: Vec<String>,
+	#[serde(rename = "tags")]
+	tags: Vec<>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CustomIconCollection {
-	#[serde(rename = "CollectionClass")]
+	#[serde(rename = "collection_class")]
 	collection_class: String,
-	#[serde(rename = "Documentation")]
+	#[serde(rename = "documentation")]
 	documentation: String,
-	#[serde(rename = "Excluded")]
+	#[serde(rename = "excluded")]
 	excluded: bool,
-	#[serde(rename = "ExportLevel")]
+	#[serde(rename = "export_level")]
 	export_level: String,
-	#[serde(rename = "FontData")]
+	#[serde(rename = "font_data")]
 	font_data: Binary,
-	#[serde(rename = "Icons")]
-	icons: Vec<CustomIcons$CustomIcon>,
-	#[serde(rename = "Name")]
+	#[serde(rename = "icons")]
+	icons: Vec<>,
+	#[serde(rename = "name")]
 	name: String,
-	#[serde(rename = "Prefix")]
+	#[serde(rename = "prefix")]
 	prefix: String,
 }
 

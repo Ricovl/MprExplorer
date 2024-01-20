@@ -2,32 +2,32 @@ use serde::{Deserialize, Serialize};
 use super::*;
 
 #[derive(Serialize, Deserialize)]
-pub struct XmlSchemaContents {
-	#[serde(rename = "Contents")]
-	contents: String,
-	#[serde(rename = "LocalizedContentsFormat")]
-	localized_contents_format: String,
-	#[serde(rename = "LocalizedLocationFormat")]
-	localized_location_format: String,
-	#[serde(rename = "Location")]
-	location: String,
-	#[serde(rename = "TargetNamespace")]
-	target_namespace: String,
+pub struct XmlSchema {
+	#[serde(rename = "documentation")]
+	documentation: String,
+	#[serde(rename = "excluded")]
+	excluded: bool,
+	#[serde(rename = "export_level")]
+	export_level: String,
+	#[serde(rename = "file_path")]
+	file_path: String,
+	#[serde(rename = "name")]
+	name: String,
+	#[serde(rename = "schema_contentss")]
+	schema_contentss: Vec<>,
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct XmlSchema {
-	#[serde(rename = "Documentation")]
-	documentation: String,
-	#[serde(rename = "Excluded")]
-	excluded: bool,
-	#[serde(rename = "ExportLevel")]
-	export_level: String,
-	#[serde(rename = "FilePath")]
-	file_path: String,
-	#[serde(rename = "Name")]
-	name: String,
-	#[serde(rename = "SchemaContentss")]
-	schema_contentss: Vec<XmlSchemas$XmlSchemaContents>,
+pub struct XmlSchemaContents {
+	#[serde(rename = "contents")]
+	contents: String,
+	#[serde(rename = "localized_contents_format")]
+	localized_contents_format: String,
+	#[serde(rename = "localized_location_format")]
+	localized_location_format: String,
+	#[serde(rename = "location")]
+	location: String,
+	#[serde(rename = "target_namespace")]
+	target_namespace: String,
 }
 
