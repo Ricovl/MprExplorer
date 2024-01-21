@@ -129,10 +129,15 @@ fn bson_to_string(bson: &bson::Bson) -> &'static str {
     }
 }
 
-enum SpecialTypes {
-    Normal(String),
+
+struct Module {
+
+}
+
+enum SpecialTypes<'a> {
+    Normal(&'a str),
     Array(i32, Vec<String>),
-    Reference(String),
+    Reference(Option<String>),
 }
 
 fn explore<'a>(
@@ -141,14 +146,14 @@ fn explore<'a>(
     depth: usize,
 ) -> &'a str {
     let mut attributes: Vec<(String, SpecialTypes)> = Vec::new();
+
     let mut dociter = doc.iter();
     dociter.next();
     let _type = dociter.next().unwrap().1.as_str().unwrap();
     let (modname, structname) = _type.split_once("$").unwrap();
 
     for (key, obj) in dociter {
-        let typestr: SpecialTypes;
-        match obj {
+        let typestr: SpecialTypes = match obj {
             bson::Bson::Array(arr) => {
                 let mut array_attrs: Vec<String> = Vec::new();
                 let mut iter = arr.iter();
@@ -162,13 +167,18 @@ fn explore<'a>(
                         array_attrs.push(array_attr.to_string());
                     }
                 }
-                typestr = SpecialTypes::Array(first, array_attrs);
+                SpecialTypes::Array(first, array_attrs)
             }
             bson::Bson::Document(idoc) => {
-                typestr = SpecialTypes::Reference(explore(&idoc, types, depth + 1).to_string());
+                SpecialTypes::Reference(Some(explore(&idoc, types, depth + 1).to_string()))
             }
-            bson => typestr = SpecialTypes::Normal(bson_to_string(bson).to_string()),
-        }
+            bson::Bson::Null => {
+                SpecialTypes::Normal("NULL")
+            }
+            bson => { 
+                SpecialTypes::Normal(bson_to_string(bson))
+            },
+        };
 
         attributes.push((key.to_string(), typestr));
     }
@@ -234,17 +244,29 @@ fn main() {
                     SpecialTypes::Normal(_type) => {
                         writeln!(file, "\t{}: {},", attr_name, _type).unwrap();
                     }
-                    SpecialTypes::Array(_, _) => {
-                        writeln!(file, "\t{}: Vec<>,", attr_name).unwrap();
+                    SpecialTypes::Array(arraytype, _attributes) => {
+                        if _attributes.len() == 0 {
+                            writeln!(file, "\t{}: Vec<UnknownType>,", attr_name).unwrap();
+                        }
+                        else if arraytype.to_owned() == 1 {
+                            writeln!(file, "\t{}: Vec<{}>,", attr_name, _attributes[0]).unwrap();
+                        }
+                        else if _attributes.len() == 1 {
+                            let (_module, structname) = _attributes[0].split_once("$").unwrap();
+                            let module = _module.to_case(convert_case::Case::Snake);
+                            writeln!(file, "\t{}: Vec<{}::{}>,", attr_name, module, structname).unwrap();
+                        }
+                        else {
+                            writeln!(file, "\t{}: Vec<{:?}>,", attr_name, _attributes).unwrap();
+                        }
                     },
                     SpecialTypes::Reference(_type) => {
-                        let (_module, structname) = _type.split_once("$").unwrap();
+                        let (_module, structname) = _type.as_ref().unwrap().split_once("$").unwrap();
                         let module = _module.to_case(convert_case::Case::Snake);
                         writeln!(file, "\t{}: {}::{},", attr_name, module, structname).unwrap();
                     },
                 }
             }
-
             writeln!(file, "}}\n").unwrap();
         }
     }

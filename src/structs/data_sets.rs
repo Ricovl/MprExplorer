@@ -14,7 +14,7 @@ pub struct DataSet {
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "parameters")]
-	parameters: Vec<>,
+	parameters: Vec<data_sets::DataSetParameter>,
 	#[serde(rename = "source")]
 	source: data_sets::OqlDataSetSource,
 }
@@ -22,13 +22,13 @@ pub struct DataSet {
 #[derive(Serialize, Deserialize)]
 pub struct DataSetAccess {
 	#[serde(rename = "module_role_access_list")]
-	module_role_access_list: Vec<>,
+	module_role_access_list: Vec<UnknownType>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DataSetParameter {
 	#[serde(rename = "constraints")]
-	constraints: Vec<>,
+	constraints: Vec<UnknownType>,
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "parameter_type")]

@@ -6,7 +6,7 @@ pub struct ConditionSettings {
 	#[serde(rename = "attribute")]
 	attribute: String,
 	#[serde(rename = "new_conditions")]
-	new_conditions: Vec<>,
+	new_conditions: Vec<UnknownType>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -38,9 +38,9 @@ pub struct DocumentTemplate {
 	#[serde(rename = "export_level")]
 	export_level: String,
 	#[serde(rename = "footer")]
-	footer: Null,
+	footer: NULL,
 	#[serde(rename = "header")]
-	header: Null,
+	header: NULL,
 	#[serde(rename = "margin_bottom_in_inch")]
 	margin_bottom_in_inch: f64,
 	#[serde(rename = "margin_left_in_inch")]
@@ -62,7 +62,7 @@ pub struct DocumentTemplate {
 	#[serde(rename = "style")]
 	style: document_templates::Style,
 	#[serde(rename = "toplevels")]
-	toplevels: Vec<>,
+	toplevels: Vec<UnknownType>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -144,11 +144,11 @@ pub struct Table {
 	#[serde(rename = "cell_spacing")]
 	cell_spacing: i64,
 	#[serde(rename = "column_weights")]
-	column_weights: Vec<>,
+	column_weights: Vec<i64>,
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "rows")]
-	rows: Vec<>,
+	rows: Vec<document_templates::TableRow>,
 	#[serde(rename = "style")]
 	style: document_templates::Style,
 }
@@ -170,7 +170,7 @@ pub struct TableCell {
 #[derive(Serialize, Deserialize)]
 pub struct TableRow {
 	#[serde(rename = "cells")]
-	cells: Vec<>,
+	cells: Vec<document_templates::TableCell>,
 	#[serde(rename = "condition_settings")]
 	condition_settings: document_templates::ConditionSettings,
 }

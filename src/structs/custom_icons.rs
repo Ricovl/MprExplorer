@@ -8,7 +8,7 @@ pub struct CustomIcon {
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "tags")]
-	tags: Vec<>,
+	tags: Vec<String>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -24,7 +24,7 @@ pub struct CustomIconCollection {
 	#[serde(rename = "font_data")]
 	font_data: Binary,
 	#[serde(rename = "icons")]
-	icons: Vec<>,
+	icons: Vec<custom_icons::CustomIcon>,
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "prefix")]

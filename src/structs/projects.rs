@@ -52,6 +52,6 @@ pub struct Project {
 #[derive(Serialize, Deserialize)]
 pub struct ProjectConversion {
 	#[serde(rename = "one_time_conversions")]
-	one_time_conversions: Vec<>,
+	one_time_conversions: Vec<projects::OneTimeConversion>,
 }
 

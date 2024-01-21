@@ -4,13 +4,13 @@ use super::*;
 #[derive(Serialize, Deserialize)]
 pub struct FileDocumentAccessRuleContainer {
 	#[serde(rename = "access_rules")]
-	access_rules: Vec<>,
+	access_rules: Vec<UnknownType>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ImageAccessRuleContainer {
 	#[serde(rename = "access_rules")]
-	access_rules: Vec<>,
+	access_rules: Vec<UnknownType>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -24,7 +24,7 @@ pub struct ModuleRole {
 #[derive(Serialize, Deserialize)]
 pub struct ModuleSecurity {
 	#[serde(rename = "module_roles")]
-	module_roles: Vec<>,
+	module_roles: Vec<security::ModuleRole>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -50,7 +50,7 @@ pub struct ProjectSecurity {
 	#[serde(rename = "check_security")]
 	check_security: bool,
 	#[serde(rename = "demo_users")]
-	demo_users: Vec<>,
+	demo_users: Vec<UnknownType>,
 	#[serde(rename = "enable_demo_users")]
 	enable_demo_users: bool,
 	#[serde(rename = "enable_guest_access")]
@@ -70,7 +70,7 @@ pub struct ProjectSecurity {
 	#[serde(rename = "strict_page_url_check")]
 	strict_page_url_check: bool,
 	#[serde(rename = "user_roles")]
-	user_roles: Vec<>,
+	user_roles: Vec<security::UserRole>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -82,13 +82,13 @@ pub struct UserRole {
 	#[serde(rename = "guid")]
 	guid: Binary,
 	#[serde(rename = "manageable_roles")]
-	manageable_roles: Vec<>,
+	manageable_roles: Vec<UnknownType>,
 	#[serde(rename = "manage_all_roles")]
 	manage_all_roles: bool,
 	#[serde(rename = "manage_users_without_roles")]
 	manage_users_without_roles: bool,
 	#[serde(rename = "module_roles")]
-	module_roles: Vec<>,
+	module_roles: Vec<String>,
 	#[serde(rename = "name")]
 	name: String,
 }

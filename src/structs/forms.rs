@@ -14,13 +14,13 @@ pub struct ActionButton {
 	#[serde(rename = "caption_template")]
 	caption_template: forms::ClientTemplate,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "icon")]
-	icon: Null,
+	icon: NULL,
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "native_accessibility_settings")]
-	native_accessibility_settings: Null,
+	native_accessibility_settings: NULL,
 	#[serde(rename = "render_type")]
 	render_type: String,
 	#[serde(rename = "tab_index")]
@@ -34,7 +34,7 @@ pub struct Appearance {
 	#[serde(rename = "class")]
 	class: String,
 	#[serde(rename = "design_properties")]
-	design_properties: Vec<>,
+	design_properties: Vec<UnknownType>,
 	#[serde(rename = "dynamic_classes")]
 	dynamic_classes: String,
 	#[serde(rename = "style")]
@@ -74,23 +74,23 @@ pub struct BuildingBlock {
 	#[serde(rename = "template_category_weight")]
 	template_category_weight: i64,
 	#[serde(rename = "widgets")]
-	widgets: Vec<>,
+	widgets: Vec<forms::ActionButton>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CallNanoflowClientAction {
 	#[serde(rename = "confirmation_info")]
-	confirmation_info: Null,
+	confirmation_info: NULL,
 	#[serde(rename = "disabled_during_execution")]
 	disabled_during_execution: bool,
 	#[serde(rename = "nanoflow")]
 	nanoflow: String,
 	#[serde(rename = "parameter_mappings")]
-	parameter_mappings: Vec<>,
+	parameter_mappings: Vec<UnknownType>,
 	#[serde(rename = "progress_bar")]
 	progress_bar: String,
 	#[serde(rename = "progress_message")]
-	progress_message: Null,
+	progress_message: NULL,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -110,9 +110,9 @@ pub struct CheckBox {
 	#[serde(rename = "attribute_ref")]
 	attribute_ref: domain_models::AttributeRef,
 	#[serde(rename = "conditional_editability_settings")]
-	conditional_editability_settings: Null,
+	conditional_editability_settings: NULL,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "editable")]
 	editable: String,
 	#[serde(rename = "label_position")]
@@ -122,7 +122,7 @@ pub struct CheckBox {
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "native_accessibility_settings")]
-	native_accessibility_settings: Null,
+	native_accessibility_settings: NULL,
 	#[serde(rename = "native_render_mode")]
 	native_render_mode: String,
 	#[serde(rename = "on_change_action")]
@@ -134,7 +134,7 @@ pub struct CheckBox {
 	#[serde(rename = "read_only_style")]
 	read_only_style: String,
 	#[serde(rename = "screen_reader_label")]
-	screen_reader_label: Null,
+	screen_reader_label: NULL,
 	#[serde(rename = "source_variable")]
 	source_variable: forms::PageVariable,
 	#[serde(rename = "tab_index")]
@@ -148,7 +148,7 @@ pub struct ClientTemplate {
 	#[serde(rename = "fallback")]
 	fallback: texts::Text,
 	#[serde(rename = "parameters")]
-	parameters: Vec<>,
+	parameters: Vec<UnknownType>,
 	#[serde(rename = "template")]
 	template: texts::Text,
 }
@@ -162,7 +162,7 @@ pub struct ClientTemplateParameter {
 	#[serde(rename = "formatting_info")]
 	formatting_info: forms::FormattingInfo,
 	#[serde(rename = "source_variable")]
-	source_variable: Null,
+	source_variable: NULL,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -198,7 +198,7 @@ pub struct ConditionalEditabilitySettings {
 	#[serde(rename = "attribute")]
 	attribute: String,
 	#[serde(rename = "conditions")]
-	conditions: Vec<>,
+	conditions: Vec<enumerations::Condition>,
 	#[serde(rename = "expression")]
 	expression: String,
 	#[serde(rename = "source_variable")]
@@ -210,15 +210,15 @@ pub struct ConditionalVisibilitySettings {
 	#[serde(rename = "attribute")]
 	attribute: String,
 	#[serde(rename = "conditions")]
-	conditions: Vec<>,
+	conditions: Vec<UnknownType>,
 	#[serde(rename = "expression")]
 	expression: String,
 	#[serde(rename = "ignore_security")]
 	ignore_security: bool,
 	#[serde(rename = "module_roles")]
-	module_roles: Vec<>,
+	module_roles: Vec<UnknownType>,
 	#[serde(rename = "source_variable")]
-	source_variable: Null,
+	source_variable: NULL,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -250,9 +250,9 @@ pub struct DataGrid {
 	#[serde(rename = "caption_template")]
 	caption_template: forms::ClientTemplate,
 	#[serde(rename = "columns")]
-	columns: Vec<>,
+	columns: Vec<forms::DataGridColumn>,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "control_bar")]
 	control_bar: forms::GridControlBar,
 	#[serde(rename = "data_source")]
@@ -316,7 +316,7 @@ pub struct DataGridSelectButton {
 	#[serde(rename = "caption_template")]
 	caption_template: forms::ClientTemplate,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "icon")]
 	icon: forms::ImageIcon,
 	#[serde(rename = "name")]
@@ -330,13 +330,13 @@ pub struct DataView {
 	#[serde(rename = "appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "data_source")]
 	data_source: forms::DataViewSource,
 	#[serde(rename = "editable")]
 	editable: bool,
 	#[serde(rename = "footer_widgets")]
-	footer_widgets: Vec<>,
+	footer_widgets: Vec<forms::ActionButton>,
 	#[serde(rename = "label_width")]
 	label_width: i64,
 	#[serde(rename = "name")]
@@ -350,7 +350,7 @@ pub struct DataView {
 	#[serde(rename = "tab_index")]
 	tab_index: i64,
 	#[serde(rename = "widgets")]
-	widgets: Vec<>,
+	widgets: Vec<forms::FileManager>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -372,9 +372,9 @@ pub struct DatePicker {
 	#[serde(rename = "attribute_ref")]
 	attribute_ref: domain_models::AttributeRef,
 	#[serde(rename = "conditional_editability_settings")]
-	conditional_editability_settings: Null,
+	conditional_editability_settings: NULL,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "editable")]
 	editable: String,
 	#[serde(rename = "formatting_info")]
@@ -384,7 +384,7 @@ pub struct DatePicker {
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "native_accessibility_settings")]
-	native_accessibility_settings: Null,
+	native_accessibility_settings: NULL,
 	#[serde(rename = "on_change_action")]
 	on_change_action: forms::NoAction,
 	#[serde(rename = "on_enter_action")]
@@ -396,9 +396,9 @@ pub struct DatePicker {
 	#[serde(rename = "read_only_style")]
 	read_only_style: String,
 	#[serde(rename = "screen_reader_label")]
-	screen_reader_label: Null,
+	screen_reader_label: NULL,
 	#[serde(rename = "source_variable")]
-	source_variable: Null,
+	source_variable: NULL,
 	#[serde(rename = "tab_index")]
 	tab_index: i64,
 	#[serde(rename = "validation")]
@@ -418,7 +418,7 @@ pub struct DbTableCell {
 	#[serde(rename = "top_row_index")]
 	top_row_index: i64,
 	#[serde(rename = "widgets")]
-	widgets: Vec<>,
+	widgets: Vec<forms::ActionButton>,
 	#[serde(rename = "width")]
 	width: i64,
 }
@@ -448,11 +448,11 @@ pub struct DivContainer {
 	#[serde(rename = "appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "native_accessibility_settings")]
-	native_accessibility_settings: Null,
+	native_accessibility_settings: NULL,
 	#[serde(rename = "on_click_action")]
 	on_click_action: forms::NoAction,
 	#[serde(rename = "render_mode")]
@@ -462,7 +462,7 @@ pub struct DivContainer {
 	#[serde(rename = "tab_index")]
 	tab_index: i64,
 	#[serde(rename = "widgets")]
-	widgets: Vec<>,
+	widgets: Vec<["Forms$DataView", "Forms$ActionButton"]>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -474,7 +474,7 @@ pub struct DropDown {
 	#[serde(rename = "attribute_ref")]
 	attribute_ref: domain_models::AttributeRef,
 	#[serde(rename = "conditional_editability_settings")]
-	conditional_editability_settings: Null,
+	conditional_editability_settings: NULL,
 	#[serde(rename = "conditional_visibility_settings")]
 	conditional_visibility_settings: forms::ConditionalVisibilitySettings,
 	#[serde(rename = "editable")]
@@ -486,7 +486,7 @@ pub struct DropDown {
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "native_accessibility_settings")]
-	native_accessibility_settings: Null,
+	native_accessibility_settings: NULL,
 	#[serde(rename = "on_change_action")]
 	on_change_action: forms::NoAction,
 	#[serde(rename = "on_enter_action")]
@@ -496,7 +496,7 @@ pub struct DropDown {
 	#[serde(rename = "read_only_style")]
 	read_only_style: String,
 	#[serde(rename = "screen_reader_label")]
-	screen_reader_label: Null,
+	screen_reader_label: NULL,
 	#[serde(rename = "source_variable")]
 	source_variable: forms::PageVariable,
 	#[serde(rename = "tab_index")]
@@ -536,13 +536,13 @@ pub struct DynamicText {
 	#[serde(rename = "appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "content")]
 	content: forms::ClientTemplate,
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "native_accessibility_settings")]
-	native_accessibility_settings: Null,
+	native_accessibility_settings: NULL,
 	#[serde(rename = "native_text_style")]
 	native_text_style: String,
 	#[serde(rename = "render_mode")]
@@ -558,9 +558,9 @@ pub struct FileManager {
 	#[serde(rename = "appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "conditional_editability_settings")]
-	conditional_editability_settings: Null,
+	conditional_editability_settings: NULL,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "editable")]
 	editable: String,
 	#[serde(rename = "label_template")]
@@ -570,7 +570,7 @@ pub struct FileManager {
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "screen_reader_label")]
-	screen_reader_label: Null,
+	screen_reader_label: NULL,
 	#[serde(rename = "show_file_in_browser")]
 	show_file_in_browser: bool,
 	#[serde(rename = "tab_index")]
@@ -588,7 +588,7 @@ pub struct FormAction {
 	#[serde(rename = "number_of_pages_to_close_2")]
 	number_of_pages_to_close_2: String,
 	#[serde(rename = "pages_for_specializations")]
-	pages_for_specializations: Vec<>,
+	pages_for_specializations: Vec<UnknownType>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -596,7 +596,7 @@ pub struct FormCallArgument {
 	#[serde(rename = "parameter")]
 	parameter: String,
 	#[serde(rename = "widgets")]
-	widgets: Vec<>,
+	widgets: Vec<forms::LayoutGrid>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -612,9 +612,9 @@ pub struct FormSettings {
 	#[serde(rename = "form")]
 	form: String,
 	#[serde(rename = "parameter_mappings")]
-	parameter_mappings: Vec<>,
+	parameter_mappings: Vec<forms::PageParameterMapping>,
 	#[serde(rename = "title_override")]
-	title_override: Null,
+	title_override: NULL,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -648,7 +648,7 @@ pub struct GridActionButton {
 	#[serde(rename = "caption_template")]
 	caption_template: forms::ClientTemplate,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "icon")]
 	icon: forms::GlyphIcon,
 	#[serde(rename = "maintain_selection_after_microflow")]
@@ -664,7 +664,7 @@ pub struct GridControlBar {
 	#[serde(rename = "default_button_pointer")]
 	default_button_pointer: Binary,
 	#[serde(rename = "new_buttons")]
-	new_buttons: Vec<>,
+	new_buttons: Vec<["Forms$GridSearchButton", "Forms$GridNewButton", "Forms$GridActionButton"]>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -676,7 +676,7 @@ pub struct GridNewButton {
 	#[serde(rename = "caption_template")]
 	caption_template: forms::ClientTemplate,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "edit_location")]
 	edit_location: String,
 	#[serde(rename = "entity")]
@@ -700,7 +700,7 @@ pub struct GridSearchButton {
 	#[serde(rename = "caption_template")]
 	caption_template: forms::ClientTemplate,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "icon")]
 	icon: forms::GlyphIcon,
 	#[serde(rename = "name")]
@@ -718,7 +718,7 @@ pub struct GridSelectAllButton {
 	#[serde(rename = "caption_template")]
 	caption_template: forms::ClientTemplate,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "icon")]
 	icon: forms::ImageIcon,
 	#[serde(rename = "name")]
@@ -732,7 +732,7 @@ pub struct GridSelectAllButton {
 #[derive(Serialize, Deserialize)]
 pub struct GridSortBar {
 	#[serde(rename = "sort_items")]
-	sort_items: Vec<>,
+	sort_items: Vec<UnknownType>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -764,7 +764,7 @@ pub struct GroupBox {
 	#[serde(rename = "collapsible")]
 	collapsible: String,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "header_mode")]
 	header_mode: String,
 	#[serde(rename = "name")]
@@ -772,7 +772,7 @@ pub struct GroupBox {
 	#[serde(rename = "tab_index")]
 	tab_index: i64,
 	#[serde(rename = "widgets")]
-	widgets: Vec<>,
+	widgets: Vec<forms::DataView>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -780,11 +780,11 @@ pub struct Header {
 	#[serde(rename = "appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "left_widgets")]
-	left_widgets: Vec<>,
+	left_widgets: Vec<forms::SidebarToggleButton>,
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "right_widgets")]
-	right_widgets: Vec<>,
+	right_widgets: Vec<forms::Placeholder>,
 	#[serde(rename = "tab_index")]
 	tab_index: i64,
 }
@@ -810,7 +810,7 @@ pub struct ImageViewer {
 	#[serde(rename = "click_action")]
 	click_action: forms::NoAction,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "data_source")]
 	data_source: forms::ImageViewerSource,
 	#[serde(rename = "default_image")]
@@ -822,7 +822,7 @@ pub struct ImageViewer {
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "native_accessibility_settings")]
-	native_accessibility_settings: Null,
+	native_accessibility_settings: NULL,
 	#[serde(rename = "on_click_enlarge")]
 	on_click_enlarge: bool,
 	#[serde(rename = "responsive")]
@@ -850,13 +850,13 @@ pub struct InputReferenceSetSelector {
 	#[serde(rename = "attribute_ref")]
 	attribute_ref: domain_models::AttributeRef,
 	#[serde(rename = "conditional_editability_settings")]
-	conditional_editability_settings: Null,
+	conditional_editability_settings: NULL,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "editable")]
 	editable: String,
 	#[serde(rename = "label_template")]
-	label_template: Null,
+	label_template: NULL,
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "on_change_action")]
@@ -866,11 +866,11 @@ pub struct InputReferenceSetSelector {
 	#[serde(rename = "read_only_style")]
 	read_only_style: String,
 	#[serde(rename = "screen_reader_label")]
-	screen_reader_label: Null,
+	screen_reader_label: NULL,
 	#[serde(rename = "selector_source")]
 	selector_source: forms::SelectorXPathSource,
 	#[serde(rename = "source_variable")]
-	source_variable: Null,
+	source_variable: NULL,
 	#[serde(rename = "tab_index")]
 	tab_index: i64,
 }
@@ -882,7 +882,7 @@ pub struct Label {
 	#[serde(rename = "caption")]
 	caption: texts::Text,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "tab_index")]
@@ -912,7 +912,7 @@ pub struct Layout {
 #[derive(Serialize, Deserialize)]
 pub struct LayoutCall {
 	#[serde(rename = "arguments")]
-	arguments: Vec<>,
+	arguments: Vec<forms::FormCallArgument>,
 	#[serde(rename = "form")]
 	form: String,
 }
@@ -922,11 +922,11 @@ pub struct LayoutGrid {
 	#[serde(rename = "appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "rows")]
-	rows: Vec<>,
+	rows: Vec<forms::LayoutGridRow>,
 	#[serde(rename = "tab_index")]
 	tab_index: i64,
 	#[serde(rename = "width")]
@@ -948,7 +948,7 @@ pub struct LayoutGridColumn {
 	#[serde(rename = "weight")]
 	weight: i64,
 	#[serde(rename = "widgets")]
-	widgets: Vec<>,
+	widgets: Vec<forms::DataView>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -956,9 +956,9 @@ pub struct LayoutGridRow {
 	#[serde(rename = "appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "columns")]
-	columns: Vec<>,
+	columns: Vec<forms::LayoutGridColumn>,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "horizontal_alignment")]
 	horizontal_alignment: String,
 	#[serde(rename = "spacing_between_columns")]
@@ -974,7 +974,7 @@ pub struct ListView {
 	#[serde(rename = "click_action")]
 	click_action: forms::NoAction,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "data_source")]
 	data_source: forms::MicroflowSource,
 	#[serde(rename = "editable")]
@@ -992,15 +992,15 @@ pub struct ListView {
 	#[serde(rename = "tab_index")]
 	tab_index: i64,
 	#[serde(rename = "templates")]
-	templates: Vec<>,
+	templates: Vec<UnknownType>,
 	#[serde(rename = "widgets")]
-	widgets: Vec<>,
+	widgets: Vec<["Forms$DataView", "Forms$DivContainer"]>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ListViewSearch {
 	#[serde(rename = "search_refs")]
-	search_refs: Vec<>,
+	search_refs: Vec<UnknownType>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1030,9 +1030,9 @@ pub struct LoginButton {
 	#[serde(rename = "caption_template")]
 	caption_template: forms::ClientTemplate,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "icon")]
-	icon: Null,
+	icon: NULL,
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "render_type")]
@@ -1100,17 +1100,17 @@ pub struct MicroflowSettings {
 	#[serde(rename = "asynchronous")]
 	asynchronous: bool,
 	#[serde(rename = "confirmation_info")]
-	confirmation_info: Null,
+	confirmation_info: NULL,
 	#[serde(rename = "form_validations")]
 	form_validations: String,
 	#[serde(rename = "microflow")]
 	microflow: String,
 	#[serde(rename = "parameter_mappings")]
-	parameter_mappings: Vec<>,
+	parameter_mappings: Vec<UnknownType>,
 	#[serde(rename = "progress_bar")]
 	progress_bar: String,
 	#[serde(rename = "progress_message")]
-	progress_message: Null,
+	progress_message: NULL,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1132,7 +1132,7 @@ pub struct NanoflowSource {
 	#[serde(rename = "nanoflow")]
 	nanoflow: String,
 	#[serde(rename = "parameter_mappings")]
-	parameter_mappings: Vec<>,
+	parameter_mappings: Vec<forms::NanoflowParameterMapping>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1146,9 +1146,9 @@ pub struct NativeLayoutContent {
 	#[serde(rename = "sidebar")]
 	sidebar: bool,
 	#[serde(rename = "sidebar_widgets")]
-	sidebar_widgets: Vec<>,
+	sidebar_widgets: Vec<UnknownType>,
 	#[serde(rename = "widgets")]
-	widgets: Vec<>,
+	widgets: Vec<forms::Placeholder>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1172,7 +1172,7 @@ pub struct NavigationTree {
 #[derive(Serialize, Deserialize)]
 pub struct NewGridDatabaseSource {
 	#[serde(rename = "database_constraints")]
-	database_constraints: Vec<>,
+	database_constraints: Vec<UnknownType>,
 	#[serde(rename = "entity_ref")]
 	entity_ref: domain_models::IndirectEntityRef,
 	#[serde(rename = "search_bar")]
@@ -1184,7 +1184,7 @@ pub struct NewGridDatabaseSource {
 #[derive(Serialize, Deserialize)]
 pub struct NewListViewDatabaseSource {
 	#[serde(rename = "database_constraints")]
-	database_constraints: Vec<>,
+	database_constraints: Vec<UnknownType>,
 	#[serde(rename = "entity_ref")]
 	entity_ref: domain_models::DirectEntityRef,
 	#[serde(rename = "search")]
@@ -1196,7 +1196,7 @@ pub struct NewListViewDatabaseSource {
 #[derive(Serialize, Deserialize)]
 pub struct NewSelectorDatabaseSource {
 	#[serde(rename = "database_constraints")]
-	database_constraints: Vec<>,
+	database_constraints: Vec<UnknownType>,
 	#[serde(rename = "sort_bar")]
 	sort_bar: forms::GridSortBar,
 }
@@ -1220,7 +1220,7 @@ pub struct OpenLinkClientAction {
 #[derive(Serialize, Deserialize)]
 pub struct Page {
 	#[serde(rename = "allowed_module_roles")]
-	allowed_module_roles: Vec<>,
+	allowed_module_roles: Vec<UnknownType>,
 	#[serde(rename = "appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "canvas_height")]
@@ -1240,7 +1240,7 @@ pub struct Page {
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "parameters")]
-	parameters: Vec<>,
+	parameters: Vec<forms::PageParameter>,
 	#[serde(rename = "popup_close_action")]
 	popup_close_action: String,
 	#[serde(rename = "popup_height")]
@@ -1320,9 +1320,9 @@ pub struct RadioButtonGroup {
 	#[serde(rename = "attribute_ref")]
 	attribute_ref: domain_models::AttributeRef,
 	#[serde(rename = "conditional_editability_settings")]
-	conditional_editability_settings: Null,
+	conditional_editability_settings: NULL,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "editable")]
 	editable: String,
 	#[serde(rename = "label_template")]
@@ -1340,7 +1340,7 @@ pub struct RadioButtonGroup {
 	#[serde(rename = "render_horizontal")]
 	render_horizontal: bool,
 	#[serde(rename = "screen_reader_label")]
-	screen_reader_label: Null,
+	screen_reader_label: NULL,
 	#[serde(rename = "source_variable")]
 	source_variable: forms::PageVariable,
 	#[serde(rename = "tab_index")]
@@ -1380,9 +1380,9 @@ pub struct ReferenceSelector {
 	#[serde(rename = "attribute_ref")]
 	attribute_ref: domain_models::AttributeRef,
 	#[serde(rename = "conditional_editability_settings")]
-	conditional_editability_settings: Null,
+	conditional_editability_settings: NULL,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "editable")]
 	editable: String,
 	#[serde(rename = "empty_option_caption")]
@@ -1396,7 +1396,7 @@ pub struct ReferenceSelector {
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "native_accessibility_settings")]
-	native_accessibility_settings: Null,
+	native_accessibility_settings: NULL,
 	#[serde(rename = "on_change_action")]
 	on_change_action: forms::NoAction,
 	#[serde(rename = "popup_form_settings")]
@@ -1406,11 +1406,11 @@ pub struct ReferenceSelector {
 	#[serde(rename = "render_mode")]
 	render_mode: String,
 	#[serde(rename = "screen_reader_label")]
-	screen_reader_label: Null,
+	screen_reader_label: NULL,
 	#[serde(rename = "selector_source")]
 	selector_source: forms::NewSelectorDatabaseSource,
 	#[serde(rename = "source_variable")]
-	source_variable: Null,
+	source_variable: NULL,
 	#[serde(rename = "tab_index")]
 	tab_index: i64,
 	#[serde(rename = "validation")]
@@ -1422,11 +1422,11 @@ pub struct ReferenceSetSelector {
 	#[serde(rename = "appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "columns")]
-	columns: Vec<>,
+	columns: Vec<forms::DataGridColumn>,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "constrained_by_refs")]
-	constrained_by_refs: Vec<>,
+	constrained_by_refs: Vec<UnknownType>,
 	#[serde(rename = "control_bar")]
 	control_bar: forms::GridControlBar,
 	#[serde(rename = "data_source")]
@@ -1494,13 +1494,13 @@ pub struct ScrollContainer {
 	#[serde(rename = "layout_mode")]
 	layout_mode: String,
 	#[serde(rename = "left")]
-	left: Null,
+	left: NULL,
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "native_hide_scrollbars")]
 	native_hide_scrollbars: bool,
 	#[serde(rename = "right")]
-	right: Null,
+	right: NULL,
 	#[serde(rename = "scroll_behavior")]
 	scroll_behavior: String,
 	#[serde(rename = "tab_index")]
@@ -1524,13 +1524,13 @@ pub struct ScrollContainerRegion {
 	#[serde(rename = "toggle_mode")]
 	toggle_mode: String,
 	#[serde(rename = "widgets")]
-	widgets: Vec<>,
+	widgets: Vec<forms::ScrollContainer>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct SearchBar {
 	#[serde(rename = "new_buttons")]
-	new_buttons: Vec<>,
+	new_buttons: Vec<["Forms$ComparisonSearchField", "Forms$DropDownSearchField"]>,
 	#[serde(rename = "type")]
 	type: String,
 	#[serde(rename = "wait_for_search")]
@@ -1546,7 +1546,7 @@ pub struct SelectorMicroflowSource {
 #[derive(Serialize, Deserialize)]
 pub struct SelectorXPathSource {
 	#[serde(rename = "constrained_by_refs")]
-	constrained_by_refs: Vec<>,
+	constrained_by_refs: Vec<UnknownType>,
 	#[serde(rename = "sort_bar")]
 	sort_bar: forms::GridSortBar,
 	#[serde(rename = "x_path_constraint")]
@@ -1562,7 +1562,7 @@ pub struct SidebarToggleButton {
 	#[serde(rename = "caption_template")]
 	caption_template: forms::ClientTemplate,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "icon")]
 	icon: forms::IconCollectionIcon,
 	#[serde(rename = "name")]
@@ -1610,11 +1610,11 @@ pub struct Snippet {
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "parameters")]
-	parameters: Vec<>,
+	parameters: Vec<forms::SnippetParameter>,
 	#[serde(rename = "type")]
 	type: String,
 	#[serde(rename = "widgets")]
-	widgets: Vec<>,
+	widgets: Vec<forms::LayoutGrid>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1622,7 +1622,7 @@ pub struct SnippetCall {
 	#[serde(rename = "form")]
 	form: String,
 	#[serde(rename = "parameter_mappings")]
-	parameter_mappings: Vec<>,
+	parameter_mappings: Vec<UnknownType>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1654,7 +1654,7 @@ pub struct StaticImageViewer {
 	#[serde(rename = "click_action")]
 	click_action: forms::NoAction,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "height")]
 	height: i64,
 	#[serde(rename = "height_unit")]
@@ -1664,7 +1664,7 @@ pub struct StaticImageViewer {
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "native_accessibility_settings")]
-	native_accessibility_settings: Null,
+	native_accessibility_settings: NULL,
 	#[serde(rename = "responsive")]
 	responsive: bool,
 	#[serde(rename = "tab_index")]
@@ -1678,7 +1678,7 @@ pub struct StaticImageViewer {
 #[derive(Serialize, Deserialize)]
 pub struct StaticOrDynamicString {
 	#[serde(rename = "attribute_ref")]
-	attribute_ref: Null,
+	attribute_ref: NULL,
 	#[serde(rename = "is_dynamic")]
 	is_dynamic: bool,
 	#[serde(rename = "value")]
@@ -1690,7 +1690,7 @@ pub struct TabControl {
 	#[serde(rename = "appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "default_page_pointer")]
 	default_page_pointer: Binary,
 	#[serde(rename = "name")]
@@ -1698,23 +1698,23 @@ pub struct TabControl {
 	#[serde(rename = "tab_index")]
 	tab_index: i64,
 	#[serde(rename = "tab_pages")]
-	tab_pages: Vec<>,
+	tab_pages: Vec<forms::TabPage>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct TabPage {
 	#[serde(rename = "badge")]
-	badge: Null,
+	badge: NULL,
 	#[serde(rename = "caption")]
 	caption: texts::Text,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "refresh_on_show")]
 	refresh_on_show: bool,
 	#[serde(rename = "widgets")]
-	widgets: Vec<>,
+	widgets: Vec<forms::DivContainer>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1722,15 +1722,15 @@ pub struct Table {
 	#[serde(rename = "appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "cells")]
-	cells: Vec<>,
+	cells: Vec<forms::DbTableCell>,
 	#[serde(rename = "column_widths")]
-	column_widths: Vec<>,
+	column_widths: Vec<forms::TableColumn>,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "rows")]
-	rows: Vec<>,
+	rows: Vec<forms::TableRow>,
 	#[serde(rename = "tab_index")]
 	tab_index: i64,
 	#[serde(rename = "width_unit")]
@@ -1748,7 +1748,7 @@ pub struct TableRow {
 	#[serde(rename = "appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1756,7 +1756,7 @@ pub struct TemplateGrid {
 	#[serde(rename = "appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "contents")]
 	contents: forms::TemplateGridContents,
 	#[serde(rename = "control_bar")]
@@ -1788,7 +1788,7 @@ pub struct TemplateGrid {
 #[derive(Serialize, Deserialize)]
 pub struct TemplateGridContents {
 	#[serde(rename = "widgets")]
-	widgets: Vec<>,
+	widgets: Vec<forms::LayoutGrid>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1804,21 +1804,21 @@ pub struct TextArea {
 	#[serde(rename = "auto_focus")]
 	auto_focus: bool,
 	#[serde(rename = "conditional_editability_settings")]
-	conditional_editability_settings: Null,
+	conditional_editability_settings: NULL,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "counter_message")]
 	counter_message: texts::Text,
 	#[serde(rename = "editable")]
 	editable: String,
 	#[serde(rename = "label_template")]
-	label_template: Null,
+	label_template: NULL,
 	#[serde(rename = "max_length_code")]
 	max_length_code: i64,
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "native_accessibility_settings")]
-	native_accessibility_settings: Null,
+	native_accessibility_settings: NULL,
 	#[serde(rename = "number_of_lines")]
 	number_of_lines: i64,
 	#[serde(rename = "on_change_action")]
@@ -1832,9 +1832,9 @@ pub struct TextArea {
 	#[serde(rename = "read_only_style")]
 	read_only_style: String,
 	#[serde(rename = "screen_reader_label")]
-	screen_reader_label: Null,
+	screen_reader_label: NULL,
 	#[serde(rename = "source_variable")]
-	source_variable: Null,
+	source_variable: NULL,
 	#[serde(rename = "submit_behaviour")]
 	submit_behaviour: String,
 	#[serde(rename = "submit_on_input_delay")]
@@ -1862,7 +1862,7 @@ pub struct TextBox {
 	#[serde(rename = "auto_focus")]
 	auto_focus: bool,
 	#[serde(rename = "conditional_editability_settings")]
-	conditional_editability_settings: Null,
+	conditional_editability_settings: NULL,
 	#[serde(rename = "conditional_visibility_settings")]
 	conditional_visibility_settings: forms::ConditionalVisibilitySettings,
 	#[serde(rename = "editable")]
@@ -1882,7 +1882,7 @@ pub struct TextBox {
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "native_accessibility_settings")]
-	native_accessibility_settings: Null,
+	native_accessibility_settings: NULL,
 	#[serde(rename = "on_change_action")]
 	on_change_action: forms::NoAction,
 	#[serde(rename = "on_enter_action")]
@@ -1896,7 +1896,7 @@ pub struct TextBox {
 	#[serde(rename = "read_only_style")]
 	read_only_style: String,
 	#[serde(rename = "screen_reader_label")]
-	screen_reader_label: Null,
+	screen_reader_label: NULL,
 	#[serde(rename = "source_variable")]
 	source_variable: forms::PageVariable,
 	#[serde(rename = "submit_behaviour")]
@@ -1914,11 +1914,11 @@ pub struct Title {
 	#[serde(rename = "appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: Null,
+	conditional_visibility_settings: NULL,
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "native_accessibility_settings")]
-	native_accessibility_settings: Null,
+	native_accessibility_settings: NULL,
 	#[serde(rename = "tab_index")]
 	tab_index: i64,
 }
@@ -1936,11 +1936,11 @@ pub struct ValidationMessage {
 #[derive(Serialize, Deserialize)]
 pub struct WebLayoutContent {
 	#[serde(rename = "layout_call")]
-	layout_call: Null,
+	layout_call: NULL,
 	#[serde(rename = "layout_type")]
 	layout_type: String,
 	#[serde(rename = "widgets")]
-	widgets: Vec<>,
+	widgets: Vec<forms::ScrollContainer>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1952,7 +1952,7 @@ pub struct WebUIProjectSettingsPart {
 	#[serde(rename = "enable_widget_bundling")]
 	enable_widget_bundling: bool,
 	#[serde(rename = "theme_module_order")]
-	theme_module_order: Vec<>,
+	theme_module_order: Vec<settings::ThemeModuleEntry>,
 	#[serde(rename = "use_optimized_client")]
 	use_optimized_client: String,
 }

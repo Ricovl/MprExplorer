@@ -20,18 +20,18 @@ pub struct MenuItem {
 	#[serde(rename = "action")]
 	action: forms::NoAction,
 	#[serde(rename = "alternative_text")]
-	alternative_text: Null,
+	alternative_text: NULL,
 	#[serde(rename = "caption")]
 	caption: texts::Text,
 	#[serde(rename = "icon")]
 	icon: forms::IconCollectionIcon,
 	#[serde(rename = "items")]
-	items: Vec<>,
+	items: Vec<UnknownType>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct MenuItemCollection {
 	#[serde(rename = "items")]
-	items: Vec<>,
+	items: Vec<menus::MenuItem>,
 }
 

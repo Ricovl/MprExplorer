@@ -14,7 +14,7 @@ pub struct XmlSchema {
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "schema_contentss")]
-	schema_contentss: Vec<>,
+	schema_contentss: Vec<xml_schemas::XmlSchemaContents>,
 }
 
 #[derive(Serialize, Deserialize)]

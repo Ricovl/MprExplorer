@@ -6,7 +6,7 @@ pub struct DataAssociationImpl {
 	#[serde(rename = "association")]
 	association: String,
 	#[serde(rename = "child_members")]
-	child_members: Vec<>,
+	child_members: Vec<["WebServices$DataAttributeImpl", "WebServices$DataAssociationImpl"]>,
 	#[serde(rename = "description")]
 	description: String,
 	#[serde(rename = "element_name")]
@@ -54,7 +54,7 @@ pub struct DataAttributeImpl {
 #[derive(Serialize, Deserialize)]
 pub struct DataEntityImpl {
 	#[serde(rename = "child_members")]
-	child_members: Vec<>,
+	child_members: Vec<["WebServices$DataAttributeImpl", "WebServices$DataAssociationImpl"]>,
 	#[serde(rename = "element_name")]
 	element_name: String,
 	#[serde(rename = "entity")]
@@ -98,7 +98,7 @@ pub struct OperationInfoImpl {
 	#[serde(rename = "request_body_encoded")]
 	request_body_encoded: bool,
 	#[serde(rename = "request_body_part_encodings")]
-	request_body_part_encodings: Vec<>,
+	request_body_part_encodings: Vec<web_services::PartEncodingImpl>,
 	#[serde(rename = "request_body_rpc_element")]
 	request_body_rpc_element: web_services::RpcOperationElementImpl,
 	#[serde(rename = "request_header_element_name")]
@@ -142,7 +142,7 @@ pub struct PublishedOperationImpl {
 	#[serde(rename = "operation_return_type")]
 	operation_return_type: data_types::ObjectType,
 	#[serde(rename = "parameters")]
-	parameters: Vec<>,
+	parameters: Vec<UnknownType>,
 	#[serde(rename = "return_element_name")]
 	return_element_name: String,
 	#[serde(rename = "return_type_is_nillable")]
@@ -162,13 +162,13 @@ pub struct PublishedService {
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "versioned_web_services")]
-	versioned_web_services: Vec<>,
+	versioned_web_services: Vec<web_services::VersionedServiceImpl>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct RpcOperationElementImpl {
 	#[serde(rename = "message_part_elements")]
-	message_part_elements: Vec<>,
+	message_part_elements: Vec<UnknownType>,
 	#[serde(rename = "name")]
 	name: String,
 }
@@ -184,7 +184,7 @@ pub struct ServiceInfoImpl {
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "operations")]
-	operations: Vec<>,
+	operations: Vec<web_services::OperationInfoImpl>,
 	#[serde(rename = "port_name")]
 	port_name: String,
 	#[serde(rename = "soap_version")]
@@ -212,7 +212,7 @@ pub struct VersionedServiceImpl {
 	#[serde(rename = "object_handling_backup")]
 	object_handling_backup: String,
 	#[serde(rename = "operations")]
-	operations: Vec<>,
+	operations: Vec<web_services::PublishedOperationImpl>,
 	#[serde(rename = "optimized_xml")]
 	optimized_xml: bool,
 	#[serde(rename = "target_namespace")]
@@ -228,13 +228,13 @@ pub struct WsdlDescriptionImpl {
 	#[serde(rename = "imports_have_locations")]
 	imports_have_locations: bool,
 	#[serde(rename = "schema_contentss")]
-	schema_contentss: Vec<>,
+	schema_contentss: Vec<xml_schemas::XmlSchemaContents>,
 	#[serde(rename = "services")]
-	services: Vec<>,
+	services: Vec<web_services::ServiceInfoImpl>,
 	#[serde(rename = "target_namespace")]
 	target_namespace: String,
 	#[serde(rename = "wsdl_contentss")]
-	wsdl_contentss: Vec<>,
+	wsdl_contentss: Vec<web_services::WsdlEntryImpl>,
 }
 
 #[derive(Serialize, Deserialize)]

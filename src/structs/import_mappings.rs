@@ -6,7 +6,7 @@ pub struct ImportMapping {
 	#[serde(rename = "documentation")]
 	documentation: String,
 	#[serde(rename = "elements")]
-	elements: Vec<>,
+	elements: Vec<import_mappings::ObjectMappingElement>,
 	#[serde(rename = "excluded")]
 	excluded: bool,
 	#[serde(rename = "export_level")]
@@ -40,9 +40,9 @@ pub struct ObjectMappingElement {
 	#[serde(rename = "association")]
 	association: String,
 	#[serde(rename = "children")]
-	children: Vec<>,
+	children: Vec<["ImportMappings$ValueMappingElement", "ImportMappings$ObjectMappingElement"]>,
 	#[serde(rename = "custom_handler_call")]
-	custom_handler_call: Null,
+	custom_handler_call: NULL,
 	#[serde(rename = "documentation")]
 	documentation: String,
 	#[serde(rename = "element_type")]
