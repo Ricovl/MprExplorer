@@ -1,1091 +1,1386 @@
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct ActionActivity {
-	#[serde(rename = "action")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Action")]
 	action: microflows::RetrieveAction,
-	#[serde(rename = "auto_generate_caption")]
+	#[serde(rename = "AutoGenerateCaption")]
 	auto_generate_caption: bool,
-	#[serde(rename = "background_color")]
+	#[serde(rename = "BackgroundColor")]
 	background_color: String,
-	#[serde(rename = "caption")]
+	#[serde(rename = "Caption")]
 	caption: String,
-	#[serde(rename = "disabled")]
+	#[serde(rename = "Disabled")]
 	disabled: bool,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "relative_middle_point")]
+	#[serde(rename = "RelativeMiddlePoint")]
 	relative_middle_point: String,
-	#[serde(rename = "size")]
+	#[serde(rename = "Size")]
 	size: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct AggregateAction {
-	#[serde(rename = "aggregate_function")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AggregateFunction")]
 	aggregate_function: String,
-	#[serde(rename = "aggregate_variable_name")]
+	#[serde(rename = "AggregateVariableName")]
 	aggregate_variable_name: String,
-	#[serde(rename = "attribute")]
+	#[serde(rename = "Attribute")]
 	attribute: String,
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "variable_name")]
+	#[serde(rename = "VariableName")]
 	variable_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Annotation {
-	#[serde(rename = "caption")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Caption")]
 	caption: String,
-	#[serde(rename = "relative_middle_point")]
+	#[serde(rename = "RelativeMiddlePoint")]
 	relative_middle_point: String,
-	#[serde(rename = "size")]
+	#[serde(rename = "Size")]
 	size: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct AnnotationFlow {
-	#[serde(rename = "destination_bezier_vector")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DestinationBezierVector")]
 	destination_bezier_vector: String,
-	#[serde(rename = "destination_connection_index")]
+	#[serde(rename = "DestinationConnectionIndex")]
 	destination_connection_index: i64,
-	#[serde(rename = "destination_pointer")]
+	#[serde(rename = "DestinationPointer")]
 	destination_pointer: Binary,
-	#[serde(rename = "origin_bezier_vector")]
+	#[serde(rename = "OriginBezierVector")]
 	origin_bezier_vector: String,
-	#[serde(rename = "origin_connection_index")]
+	#[serde(rename = "OriginConnectionIndex")]
 	origin_connection_index: i64,
-	#[serde(rename = "origin_pointer")]
+	#[serde(rename = "OriginPointer")]
 	origin_pointer: Binary,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct AssociationRetrieveSource {
-	#[serde(rename = "association_id")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AssociationId")]
 	association_id: String,
-	#[serde(rename = "start_variable_name")]
+	#[serde(rename = "StartVariableName")]
 	start_variable_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct BasicCodeActionParameterValue {
-	#[serde(rename = "argument")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Argument")]
 	argument: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct BinaryRequestHandling {
-	#[serde(rename = "expression")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Expression")]
 	expression: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct BreakEvent {
-	#[serde(rename = "relative_middle_point")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "RelativeMiddlePoint")]
 	relative_middle_point: String,
-	#[serde(rename = "size")]
+	#[serde(rename = "Size")]
 	size: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CallWebServiceAction {
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "http_configuration")]
+	#[serde(rename = "HttpConfiguration")]
 	http_configuration: microflows::HttpConfiguration,
-	#[serde(rename = "imported_service")]
+	#[serde(rename = "ImportedService")]
 	imported_service: String,
-	#[serde(rename = "is_validation_required")]
+	#[serde(rename = "IsValidationRequired")]
 	is_validation_required: bool,
-	#[serde(rename = "new_result_handling")]
+	#[serde(rename = "NewResultHandling")]
 	new_result_handling: microflows::ResultHandling,
-	#[serde(rename = "operation_name")]
+	#[serde(rename = "OperationName")]
 	operation_name: String,
-	#[serde(rename = "proxy_configuration")]
+	#[serde(rename = "ProxyConfiguration")]
 	proxy_configuration: Empty,
-	#[serde(rename = "request_body_handling")]
+	#[serde(rename = "RequestBodyHandling")]
 	request_body_handling: microflows::SimpleRequestHandling,
-	#[serde(rename = "request_header_handling")]
+	#[serde(rename = "RequestHeaderHandling")]
 	request_header_handling: microflows::SimpleRequestHandling,
-	#[serde(rename = "request_proxy_type")]
+	#[serde(rename = "RequestProxyType")]
 	request_proxy_type: String,
-	#[serde(rename = "service_name")]
+	#[serde(rename = "ServiceName")]
 	service_name: String,
-	#[serde(rename = "time_out_expression")]
+	#[serde(rename = "TimeOutExpression")]
 	time_out_expression: String,
-	#[serde(rename = "use_request_time_out")]
+	#[serde(rename = "UseRequestTimeOut")]
 	use_request_time_out: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CastAction {
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "variable_name")]
+	#[serde(rename = "VariableName")]
 	variable_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ChangeAction {
-	#[serde(rename = "change_variable_name")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ChangeVariableName")]
 	change_variable_name: String,
-	#[serde(rename = "commit")]
+	#[serde(rename = "Commit")]
 	commit: String,
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "items")]
+	#[serde(rename = "Items")]
 	items: Vec<microflows::ChangeActionItem, >,
-	#[serde(rename = "refresh_in_client")]
+	#[serde(rename = "RefreshInClient")]
 	refresh_in_client: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ChangeActionItem {
-	#[serde(rename = "association")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Association")]
 	association: String,
-	#[serde(rename = "attribute")]
+	#[serde(rename = "Attribute")]
 	attribute: String,
-	#[serde(rename = "_type")]
-	_type: String,
-	#[serde(rename = "value")]
+	#[serde(rename = "Type")]
+	var_type: String,
+	#[serde(rename = "Value")]
 	value: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ChangeListAction {
-	#[serde(rename = "change_variable_name")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ChangeVariableName")]
 	change_variable_name: String,
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "_type")]
-	_type: String,
-	#[serde(rename = "value")]
+	#[serde(rename = "Type")]
+	var_type: String,
+	#[serde(rename = "Value")]
 	value: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ChangeVariableAction {
-	#[serde(rename = "change_variable_name")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ChangeVariableName")]
 	change_variable_name: String,
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "value")]
+	#[serde(rename = "Value")]
 	value: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CloseFormAction {
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "number_of_pages_to_close")]
+	#[serde(rename = "NumberOfPagesToClose")]
 	number_of_pages_to_close: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CommitAction {
-	#[serde(rename = "commit_variable_name")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "CommitVariableName")]
 	commit_variable_name: String,
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "refresh_in_client")]
+	#[serde(rename = "RefreshInClient")]
 	refresh_in_client: bool,
-	#[serde(rename = "with_events")]
+	#[serde(rename = "WithEvents")]
 	with_events: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ConstantRange {
-	#[serde(rename = "single_object")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "SingleObject")]
 	single_object: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Contains {
-	#[serde(rename = "list_name")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ListName")]
 	list_name: String,
-	#[serde(rename = "second_list_or_object_name")]
+	#[serde(rename = "SecondListOrObjectName")]
 	second_list_or_object_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ContinueEvent {
-	#[serde(rename = "relative_middle_point")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "RelativeMiddlePoint")]
 	relative_middle_point: String,
-	#[serde(rename = "size")]
+	#[serde(rename = "Size")]
 	size: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CreateChangeAction {
-	#[serde(rename = "commit")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Commit")]
 	commit: String,
-	#[serde(rename = "entity")]
+	#[serde(rename = "Entity")]
 	entity: String,
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "items")]
+	#[serde(rename = "Items")]
 	items: Vec<microflows::ChangeActionItem, >,
-	#[serde(rename = "refresh_in_client")]
+	#[serde(rename = "RefreshInClient")]
 	refresh_in_client: bool,
-	#[serde(rename = "variable_name")]
+	#[serde(rename = "VariableName")]
 	variable_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CreateListAction {
-	#[serde(rename = "entity")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Entity")]
 	entity: String,
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "variable_name")]
+	#[serde(rename = "VariableName")]
 	variable_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CreateVariableAction {
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "initial_value")]
+	#[serde(rename = "InitialValue")]
 	initial_value: String,
-	#[serde(rename = "variable_name")]
+	#[serde(rename = "VariableName")]
 	variable_name: String,
-	#[serde(rename = "variable_type")]
+	#[serde(rename = "VariableType")]
 	variable_type: data_types::StringType,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CustomRange {
-	#[serde(rename = "limit_expression")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "LimitExpression")]
 	limit_expression: String,
-	#[serde(rename = "offset_expression")]
+	#[serde(rename = "OffsetExpression")]
 	offset_expression: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CustomRequestHandling {
-	#[serde(rename = "template")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Template")]
 	template: microflows::StringTemplate,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DatabaseRetrieveSource {
-	#[serde(rename = "entity")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Entity")]
 	entity: String,
-	#[serde(rename = "new_sortings")]
+	#[serde(rename = "NewSortings")]
 	new_sortings: microflows::SortingsList,
-	#[serde(rename = "range")]
+	#[serde(rename = "Range")]
 	range: microflows::ConstantRange,
-	#[serde(rename = "xpath_constraint")]
+	#[serde(rename = "XpathConstraint")]
 	xpath_constraint: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DeleteAction {
-	#[serde(rename = "delete_variable_name")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DeleteVariableName")]
 	delete_variable_name: String,
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "refresh_in_client")]
+	#[serde(rename = "RefreshInClient")]
 	refresh_in_client: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DocumentTemplateParameterMapping {
-	#[serde(rename = "argument")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Argument")]
 	argument: String,
-	#[serde(rename = "widget_name")]
+	#[serde(rename = "WidgetName")]
 	widget_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DownloadFileAction {
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "file_document_variable_name")]
+	#[serde(rename = "FileDocumentVariableName")]
 	file_document_variable_name: String,
-	#[serde(rename = "show_file_in_browser")]
+	#[serde(rename = "ShowFileInBrowser")]
 	show_file_in_browser: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct EndEvent {
-	#[serde(rename = "documentation")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "relative_middle_point")]
+	#[serde(rename = "RelativeMiddlePoint")]
 	relative_middle_point: String,
-	#[serde(rename = "return_value")]
+	#[serde(rename = "ReturnValue")]
 	return_value: String,
-	#[serde(rename = "size")]
+	#[serde(rename = "Size")]
 	size: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct EntityTypeCodeActionParameterValue {
-	#[serde(rename = "entity")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Entity")]
 	entity: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct EnumerationCase {
-	#[serde(rename = "value")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Value")]
 	value: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ErrorEvent {
-	#[serde(rename = "relative_middle_point")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "RelativeMiddlePoint")]
 	relative_middle_point: String,
-	#[serde(rename = "size")]
+	#[serde(rename = "Size")]
 	size: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ExclusiveMerge {
-	#[serde(rename = "relative_middle_point")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "RelativeMiddlePoint")]
 	relative_middle_point: String,
-	#[serde(rename = "size")]
+	#[serde(rename = "Size")]
 	size: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ExclusiveSplit {
-	#[serde(rename = "caption")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Caption")]
 	caption: String,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "relative_middle_point")]
+	#[serde(rename = "RelativeMiddlePoint")]
 	relative_middle_point: String,
-	#[serde(rename = "size")]
+	#[serde(rename = "Size")]
 	size: String,
-	#[serde(rename = "split_condition")]
+	#[serde(rename = "SplitCondition")]
 	split_condition: microflows::ExpressionSplitCondition,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ExportXmlAction {
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "is_validation_required")]
+	#[serde(rename = "IsValidationRequired")]
 	is_validation_required: bool,
-	#[serde(rename = "output_method")]
+	#[serde(rename = "OutputMethod")]
 	output_method: export_xml_action::StringExport,
-	#[serde(rename = "result_handling")]
+	#[serde(rename = "ResultHandling")]
 	result_handling: microflows::MappingRequestHandling,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ExpressionSplitCondition {
-	#[serde(rename = "expression")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Expression")]
 	expression: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Filter {
-	#[serde(rename = "association")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Association")]
 	association: String,
-	#[serde(rename = "attribute")]
+	#[serde(rename = "Attribute")]
 	attribute: String,
-	#[serde(rename = "expression")]
+	#[serde(rename = "Expression")]
 	expression: String,
-	#[serde(rename = "list_name")]
+	#[serde(rename = "ListName")]
 	list_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct FilterByExpression {
-	#[serde(rename = "expression")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Expression")]
 	expression: String,
-	#[serde(rename = "list_name")]
+	#[serde(rename = "ListName")]
 	list_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Find {
-	#[serde(rename = "association")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Association")]
 	association: String,
-	#[serde(rename = "attribute")]
+	#[serde(rename = "Attribute")]
 	attribute: String,
-	#[serde(rename = "expression")]
+	#[serde(rename = "Expression")]
 	expression: String,
-	#[serde(rename = "list_name")]
+	#[serde(rename = "ListName")]
 	list_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct FindByExpression {
-	#[serde(rename = "expression")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Expression")]
 	expression: String,
-	#[serde(rename = "list_name")]
+	#[serde(rename = "ListName")]
 	list_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct GenerateDocumentAction {
-	#[serde(rename = "document_template")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DocumentTemplate")]
 	document_template: String,
-	#[serde(rename = "document_type")]
+	#[serde(rename = "DocumentType")]
 	document_type: String,
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "file_variable_name")]
+	#[serde(rename = "FileVariableName")]
 	file_variable_name: String,
-	#[serde(rename = "language_setting")]
+	#[serde(rename = "LanguageSetting")]
 	language_setting: String,
-	#[serde(rename = "language_variable_name")]
+	#[serde(rename = "LanguageVariableName")]
 	language_variable_name: String,
-	#[serde(rename = "margin_bottom_in_inch")]
+	#[serde(rename = "MarginBottomInInch")]
 	margin_bottom_in_inch: String,
-	#[serde(rename = "margin_left_in_inch")]
+	#[serde(rename = "MarginLeftInInch")]
 	margin_left_in_inch: String,
-	#[serde(rename = "margin_right_in_inch")]
+	#[serde(rename = "MarginRightInInch")]
 	margin_right_in_inch: String,
-	#[serde(rename = "margin_top_in_inch")]
+	#[serde(rename = "MarginTopInInch")]
 	margin_top_in_inch: String,
-	#[serde(rename = "override_bottom_margin")]
+	#[serde(rename = "OverrideBottomMargin")]
 	override_bottom_margin: bool,
-	#[serde(rename = "override_left_margin")]
+	#[serde(rename = "OverrideLeftMargin")]
 	override_left_margin: bool,
-	#[serde(rename = "override_right_margin")]
+	#[serde(rename = "OverrideRightMargin")]
 	override_right_margin: bool,
-	#[serde(rename = "override_top_margin")]
+	#[serde(rename = "OverrideTopMargin")]
 	override_top_margin: bool,
-	#[serde(rename = "parameter_mappings")]
+	#[serde(rename = "ParameterMappings")]
 	parameter_mappings: Vec<microflows::DocumentTemplateParameterMapping, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Head {
-	#[serde(rename = "list_name")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ListName")]
 	list_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct HttpConfiguration {
-	#[serde(rename = "client_certificate")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ClientCertificate")]
 	client_certificate: String,
-	#[serde(rename = "custom_location")]
+	#[serde(rename = "CustomLocation")]
 	custom_location: String,
-	#[serde(rename = "custom_location_template")]
+	#[serde(rename = "CustomLocationTemplate")]
 	custom_location_template: microflows::StringTemplate,
-	#[serde(rename = "http_authentication_password")]
+	#[serde(rename = "HttpAuthenticationPassword")]
 	http_authentication_password: String,
-	#[serde(rename = "http_authentication_user_name")]
+	#[serde(rename = "HttpAuthenticationUserName")]
 	http_authentication_user_name: String,
-	#[serde(rename = "http_header_entries")]
+	#[serde(rename = "HttpHeaderEntries")]
 	http_header_entries: Vec<microflows::HttpHeaderEntry, >,
-	#[serde(rename = "http_method")]
+	#[serde(rename = "HttpMethod")]
 	http_method: String,
-	#[serde(rename = "override_location")]
+	#[serde(rename = "OverrideLocation")]
 	override_location: bool,
-	#[serde(rename = "use_http_authentication")]
+	#[serde(rename = "UseHttpAuthentication")]
 	use_http_authentication: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct HttpHeaderEntry {
-	#[serde(rename = "key")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Key")]
 	key: String,
-	#[serde(rename = "value")]
+	#[serde(rename = "Value")]
 	value: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ImportMappingCall {
-	#[serde(rename = "commit")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Commit")]
 	commit: String,
-	#[serde(rename = "content_type")]
+	#[serde(rename = "ContentType")]
 	content_type: String,
-	#[serde(rename = "force_single_occurrence")]
+	#[serde(rename = "ForceSingleOccurrence")]
 	force_single_occurrence: bool,
-	#[serde(rename = "object_handling_backup")]
+	#[serde(rename = "ObjectHandlingBackup")]
 	object_handling_backup: String,
-	#[serde(rename = "parameter_variable_name")]
+	#[serde(rename = "ParameterVariableName")]
 	parameter_variable_name: String,
-	#[serde(rename = "range")]
+	#[serde(rename = "Range")]
 	range: microflows::ConstantRange,
-	#[serde(rename = "return_value_mapping")]
+	#[serde(rename = "ReturnValueMapping")]
 	return_value_mapping: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ImportXmlAction {
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "is_validation_required")]
+	#[serde(rename = "IsValidationRequired")]
 	is_validation_required: bool,
-	#[serde(rename = "result_handling")]
+	#[serde(rename = "ResultHandling")]
 	result_handling: microflows::ResultHandling,
-	#[serde(rename = "xml_document_variable_name")]
+	#[serde(rename = "XmlDocumentVariableName")]
 	xml_document_variable_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct IncrementCounterMeterAction {
-	#[serde(rename = "description")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Description")]
 	description: String,
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "tags")]
+	#[serde(rename = "Tags")]
 	tags: Vec<UnknownType>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct InheritanceCase {
-	#[serde(rename = "value")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Value")]
 	value: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct InheritanceSplit {
-	#[serde(rename = "caption")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Caption")]
 	caption: String,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "relative_middle_point")]
+	#[serde(rename = "RelativeMiddlePoint")]
 	relative_middle_point: String,
-	#[serde(rename = "size")]
+	#[serde(rename = "Size")]
 	size: String,
-	#[serde(rename = "split_variable_name")]
+	#[serde(rename = "SplitVariableName")]
 	split_variable_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Intersect {
-	#[serde(rename = "list_name")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ListName")]
 	list_name: String,
-	#[serde(rename = "second_list_or_object_name")]
+	#[serde(rename = "SecondListOrObjectName")]
 	second_list_or_object_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct IterableList {
-	#[serde(rename = "list_variable_name")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ListVariableName")]
 	list_variable_name: String,
-	#[serde(rename = "variable_name")]
+	#[serde(rename = "VariableName")]
 	variable_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct JavaActionCallAction {
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "java_action")]
+	#[serde(rename = "JavaAction")]
 	java_action: String,
-	#[serde(rename = "parameter_mappings")]
+	#[serde(rename = "ParameterMappings")]
 	parameter_mappings: Vec<microflows::JavaActionParameterMapping, >,
-	#[serde(rename = "queue_settings")]
+	#[serde(rename = "QueueSettings")]
 	queue_settings: Empty,
-	#[serde(rename = "result_variable_name")]
+	#[serde(rename = "ResultVariableName")]
 	result_variable_name: String,
-	#[serde(rename = "use_return_variable")]
+	#[serde(rename = "UseReturnVariable")]
 	use_return_variable: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct JavaActionParameterMapping {
-	#[serde(rename = "parameter")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Parameter")]
 	parameter: String,
-	#[serde(rename = "value")]
+	#[serde(rename = "Value")]
 	value: microflows::BasicCodeActionParameterValue,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct JavaScriptActionCallAction {
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "java_script_action")]
+	#[serde(rename = "JavaScriptAction")]
 	java_script_action: String,
-	#[serde(rename = "output_variable_name")]
+	#[serde(rename = "OutputVariableName")]
 	output_variable_name: String,
-	#[serde(rename = "parameter_mappings")]
+	#[serde(rename = "ParameterMappings")]
 	parameter_mappings: Vec<microflows::JavaScriptActionParameterMapping, >,
-	#[serde(rename = "use_return_variable")]
+	#[serde(rename = "UseReturnVariable")]
 	use_return_variable: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct JavaScriptActionParameterMapping {
-	#[serde(rename = "parameter")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Parameter")]
 	parameter: String,
-	#[serde(rename = "parameter_value")]
+	#[serde(rename = "ParameterValue")]
 	parameter_value: microflows::BasicCodeActionParameterValue,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ListOperationsAction {
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "new_operation")]
+	#[serde(rename = "NewOperation")]
 	new_operation: microflows::Head,
-	#[serde(rename = "result_variable_name")]
+	#[serde(rename = "ResultVariableName")]
 	result_variable_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct LogMessageAction {
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "include_latest_stack_trace")]
+	#[serde(rename = "IncludeLatestStackTrace")]
 	include_latest_stack_trace: bool,
-	#[serde(rename = "level")]
+	#[serde(rename = "Level")]
 	level: String,
-	#[serde(rename = "message_template")]
+	#[serde(rename = "MessageTemplate")]
 	message_template: microflows::StringTemplate,
-	#[serde(rename = "node")]
+	#[serde(rename = "Node")]
 	node: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct LoopedActivity {
-	#[serde(rename = "documentation")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "loop_source")]
+	#[serde(rename = "LoopSource")]
 	loop_source: microflows::IterableList,
-	#[serde(rename = "object_collection")]
+	#[serde(rename = "ObjectCollection")]
 	object_collection: microflows::MicroflowObjectCollection,
-	#[serde(rename = "relative_middle_point")]
+	#[serde(rename = "RelativeMiddlePoint")]
 	relative_middle_point: String,
-	#[serde(rename = "size")]
+	#[serde(rename = "Size")]
 	size: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct MappingRequestHandling {
-	#[serde(rename = "content_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ContentType")]
 	content_type: String,
-	#[serde(rename = "mapping_id")]
+	#[serde(rename = "MappingId")]
 	mapping_id: String,
-	#[serde(rename = "mapping_variable_name")]
+	#[serde(rename = "MappingVariableName")]
 	mapping_variable_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Microflow {
-	#[serde(rename = "allow_concurrent_execution")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AllowConcurrentExecution")]
 	allow_concurrent_execution: bool,
-	#[serde(rename = "allowed_module_roles")]
+	#[serde(rename = "AllowedModuleRoles")]
 	allowed_module_roles: Vec<String>,
-	#[serde(rename = "apply_entity_access")]
+	#[serde(rename = "ApplyEntityAccess")]
 	apply_entity_access: bool,
-	#[serde(rename = "concurrency_error_microflow")]
+	#[serde(rename = "ConcurrencyErrorMicroflow")]
 	concurrency_error_microflow: String,
-	#[serde(rename = "concurreny_error_message")]
+	#[serde(rename = "ConcurrenyErrorMessage")]
 	concurreny_error_message: texts::Text,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "excluded")]
+	#[serde(rename = "Excluded")]
 	excluded: bool,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "flows")]
+	#[serde(rename = "Flows")]
 	flows: Vec<microflows::AnnotationFlow, microflows::SequenceFlow, >,
-	#[serde(rename = "mark_as_used")]
+	#[serde(rename = "MarkAsUsed")]
 	mark_as_used: bool,
-	#[serde(rename = "microflow_action_info")]
+	#[serde(rename = "MicroflowActionInfo")]
 	microflow_action_info: Empty,
-	#[serde(rename = "microflow_return_type")]
+	#[serde(rename = "MicroflowReturnType")]
 	microflow_return_type: data_types::VoidType,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "object_collection")]
+	#[serde(rename = "ObjectCollection")]
 	object_collection: microflows::MicroflowObjectCollection,
-	#[serde(rename = "workflow_action_info")]
+	#[serde(rename = "WorkflowActionInfo")]
 	workflow_action_info: Empty,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct MicroflowCall {
-	#[serde(rename = "microflow")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Microflow")]
 	microflow: String,
-	#[serde(rename = "parameter_mappings")]
+	#[serde(rename = "ParameterMappings")]
 	parameter_mappings: Vec<microflows::MicroflowCallParameterMapping, >,
-	#[serde(rename = "queue_settings")]
+	#[serde(rename = "QueueSettings")]
 	queue_settings: Empty,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct MicroflowCallAction {
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "microflow_call")]
+	#[serde(rename = "MicroflowCall")]
 	microflow_call: microflows::MicroflowCall,
-	#[serde(rename = "result_variable_name")]
+	#[serde(rename = "ResultVariableName")]
 	result_variable_name: String,
-	#[serde(rename = "use_return_variable")]
+	#[serde(rename = "UseReturnVariable")]
 	use_return_variable: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct MicroflowCallParameterMapping {
-	#[serde(rename = "argument")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Argument")]
 	argument: String,
-	#[serde(rename = "parameter")]
+	#[serde(rename = "Parameter")]
 	parameter: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct MicroflowObjectCollection {
-	#[serde(rename = "objects")]
-	objects: Vec<microflows::ErrorEvent, microflows::MicroflowParameter, microflows::ActionActivity, microflows::ExclusiveSplit, microflows::BreakEvent, microflows::InheritanceSplit, microflows::EndEvent, microflows::StartEvent, microflows::ContinueEvent, microflows::Annotation, microflows::ExclusiveMerge, microflows::LoopedActivity, >,
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Objects")]
+	objects: Vec<microflows::MicroflowParameter, microflows::EndEvent, microflows::StartEvent, microflows::ContinueEvent, microflows::LoopedActivity, microflows::ExclusiveMerge, microflows::InheritanceSplit, microflows::ErrorEvent, microflows::ExclusiveSplit, microflows::Annotation, microflows::ActionActivity, microflows::BreakEvent, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct MicroflowParameter {
-	#[serde(rename = "documentation")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "has_variable_name_been_changed")]
+	#[serde(rename = "HasVariableNameBeenChanged")]
 	has_variable_name_been_changed: bool,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "relative_middle_point")]
+	#[serde(rename = "RelativeMiddlePoint")]
 	relative_middle_point: String,
-	#[serde(rename = "size")]
+	#[serde(rename = "Size")]
 	size: String,
-	#[serde(rename = "variable_type")]
+	#[serde(rename = "VariableType")]
 	variable_type: data_types::ObjectType,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct MicroflowParameterValue {
-	#[serde(rename = "microflow")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Microflow")]
 	microflow: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Nanoflow {
-	#[serde(rename = "allowed_module_roles")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AllowedModuleRoles")]
 	allowed_module_roles: Vec<String>,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "excluded")]
+	#[serde(rename = "Excluded")]
 	excluded: bool,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "flows")]
+	#[serde(rename = "Flows")]
 	flows: Vec<microflows::AnnotationFlow, microflows::SequenceFlow, >,
-	#[serde(rename = "mark_as_used")]
+	#[serde(rename = "MarkAsUsed")]
 	mark_as_used: bool,
-	#[serde(rename = "microflow_return_type")]
+	#[serde(rename = "MicroflowReturnType")]
 	microflow_return_type: data_types::BooleanType,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "object_collection")]
+	#[serde(rename = "ObjectCollection")]
 	object_collection: microflows::MicroflowObjectCollection,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct NanoflowCall {
-	#[serde(rename = "nanoflow")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Nanoflow")]
 	nanoflow: String,
-	#[serde(rename = "parameter_mappings")]
+	#[serde(rename = "ParameterMappings")]
 	parameter_mappings: Vec<microflows::NanoflowCallParameterMapping, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct NanoflowCallAction {
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "nanoflow_call")]
+	#[serde(rename = "NanoflowCall")]
 	nanoflow_call: microflows::NanoflowCall,
-	#[serde(rename = "output_variable_name")]
+	#[serde(rename = "OutputVariableName")]
 	output_variable_name: String,
-	#[serde(rename = "use_return_variable")]
+	#[serde(rename = "UseReturnVariable")]
 	use_return_variable: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct NanoflowCallParameterMapping {
-	#[serde(rename = "argument")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Argument")]
 	argument: String,
-	#[serde(rename = "parameter")]
+	#[serde(rename = "Parameter")]
 	parameter: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct NoCase {
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct RestCallAction {
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "error_result_handling_type")]
+	#[serde(rename = "ErrorResultHandlingType")]
 	error_result_handling_type: String,
-	#[serde(rename = "http_configuration")]
+	#[serde(rename = "HttpConfiguration")]
 	http_configuration: microflows::HttpConfiguration,
-	#[serde(rename = "proxy_configuration")]
+	#[serde(rename = "ProxyConfiguration")]
 	proxy_configuration: Empty,
-	#[serde(rename = "request_handling")]
+	#[serde(rename = "RequestHandling")]
 	request_handling: microflows::BinaryRequestHandling,
-	#[serde(rename = "request_handling_type")]
+	#[serde(rename = "RequestHandlingType")]
 	request_handling_type: String,
-	#[serde(rename = "request_proxy_type")]
+	#[serde(rename = "RequestProxyType")]
 	request_proxy_type: String,
-	#[serde(rename = "result_handling")]
+	#[serde(rename = "ResultHandling")]
 	result_handling: microflows::ResultHandling,
-	#[serde(rename = "result_handling_type")]
+	#[serde(rename = "ResultHandlingType")]
 	result_handling_type: String,
-	#[serde(rename = "time_out_expression")]
+	#[serde(rename = "TimeOutExpression")]
 	time_out_expression: String,
-	#[serde(rename = "use_request_time_out")]
+	#[serde(rename = "UseRequestTimeOut")]
 	use_request_time_out: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ResultHandling {
-	#[serde(rename = "bind")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Bind")]
 	bind: bool,
-	#[serde(rename = "import_mapping_call")]
+	#[serde(rename = "ImportMappingCall")]
 	import_mapping_call: microflows::ImportMappingCall,
-	#[serde(rename = "result_variable_name")]
+	#[serde(rename = "ResultVariableName")]
 	result_variable_name: String,
-	#[serde(rename = "variable_type")]
+	#[serde(rename = "VariableType")]
 	variable_type: data_types::ObjectType,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct RetrieveAction {
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "result_variable_name")]
+	#[serde(rename = "ResultVariableName")]
 	result_variable_name: String,
-	#[serde(rename = "retrieve_source")]
+	#[serde(rename = "RetrieveSource")]
 	retrieve_source: microflows::AssociationRetrieveSource,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct RetrieveSorting {
-	#[serde(rename = "attribute_ref")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AttributeRef")]
 	attribute_ref: domain_models::AttributeRef,
-	#[serde(rename = "sort_order")]
+	#[serde(rename = "SortOrder")]
 	sort_order: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct RollbackAction {
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "refresh_in_client")]
+	#[serde(rename = "RefreshInClient")]
 	refresh_in_client: bool,
-	#[serde(rename = "rollback_variable_name")]
+	#[serde(rename = "RollbackVariableName")]
 	rollback_variable_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Rule {
-	#[serde(rename = "apply_entity_access")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ApplyEntityAccess")]
 	apply_entity_access: bool,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "excluded")]
+	#[serde(rename = "Excluded")]
 	excluded: bool,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "flows")]
+	#[serde(rename = "Flows")]
 	flows: Vec<microflows::SequenceFlow, >,
-	#[serde(rename = "mark_as_used")]
+	#[serde(rename = "MarkAsUsed")]
 	mark_as_used: bool,
-	#[serde(rename = "microflow_return_type")]
+	#[serde(rename = "MicroflowReturnType")]
 	microflow_return_type: data_types::BooleanType,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "object_collection")]
+	#[serde(rename = "ObjectCollection")]
 	object_collection: microflows::MicroflowObjectCollection,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct RuleCall {
-	#[serde(rename = "microflow")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Microflow")]
 	microflow: String,
-	#[serde(rename = "parameter_mappings")]
+	#[serde(rename = "ParameterMappings")]
 	parameter_mappings: Vec<microflows::RuleCallParameterMapping, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct RuleCallParameterMapping {
-	#[serde(rename = "argument")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Argument")]
 	argument: String,
-	#[serde(rename = "parameter")]
+	#[serde(rename = "Parameter")]
 	parameter: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct RuleSplitCondition {
-	#[serde(rename = "rule_call")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "RuleCall")]
 	rule_call: microflows::RuleCall,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct SequenceFlow {
-	#[serde(rename = "destination_bezier_vector")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DestinationBezierVector")]
 	destination_bezier_vector: String,
-	#[serde(rename = "destination_connection_index")]
+	#[serde(rename = "DestinationConnectionIndex")]
 	destination_connection_index: i64,
-	#[serde(rename = "destination_pointer")]
+	#[serde(rename = "DestinationPointer")]
 	destination_pointer: Binary,
-	#[serde(rename = "is_error_handler")]
+	#[serde(rename = "IsErrorHandler")]
 	is_error_handler: bool,
-	#[serde(rename = "new_case_value")]
+	#[serde(rename = "NewCaseValue")]
 	new_case_value: microflows::NoCase,
-	#[serde(rename = "origin_bezier_vector")]
+	#[serde(rename = "OriginBezierVector")]
 	origin_bezier_vector: String,
-	#[serde(rename = "origin_connection_index")]
+	#[serde(rename = "OriginConnectionIndex")]
 	origin_connection_index: i64,
-	#[serde(rename = "origin_pointer")]
+	#[serde(rename = "OriginPointer")]
 	origin_pointer: Binary,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ShowFormAction {
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "form_settings")]
+	#[serde(rename = "FormSettings")]
 	form_settings: forms::FormSettings,
-	#[serde(rename = "number_of_pages_to_close")]
+	#[serde(rename = "NumberOfPagesToClose")]
 	number_of_pages_to_close: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ShowHomePageAction {
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ShowMessageAction {
-	#[serde(rename = "blocking")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Blocking")]
 	blocking: bool,
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "template")]
+	#[serde(rename = "Template")]
 	template: microflows::TextTemplate,
-	#[serde(rename = "_type")]
-	_type: String,
+	#[serde(rename = "Type")]
+	var_type: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct SimpleRequestHandling {
-	#[serde(rename = "null_value_option")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "NullValueOption")]
 	null_value_option: String,
-	#[serde(rename = "parameter_mappings")]
+	#[serde(rename = "ParameterMappings")]
 	parameter_mappings: Vec<microflows::WebServiceOperationSimpleParameterMapping, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Sort {
-	#[serde(rename = "list_name")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ListName")]
 	list_name: String,
-	#[serde(rename = "sortings")]
+	#[serde(rename = "Sortings")]
 	sortings: microflows::SortingsList,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct SortingsList {
-	#[serde(rename = "sortings")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Sortings")]
 	sortings: Vec<microflows::RetrieveSorting, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct StartEvent {
-	#[serde(rename = "relative_middle_point")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "RelativeMiddlePoint")]
 	relative_middle_point: String,
-	#[serde(rename = "size")]
+	#[serde(rename = "Size")]
 	size: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct StringTemplate {
-	#[serde(rename = "parameters")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Parameters")]
 	parameters: Vec<microflows::TemplateParameter, >,
-	#[serde(rename = "text")]
+	#[serde(rename = "Text")]
 	text: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Subtract {
-	#[serde(rename = "list_name")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ListName")]
 	list_name: String,
-	#[serde(rename = "second_list_or_object_name")]
+	#[serde(rename = "SecondListOrObjectName")]
 	second_list_or_object_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct SynchronizeAction {
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "_type")]
-	_type: String,
-	#[serde(rename = "variable_names")]
+	#[serde(rename = "Type")]
+	var_type: String,
+	#[serde(rename = "VariableNames")]
 	variable_names: Vec<String>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Tail {
-	#[serde(rename = "list_name")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ListName")]
 	list_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct TemplateParameter {
-	#[serde(rename = "expression")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Expression")]
 	expression: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct TextTemplate {
-	#[serde(rename = "parameters")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Parameters")]
 	parameters: Vec<microflows::TemplateParameter, >,
-	#[serde(rename = "text")]
+	#[serde(rename = "Text")]
 	text: texts::Text,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Union {
-	#[serde(rename = "list_name")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ListName")]
 	list_name: String,
-	#[serde(rename = "second_list_or_object_name")]
+	#[serde(rename = "SecondListOrObjectName")]
 	second_list_or_object_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ValidationFeedbackAction {
-	#[serde(rename = "association")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Association")]
 	association: String,
-	#[serde(rename = "attribute")]
+	#[serde(rename = "Attribute")]
 	attribute: String,
-	#[serde(rename = "error_handling_type")]
+	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "feedback_template")]
+	#[serde(rename = "FeedbackTemplate")]
 	feedback_template: microflows::TextTemplate,
-	#[serde(rename = "validation_variable_name")]
+	#[serde(rename = "ValidationVariableName")]
 	validation_variable_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct WebServiceOperationSimpleParameterMapping {
-	#[serde(rename = "argument")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Argument")]
 	argument: String,
-	#[serde(rename = "is_checked")]
+	#[serde(rename = "IsChecked")]
 	is_checked: bool,
-	#[serde(rename = "parameter_name")]
+	#[serde(rename = "ParameterName")]
 	parameter_name: String,
-	#[serde(rename = "parameter_path")]
+	#[serde(rename = "ParameterPath")]
 	parameter_path: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct WhileLoopCondition {
-	#[serde(rename = "caption")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Caption")]
 	caption: String,
-	#[serde(rename = "while_expression")]
+	#[serde(rename = "WhileExpression")]
 	while_expression: String,
 }
 

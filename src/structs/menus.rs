@@ -1,37 +1,47 @@
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct MenuDocument {
-	#[serde(rename = "documentation")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "excluded")]
+	#[serde(rename = "Excluded")]
 	excluded: bool,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "item_collection")]
+	#[serde(rename = "ItemCollection")]
 	item_collection: menus::MenuItemCollection,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct MenuItem {
-	#[serde(rename = "action")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Action")]
 	action: forms::MicroflowAction,
-	#[serde(rename = "alternative_text")]
+	#[serde(rename = "AlternativeText")]
 	alternative_text: Empty,
-	#[serde(rename = "caption")]
+	#[serde(rename = "Caption")]
 	caption: texts::Text,
-	#[serde(rename = "icon")]
+	#[serde(rename = "Icon")]
 	icon: Empty,
-	#[serde(rename = "items")]
+	#[serde(rename = "Items")]
 	items: Vec<menus::MenuItem, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct MenuItemCollection {
-	#[serde(rename = "items")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Items")]
 	items: Vec<menus::MenuItem, >,
 }
 

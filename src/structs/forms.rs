@@ -1,1967 +1,2322 @@
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct ActionButton {
-	#[serde(rename = "action")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Action")]
 	action: forms::MicroflowAction,
-	#[serde(rename = "appearance")]
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "aria_role")]
+	#[serde(rename = "AriaRole")]
 	aria_role: String,
-	#[serde(rename = "button_style")]
+	#[serde(rename = "ButtonStyle")]
 	button_style: String,
-	#[serde(rename = "caption_template")]
+	#[serde(rename = "CaptionTemplate")]
 	caption_template: forms::ClientTemplate,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: forms::ConditionalVisibilitySettings,
-	#[serde(rename = "icon")]
+	#[serde(rename = "Icon")]
 	icon: Empty,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "native_accessibility_settings")]
+	#[serde(rename = "NativeAccessibilitySettings")]
 	native_accessibility_settings: Empty,
-	#[serde(rename = "render_type")]
+	#[serde(rename = "RenderType")]
 	render_type: String,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "tooltip")]
+	#[serde(rename = "Tooltip")]
 	tooltip: texts::Text,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Appearance {
-	#[serde(rename = "class")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Class")]
 	class: String,
-	#[serde(rename = "design_properties")]
+	#[serde(rename = "DesignProperties")]
 	design_properties: Vec<forms::DesignPropertyValue, >,
-	#[serde(rename = "dynamic_classes")]
+	#[serde(rename = "DynamicClasses")]
 	dynamic_classes: String,
-	#[serde(rename = "style")]
+	#[serde(rename = "Style")]
 	style: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct AssociationSource {
-	#[serde(rename = "entity_ref")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "EntityRef")]
 	entity_ref: domain_models::IndirectEntityRef,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct BuildingBlock {
-	#[serde(rename = "canvas_height")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "CanvasHeight")]
 	canvas_height: i64,
-	#[serde(rename = "canvas_width")]
+	#[serde(rename = "CanvasWidth")]
 	canvas_width: i64,
-	#[serde(rename = "display_name")]
+	#[serde(rename = "DisplayName")]
 	display_name: String,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "documentation_url")]
+	#[serde(rename = "DocumentationUrl")]
 	documentation_url: String,
-	#[serde(rename = "excluded")]
+	#[serde(rename = "Excluded")]
 	excluded: bool,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "image_data")]
+	#[serde(rename = "ImageData")]
 	image_data: Binary,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "platform")]
+	#[serde(rename = "Platform")]
 	platform: String,
-	#[serde(rename = "template_category")]
+	#[serde(rename = "TemplateCategory")]
 	template_category: String,
-	#[serde(rename = "template_category_weight")]
+	#[serde(rename = "TemplateCategoryWeight")]
 	template_category_weight: i64,
-	#[serde(rename = "widgets")]
+	#[serde(rename = "Widgets")]
 	widgets: Vec<forms::ActionButton, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CallNanoflowClientAction {
-	#[serde(rename = "confirmation_info")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ConfirmationInfo")]
 	confirmation_info: Empty,
-	#[serde(rename = "disabled_during_execution")]
+	#[serde(rename = "DisabledDuringExecution")]
 	disabled_during_execution: bool,
-	#[serde(rename = "nanoflow")]
+	#[serde(rename = "Nanoflow")]
 	nanoflow: String,
-	#[serde(rename = "parameter_mappings")]
+	#[serde(rename = "ParameterMappings")]
 	parameter_mappings: Vec<UnknownType>,
-	#[serde(rename = "progress_bar")]
+	#[serde(rename = "ProgressBar")]
 	progress_bar: String,
-	#[serde(rename = "progress_message")]
+	#[serde(rename = "ProgressMessage")]
 	progress_message: Empty,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CancelChangesClientAction {
-	#[serde(rename = "close_page")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ClosePage")]
 	close_page: bool,
-	#[serde(rename = "disabled_during_execution")]
+	#[serde(rename = "DisabledDuringExecution")]
 	disabled_during_execution: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CheckBox {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "aria_required")]
+	#[serde(rename = "AriaRequired")]
 	aria_required: bool,
-	#[serde(rename = "attribute_ref")]
+	#[serde(rename = "AttributeRef")]
 	attribute_ref: domain_models::AttributeRef,
-	#[serde(rename = "conditional_editability_settings")]
+	#[serde(rename = "ConditionalEditabilitySettings")]
 	conditional_editability_settings: Empty,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: forms::ConditionalVisibilitySettings,
-	#[serde(rename = "editable")]
+	#[serde(rename = "Editable")]
 	editable: String,
-	#[serde(rename = "label_position")]
+	#[serde(rename = "LabelPosition")]
 	label_position: String,
-	#[serde(rename = "label_template")]
+	#[serde(rename = "LabelTemplate")]
 	label_template: forms::ClientTemplate,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "native_accessibility_settings")]
+	#[serde(rename = "NativeAccessibilitySettings")]
 	native_accessibility_settings: Empty,
-	#[serde(rename = "native_render_mode")]
+	#[serde(rename = "NativeRenderMode")]
 	native_render_mode: String,
-	#[serde(rename = "on_change_action")]
+	#[serde(rename = "OnChangeAction")]
 	on_change_action: forms::NoAction,
-	#[serde(rename = "on_enter_action")]
+	#[serde(rename = "OnEnterAction")]
 	on_enter_action: forms::NoAction,
-	#[serde(rename = "on_leave_action")]
+	#[serde(rename = "OnLeaveAction")]
 	on_leave_action: forms::NoAction,
-	#[serde(rename = "read_only_style")]
+	#[serde(rename = "ReadOnlyStyle")]
 	read_only_style: String,
-	#[serde(rename = "screen_reader_label")]
+	#[serde(rename = "ScreenReaderLabel")]
 	screen_reader_label: Empty,
-	#[serde(rename = "source_variable")]
+	#[serde(rename = "SourceVariable")]
 	source_variable: Empty,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "validation")]
+	#[serde(rename = "Validation")]
 	validation: forms::WidgetValidation,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ClientTemplate {
-	#[serde(rename = "fallback")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Fallback")]
 	fallback: texts::Text,
-	#[serde(rename = "parameters")]
+	#[serde(rename = "Parameters")]
 	parameters: Vec<forms::ClientTemplateParameter, >,
-	#[serde(rename = "template")]
+	#[serde(rename = "Template")]
 	template: texts::Text,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ClientTemplateParameter {
-	#[serde(rename = "attribute_ref")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AttributeRef")]
 	attribute_ref: domain_models::AttributeRef,
-	#[serde(rename = "expression")]
+	#[serde(rename = "Expression")]
 	expression: String,
-	#[serde(rename = "formatting_info")]
+	#[serde(rename = "FormattingInfo")]
 	formatting_info: forms::FormattingInfo,
-	#[serde(rename = "source_variable")]
+	#[serde(rename = "SourceVariable")]
 	source_variable: Empty,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ClosePageClientAction {
-	#[serde(rename = "disabled_during_execution")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DisabledDuringExecution")]
 	disabled_during_execution: bool,
-	#[serde(rename = "number_of_pages_to_close")]
+	#[serde(rename = "NumberOfPagesToClose")]
 	number_of_pages_to_close: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ComparisonSearchField {
-	#[serde(rename = "attribute_ref")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AttributeRef")]
 	attribute_ref: domain_models::AttributeRef,
-	#[serde(rename = "caption")]
+	#[serde(rename = "Caption")]
 	caption: texts::Text,
-	#[serde(rename = "custom_date_format")]
+	#[serde(rename = "CustomDateFormat")]
 	custom_date_format: String,
-	#[serde(rename = "default_value")]
+	#[serde(rename = "DefaultValue")]
 	default_value: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "operator")]
+	#[serde(rename = "Operator")]
 	operator: String,
-	#[serde(rename = "placeholder")]
+	#[serde(rename = "Placeholder")]
 	placeholder: texts::Text,
-	#[serde(rename = "_type")]
-	_type: String,
+	#[serde(rename = "Type")]
+	var_type: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ConditionalEditabilitySettings {
-	#[serde(rename = "attribute")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Attribute")]
 	attribute: String,
-	#[serde(rename = "conditions")]
+	#[serde(rename = "Conditions")]
 	conditions: Vec<enumerations::Condition, >,
-	#[serde(rename = "expression")]
+	#[serde(rename = "Expression")]
 	expression: String,
-	#[serde(rename = "source_variable")]
+	#[serde(rename = "SourceVariable")]
 	source_variable: Empty,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ConditionalVisibilitySettings {
-	#[serde(rename = "attribute")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Attribute")]
 	attribute: String,
-	#[serde(rename = "conditions")]
+	#[serde(rename = "Conditions")]
 	conditions: Vec<enumerations::Condition, >,
-	#[serde(rename = "expression")]
+	#[serde(rename = "Expression")]
 	expression: String,
-	#[serde(rename = "ignore_security")]
+	#[serde(rename = "IgnoreSecurity")]
 	ignore_security: bool,
-	#[serde(rename = "module_roles")]
+	#[serde(rename = "ModuleRoles")]
 	module_roles: Vec<String>,
-	#[serde(rename = "source_variable")]
+	#[serde(rename = "SourceVariable")]
 	source_variable: Empty,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ConfirmationInfo {
-	#[serde(rename = "cancel_button_caption")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "CancelButtonCaption")]
 	cancel_button_caption: texts::Text,
-	#[serde(rename = "proceed_button_caption")]
+	#[serde(rename = "ProceedButtonCaption")]
 	proceed_button_caption: texts::Text,
-	#[serde(rename = "question")]
+	#[serde(rename = "Question")]
 	question: texts::Text,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CreateObjectClientAction {
-	#[serde(rename = "disabled_during_execution")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DisabledDuringExecution")]
 	disabled_during_execution: bool,
-	#[serde(rename = "entity_ref")]
+	#[serde(rename = "EntityRef")]
 	entity_ref: domain_models::DirectEntityRef,
-	#[serde(rename = "number_of_pages_to_close_2")]
+	#[serde(rename = "NumberOfPagesToClose2")]
 	number_of_pages_to_close_2: String,
-	#[serde(rename = "page_settings")]
+	#[serde(rename = "PageSettings")]
 	page_settings: forms::FormSettings,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DataGrid {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "caption_template")]
+	#[serde(rename = "CaptionTemplate")]
 	caption_template: forms::ClientTemplate,
-	#[serde(rename = "columns")]
+	#[serde(rename = "Columns")]
 	columns: Vec<forms::DataGridColumn, >,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "control_bar")]
+	#[serde(rename = "ControlBar")]
 	control_bar: forms::GridControlBar,
-	#[serde(rename = "data_source")]
+	#[serde(rename = "DataSource")]
 	data_source: forms::GridXPathSource,
-	#[serde(rename = "default_button_trigger")]
+	#[serde(rename = "DefaultButtonTrigger")]
 	default_button_trigger: String,
-	#[serde(rename = "is_control_bar_visible")]
+	#[serde(rename = "IsControlBarVisible")]
 	is_control_bar_visible: bool,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "number_of_rows")]
+	#[serde(rename = "NumberOfRows")]
 	number_of_rows: i64,
-	#[serde(rename = "refresh_time")]
+	#[serde(rename = "RefreshTime")]
 	refresh_time: i64,
-	#[serde(rename = "select_first")]
+	#[serde(rename = "SelectFirst")]
 	select_first: bool,
-	#[serde(rename = "selection_mode")]
+	#[serde(rename = "SelectionMode")]
 	selection_mode: String,
-	#[serde(rename = "show_empty_rows")]
+	#[serde(rename = "ShowEmptyRows")]
 	show_empty_rows: bool,
-	#[serde(rename = "show_paging_bar")]
+	#[serde(rename = "ShowPagingBar")]
 	show_paging_bar: String,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "tooltip_form")]
+	#[serde(rename = "TooltipForm")]
 	tooltip_form: String,
-	#[serde(rename = "width_unit")]
+	#[serde(rename = "WidthUnit")]
 	width_unit: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DataGridColumn {
-	#[serde(rename = "aggregate_caption")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AggregateCaption")]
 	aggregate_caption: texts::Text,
-	#[serde(rename = "aggregate_function")]
+	#[serde(rename = "AggregateFunction")]
 	aggregate_function: String,
-	#[serde(rename = "appearance")]
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "attribute_ref")]
+	#[serde(rename = "AttributeRef")]
 	attribute_ref: domain_models::AttributeRef,
-	#[serde(rename = "caption")]
+	#[serde(rename = "Caption")]
 	caption: texts::Text,
-	#[serde(rename = "editable")]
+	#[serde(rename = "Editable")]
 	editable: bool,
-	#[serde(rename = "formatting_info")]
+	#[serde(rename = "FormattingInfo")]
 	formatting_info: forms::FormattingInfo,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "show_tooltip")]
+	#[serde(rename = "ShowTooltip")]
 	show_tooltip: bool,
-	#[serde(rename = "width_value")]
+	#[serde(rename = "WidthValue")]
 	width_value: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DataGridSelectButton {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "button_style")]
+	#[serde(rename = "ButtonStyle")]
 	button_style: String,
-	#[serde(rename = "caption_template")]
+	#[serde(rename = "CaptionTemplate")]
 	caption_template: forms::ClientTemplate,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "icon")]
+	#[serde(rename = "Icon")]
 	icon: Empty,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "tooltip")]
+	#[serde(rename = "Tooltip")]
 	tooltip: texts::Text,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DataView {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "data_source")]
+	#[serde(rename = "DataSource")]
 	data_source: forms::DataViewSource,
-	#[serde(rename = "editable")]
+	#[serde(rename = "Editable")]
 	editable: bool,
-	#[serde(rename = "footer_widgets")]
-	footer_widgets: Vec<forms::CheckBox, forms::DataView, forms::ActionButton, forms::LayoutGrid, forms::DivContainer, >,
-	#[serde(rename = "label_width")]
+	#[serde(rename = "FooterWidgets")]
+	footer_widgets: Vec<forms::CheckBox, forms::ActionButton, forms::DataView, forms::LayoutGrid, forms::DivContainer, >,
+	#[serde(rename = "LabelWidth")]
 	label_width: i64,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "no_entity_message")]
+	#[serde(rename = "NoEntityMessage")]
 	no_entity_message: texts::Text,
-	#[serde(rename = "read_only_style")]
+	#[serde(rename = "ReadOnlyStyle")]
 	read_only_style: String,
-	#[serde(rename = "show_footer")]
+	#[serde(rename = "ShowFooter")]
 	show_footer: bool,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "widgets")]
-	widgets: Vec<forms::TemplateGrid, forms::SnippetCallWidget, forms::TextArea, custom_widgets::CustomWidget, forms::ActionButton, forms::Label, forms::DynamicText, forms::InputReferenceSetSelector, forms::Table, forms::ReferenceSelector, forms::DataGrid, forms::DataView, forms::GroupBox, forms::DatePicker, forms::FileManager, forms::ImageViewer, forms::ListView, forms::RadioButtonGroup, forms::DropDown, forms::TextBox, forms::DivContainer, forms::LayoutGrid, forms::ScrollContainer, forms::TabControl, forms::CheckBox, forms::Title, >,
+	#[serde(rename = "Widgets")]
+	widgets: Vec<forms::DataView, forms::ScrollContainer, forms::ReferenceSelector, forms::TemplateGrid, forms::Table, forms::LayoutGrid, forms::DropDown, forms::ListView, forms::ImageViewer, forms::TextBox, forms::DivContainer, custom_widgets::CustomWidget, forms::ActionButton, forms::DatePicker, forms::DynamicText, forms::CheckBox, forms::SnippetCallWidget, forms::GroupBox, forms::FileManager, forms::RadioButtonGroup, forms::DataGrid, forms::Title, forms::TabControl, forms::TextArea, forms::InputReferenceSetSelector, forms::Label, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DataViewSource {
-	#[serde(rename = "entity_ref")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "EntityRef")]
 	entity_ref: domain_models::DirectEntityRef,
-	#[serde(rename = "page_parameter")]
+	#[serde(rename = "PageParameter")]
 	page_parameter: String,
-	#[serde(rename = "snippet_parameter")]
+	#[serde(rename = "SnippetParameter")]
 	snippet_parameter: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DatePicker {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "aria_required")]
+	#[serde(rename = "AriaRequired")]
 	aria_required: bool,
-	#[serde(rename = "attribute_ref")]
+	#[serde(rename = "AttributeRef")]
 	attribute_ref: domain_models::AttributeRef,
-	#[serde(rename = "conditional_editability_settings")]
+	#[serde(rename = "ConditionalEditabilitySettings")]
 	conditional_editability_settings: Empty,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "editable")]
+	#[serde(rename = "Editable")]
 	editable: String,
-	#[serde(rename = "formatting_info")]
+	#[serde(rename = "FormattingInfo")]
 	formatting_info: forms::FormattingInfo,
-	#[serde(rename = "label_template")]
+	#[serde(rename = "LabelTemplate")]
 	label_template: forms::ClientTemplate,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "native_accessibility_settings")]
+	#[serde(rename = "NativeAccessibilitySettings")]
 	native_accessibility_settings: Empty,
-	#[serde(rename = "on_change_action")]
+	#[serde(rename = "OnChangeAction")]
 	on_change_action: forms::NoAction,
-	#[serde(rename = "on_enter_action")]
+	#[serde(rename = "OnEnterAction")]
 	on_enter_action: forms::NoAction,
-	#[serde(rename = "on_leave_action")]
+	#[serde(rename = "OnLeaveAction")]
 	on_leave_action: forms::NoAction,
-	#[serde(rename = "placeholder")]
+	#[serde(rename = "Placeholder")]
 	placeholder: texts::Text,
-	#[serde(rename = "read_only_style")]
+	#[serde(rename = "ReadOnlyStyle")]
 	read_only_style: String,
-	#[serde(rename = "screen_reader_label")]
+	#[serde(rename = "ScreenReaderLabel")]
 	screen_reader_label: Empty,
-	#[serde(rename = "source_variable")]
+	#[serde(rename = "SourceVariable")]
 	source_variable: Empty,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "validation")]
+	#[serde(rename = "Validation")]
 	validation: forms::WidgetValidation,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DbTableCell {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "height")]
+	#[serde(rename = "Height")]
 	height: i64,
-	#[serde(rename = "is_header")]
+	#[serde(rename = "IsHeader")]
 	is_header: bool,
-	#[serde(rename = "left_column_index")]
+	#[serde(rename = "LeftColumnIndex")]
 	left_column_index: i64,
-	#[serde(rename = "top_row_index")]
+	#[serde(rename = "TopRowIndex")]
 	top_row_index: i64,
-	#[serde(rename = "widgets")]
-	widgets: Vec<forms::TextBox, forms::ActionButton, forms::ReferenceSetSelector, forms::DynamicText, forms::Label, forms::CheckBox, forms::DatePicker, forms::DataGrid, forms::DivContainer, forms::TabControl, forms::DataView, forms::TextArea, forms::ReferenceSelector, forms::Table, forms::DropDown, forms::FileManager, >,
-	#[serde(rename = "width")]
+	#[serde(rename = "Widgets")]
+	widgets: Vec<forms::TextBox, forms::DatePicker, forms::Table, forms::TabControl, forms::FileManager, forms::CheckBox, forms::TextArea, forms::DynamicText, forms::DivContainer, forms::DataView, forms::DropDown, forms::ReferenceSelector, forms::ActionButton, forms::Label, forms::ReferenceSetSelector, forms::DataGrid, >,
+	#[serde(rename = "Width")]
 	width: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DeleteClientAction {
-	#[serde(rename = "close_page")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ClosePage")]
 	close_page: bool,
-	#[serde(rename = "disabled_during_execution")]
+	#[serde(rename = "DisabledDuringExecution")]
 	disabled_during_execution: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DesignPropertyValue {
-	#[serde(rename = "boolean_value")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "BooleanValue")]
 	boolean_value: bool,
-	#[serde(rename = "key")]
+	#[serde(rename = "Key")]
 	key: String,
-	#[serde(rename = "string_value")]
+	#[serde(rename = "StringValue")]
 	string_value: String,
-	#[serde(rename = "_type")]
-	_type: String,
+	#[serde(rename = "Type")]
+	var_type: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DivContainer {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "native_accessibility_settings")]
+	#[serde(rename = "NativeAccessibilitySettings")]
 	native_accessibility_settings: Empty,
-	#[serde(rename = "on_click_action")]
+	#[serde(rename = "OnClickAction")]
 	on_click_action: forms::NoAction,
-	#[serde(rename = "render_mode")]
+	#[serde(rename = "RenderMode")]
 	render_mode: String,
-	#[serde(rename = "screen_reader_hidden")]
+	#[serde(rename = "ScreenReaderHidden")]
 	screen_reader_hidden: bool,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "widgets")]
-	widgets: Vec<forms::SnippetCallWidget, forms::DatePicker, forms::MenuBar, forms::FileManager, forms::RadioButtonGroup, forms::CheckBox, forms::TextBox, forms::DropDown, forms::DataView, forms::DynamicText, custom_widgets::CustomWidget, forms::Label, forms::Placeholder, forms::PasswordTextBox, forms::DataGrid, forms::LoginIdTextBox, forms::ValidationMessage, forms::StaticImageViewer, forms::InputReferenceSetSelector, forms::Title, forms::ImageViewer, forms::ActionButton, forms::TemplateGrid, forms::LayoutGrid, forms::ReferenceSelector, forms::ListView, forms::TextArea, forms::TabControl, forms::LoginButton, forms::DivContainer, forms::ReferenceSetSelector, forms::SidebarToggleButton, >,
+	#[serde(rename = "Widgets")]
+	widgets: Vec<forms::ListView, forms::DropDown, forms::TextArea, forms::ValidationMessage, forms::StaticImageViewer, forms::TextBox, forms::Label, forms::ImageViewer, forms::ReferenceSetSelector, forms::FileManager, forms::Placeholder, forms::ActionButton, forms::LayoutGrid, custom_widgets::CustomWidget, forms::DataGrid, forms::CheckBox, forms::TabControl, forms::LoginButton, forms::LoginIdTextBox, forms::PasswordTextBox, forms::RadioButtonGroup, forms::MenuBar, forms::SnippetCallWidget, forms::InputReferenceSetSelector, forms::ReferenceSelector, forms::Title, forms::DatePicker, forms::DataView, forms::DivContainer, forms::TemplateGrid, forms::SidebarToggleButton, forms::DynamicText, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DropDown {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "aria_required")]
+	#[serde(rename = "AriaRequired")]
 	aria_required: bool,
-	#[serde(rename = "attribute_ref")]
+	#[serde(rename = "AttributeRef")]
 	attribute_ref: domain_models::AttributeRef,
-	#[serde(rename = "conditional_editability_settings")]
+	#[serde(rename = "ConditionalEditabilitySettings")]
 	conditional_editability_settings: Empty,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "editable")]
+	#[serde(rename = "Editable")]
 	editable: String,
-	#[serde(rename = "empty_option_caption")]
+	#[serde(rename = "EmptyOptionCaption")]
 	empty_option_caption: texts::Text,
-	#[serde(rename = "label_template")]
+	#[serde(rename = "LabelTemplate")]
 	label_template: forms::ClientTemplate,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "native_accessibility_settings")]
+	#[serde(rename = "NativeAccessibilitySettings")]
 	native_accessibility_settings: Empty,
-	#[serde(rename = "on_change_action")]
+	#[serde(rename = "OnChangeAction")]
 	on_change_action: forms::NoAction,
-	#[serde(rename = "on_enter_action")]
+	#[serde(rename = "OnEnterAction")]
 	on_enter_action: forms::NoAction,
-	#[serde(rename = "on_leave_action")]
+	#[serde(rename = "OnLeaveAction")]
 	on_leave_action: forms::NoAction,
-	#[serde(rename = "read_only_style")]
+	#[serde(rename = "ReadOnlyStyle")]
 	read_only_style: String,
-	#[serde(rename = "screen_reader_label")]
+	#[serde(rename = "ScreenReaderLabel")]
 	screen_reader_label: Empty,
-	#[serde(rename = "source_variable")]
+	#[serde(rename = "SourceVariable")]
 	source_variable: forms::PageVariable,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "validation")]
+	#[serde(rename = "Validation")]
 	validation: forms::WidgetValidation,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DropDownSearchField {
-	#[serde(rename = "allow_multi_select")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AllowMultiSelect")]
 	allow_multi_select: bool,
-	#[serde(rename = "attribute_ref")]
+	#[serde(rename = "AttributeRef")]
 	attribute_ref: domain_models::AttributeRef,
-	#[serde(rename = "caption")]
+	#[serde(rename = "Caption")]
 	caption: texts::Text,
-	#[serde(rename = "custom_date_format")]
+	#[serde(rename = "CustomDateFormat")]
 	custom_date_format: String,
-	#[serde(rename = "default_value")]
+	#[serde(rename = "DefaultValue")]
 	default_value: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "operator")]
+	#[serde(rename = "Operator")]
 	operator: String,
-	#[serde(rename = "placeholder")]
+	#[serde(rename = "Placeholder")]
 	placeholder: texts::Text,
-	#[serde(rename = "sort_bar")]
+	#[serde(rename = "SortBar")]
 	sort_bar: forms::GridSortBar,
-	#[serde(rename = "_type")]
-	_type: String,
-	#[serde(rename = "x_path_constraint")]
+	#[serde(rename = "Type")]
+	var_type: String,
+	#[serde(rename = "XPathConstraint")]
 	x_path_constraint: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DynamicText {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "content")]
+	#[serde(rename = "Content")]
 	content: forms::ClientTemplate,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "native_accessibility_settings")]
+	#[serde(rename = "NativeAccessibilitySettings")]
 	native_accessibility_settings: Empty,
-	#[serde(rename = "native_text_style")]
+	#[serde(rename = "NativeTextStyle")]
 	native_text_style: String,
-	#[serde(rename = "render_mode")]
+	#[serde(rename = "RenderMode")]
 	render_mode: String,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct FileManager {
-	#[serde(rename = "allowed_extensions")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AllowedExtensions")]
 	allowed_extensions: String,
-	#[serde(rename = "appearance")]
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "conditional_editability_settings")]
+	#[serde(rename = "ConditionalEditabilitySettings")]
 	conditional_editability_settings: Empty,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "editable")]
+	#[serde(rename = "Editable")]
 	editable: String,
-	#[serde(rename = "label_template")]
+	#[serde(rename = "LabelTemplate")]
 	label_template: forms::ClientTemplate,
-	#[serde(rename = "max_file_size")]
+	#[serde(rename = "MaxFileSize")]
 	max_file_size: i64,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "screen_reader_label")]
+	#[serde(rename = "ScreenReaderLabel")]
 	screen_reader_label: Empty,
-	#[serde(rename = "show_file_in_browser")]
+	#[serde(rename = "ShowFileInBrowser")]
 	show_file_in_browser: bool,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "_type")]
-	_type: String,
+	#[serde(rename = "Type")]
+	var_type: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct FormAction {
-	#[serde(rename = "disabled_during_execution")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DisabledDuringExecution")]
 	disabled_during_execution: bool,
-	#[serde(rename = "form_settings")]
+	#[serde(rename = "FormSettings")]
 	form_settings: forms::FormSettings,
-	#[serde(rename = "number_of_pages_to_close_2")]
+	#[serde(rename = "NumberOfPagesToClose2")]
 	number_of_pages_to_close_2: String,
-	#[serde(rename = "pages_for_specializations")]
+	#[serde(rename = "PagesForSpecializations")]
 	pages_for_specializations: Vec<forms::FormForSpecialization, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct FormCallArgument {
-	#[serde(rename = "parameter")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Parameter")]
 	parameter: String,
-	#[serde(rename = "widgets")]
-	widgets: Vec<forms::Table, forms::Label, forms::DynamicText, forms::TemplateGrid, forms::DataView, forms::TabControl, forms::LayoutGrid, forms::Placeholder, forms::DataGrid, forms::SnippetCallWidget, forms::ScrollContainer, forms::ActionButton, forms::Title, forms::DivContainer, >,
+	#[serde(rename = "Widgets")]
+	widgets: Vec<forms::DataView, forms::DataGrid, forms::Label, forms::ScrollContainer, forms::LayoutGrid, forms::TabControl, forms::Placeholder, forms::TemplateGrid, forms::DivContainer, forms::SnippetCallWidget, forms::DynamicText, forms::Table, forms::ActionButton, forms::Title, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct FormForSpecialization {
-	#[serde(rename = "entity")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Entity")]
 	entity: String,
-	#[serde(rename = "form_settings")]
+	#[serde(rename = "FormSettings")]
 	form_settings: forms::FormSettings,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct FormSettings {
-	#[serde(rename = "form")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Form")]
 	form: String,
-	#[serde(rename = "parameter_mappings")]
+	#[serde(rename = "ParameterMappings")]
 	parameter_mappings: Vec<forms::PageParameterMapping, >,
-	#[serde(rename = "title_override")]
+	#[serde(rename = "TitleOverride")]
 	title_override: Empty,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct FormattingInfo {
-	#[serde(rename = "custom_date_format")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "CustomDateFormat")]
 	custom_date_format: String,
-	#[serde(rename = "date_format")]
+	#[serde(rename = "DateFormat")]
 	date_format: String,
-	#[serde(rename = "decimal_precision")]
+	#[serde(rename = "DecimalPrecision")]
 	decimal_precision: i64,
-	#[serde(rename = "enum_format")]
+	#[serde(rename = "EnumFormat")]
 	enum_format: String,
-	#[serde(rename = "group_digits")]
+	#[serde(rename = "GroupDigits")]
 	group_digits: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct GlyphIcon {
-	#[serde(rename = "code")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Code")]
 	code: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct GridActionButton {
-	#[serde(rename = "action")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Action")]
 	action: forms::MicroflowAction,
-	#[serde(rename = "appearance")]
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "button_style")]
+	#[serde(rename = "ButtonStyle")]
 	button_style: String,
-	#[serde(rename = "caption_template")]
+	#[serde(rename = "CaptionTemplate")]
 	caption_template: forms::ClientTemplate,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "icon")]
+	#[serde(rename = "Icon")]
 	icon: Empty,
-	#[serde(rename = "maintain_selection_after_microflow")]
+	#[serde(rename = "MaintainSelectionAfterMicroflow")]
 	maintain_selection_after_microflow: bool,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "tooltip")]
+	#[serde(rename = "Tooltip")]
 	tooltip: texts::Text,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct GridControlBar {
-	#[serde(rename = "default_button_pointer")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DefaultButtonPointer")]
 	default_button_pointer: Binary,
-	#[serde(rename = "new_buttons")]
-	new_buttons: Vec<forms::GridNewButton, forms::GridActionButton, forms::DataGridSelectButton, forms::GridSelectAllButton, forms::GridSearchButton, >,
+	#[serde(rename = "NewButtons")]
+	new_buttons: Vec<forms::GridSelectAllButton, forms::GridActionButton, forms::GridSearchButton, forms::GridNewButton, forms::DataGridSelectButton, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct GridNewButton {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "button_style")]
+	#[serde(rename = "ButtonStyle")]
 	button_style: String,
-	#[serde(rename = "caption_template")]
+	#[serde(rename = "CaptionTemplate")]
 	caption_template: forms::ClientTemplate,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "edit_location")]
+	#[serde(rename = "EditLocation")]
 	edit_location: String,
-	#[serde(rename = "entity")]
+	#[serde(rename = "Entity")]
 	entity: String,
-	#[serde(rename = "form_settings")]
+	#[serde(rename = "FormSettings")]
 	form_settings: forms::FormSettings,
-	#[serde(rename = "icon")]
+	#[serde(rename = "Icon")]
 	icon: Empty,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "tooltip")]
+	#[serde(rename = "Tooltip")]
 	tooltip: texts::Text,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct GridSearchButton {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "button_style")]
+	#[serde(rename = "ButtonStyle")]
 	button_style: String,
-	#[serde(rename = "caption_template")]
+	#[serde(rename = "CaptionTemplate")]
 	caption_template: forms::ClientTemplate,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "icon")]
+	#[serde(rename = "Icon")]
 	icon: Empty,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "tooltip")]
+	#[serde(rename = "Tooltip")]
 	tooltip: texts::Text,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct GridSelectAllButton {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "button_style")]
+	#[serde(rename = "ButtonStyle")]
 	button_style: String,
-	#[serde(rename = "caption_template")]
+	#[serde(rename = "CaptionTemplate")]
 	caption_template: forms::ClientTemplate,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "icon")]
+	#[serde(rename = "Icon")]
 	icon: forms::ImageIcon,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "selection_type")]
+	#[serde(rename = "SelectionType")]
 	selection_type: String,
-	#[serde(rename = "tooltip")]
+	#[serde(rename = "Tooltip")]
 	tooltip: texts::Text,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct GridSortBar {
-	#[serde(rename = "sort_items")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "SortItems")]
 	sort_items: Vec<forms::GridSortItem, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct GridSortItem {
-	#[serde(rename = "attribute_ref")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AttributeRef")]
 	attribute_ref: domain_models::AttributeRef,
-	#[serde(rename = "sort_order")]
+	#[serde(rename = "SortOrder")]
 	sort_order: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct GridXPathSource {
-	#[serde(rename = "entity_ref")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "EntityRef")]
 	entity_ref: domain_models::DirectEntityRef,
-	#[serde(rename = "search_bar")]
+	#[serde(rename = "SearchBar")]
 	search_bar: forms::SearchBar,
-	#[serde(rename = "sort_bar")]
+	#[serde(rename = "SortBar")]
 	sort_bar: forms::GridSortBar,
-	#[serde(rename = "x_path_constraint")]
+	#[serde(rename = "XPathConstraint")]
 	x_path_constraint: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct GroupBox {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "caption_template")]
+	#[serde(rename = "CaptionTemplate")]
 	caption_template: forms::ClientTemplate,
-	#[serde(rename = "collapsible")]
+	#[serde(rename = "Collapsible")]
 	collapsible: String,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "header_mode")]
+	#[serde(rename = "HeaderMode")]
 	header_mode: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "widgets")]
-	widgets: Vec<forms::LayoutGrid, forms::DataGrid, forms::ListView, forms::DataView, forms::TabControl, forms::DivContainer, >,
+	#[serde(rename = "Widgets")]
+	widgets: Vec<forms::ListView, forms::DivContainer, forms::LayoutGrid, forms::TabControl, forms::DataGrid, forms::DataView, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Header {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "left_widgets")]
-	left_widgets: Vec<forms::SidebarToggleButton, forms::Placeholder, >,
-	#[serde(rename = "name")]
+	#[serde(rename = "LeftWidgets")]
+	left_widgets: Vec<forms::Placeholder, forms::SidebarToggleButton, >,
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "right_widgets")]
+	#[serde(rename = "RightWidgets")]
 	right_widgets: Vec<forms::Placeholder, forms::SidebarToggleButton, >,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct IconCollectionIcon {
-	#[serde(rename = "image")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Image")]
 	image: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ImageIcon {
-	#[serde(rename = "image")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Image")]
 	image: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ImageViewer {
-	#[serde(rename = "alternative_text")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AlternativeText")]
 	alternative_text: forms::ClientTemplate,
-	#[serde(rename = "appearance")]
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "click_action")]
+	#[serde(rename = "ClickAction")]
 	click_action: forms::CallNanoflowClientAction,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "data_source")]
+	#[serde(rename = "DataSource")]
 	data_source: forms::ImageViewerSource,
-	#[serde(rename = "default_image")]
+	#[serde(rename = "DefaultImage")]
 	default_image: String,
-	#[serde(rename = "height")]
+	#[serde(rename = "Height")]
 	height: i64,
-	#[serde(rename = "height_unit")]
+	#[serde(rename = "HeightUnit")]
 	height_unit: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "native_accessibility_settings")]
+	#[serde(rename = "NativeAccessibilitySettings")]
 	native_accessibility_settings: Empty,
-	#[serde(rename = "on_click_enlarge")]
+	#[serde(rename = "OnClickEnlarge")]
 	on_click_enlarge: bool,
-	#[serde(rename = "responsive")]
+	#[serde(rename = "Responsive")]
 	responsive: bool,
-	#[serde(rename = "show_as_thumbnail")]
+	#[serde(rename = "ShowAsThumbnail")]
 	show_as_thumbnail: bool,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "width")]
+	#[serde(rename = "Width")]
 	width: i64,
-	#[serde(rename = "width_unit")]
+	#[serde(rename = "WidthUnit")]
 	width_unit: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ImageViewerSource {
-	#[serde(rename = "entity_ref")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "EntityRef")]
 	entity_ref: domain_models::DirectEntityRef,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct InputReferenceSetSelector {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "attribute_ref")]
+	#[serde(rename = "AttributeRef")]
 	attribute_ref: domain_models::AttributeRef,
-	#[serde(rename = "conditional_editability_settings")]
+	#[serde(rename = "ConditionalEditabilitySettings")]
 	conditional_editability_settings: Empty,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "editable")]
+	#[serde(rename = "Editable")]
 	editable: String,
-	#[serde(rename = "label_template")]
+	#[serde(rename = "LabelTemplate")]
 	label_template: forms::ClientTemplate,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "on_change_action")]
+	#[serde(rename = "OnChangeAction")]
 	on_change_action: forms::NoAction,
-	#[serde(rename = "popup_form_settings")]
+	#[serde(rename = "PopupFormSettings")]
 	popup_form_settings: forms::FormSettings,
-	#[serde(rename = "read_only_style")]
+	#[serde(rename = "ReadOnlyStyle")]
 	read_only_style: String,
-	#[serde(rename = "screen_reader_label")]
+	#[serde(rename = "ScreenReaderLabel")]
 	screen_reader_label: Empty,
-	#[serde(rename = "selector_source")]
+	#[serde(rename = "SelectorSource")]
 	selector_source: forms::SelectorXPathSource,
-	#[serde(rename = "source_variable")]
+	#[serde(rename = "SourceVariable")]
 	source_variable: Empty,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Label {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "caption")]
+	#[serde(rename = "Caption")]
 	caption: texts::Text,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Layout {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "canvas_height")]
+	#[serde(rename = "CanvasHeight")]
 	canvas_height: i64,
-	#[serde(rename = "canvas_width")]
+	#[serde(rename = "CanvasWidth")]
 	canvas_width: i64,
-	#[serde(rename = "content")]
+	#[serde(rename = "Content")]
 	content: forms::WebLayoutContent,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "excluded")]
+	#[serde(rename = "Excluded")]
 	excluded: bool,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct LayoutCall {
-	#[serde(rename = "arguments")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Arguments")]
 	arguments: Vec<forms::FormCallArgument, >,
-	#[serde(rename = "form")]
+	#[serde(rename = "Form")]
 	form: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct LayoutGrid {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "rows")]
+	#[serde(rename = "Rows")]
 	rows: Vec<forms::LayoutGridRow, >,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "width")]
+	#[serde(rename = "Width")]
 	width: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct LayoutGridColumn {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "phone_weight")]
+	#[serde(rename = "PhoneWeight")]
 	phone_weight: i64,
-	#[serde(rename = "preview_width")]
+	#[serde(rename = "PreviewWidth")]
 	preview_width: i64,
-	#[serde(rename = "tablet_weight")]
+	#[serde(rename = "TabletWeight")]
 	tablet_weight: i64,
-	#[serde(rename = "vertical_alignment")]
+	#[serde(rename = "VerticalAlignment")]
 	vertical_alignment: String,
-	#[serde(rename = "weight")]
+	#[serde(rename = "Weight")]
 	weight: i64,
-	#[serde(rename = "widgets")]
-	widgets: Vec<forms::LayoutGrid, forms::DataView, forms::SnippetCallWidget, forms::DivContainer, forms::TextBox, forms::DataGrid, custom_widgets::CustomWidget, forms::ListView, forms::PasswordTextBox, forms::StaticImageViewer, forms::LoginIdTextBox, forms::MenuBar, forms::RadioButtonGroup, forms::InputReferenceSetSelector, forms::DatePicker, forms::Label, forms::FileManager, forms::NavigationTree, forms::ActionButton, forms::TemplateGrid, forms::TextArea, forms::CheckBox, forms::Placeholder, forms::DropDown, forms::LoginButton, forms::Title, forms::GroupBox, forms::ReferenceSelector, forms::TabControl, forms::DynamicText, >,
+	#[serde(rename = "Widgets")]
+	widgets: Vec<forms::ListView, forms::Title, forms::MenuBar, forms::TemplateGrid, forms::DynamicText, forms::GroupBox, forms::TextArea, forms::LoginButton, forms::CheckBox, forms::DataGrid, forms::TabControl, forms::FileManager, forms::Label, forms::DivContainer, forms::NavigationTree, forms::Placeholder, forms::LoginIdTextBox, forms::DropDown, forms::ActionButton, forms::SnippetCallWidget, forms::DataView, forms::TextBox, custom_widgets::CustomWidget, forms::RadioButtonGroup, forms::InputReferenceSetSelector, forms::LayoutGrid, forms::StaticImageViewer, forms::PasswordTextBox, forms::ReferenceSelector, forms::DatePicker, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct LayoutGridRow {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "columns")]
+	#[serde(rename = "Columns")]
 	columns: Vec<forms::LayoutGridColumn, >,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "horizontal_alignment")]
+	#[serde(rename = "HorizontalAlignment")]
 	horizontal_alignment: String,
-	#[serde(rename = "spacing_between_columns")]
+	#[serde(rename = "SpacingBetweenColumns")]
 	spacing_between_columns: bool,
-	#[serde(rename = "vertical_alignment")]
+	#[serde(rename = "VerticalAlignment")]
 	vertical_alignment: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ListView {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "click_action")]
+	#[serde(rename = "ClickAction")]
 	click_action: forms::NoAction,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "data_source")]
+	#[serde(rename = "DataSource")]
 	data_source: forms::MicroflowSource,
-	#[serde(rename = "editable")]
+	#[serde(rename = "Editable")]
 	editable: bool,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "number_of_columns")]
+	#[serde(rename = "NumberOfColumns")]
 	number_of_columns: i64,
-	#[serde(rename = "page_size")]
+	#[serde(rename = "PageSize")]
 	page_size: i64,
-	#[serde(rename = "pull_down_action")]
+	#[serde(rename = "PullDownAction")]
 	pull_down_action: forms::NoAction,
-	#[serde(rename = "scroll_direction")]
+	#[serde(rename = "ScrollDirection")]
 	scroll_direction: String,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "templates")]
+	#[serde(rename = "Templates")]
 	templates: Vec<UnknownType>,
-	#[serde(rename = "widgets")]
-	widgets: Vec<forms::FileManager, forms::SnippetCallWidget, forms::DynamicText, forms::CheckBox, forms::GroupBox, forms::ListView, forms::ActionButton, forms::DatePicker, forms::TextArea, forms::DivContainer, forms::RadioButtonGroup, forms::DataView, forms::LayoutGrid, forms::TextBox, >,
+	#[serde(rename = "Widgets")]
+	widgets: Vec<forms::ActionButton, forms::GroupBox, forms::DivContainer, forms::DataView, forms::FileManager, forms::SnippetCallWidget, forms::CheckBox, forms::RadioButtonGroup, forms::DatePicker, forms::ListView, forms::DynamicText, forms::LayoutGrid, forms::TextArea, forms::TextBox, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ListViewSearch {
-	#[serde(rename = "search_refs")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "SearchRefs")]
 	search_refs: Vec<domain_models::AttributeRef, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ListViewXPathSource {
-	#[serde(rename = "entity_ref")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "EntityRef")]
 	entity_ref: domain_models::DirectEntityRef,
-	#[serde(rename = "search")]
+	#[serde(rename = "Search")]
 	search: forms::ListViewSearch,
-	#[serde(rename = "sort_bar")]
+	#[serde(rename = "SortBar")]
 	sort_bar: forms::GridSortBar,
-	#[serde(rename = "x_path_constraint")]
+	#[serde(rename = "XPathConstraint")]
 	x_path_constraint: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ListenTargetSource {
-	#[serde(rename = "listen_target")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ListenTarget")]
 	listen_target: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct LoginButton {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "button_style")]
+	#[serde(rename = "ButtonStyle")]
 	button_style: String,
-	#[serde(rename = "caption_template")]
+	#[serde(rename = "CaptionTemplate")]
 	caption_template: forms::ClientTemplate,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "icon")]
+	#[serde(rename = "Icon")]
 	icon: Empty,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "render_type")]
+	#[serde(rename = "RenderType")]
 	render_type: String,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "tooltip")]
+	#[serde(rename = "Tooltip")]
 	tooltip: texts::Text,
-	#[serde(rename = "validation_message_widget")]
+	#[serde(rename = "ValidationMessageWidget")]
 	validation_message_widget: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct LoginIdTextBox {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "label")]
+	#[serde(rename = "Label")]
 	label: texts::Text,
-	#[serde(rename = "label_width")]
+	#[serde(rename = "LabelWidth")]
 	label_width: i64,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "placeholder")]
+	#[serde(rename = "Placeholder")]
 	placeholder: texts::Text,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct MenuBar {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "menu_source")]
+	#[serde(rename = "MenuSource")]
 	menu_source: forms::NavigationSource,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct MenuDocumentSource {
-	#[serde(rename = "menu")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Menu")]
 	menu: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct MicroflowAction {
-	#[serde(rename = "disabled_during_execution")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DisabledDuringExecution")]
 	disabled_during_execution: bool,
-	#[serde(rename = "microflow_settings")]
+	#[serde(rename = "MicroflowSettings")]
 	microflow_settings: forms::MicroflowSettings,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct MicroflowParameterMapping {
-	#[serde(rename = "parameter")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Parameter")]
 	parameter: String,
-	#[serde(rename = "variable")]
+	#[serde(rename = "Variable")]
 	variable: forms::PageVariable,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct MicroflowSettings {
-	#[serde(rename = "asynchronous")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Asynchronous")]
 	asynchronous: bool,
-	#[serde(rename = "confirmation_info")]
+	#[serde(rename = "ConfirmationInfo")]
 	confirmation_info: Empty,
-	#[serde(rename = "form_validations")]
+	#[serde(rename = "FormValidations")]
 	form_validations: String,
-	#[serde(rename = "microflow")]
+	#[serde(rename = "Microflow")]
 	microflow: String,
-	#[serde(rename = "parameter_mappings")]
+	#[serde(rename = "ParameterMappings")]
 	parameter_mappings: Vec<forms::MicroflowParameterMapping, >,
-	#[serde(rename = "progress_bar")]
+	#[serde(rename = "ProgressBar")]
 	progress_bar: String,
-	#[serde(rename = "progress_message")]
+	#[serde(rename = "ProgressMessage")]
 	progress_message: Empty,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct MicroflowSource {
-	#[serde(rename = "microflow_settings")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "MicroflowSettings")]
 	microflow_settings: forms::MicroflowSettings,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct NanoflowParameterMapping {
-	#[serde(rename = "parameter")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Parameter")]
 	parameter: String,
-	#[serde(rename = "variable")]
+	#[serde(rename = "Variable")]
 	variable: forms::PageVariable,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct NanoflowSource {
-	#[serde(rename = "nanoflow")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Nanoflow")]
 	nanoflow: String,
-	#[serde(rename = "parameter_mappings")]
+	#[serde(rename = "ParameterMappings")]
 	parameter_mappings: Vec<forms::NanoflowParameterMapping, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct NativeLayoutContent {
-	#[serde(rename = "layout_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "LayoutType")]
 	layout_type: String,
-	#[serde(rename = "right_header_placeholder")]
+	#[serde(rename = "RightHeaderPlaceholder")]
 	right_header_placeholder: Empty,
-	#[serde(rename = "show_bottom_bar")]
+	#[serde(rename = "ShowBottomBar")]
 	show_bottom_bar: bool,
-	#[serde(rename = "sidebar")]
+	#[serde(rename = "Sidebar")]
 	sidebar: bool,
-	#[serde(rename = "sidebar_widgets")]
+	#[serde(rename = "SidebarWidgets")]
 	sidebar_widgets: Vec<forms::Placeholder, >,
-	#[serde(rename = "widgets")]
+	#[serde(rename = "Widgets")]
 	widgets: Vec<forms::Placeholder, custom_widgets::CustomWidget, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct NavigationSource {
-	#[serde(rename = "navigation_profile")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "NavigationProfile")]
 	navigation_profile: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct NavigationTree {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "menu_source")]
+	#[serde(rename = "MenuSource")]
 	menu_source: forms::NavigationSource,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct NewGridDatabaseSource {
-	#[serde(rename = "database_constraints")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DatabaseConstraints")]
 	database_constraints: Vec<UnknownType>,
-	#[serde(rename = "entity_ref")]
+	#[serde(rename = "EntityRef")]
 	entity_ref: domain_models::DirectEntityRef,
-	#[serde(rename = "search_bar")]
+	#[serde(rename = "SearchBar")]
 	search_bar: forms::SearchBar,
-	#[serde(rename = "sort_bar")]
+	#[serde(rename = "SortBar")]
 	sort_bar: forms::GridSortBar,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct NewListViewDatabaseSource {
-	#[serde(rename = "database_constraints")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DatabaseConstraints")]
 	database_constraints: Vec<UnknownType>,
-	#[serde(rename = "entity_ref")]
+	#[serde(rename = "EntityRef")]
 	entity_ref: domain_models::IndirectEntityRef,
-	#[serde(rename = "search")]
+	#[serde(rename = "Search")]
 	search: forms::ListViewSearch,
-	#[serde(rename = "sort_bar")]
+	#[serde(rename = "SortBar")]
 	sort_bar: forms::GridSortBar,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct NewSelectorDatabaseSource {
-	#[serde(rename = "database_constraints")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DatabaseConstraints")]
 	database_constraints: Vec<UnknownType>,
-	#[serde(rename = "sort_bar")]
+	#[serde(rename = "SortBar")]
 	sort_bar: forms::GridSortBar,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct NoAction {
-	#[serde(rename = "disabled_during_execution")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DisabledDuringExecution")]
 	disabled_during_execution: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct OpenLinkClientAction {
-	#[serde(rename = "address")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Address")]
 	address: forms::StaticOrDynamicString,
-	#[serde(rename = "disabled_during_execution")]
+	#[serde(rename = "DisabledDuringExecution")]
 	disabled_during_execution: bool,
-	#[serde(rename = "link_type")]
+	#[serde(rename = "LinkType")]
 	link_type: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Page {
-	#[serde(rename = "allowed_module_roles")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AllowedModuleRoles")]
 	allowed_module_roles: Vec<String>,
-	#[serde(rename = "appearance")]
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "canvas_height")]
+	#[serde(rename = "CanvasHeight")]
 	canvas_height: i64,
-	#[serde(rename = "canvas_width")]
+	#[serde(rename = "CanvasWidth")]
 	canvas_width: i64,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "excluded")]
+	#[serde(rename = "Excluded")]
 	excluded: bool,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "form_call")]
+	#[serde(rename = "FormCall")]
 	form_call: forms::LayoutCall,
-	#[serde(rename = "mark_as_used")]
+	#[serde(rename = "MarkAsUsed")]
 	mark_as_used: bool,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "parameters")]
+	#[serde(rename = "Parameters")]
 	parameters: Vec<forms::PageParameter, >,
-	#[serde(rename = "popup_close_action")]
+	#[serde(rename = "PopupCloseAction")]
 	popup_close_action: String,
-	#[serde(rename = "popup_height")]
+	#[serde(rename = "PopupHeight")]
 	popup_height: i64,
-	#[serde(rename = "popup_resizable")]
+	#[serde(rename = "PopupResizable")]
 	popup_resizable: bool,
-	#[serde(rename = "popup_width")]
+	#[serde(rename = "PopupWidth")]
 	popup_width: i64,
-	#[serde(rename = "title")]
+	#[serde(rename = "Title")]
 	title: texts::Text,
-	#[serde(rename = "url")]
+	#[serde(rename = "Url")]
 	url: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct PageParameter {
-	#[serde(rename = "name")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "parameter_type")]
+	#[serde(rename = "ParameterType")]
 	parameter_type: data_types::ObjectType,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct PageParameterMapping {
-	#[serde(rename = "argument")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Argument")]
 	argument: String,
-	#[serde(rename = "parameter")]
+	#[serde(rename = "Parameter")]
 	parameter: String,
-	#[serde(rename = "variable")]
+	#[serde(rename = "Variable")]
 	variable: forms::PageVariable,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct PageVariable {
-	#[serde(rename = "page_parameter")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "PageParameter")]
 	page_parameter: String,
-	#[serde(rename = "snippet_parameter")]
+	#[serde(rename = "SnippetParameter")]
 	snippet_parameter: String,
-	#[serde(rename = "use_all_pages")]
+	#[serde(rename = "UseAllPages")]
 	use_all_pages: bool,
-	#[serde(rename = "widget")]
+	#[serde(rename = "Widget")]
 	widget: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct PasswordTextBox {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "label")]
+	#[serde(rename = "Label")]
 	label: texts::Text,
-	#[serde(rename = "label_width")]
+	#[serde(rename = "LabelWidth")]
 	label_width: i64,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "placeholder")]
+	#[serde(rename = "Placeholder")]
 	placeholder: texts::Text,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Placeholder {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct RadioButtonGroup {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "aria_required")]
+	#[serde(rename = "AriaRequired")]
 	aria_required: bool,
-	#[serde(rename = "attribute_ref")]
+	#[serde(rename = "AttributeRef")]
 	attribute_ref: domain_models::AttributeRef,
-	#[serde(rename = "conditional_editability_settings")]
+	#[serde(rename = "ConditionalEditabilitySettings")]
 	conditional_editability_settings: Empty,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "editable")]
+	#[serde(rename = "Editable")]
 	editable: String,
-	#[serde(rename = "label_template")]
+	#[serde(rename = "LabelTemplate")]
 	label_template: forms::ClientTemplate,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "on_change_action")]
+	#[serde(rename = "OnChangeAction")]
 	on_change_action: forms::NoAction,
-	#[serde(rename = "on_enter_action")]
+	#[serde(rename = "OnEnterAction")]
 	on_enter_action: forms::NoAction,
-	#[serde(rename = "on_leave_action")]
+	#[serde(rename = "OnLeaveAction")]
 	on_leave_action: forms::NoAction,
-	#[serde(rename = "read_only_style")]
+	#[serde(rename = "ReadOnlyStyle")]
 	read_only_style: String,
-	#[serde(rename = "render_horizontal")]
+	#[serde(rename = "RenderHorizontal")]
 	render_horizontal: bool,
-	#[serde(rename = "screen_reader_label")]
+	#[serde(rename = "ScreenReaderLabel")]
 	screen_reader_label: Empty,
-	#[serde(rename = "source_variable")]
+	#[serde(rename = "SourceVariable")]
 	source_variable: forms::PageVariable,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "validation")]
+	#[serde(rename = "Validation")]
 	validation: forms::WidgetValidation,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct RangeSearchField {
-	#[serde(rename = "caption")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Caption")]
 	caption: texts::Text,
-	#[serde(rename = "custom_date_format")]
+	#[serde(rename = "CustomDateFormat")]
 	custom_date_format: String,
-	#[serde(rename = "default_value")]
+	#[serde(rename = "DefaultValue")]
 	default_value: String,
-	#[serde(rename = "include_lower")]
+	#[serde(rename = "IncludeLower")]
 	include_lower: bool,
-	#[serde(rename = "include_upper")]
+	#[serde(rename = "IncludeUpper")]
 	include_upper: bool,
-	#[serde(rename = "lower_bound_ref")]
+	#[serde(rename = "LowerBoundRef")]
 	lower_bound_ref: domain_models::AttributeRef,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "placeholder")]
+	#[serde(rename = "Placeholder")]
 	placeholder: texts::Text,
-	#[serde(rename = "_type")]
-	_type: String,
-	#[serde(rename = "upper_bound_ref")]
+	#[serde(rename = "Type")]
+	var_type: String,
+	#[serde(rename = "UpperBoundRef")]
 	upper_bound_ref: domain_models::AttributeRef,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ReferenceSelector {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "attribute_ref")]
+	#[serde(rename = "AttributeRef")]
 	attribute_ref: domain_models::AttributeRef,
-	#[serde(rename = "conditional_editability_settings")]
+	#[serde(rename = "ConditionalEditabilitySettings")]
 	conditional_editability_settings: Empty,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "editable")]
+	#[serde(rename = "Editable")]
 	editable: String,
-	#[serde(rename = "empty_option_caption")]
+	#[serde(rename = "EmptyOptionCaption")]
 	empty_option_caption: texts::Text,
-	#[serde(rename = "formatting_info")]
+	#[serde(rename = "FormattingInfo")]
 	formatting_info: forms::FormattingInfo,
-	#[serde(rename = "goto_form_settings")]
+	#[serde(rename = "GotoFormSettings")]
 	goto_form_settings: forms::FormSettings,
-	#[serde(rename = "label_template")]
+	#[serde(rename = "LabelTemplate")]
 	label_template: forms::ClientTemplate,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "native_accessibility_settings")]
+	#[serde(rename = "NativeAccessibilitySettings")]
 	native_accessibility_settings: Empty,
-	#[serde(rename = "on_change_action")]
+	#[serde(rename = "OnChangeAction")]
 	on_change_action: forms::NoAction,
-	#[serde(rename = "popup_form_settings")]
+	#[serde(rename = "PopupFormSettings")]
 	popup_form_settings: forms::FormSettings,
-	#[serde(rename = "read_only_style")]
+	#[serde(rename = "ReadOnlyStyle")]
 	read_only_style: String,
-	#[serde(rename = "render_mode")]
+	#[serde(rename = "RenderMode")]
 	render_mode: String,
-	#[serde(rename = "screen_reader_label")]
+	#[serde(rename = "ScreenReaderLabel")]
 	screen_reader_label: Empty,
-	#[serde(rename = "selector_source")]
+	#[serde(rename = "SelectorSource")]
 	selector_source: forms::NewSelectorDatabaseSource,
-	#[serde(rename = "source_variable")]
+	#[serde(rename = "SourceVariable")]
 	source_variable: Empty,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "validation")]
+	#[serde(rename = "Validation")]
 	validation: forms::WidgetValidation,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ReferenceSetSelector {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "columns")]
+	#[serde(rename = "Columns")]
 	columns: Vec<forms::DataGridColumn, >,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "constrained_by_refs")]
+	#[serde(rename = "ConstrainedByRefs")]
 	constrained_by_refs: Vec<UnknownType>,
-	#[serde(rename = "control_bar")]
+	#[serde(rename = "ControlBar")]
 	control_bar: forms::GridControlBar,
-	#[serde(rename = "data_source")]
+	#[serde(rename = "DataSource")]
 	data_source: forms::ReferenceSetSource,
-	#[serde(rename = "default_button_trigger")]
+	#[serde(rename = "DefaultButtonTrigger")]
 	default_button_trigger: String,
-	#[serde(rename = "is_control_bar_visible")]
+	#[serde(rename = "IsControlBarVisible")]
 	is_control_bar_visible: bool,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "number_of_rows")]
+	#[serde(rename = "NumberOfRows")]
 	number_of_rows: i64,
-	#[serde(rename = "on_change_action")]
+	#[serde(rename = "OnChangeAction")]
 	on_change_action: forms::NoAction,
-	#[serde(rename = "refresh_time")]
+	#[serde(rename = "RefreshTime")]
 	refresh_time: i64,
-	#[serde(rename = "selectable_x_path_constraint")]
+	#[serde(rename = "SelectableXPathConstraint")]
 	selectable_x_path_constraint: String,
-	#[serde(rename = "select_first")]
+	#[serde(rename = "SelectFirst")]
 	select_first: bool,
-	#[serde(rename = "selection_mode")]
+	#[serde(rename = "SelectionMode")]
 	selection_mode: String,
-	#[serde(rename = "show_empty_rows")]
+	#[serde(rename = "ShowEmptyRows")]
 	show_empty_rows: bool,
-	#[serde(rename = "show_paging_bar")]
+	#[serde(rename = "ShowPagingBar")]
 	show_paging_bar: String,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "tooltip_form")]
+	#[serde(rename = "TooltipForm")]
 	tooltip_form: String,
-	#[serde(rename = "width_unit")]
+	#[serde(rename = "WidthUnit")]
 	width_unit: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ReferenceSetSource {
-	#[serde(rename = "entity_ref")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "EntityRef")]
 	entity_ref: domain_models::IndirectEntityRef,
-	#[serde(rename = "search_bar")]
+	#[serde(rename = "SearchBar")]
 	search_bar: forms::SearchBar,
-	#[serde(rename = "sort_bar")]
+	#[serde(rename = "SortBar")]
 	sort_bar: forms::GridSortBar,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct SaveChangesClientAction {
-	#[serde(rename = "close_page")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ClosePage")]
 	close_page: bool,
-	#[serde(rename = "disabled_during_execution")]
+	#[serde(rename = "DisabledDuringExecution")]
 	disabled_during_execution: bool,
-	#[serde(rename = "sync_automatically")]
+	#[serde(rename = "SyncAutomatically")]
 	sync_automatically: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ScrollContainer {
-	#[serde(rename = "alignment")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Alignment")]
 	alignment: String,
-	#[serde(rename = "appearance")]
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "bottom")]
+	#[serde(rename = "Bottom")]
 	bottom: forms::ScrollContainerRegion,
-	#[serde(rename = "center_region")]
+	#[serde(rename = "CenterRegion")]
 	center_region: forms::ScrollContainerRegion,
-	#[serde(rename = "layout_mode")]
+	#[serde(rename = "LayoutMode")]
 	layout_mode: String,
-	#[serde(rename = "left")]
+	#[serde(rename = "Left")]
 	left: Empty,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "native_hide_scrollbars")]
+	#[serde(rename = "NativeHideScrollbars")]
 	native_hide_scrollbars: bool,
-	#[serde(rename = "right")]
+	#[serde(rename = "Right")]
 	right: Empty,
-	#[serde(rename = "scroll_behavior")]
+	#[serde(rename = "ScrollBehavior")]
 	scroll_behavior: String,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "top")]
+	#[serde(rename = "Top")]
 	top: forms::ScrollContainerRegion,
-	#[serde(rename = "width")]
+	#[serde(rename = "Width")]
 	width: i64,
-	#[serde(rename = "width_mode")]
+	#[serde(rename = "WidthMode")]
 	width_mode: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ScrollContainerRegion {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "size")]
+	#[serde(rename = "Size")]
 	size: i64,
-	#[serde(rename = "size_mode")]
+	#[serde(rename = "SizeMode")]
 	size_mode: String,
-	#[serde(rename = "toggle_mode")]
+	#[serde(rename = "ToggleMode")]
 	toggle_mode: String,
-	#[serde(rename = "widgets")]
-	widgets: Vec<forms::StaticImageViewer, forms::ListView, forms::NavigationTree, forms::LayoutGrid, forms::SimpleMenuBar, forms::DivContainer, forms::Label, forms::SnippetCallWidget, forms::ScrollContainer, forms::DataView, forms::Header, forms::SidebarToggleButton, forms::Placeholder, forms::ActionButton, custom_widgets::CustomWidget, forms::TabControl, forms::MenuBar, >,
+	#[serde(rename = "Widgets")]
+	widgets: Vec<forms::SnippetCallWidget, forms::Placeholder, forms::Label, forms::Header, forms::DataView, forms::StaticImageViewer, forms::TabControl, custom_widgets::CustomWidget, forms::LayoutGrid, forms::ListView, forms::ScrollContainer, forms::DivContainer, forms::SimpleMenuBar, forms::MenuBar, forms::ActionButton, forms::SidebarToggleButton, forms::NavigationTree, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct SearchBar {
-	#[serde(rename = "new_buttons")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "NewButtons")]
 	new_buttons: Vec<forms::ComparisonSearchField, forms::DropDownSearchField, forms::RangeSearchField, >,
-	#[serde(rename = "_type")]
-	_type: String,
-	#[serde(rename = "wait_for_search")]
+	#[serde(rename = "Type")]
+	var_type: String,
+	#[serde(rename = "WaitForSearch")]
 	wait_for_search: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct SelectorMicroflowSource {
-	#[serde(rename = "data_source_microflow_settings")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DataSourceMicroflowSettings")]
 	data_source_microflow_settings: forms::MicroflowSettings,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct SelectorXPathSource {
-	#[serde(rename = "constrained_by_refs")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ConstrainedByRefs")]
 	constrained_by_refs: Vec<domain_models::IndirectEntityRef, >,
-	#[serde(rename = "sort_bar")]
+	#[serde(rename = "SortBar")]
 	sort_bar: forms::GridSortBar,
-	#[serde(rename = "x_path_constraint")]
+	#[serde(rename = "XPathConstraint")]
 	x_path_constraint: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct SidebarToggleButton {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "button_style")]
+	#[serde(rename = "ButtonStyle")]
 	button_style: String,
-	#[serde(rename = "caption_template")]
+	#[serde(rename = "CaptionTemplate")]
 	caption_template: forms::ClientTemplate,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "icon")]
+	#[serde(rename = "Icon")]
 	icon: forms::GlyphIcon,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "render_type")]
+	#[serde(rename = "RenderType")]
 	render_type: String,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "tooltip")]
+	#[serde(rename = "Tooltip")]
 	tooltip: texts::Text,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct SignOutClientAction {
-	#[serde(rename = "disabled_during_execution")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DisabledDuringExecution")]
 	disabled_during_execution: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct SimpleMenuBar {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "menu_source")]
+	#[serde(rename = "MenuSource")]
 	menu_source: forms::NavigationSource,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "orientation")]
+	#[serde(rename = "Orientation")]
 	orientation: String,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Snippet {
-	#[serde(rename = "canvas_height")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "CanvasHeight")]
 	canvas_height: i64,
-	#[serde(rename = "canvas_width")]
+	#[serde(rename = "CanvasWidth")]
 	canvas_width: i64,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "excluded")]
+	#[serde(rename = "Excluded")]
 	excluded: bool,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "parameters")]
+	#[serde(rename = "Parameters")]
 	parameters: Vec<forms::SnippetParameter, >,
-	#[serde(rename = "_type")]
-	_type: String,
-	#[serde(rename = "widgets")]
-	widgets: Vec<forms::FileManager, forms::TextArea, forms::Label, forms::RadioButtonGroup, forms::DropDown, forms::DataGrid, forms::ListView, forms::DivContainer, custom_widgets::CustomWidget, forms::Table, forms::ReferenceSelector, forms::DynamicText, forms::DatePicker, forms::ActionButton, forms::TabControl, forms::CheckBox, forms::DataView, forms::TemplateGrid, forms::LayoutGrid, forms::GroupBox, forms::TextBox, forms::SnippetCallWidget, forms::StaticImageViewer, >,
+	#[serde(rename = "Type")]
+	var_type: String,
+	#[serde(rename = "Widgets")]
+	widgets: Vec<forms::ReferenceSelector, custom_widgets::CustomWidget, forms::StaticImageViewer, forms::FileManager, forms::TabControl, forms::ListView, forms::LayoutGrid, forms::ActionButton, forms::DataView, forms::TextBox, forms::TemplateGrid, forms::Label, forms::Table, forms::DatePicker, forms::CheckBox, forms::DynamicText, forms::DivContainer, forms::DropDown, forms::RadioButtonGroup, forms::DataGrid, forms::SnippetCallWidget, forms::GroupBox, forms::TextArea, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct SnippetCall {
-	#[serde(rename = "form")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Form")]
 	form: String,
-	#[serde(rename = "parameter_mappings")]
+	#[serde(rename = "ParameterMappings")]
 	parameter_mappings: Vec<UnknownType>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct SnippetCallWidget {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "form_call")]
+	#[serde(rename = "FormCall")]
 	form_call: forms::SnippetCall,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct SnippetParameter {
-	#[serde(rename = "name")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "parameter_type")]
+	#[serde(rename = "ParameterType")]
 	parameter_type: data_types::ObjectType,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct StaticImageViewer {
-	#[serde(rename = "alternative_text")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AlternativeText")]
 	alternative_text: forms::ClientTemplate,
-	#[serde(rename = "appearance")]
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "click_action")]
+	#[serde(rename = "ClickAction")]
 	click_action: forms::NoAction,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "height")]
+	#[serde(rename = "Height")]
 	height: i64,
-	#[serde(rename = "height_unit")]
+	#[serde(rename = "HeightUnit")]
 	height_unit: String,
-	#[serde(rename = "image")]
+	#[serde(rename = "Image")]
 	image: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "native_accessibility_settings")]
+	#[serde(rename = "NativeAccessibilitySettings")]
 	native_accessibility_settings: Empty,
-	#[serde(rename = "responsive")]
+	#[serde(rename = "Responsive")]
 	responsive: bool,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "width")]
+	#[serde(rename = "Width")]
 	width: i64,
-	#[serde(rename = "width_unit")]
+	#[serde(rename = "WidthUnit")]
 	width_unit: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct StaticOrDynamicString {
-	#[serde(rename = "attribute_ref")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AttributeRef")]
 	attribute_ref: domain_models::AttributeRef,
-	#[serde(rename = "is_dynamic")]
+	#[serde(rename = "IsDynamic")]
 	is_dynamic: bool,
-	#[serde(rename = "value")]
+	#[serde(rename = "Value")]
 	value: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct TabControl {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "default_page_pointer")]
+	#[serde(rename = "DefaultPagePointer")]
 	default_page_pointer: Binary,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "tab_pages")]
+	#[serde(rename = "TabPages")]
 	tab_pages: Vec<forms::TabPage, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct TabPage {
-	#[serde(rename = "badge")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Badge")]
 	badge: Empty,
-	#[serde(rename = "caption")]
+	#[serde(rename = "Caption")]
 	caption: texts::Text,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "refresh_on_show")]
+	#[serde(rename = "RefreshOnShow")]
 	refresh_on_show: bool,
-	#[serde(rename = "widgets")]
-	widgets: Vec<forms::ScrollContainer, forms::DataView, forms::ListView, forms::TabControl, forms::TextBox, forms::TemplateGrid, forms::SnippetCallWidget, forms::DatePicker, forms::DivContainer, forms::RadioButtonGroup, forms::TextArea, forms::Table, forms::DynamicText, forms::DataGrid, forms::LayoutGrid, forms::ActionButton, >,
+	#[serde(rename = "Widgets")]
+	widgets: Vec<forms::DataGrid, forms::DataView, forms::DynamicText, forms::SnippetCallWidget, forms::LayoutGrid, forms::RadioButtonGroup, forms::TemplateGrid, forms::TabControl, forms::DivContainer, forms::ListView, forms::TextBox, forms::ActionButton, forms::DatePicker, forms::ScrollContainer, forms::Table, forms::TextArea, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Table {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "cells")]
+	#[serde(rename = "Cells")]
 	cells: Vec<forms::DbTableCell, >,
-	#[serde(rename = "column_widths")]
+	#[serde(rename = "ColumnWidths")]
 	column_widths: Vec<forms::TableColumn, >,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "rows")]
+	#[serde(rename = "Rows")]
 	rows: Vec<forms::TableRow, >,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "width_unit")]
+	#[serde(rename = "WidthUnit")]
 	width_unit: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct TableColumn {
-	#[serde(rename = "value")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Value")]
 	value: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct TableRow {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct TemplateGrid {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "contents")]
+	#[serde(rename = "Contents")]
 	contents: forms::TemplateGridContents,
-	#[serde(rename = "control_bar")]
+	#[serde(rename = "ControlBar")]
 	control_bar: forms::GridControlBar,
-	#[serde(rename = "data_source")]
+	#[serde(rename = "DataSource")]
 	data_source: forms::MicroflowSource,
-	#[serde(rename = "default_button_trigger")]
+	#[serde(rename = "DefaultButtonTrigger")]
 	default_button_trigger: String,
-	#[serde(rename = "is_control_bar_visible")]
+	#[serde(rename = "IsControlBarVisible")]
 	is_control_bar_visible: bool,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "number_of_columns")]
+	#[serde(rename = "NumberOfColumns")]
 	number_of_columns: i64,
-	#[serde(rename = "number_of_rows")]
+	#[serde(rename = "NumberOfRows")]
 	number_of_rows: i64,
-	#[serde(rename = "refresh_time")]
+	#[serde(rename = "RefreshTime")]
 	refresh_time: i64,
-	#[serde(rename = "select_first")]
+	#[serde(rename = "SelectFirst")]
 	select_first: bool,
-	#[serde(rename = "selection_mode")]
+	#[serde(rename = "SelectionMode")]
 	selection_mode: String,
-	#[serde(rename = "show_paging_bar")]
+	#[serde(rename = "ShowPagingBar")]
 	show_paging_bar: String,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct TemplateGridContents {
-	#[serde(rename = "widgets")]
-	widgets: Vec<forms::StaticImageViewer, forms::DivContainer, forms::LayoutGrid, forms::DataView, forms::SnippetCallWidget, >,
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Widgets")]
+	widgets: Vec<forms::StaticImageViewer, forms::DivContainer, forms::LayoutGrid, forms::SnippetCallWidget, forms::DataView, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct TextArea {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "aria_required")]
+	#[serde(rename = "AriaRequired")]
 	aria_required: bool,
-	#[serde(rename = "attribute_ref")]
+	#[serde(rename = "AttributeRef")]
 	attribute_ref: domain_models::AttributeRef,
-	#[serde(rename = "autocomplete")]
+	#[serde(rename = "Autocomplete")]
 	autocomplete: bool,
-	#[serde(rename = "auto_focus")]
+	#[serde(rename = "AutoFocus")]
 	auto_focus: bool,
-	#[serde(rename = "conditional_editability_settings")]
+	#[serde(rename = "ConditionalEditabilitySettings")]
 	conditional_editability_settings: Empty,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "counter_message")]
+	#[serde(rename = "CounterMessage")]
 	counter_message: texts::Text,
-	#[serde(rename = "editable")]
+	#[serde(rename = "Editable")]
 	editable: String,
-	#[serde(rename = "label_template")]
+	#[serde(rename = "LabelTemplate")]
 	label_template: Empty,
-	#[serde(rename = "max_length_code")]
+	#[serde(rename = "MaxLengthCode")]
 	max_length_code: i64,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "native_accessibility_settings")]
+	#[serde(rename = "NativeAccessibilitySettings")]
 	native_accessibility_settings: Empty,
-	#[serde(rename = "number_of_lines")]
+	#[serde(rename = "NumberOfLines")]
 	number_of_lines: i64,
-	#[serde(rename = "on_change_action")]
+	#[serde(rename = "OnChangeAction")]
 	on_change_action: forms::NoAction,
-	#[serde(rename = "on_enter_action")]
+	#[serde(rename = "OnEnterAction")]
 	on_enter_action: forms::NoAction,
-	#[serde(rename = "on_leave_action")]
+	#[serde(rename = "OnLeaveAction")]
 	on_leave_action: forms::NoAction,
-	#[serde(rename = "placeholder")]
+	#[serde(rename = "Placeholder")]
 	placeholder: texts::Text,
-	#[serde(rename = "read_only_style")]
+	#[serde(rename = "ReadOnlyStyle")]
 	read_only_style: String,
-	#[serde(rename = "screen_reader_label")]
+	#[serde(rename = "ScreenReaderLabel")]
 	screen_reader_label: forms::ClientTemplate,
-	#[serde(rename = "source_variable")]
+	#[serde(rename = "SourceVariable")]
 	source_variable: Empty,
-	#[serde(rename = "submit_behaviour")]
+	#[serde(rename = "SubmitBehaviour")]
 	submit_behaviour: String,
-	#[serde(rename = "submit_on_input_delay")]
+	#[serde(rename = "SubmitOnInputDelay")]
 	submit_on_input_delay: i64,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "text_too_long_message")]
+	#[serde(rename = "TextTooLongMessage")]
 	text_too_long_message: texts::Text,
-	#[serde(rename = "validation")]
+	#[serde(rename = "Validation")]
 	validation: forms::WidgetValidation,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct TextBox {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "aria_required")]
+	#[serde(rename = "AriaRequired")]
 	aria_required: bool,
-	#[serde(rename = "attribute_ref")]
+	#[serde(rename = "AttributeRef")]
 	attribute_ref: domain_models::AttributeRef,
-	#[serde(rename = "autocomplete")]
+	#[serde(rename = "Autocomplete")]
 	autocomplete: bool,
-	#[serde(rename = "autocomplete_purpose")]
+	#[serde(rename = "AutocompletePurpose")]
 	autocomplete_purpose: String,
-	#[serde(rename = "auto_focus")]
+	#[serde(rename = "AutoFocus")]
 	auto_focus: bool,
-	#[serde(rename = "conditional_editability_settings")]
+	#[serde(rename = "ConditionalEditabilitySettings")]
 	conditional_editability_settings: forms::ConditionalEditabilitySettings,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "editable")]
+	#[serde(rename = "Editable")]
 	editable: String,
-	#[serde(rename = "formatting_info")]
+	#[serde(rename = "FormattingInfo")]
 	formatting_info: forms::FormattingInfo,
-	#[serde(rename = "input_mask")]
+	#[serde(rename = "InputMask")]
 	input_mask: String,
-	#[serde(rename = "is_password_box")]
+	#[serde(rename = "IsPasswordBox")]
 	is_password_box: bool,
-	#[serde(rename = "keyboard_type")]
+	#[serde(rename = "KeyboardType")]
 	keyboard_type: String,
-	#[serde(rename = "label_template")]
+	#[serde(rename = "LabelTemplate")]
 	label_template: forms::ClientTemplate,
-	#[serde(rename = "max_length_code")]
+	#[serde(rename = "MaxLengthCode")]
 	max_length_code: i64,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "native_accessibility_settings")]
+	#[serde(rename = "NativeAccessibilitySettings")]
 	native_accessibility_settings: Empty,
-	#[serde(rename = "on_change_action")]
+	#[serde(rename = "OnChangeAction")]
 	on_change_action: forms::MicroflowAction,
-	#[serde(rename = "on_enter_action")]
+	#[serde(rename = "OnEnterAction")]
 	on_enter_action: forms::NoAction,
-	#[serde(rename = "on_enter_key_press_action")]
+	#[serde(rename = "OnEnterKeyPressAction")]
 	on_enter_key_press_action: forms::NoAction,
-	#[serde(rename = "on_leave_action")]
+	#[serde(rename = "OnLeaveAction")]
 	on_leave_action: forms::NoAction,
-	#[serde(rename = "placeholder")]
+	#[serde(rename = "Placeholder")]
 	placeholder: texts::Text,
-	#[serde(rename = "read_only_style")]
+	#[serde(rename = "ReadOnlyStyle")]
 	read_only_style: String,
-	#[serde(rename = "screen_reader_label")]
+	#[serde(rename = "ScreenReaderLabel")]
 	screen_reader_label: Empty,
-	#[serde(rename = "source_variable")]
+	#[serde(rename = "SourceVariable")]
 	source_variable: forms::PageVariable,
-	#[serde(rename = "submit_behaviour")]
+	#[serde(rename = "SubmitBehaviour")]
 	submit_behaviour: String,
-	#[serde(rename = "submit_on_input_delay")]
+	#[serde(rename = "SubmitOnInputDelay")]
 	submit_on_input_delay: i64,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "validation")]
+	#[serde(rename = "Validation")]
 	validation: forms::WidgetValidation,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Title {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "native_accessibility_settings")]
+	#[serde(rename = "NativeAccessibilitySettings")]
 	native_accessibility_settings: Empty,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ValidationMessage {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct WebLayoutContent {
-	#[serde(rename = "layout_call")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "LayoutCall")]
 	layout_call: Empty,
-	#[serde(rename = "layout_type")]
+	#[serde(rename = "LayoutType")]
 	layout_type: String,
-	#[serde(rename = "widgets")]
-	widgets: Vec<forms::Placeholder, forms::ScrollContainer, custom_widgets::CustomWidget, >,
+	#[serde(rename = "Widgets")]
+	widgets: Vec<custom_widgets::CustomWidget, forms::ScrollContainer, forms::Placeholder, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct WebUIProjectSettingsPart {
-	#[serde(rename = "enable_download_resources")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "EnableDownloadResources")]
 	enable_download_resources: bool,
-	#[serde(rename = "enable_microflow_reachability_analysis")]
+	#[serde(rename = "EnableMicroflowReachabilityAnalysis")]
 	enable_microflow_reachability_analysis: bool,
-	#[serde(rename = "enable_widget_bundling")]
+	#[serde(rename = "EnableWidgetBundling")]
 	enable_widget_bundling: bool,
-	#[serde(rename = "theme_module_order")]
+	#[serde(rename = "ThemeModuleOrder")]
 	theme_module_order: Vec<settings::ThemeModuleEntry, >,
-	#[serde(rename = "use_optimized_client")]
+	#[serde(rename = "UseOptimizedClient")]
 	use_optimized_client: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct WidgetValidation {
-	#[serde(rename = "expression")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Expression")]
 	expression: String,
-	#[serde(rename = "message")]
+	#[serde(rename = "Message")]
 	message: texts::Text,
 }
 

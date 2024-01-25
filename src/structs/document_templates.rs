@@ -1,177 +1,205 @@
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct ConditionSettings {
-	#[serde(rename = "attribute")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Attribute")]
 	attribute: String,
-	#[serde(rename = "new_conditions")]
+	#[serde(rename = "NewConditions")]
 	new_conditions: Vec<UnknownType>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DataView {
-	#[serde(rename = "contents")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Contents")]
 	contents: document_templates::DataViewDropZone,
-	#[serde(rename = "entity_ref")]
+	#[serde(rename = "EntityRef")]
 	entity_ref: domain_models::DirectEntityRef,
-	#[serde(rename = "microflow")]
+	#[serde(rename = "Microflow")]
 	microflow: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DataViewDropZone {
-	#[serde(rename = "widget")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Widget")]
 	widget: document_templates::Table,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DocumentTemplate {
-	#[serde(rename = "canvas_width")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "CanvasWidth")]
 	canvas_width: i64,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "excluded")]
+	#[serde(rename = "Excluded")]
 	excluded: bool,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "footer")]
+	#[serde(rename = "Footer")]
 	footer: Empty,
-	#[serde(rename = "header")]
+	#[serde(rename = "Header")]
 	header: Empty,
-	#[serde(rename = "margin_bottom_in_inch")]
+	#[serde(rename = "MarginBottomInInch")]
 	margin_bottom_in_inch: f64,
-	#[serde(rename = "margin_left_in_inch")]
+	#[serde(rename = "MarginLeftInInch")]
 	margin_left_in_inch: f64,
-	#[serde(rename = "margin_right_in_inch")]
+	#[serde(rename = "MarginRightInInch")]
 	margin_right_in_inch: f64,
-	#[serde(rename = "margin_top_in_inch")]
+	#[serde(rename = "MarginTopInInch")]
 	margin_top_in_inch: f64,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "page_height")]
+	#[serde(rename = "PageHeight")]
 	page_height: String,
-	#[serde(rename = "page_width")]
+	#[serde(rename = "PageWidth")]
 	page_width: String,
-	#[serde(rename = "ppi")]
+	#[serde(rename = "PPI")]
 	ppi: i64,
-	#[serde(rename = "show_header_footer_first_page")]
+	#[serde(rename = "ShowHeaderFooterFirstPage")]
 	show_header_footer_first_page: bool,
-	#[serde(rename = "style")]
+	#[serde(rename = "Style")]
 	style: document_templates::Style,
-	#[serde(rename = "toplevels")]
+	#[serde(rename = "Toplevels")]
 	toplevels: Vec<document_templates::DataView, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DynamicImageViewer {
-	#[serde(rename = "default_image_name")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DefaultImageName")]
 	default_image_name: String,
-	#[serde(rename = "entity_ref")]
+	#[serde(rename = "EntityRef")]
 	entity_ref: domain_models::DirectEntityRef,
-	#[serde(rename = "height")]
+	#[serde(rename = "Height")]
 	height: i64,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "use_thumbnail")]
+	#[serde(rename = "UseThumbnail")]
 	use_thumbnail: bool,
-	#[serde(rename = "width")]
+	#[serde(rename = "Width")]
 	width: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Style {
-	#[serde(rename = "background_color")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "BackgroundColor")]
 	background_color: String,
-	#[serde(rename = "bold")]
+	#[serde(rename = "Bold")]
 	bold: bool,
-	#[serde(rename = "border_color_bottom")]
+	#[serde(rename = "BorderColorBottom")]
 	border_color_bottom: String,
-	#[serde(rename = "border_color_left")]
+	#[serde(rename = "BorderColorLeft")]
 	border_color_left: String,
-	#[serde(rename = "border_color_right")]
+	#[serde(rename = "BorderColorRight")]
 	border_color_right: String,
-	#[serde(rename = "border_color_top")]
+	#[serde(rename = "BorderColorTop")]
 	border_color_top: String,
-	#[serde(rename = "border_style_bottom")]
+	#[serde(rename = "BorderStyleBottom")]
 	border_style_bottom: String,
-	#[serde(rename = "border_style_left")]
+	#[serde(rename = "BorderStyleLeft")]
 	border_style_left: String,
-	#[serde(rename = "border_style_right")]
+	#[serde(rename = "BorderStyleRight")]
 	border_style_right: String,
-	#[serde(rename = "border_style_top")]
+	#[serde(rename = "BorderStyleTop")]
 	border_style_top: String,
-	#[serde(rename = "border_width_bottom")]
+	#[serde(rename = "BorderWidthBottom")]
 	border_width_bottom: i64,
-	#[serde(rename = "border_width_left")]
+	#[serde(rename = "BorderWidthLeft")]
 	border_width_left: i64,
-	#[serde(rename = "border_width_right")]
+	#[serde(rename = "BorderWidthRight")]
 	border_width_right: i64,
-	#[serde(rename = "border_width_top")]
+	#[serde(rename = "BorderWidthTop")]
 	border_width_top: i64,
-	#[serde(rename = "custom_css")]
+	#[serde(rename = "CustomCss")]
 	custom_css: String,
-	#[serde(rename = "font_color")]
+	#[serde(rename = "FontColor")]
 	font_color: String,
-	#[serde(rename = "font_family")]
+	#[serde(rename = "FontFamily")]
 	font_family: String,
-	#[serde(rename = "font_size")]
+	#[serde(rename = "FontSize")]
 	font_size: i64,
-	#[serde(rename = "italic")]
+	#[serde(rename = "Italic")]
 	italic: bool,
-	#[serde(rename = "override_background_color")]
+	#[serde(rename = "OverrideBackgroundColor")]
 	override_background_color: bool,
-	#[serde(rename = "override_font_color")]
+	#[serde(rename = "OverrideFontColor")]
 	override_font_color: bool,
-	#[serde(rename = "override_font_family")]
+	#[serde(rename = "OverrideFontFamily")]
 	override_font_family: bool,
-	#[serde(rename = "override_font_size")]
+	#[serde(rename = "OverrideFontSize")]
 	override_font_size: bool,
-	#[serde(rename = "override_font_style")]
+	#[serde(rename = "OverrideFontStyle")]
 	override_font_style: bool,
-	#[serde(rename = "override_font_weight")]
+	#[serde(rename = "OverrideFontWeight")]
 	override_font_weight: bool,
-	#[serde(rename = "text_align")]
+	#[serde(rename = "TextAlign")]
 	text_align: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Table {
-	#[serde(rename = "cell_padding")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "CellPadding")]
 	cell_padding: i64,
-	#[serde(rename = "cell_spacing")]
+	#[serde(rename = "CellSpacing")]
 	cell_spacing: i64,
-	#[serde(rename = "column_weights")]
+	#[serde(rename = "ColumnWeights")]
 	column_weights: Vec<i64>,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "rows")]
+	#[serde(rename = "Rows")]
 	rows: Vec<document_templates::TableRow, >,
-	#[serde(rename = "style")]
+	#[serde(rename = "Style")]
 	style: document_templates::Style,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct TableCell {
-	#[serde(rename = "col_span")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ColSpan")]
 	col_span: i64,
-	#[serde(rename = "is_part_of_span")]
+	#[serde(rename = "IsPartOfSpan")]
 	is_part_of_span: bool,
-	#[serde(rename = "row_span")]
+	#[serde(rename = "RowSpan")]
 	row_span: i64,
-	#[serde(rename = "style")]
+	#[serde(rename = "Style")]
 	style: document_templates::Style,
-	#[serde(rename = "widget")]
+	#[serde(rename = "Widget")]
 	widget: document_templates::DynamicImageViewer,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct TableRow {
-	#[serde(rename = "cells")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Cells")]
 	cells: Vec<document_templates::TableCell, >,
-	#[serde(rename = "condition_settings")]
+	#[serde(rename = "ConditionSettings")]
 	condition_settings: document_templates::ConditionSettings,
 }
 

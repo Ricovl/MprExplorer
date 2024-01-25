@@ -1,41 +1,48 @@
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct JavaScriptAction {
-	#[serde(rename = "action_default_return_name")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ActionDefaultReturnName")]
 	action_default_return_name: String,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "excluded")]
+	#[serde(rename = "Excluded")]
 	excluded: bool,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "java_return_type")]
+	#[serde(rename = "JavaReturnType")]
 	java_return_type: code_actions::VoidType,
-	#[serde(rename = "microflow_action_info")]
+	#[serde(rename = "MicroflowActionInfo")]
 	microflow_action_info: Empty,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "parameters")]
+	#[serde(rename = "Parameters")]
 	parameters: Vec<java_script_actions::JavaScriptActionParameter, >,
-	#[serde(rename = "platform")]
+	#[serde(rename = "Platform")]
 	platform: String,
-	#[serde(rename = "type_parameters")]
+	#[serde(rename = "TypeParameters")]
 	type_parameters: Vec<code_actions::TypeParameter, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct JavaScriptActionParameter {
-	#[serde(rename = "category")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Category")]
 	category: String,
-	#[serde(rename = "description")]
+	#[serde(rename = "Description")]
 	description: String,
-	#[serde(rename = "is_required")]
+	#[serde(rename = "IsRequired")]
 	is_required: bool,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "parameter_type")]
+	#[serde(rename = "ParameterType")]
 	parameter_type: code_actions::BasicParameterType,
 }
 

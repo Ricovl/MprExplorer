@@ -1,51 +1,64 @@
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct HomePage {
-	#[serde(rename = "microflow")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Microflow")]
 	microflow: String,
-	#[serde(rename = "page")]
+	#[serde(rename = "Page")]
 	page: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct NavigationDocument {
-	#[serde(rename = "profiles")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Profiles")]
 	profiles: Vec<navigation::NavigationProfile, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct NavigationProfile {
-	#[serde(rename = "app_icon")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AppIcon")]
 	app_icon: String,
-	#[serde(rename = "app_title")]
+	#[serde(rename = "AppTitle")]
 	app_title: texts::Text,
-	#[serde(rename = "home_items")]
+	#[serde(rename = "HomeItems")]
 	home_items: Vec<navigation::RoleBasedHomePage, >,
-	#[serde(rename = "home_page")]
+	#[serde(rename = "HomePage")]
 	home_page: navigation::HomePage,
-	#[serde(rename = "kind")]
+	#[serde(rename = "Kind")]
 	kind: String,
-	#[serde(rename = "login_page_settings")]
+	#[serde(rename = "LoginPageSettings")]
 	login_page_settings: forms::FormSettings,
-	#[serde(rename = "menu")]
+	#[serde(rename = "Menu")]
 	menu: menus::MenuItemCollection,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "offline_entity_configs")]
+	#[serde(rename = "OfflineEntityConfigs")]
 	offline_entity_configs: Vec<UnknownType>,
-	#[serde(rename = "progressive_web_app_settings")]
+	#[serde(rename = "ProgressiveWebAppSettings")]
 	progressive_web_app_settings: Empty,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct RoleBasedHomePage {
-	#[serde(rename = "microflow")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Microflow")]
 	microflow: String,
-	#[serde(rename = "page")]
+	#[serde(rename = "Page")]
 	page: String,
-	#[serde(rename = "user_role")]
+	#[serde(rename = "UserRole")]
 	user_role: String,
 }
 

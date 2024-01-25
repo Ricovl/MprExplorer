@@ -1,165 +1,211 @@
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct ActionActivityDefaultColor {
-	#[serde(rename = "action_activity_type")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ActionActivityType")]
 	action_activity_type: String,
-	#[serde(rename = "background_color")]
+	#[serde(rename = "BackgroundColor")]
 	background_color: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Certificate {
-	#[serde(rename = "data")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Data")]
 	data: Binary,
-	#[serde(rename = "_type")]
-	_type: String,
+	#[serde(rename = "Type")]
+	var_type: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CertificateSettings {
-	#[serde(rename = "certificates")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Certificates")]
 	certificates: Vec<settings::Certificate, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ConfigurationSettings {
-	#[serde(rename = "configurations")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Configurations")]
 	configurations: Vec<settings::ServerConfiguration, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ConstantValue {
-	#[serde(rename = "constant_id")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ConstantId")]
 	constant_id: String,
-	#[serde(rename = "value")]
+	#[serde(rename = "Value")]
 	value: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ConventionSettings {
-	#[serde(rename = "action_activity_default_colors")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ActionActivityDefaultColors")]
 	action_activity_default_colors: Vec<settings::ActionActivityDefaultColor, >,
-	#[serde(rename = "lower_case_microflow_variables")]
+	#[serde(rename = "LowerCaseMicroflowVariables")]
 	lower_case_microflow_variables: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DistributionSettings {
-	#[serde(rename = "based_on_version")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "BasedOnVersion")]
 	based_on_version: String,
-	#[serde(rename = "is_distributable")]
+	#[serde(rename = "IsDistributable")]
 	is_distributable: bool,
-	#[serde(rename = "version")]
+	#[serde(rename = "Version")]
 	version: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct IntegrationProjectSettingsPart {
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct JarDeploymentSettings {
-	#[serde(rename = "exclusions")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Exclusions")]
 	exclusions: Vec<UnknownType>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct LanguageSettings {
-	#[serde(rename = "default_language_code")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DefaultLanguageCode")]
 	default_language_code: String,
-	#[serde(rename = "languages")]
+	#[serde(rename = "Languages")]
 	languages: Vec<texts::Language, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ModelSettings {
-	#[serde(rename = "after_startup_microflow")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AfterStartupMicroflow")]
 	after_startup_microflow: String,
-	#[serde(rename = "allow_user_multiple_sessions")]
+	#[serde(rename = "AllowUserMultipleSessions")]
 	allow_user_multiple_sessions: bool,
-	#[serde(rename = "bcrypt_cost")]
+	#[serde(rename = "BcryptCost")]
 	bcrypt_cost: i64,
-	#[serde(rename = "before_shutdown_microflow")]
+	#[serde(rename = "BeforeShutdownMicroflow")]
 	before_shutdown_microflow: String,
-	#[serde(rename = "default_time_zone_code")]
+	#[serde(rename = "DefaultTimeZoneCode")]
 	default_time_zone_code: String,
-	#[serde(rename = "enable_data_storage_optimistic_locking")]
+	#[serde(rename = "EnableDataStorageOptimisticLocking")]
 	enable_data_storage_optimistic_locking: bool,
-	#[serde(rename = "first_day_of_week")]
+	#[serde(rename = "FirstDayOfWeek")]
 	first_day_of_week: String,
-	#[serde(rename = "hash_algorithm")]
+	#[serde(rename = "HashAlgorithm")]
 	hash_algorithm: String,
-	#[serde(rename = "health_check_microflow")]
+	#[serde(rename = "HealthCheckMicroflow")]
 	health_check_microflow: String,
-	#[serde(rename = "rounding_mode")]
+	#[serde(rename = "RoundingMode")]
 	rounding_mode: String,
-	#[serde(rename = "scheduled_event_time_zone_code")]
+	#[serde(rename = "ScheduledEventTimeZoneCode")]
 	scheduled_event_time_zone_code: String,
-	#[serde(rename = "use_system_context_for_background_tasks")]
+	#[serde(rename = "UseSystemContextForBackgroundTasks")]
 	use_system_context_for_background_tasks: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ProjectSettings {
-	#[serde(rename = "settings")]
-	settings: Vec<settings::WorkflowsProjectSettingsPart, settings::ConventionSettings, forms::WebUIProjectSettingsPart, settings::IntegrationProjectSettingsPart, settings::CertificateSettings, settings::DistributionSettings, settings::ConfigurationSettings, settings::LanguageSettings, settings::ModelSettings, settings::JarDeploymentSettings, >,
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Settings")]
+	settings: Vec<settings::WorkflowsProjectSettingsPart, settings::DistributionSettings, settings::JarDeploymentSettings, settings::LanguageSettings, settings::ModelSettings, settings::CertificateSettings, forms::WebUIProjectSettingsPart, settings::IntegrationProjectSettingsPart, settings::ConfigurationSettings, settings::ConventionSettings, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ServerConfiguration {
-	#[serde(rename = "application_root_url")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ApplicationRootUrl")]
 	application_root_url: String,
-	#[serde(rename = "constant_values")]
+	#[serde(rename = "ConstantValues")]
 	constant_values: Vec<settings::ConstantValue, >,
-	#[serde(rename = "custom_settings")]
+	#[serde(rename = "CustomSettings")]
 	custom_settings: Vec<UnknownType>,
-	#[serde(rename = "database_name")]
+	#[serde(rename = "DatabaseName")]
 	database_name: String,
-	#[serde(rename = "database_password")]
+	#[serde(rename = "DatabasePassword")]
 	database_password: String,
-	#[serde(rename = "database_type")]
+	#[serde(rename = "DatabaseType")]
 	database_type: String,
-	#[serde(rename = "database_url")]
+	#[serde(rename = "DatabaseUrl")]
 	database_url: String,
-	#[serde(rename = "database_use_integrated_security")]
+	#[serde(rename = "DatabaseUseIntegratedSecurity")]
 	database_use_integrated_security: bool,
-	#[serde(rename = "database_user_name")]
+	#[serde(rename = "DatabaseUserName")]
 	database_user_name: String,
-	#[serde(rename = "extra_jvm_parameters")]
+	#[serde(rename = "ExtraJvmParameters")]
 	extra_jvm_parameters: String,
-	#[serde(rename = "http_port_number")]
+	#[serde(rename = "HttpPortNumber")]
 	http_port_number: i64,
-	#[serde(rename = "max_java_heap_size")]
+	#[serde(rename = "MaxJavaHeapSize")]
 	max_java_heap_size: i64,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "open_admin_port")]
+	#[serde(rename = "OpenAdminPort")]
 	open_admin_port: bool,
-	#[serde(rename = "open_http_port")]
+	#[serde(rename = "OpenHttpPort")]
 	open_http_port: bool,
-	#[serde(rename = "server_port_number")]
+	#[serde(rename = "ServerPortNumber")]
 	server_port_number: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ThemeModuleEntry {
-	#[serde(rename = "module_name")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ModuleName")]
 	module_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct WorkflowsProjectSettingsPart {
-	#[serde(rename = "default_task_parallelism")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DefaultTaskParallelism")]
 	default_task_parallelism: i64,
-	#[serde(rename = "user_entity")]
+	#[serde(rename = "UserEntity")]
 	user_entity: String,
-	#[serde(rename = "usertask_on_state_change_event")]
+	#[serde(rename = "UsertaskOnStateChangeEvent")]
 	usertask_on_state_change_event: Empty,
-	#[serde(rename = "workflow_engine_parallelism")]
+	#[serde(rename = "WorkflowEngineParallelism")]
 	workflow_engine_parallelism: i64,
-	#[serde(rename = "workflow_on_state_change_event")]
+	#[serde(rename = "WorkflowOnStateChangeEvent")]
 	workflow_on_state_change_event: Empty,
 }
 

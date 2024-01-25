@@ -1,95 +1,117 @@
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct FileDocumentAccessRuleContainer {
-	#[serde(rename = "access_rules")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AccessRules")]
 	access_rules: Vec<UnknownType>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ImageAccessRuleContainer {
-	#[serde(rename = "access_rules")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AccessRules")]
 	access_rules: Vec<UnknownType>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ModuleRole {
-	#[serde(rename = "description")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Description")]
 	description: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ModuleSecurity {
-	#[serde(rename = "module_roles")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ModuleRoles")]
 	module_roles: Vec<security::ModuleRole, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct PasswordPolicySettings {
-	#[serde(rename = "minimum_length")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "MinimumLength")]
 	minimum_length: i64,
-	#[serde(rename = "require_digit")]
+	#[serde(rename = "RequireDigit")]
 	require_digit: bool,
-	#[serde(rename = "require_mixed_case")]
+	#[serde(rename = "RequireMixedCase")]
 	require_mixed_case: bool,
-	#[serde(rename = "require_symbol")]
+	#[serde(rename = "RequireSymbol")]
 	require_symbol: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ProjectSecurity {
-	#[serde(rename = "admin_password")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AdminPassword")]
 	admin_password: String,
-	#[serde(rename = "admin_user_name")]
+	#[serde(rename = "AdminUserName")]
 	admin_user_name: String,
-	#[serde(rename = "admin_user_role")]
+	#[serde(rename = "AdminUserRole")]
 	admin_user_role: String,
-	#[serde(rename = "check_security")]
+	#[serde(rename = "CheckSecurity")]
 	check_security: bool,
-	#[serde(rename = "demo_users")]
+	#[serde(rename = "DemoUsers")]
 	demo_users: Vec<UnknownType>,
-	#[serde(rename = "enable_demo_users")]
+	#[serde(rename = "EnableDemoUsers")]
 	enable_demo_users: bool,
-	#[serde(rename = "enable_guest_access")]
+	#[serde(rename = "EnableGuestAccess")]
 	enable_guest_access: bool,
-	#[serde(rename = "file_document_access")]
+	#[serde(rename = "FileDocumentAccess")]
 	file_document_access: security::FileDocumentAccessRuleContainer,
-	#[serde(rename = "guest_user_role")]
+	#[serde(rename = "GuestUserRole")]
 	guest_user_role: String,
-	#[serde(rename = "image_access")]
+	#[serde(rename = "ImageAccess")]
 	image_access: security::ImageAccessRuleContainer,
-	#[serde(rename = "password_policy_settings")]
+	#[serde(rename = "PasswordPolicySettings")]
 	password_policy_settings: security::PasswordPolicySettings,
-	#[serde(rename = "security_level")]
+	#[serde(rename = "SecurityLevel")]
 	security_level: String,
-	#[serde(rename = "strict_mode")]
+	#[serde(rename = "StrictMode")]
 	strict_mode: bool,
-	#[serde(rename = "strict_page_url_check")]
+	#[serde(rename = "StrictPageUrlCheck")]
 	strict_page_url_check: bool,
-	#[serde(rename = "user_roles")]
+	#[serde(rename = "UserRoles")]
 	user_roles: Vec<security::UserRole, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct UserRole {
-	#[serde(rename = "check_security")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "CheckSecurity")]
 	check_security: bool,
-	#[serde(rename = "description")]
+	#[serde(rename = "Description")]
 	description: String,
-	#[serde(rename = "guid")]
+	#[serde(rename = "GUID")]
 	guid: Binary,
-	#[serde(rename = "manageable_roles")]
+	#[serde(rename = "ManageableRoles")]
 	manageable_roles: Vec<String>,
-	#[serde(rename = "manage_all_roles")]
+	#[serde(rename = "ManageAllRoles")]
 	manage_all_roles: bool,
-	#[serde(rename = "manage_users_without_roles")]
+	#[serde(rename = "ManageUsersWithoutRoles")]
 	manage_users_without_roles: bool,
-	#[serde(rename = "module_roles")]
+	#[serde(rename = "ModuleRoles")]
 	module_roles: Vec<String>,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
 }
 

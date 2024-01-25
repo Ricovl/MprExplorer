@@ -1,251 +1,291 @@
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct DataAssociationImpl {
-	#[serde(rename = "association")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Association")]
 	association: String,
-	#[serde(rename = "child_members")]
-	child_members: Vec<web_services::DataAttributeImpl, web_services::DataAssociationImpl, >,
-	#[serde(rename = "description")]
+	#[serde(rename = "ChildMembers")]
+	child_members: Vec<web_services::DataAssociationImpl, web_services::DataAttributeImpl, >,
+	#[serde(rename = "Description")]
 	description: String,
-	#[serde(rename = "element_name")]
+	#[serde(rename = "ElementName")]
 	element_name: String,
-	#[serde(rename = "entity")]
+	#[serde(rename = "Entity")]
 	entity: String,
-	#[serde(rename = "exposed_association_name")]
+	#[serde(rename = "ExposedAssociationName")]
 	exposed_association_name: String,
-	#[serde(rename = "is_key")]
+	#[serde(rename = "IsKey")]
 	is_key: bool,
-	#[serde(rename = "is_nillable")]
+	#[serde(rename = "IsNillable")]
 	is_nillable: bool,
-	#[serde(rename = "is_optional")]
+	#[serde(rename = "IsOptional")]
 	is_optional: bool,
-	#[serde(rename = "object_element_name")]
+	#[serde(rename = "ObjectElementName")]
 	object_element_name: String,
-	#[serde(rename = "summary")]
+	#[serde(rename = "Summary")]
 	summary: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DataAttributeImpl {
-	#[serde(rename = "attribute")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Attribute")]
 	attribute: String,
-	#[serde(rename = "description")]
+	#[serde(rename = "Description")]
 	description: String,
-	#[serde(rename = "element_name")]
+	#[serde(rename = "ElementName")]
 	element_name: String,
-	#[serde(rename = "enumeration_as_string")]
+	#[serde(rename = "EnumerationAsString")]
 	enumeration_as_string: bool,
-	#[serde(rename = "filterable")]
+	#[serde(rename = "Filterable")]
 	filterable: bool,
-	#[serde(rename = "is_key")]
+	#[serde(rename = "IsKey")]
 	is_key: bool,
-	#[serde(rename = "is_nillable")]
+	#[serde(rename = "IsNillable")]
 	is_nillable: bool,
-	#[serde(rename = "is_optional")]
+	#[serde(rename = "IsOptional")]
 	is_optional: bool,
-	#[serde(rename = "sortable")]
+	#[serde(rename = "Sortable")]
 	sortable: bool,
-	#[serde(rename = "summary")]
+	#[serde(rename = "Summary")]
 	summary: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DataEntityImpl {
-	#[serde(rename = "child_members")]
-	child_members: Vec<web_services::DataAttributeImpl, web_services::DataAssociationImpl, >,
-	#[serde(rename = "element_name")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ChildMembers")]
+	child_members: Vec<web_services::DataAssociationImpl, web_services::DataAttributeImpl, >,
+	#[serde(rename = "ElementName")]
 	element_name: String,
-	#[serde(rename = "entity")]
+	#[serde(rename = "Entity")]
 	entity: String,
-	#[serde(rename = "is_key")]
+	#[serde(rename = "IsKey")]
 	is_key: bool,
-	#[serde(rename = "is_nillable")]
+	#[serde(rename = "IsNillable")]
 	is_nillable: bool,
-	#[serde(rename = "is_optional")]
+	#[serde(rename = "IsOptional")]
 	is_optional: bool,
-	#[serde(rename = "object_element_name")]
+	#[serde(rename = "ObjectElementName")]
 	object_element_name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ImportedServiceImpl {
-	#[serde(rename = "description")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Description")]
 	description: web_services::WsdlDescriptionImpl,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "excluded")]
+	#[serde(rename = "Excluded")]
 	excluded: bool,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "use_mtom")]
+	#[serde(rename = "UseMtom")]
 	use_mtom: bool,
-	#[serde(rename = "wsdl_url")]
+	#[serde(rename = "WsdlUrl")]
 	wsdl_url: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct OperationInfoImpl {
-	#[serde(rename = "documentation")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "request_body_element_name")]
+	#[serde(rename = "RequestBodyElementName")]
 	request_body_element_name: String,
-	#[serde(rename = "request_body_encoded")]
+	#[serde(rename = "RequestBodyEncoded")]
 	request_body_encoded: bool,
-	#[serde(rename = "request_body_part_encodings")]
+	#[serde(rename = "RequestBodyPartEncodings")]
 	request_body_part_encodings: Vec<web_services::PartEncodingImpl, >,
-	#[serde(rename = "request_body_rpc_element")]
+	#[serde(rename = "RequestBodyRpcElement")]
 	request_body_rpc_element: web_services::RpcOperationElementImpl,
-	#[serde(rename = "request_header_element_name")]
+	#[serde(rename = "RequestHeaderElementName")]
 	request_header_element_name: String,
-	#[serde(rename = "request_header_encoded")]
+	#[serde(rename = "RequestHeaderEncoded")]
 	request_header_encoded: bool,
-	#[serde(rename = "request_header_part_encoding")]
+	#[serde(rename = "RequestHeaderPartEncoding")]
 	request_header_part_encoding: web_services::PartEncodingImpl,
-	#[serde(rename = "request_header_rpc_element")]
+	#[serde(rename = "RequestHeaderRpcElement")]
 	request_header_rpc_element: web_services::RpcOperationElementImpl,
-	#[serde(rename = "response_body_element_name")]
+	#[serde(rename = "ResponseBodyElementName")]
 	response_body_element_name: String,
-	#[serde(rename = "response_body_rpc_element")]
+	#[serde(rename = "ResponseBodyRpcElement")]
 	response_body_rpc_element: web_services::RpcOperationElementImpl,
-	#[serde(rename = "soap_action")]
+	#[serde(rename = "SoapAction")]
 	soap_action: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct PartEncodingImpl {
-	#[serde(rename = "part_name")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "PartName")]
 	part_name: String,
-	#[serde(rename = "part_xsd_type")]
+	#[serde(rename = "PartXsdType")]
 	part_xsd_type: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct PublishedOperationImpl {
-	#[serde(rename = "data_entity")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DataEntity")]
 	data_entity: web_services::DataEntityImpl,
-	#[serde(rename = "description")]
+	#[serde(rename = "Description")]
 	description: String,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "image_id")]
+	#[serde(rename = "ImageId")]
 	image_id: String,
-	#[serde(rename = "microflow")]
+	#[serde(rename = "Microflow")]
 	microflow: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "operation_return_type")]
+	#[serde(rename = "OperationReturnType")]
 	operation_return_type: data_types::ObjectType,
-	#[serde(rename = "parameters")]
+	#[serde(rename = "Parameters")]
 	parameters: Vec<UnknownType>,
-	#[serde(rename = "return_element_name")]
+	#[serde(rename = "ReturnElementName")]
 	return_element_name: String,
-	#[serde(rename = "return_type_is_nillable")]
+	#[serde(rename = "ReturnTypeIsNillable")]
 	return_type_is_nillable: bool,
-	#[serde(rename = "return_type_is_optional")]
+	#[serde(rename = "ReturnTypeIsOptional")]
 	return_type_is_optional: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct PublishedService {
-	#[serde(rename = "documentation")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "excluded")]
+	#[serde(rename = "Excluded")]
 	excluded: bool,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "versioned_web_services")]
+	#[serde(rename = "VersionedWebServices")]
 	versioned_web_services: Vec<web_services::VersionedServiceImpl, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct RpcOperationElementImpl {
-	#[serde(rename = "message_part_elements")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "MessagePartElements")]
 	message_part_elements: Vec<UnknownType>,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ServiceInfoImpl {
-	#[serde(rename = "documentation")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "location")]
+	#[serde(rename = "Location")]
 	location: String,
-	#[serde(rename = "location_constant")]
+	#[serde(rename = "LocationConstant")]
 	location_constant: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "operations")]
+	#[serde(rename = "Operations")]
 	operations: Vec<web_services::OperationInfoImpl, >,
-	#[serde(rename = "port_name")]
+	#[serde(rename = "PortName")]
 	port_name: String,
-	#[serde(rename = "soap_version")]
+	#[serde(rename = "SoapVersion")]
 	soap_version: String,
-	#[serde(rename = "using_addressing")]
+	#[serde(rename = "UsingAddressing")]
 	using_addressing: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct VersionedServiceImpl {
-	#[serde(rename = "caption")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Caption")]
 	caption: String,
-	#[serde(rename = "description")]
+	#[serde(rename = "Description")]
 	description: String,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "header_authentication")]
+	#[serde(rename = "HeaderAuthentication")]
 	header_authentication: String,
-	#[serde(rename = "header_microflow")]
+	#[serde(rename = "HeaderMicroflow")]
 	header_microflow: String,
-	#[serde(rename = "image")]
+	#[serde(rename = "Image")]
 	image: String,
-	#[serde(rename = "import_mapping")]
+	#[serde(rename = "ImportMapping")]
 	import_mapping: String,
-	#[serde(rename = "object_handling_backup")]
+	#[serde(rename = "ObjectHandlingBackup")]
 	object_handling_backup: String,
-	#[serde(rename = "operations")]
+	#[serde(rename = "Operations")]
 	operations: Vec<web_services::PublishedOperationImpl, >,
-	#[serde(rename = "optimized_xml")]
+	#[serde(rename = "OptimizedXml")]
 	optimized_xml: bool,
-	#[serde(rename = "target_namespace")]
+	#[serde(rename = "TargetNamespace")]
 	target_namespace: String,
-	#[serde(rename = "validate")]
+	#[serde(rename = "Validate")]
 	validate: bool,
-	#[serde(rename = "version_number")]
+	#[serde(rename = "VersionNumber")]
 	version_number: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct WsdlDescriptionImpl {
-	#[serde(rename = "imports_have_locations")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ImportsHaveLocations")]
 	imports_have_locations: bool,
-	#[serde(rename = "schema_contentss")]
+	#[serde(rename = "SchemaContentss")]
 	schema_contentss: Vec<xml_schemas::XmlSchemaContents, >,
-	#[serde(rename = "services")]
+	#[serde(rename = "Services")]
 	services: Vec<web_services::ServiceInfoImpl, >,
-	#[serde(rename = "target_namespace")]
+	#[serde(rename = "TargetNamespace")]
 	target_namespace: String,
-	#[serde(rename = "wsdl_contentss")]
+	#[serde(rename = "WsdlContentss")]
 	wsdl_contentss: Vec<web_services::WsdlEntryImpl, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct WsdlEntryImpl {
-	#[serde(rename = "contents")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Contents")]
 	contents: String,
-	#[serde(rename = "localized_contents_format")]
+	#[serde(rename = "LocalizedContentsFormat")]
 	localized_contents_format: String,
-	#[serde(rename = "localized_location_format")]
+	#[serde(rename = "LocalizedLocationFormat")]
 	localized_location_format: String,
-	#[serde(rename = "location")]
+	#[serde(rename = "Location")]
 	location: String,
 }
 

@@ -1,215 +1,252 @@
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct CustomWidget {
-	#[serde(rename = "appearance")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
-	#[serde(rename = "conditional_editability_settings")]
+	#[serde(rename = "ConditionalEditabilitySettings")]
 	conditional_editability_settings: Empty,
-	#[serde(rename = "conditional_visibility_settings")]
+	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
-	#[serde(rename = "editable")]
+	#[serde(rename = "Editable")]
 	editable: String,
-	#[serde(rename = "label_template")]
+	#[serde(rename = "LabelTemplate")]
 	label_template: Empty,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "object")]
+	#[serde(rename = "Object")]
 	object: custom_widgets::WidgetObject,
-	#[serde(rename = "tab_index")]
+	#[serde(rename = "TabIndex")]
 	tab_index: i64,
-	#[serde(rename = "_type")]
-	_type: custom_widgets::CustomWidgetType,
+	#[serde(rename = "Type")]
+	var_type: custom_widgets::CustomWidgetType,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CustomWidgetDatabaseSource {
-	#[serde(rename = "database_constraints")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DatabaseConstraints")]
 	database_constraints: Vec<UnknownType>,
-	#[serde(rename = "entity_ref")]
+	#[serde(rename = "EntityRef")]
 	entity_ref: domain_models::DirectEntityRef,
-	#[serde(rename = "sort_bar")]
+	#[serde(rename = "SortBar")]
 	sort_bar: forms::GridSortBar,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CustomWidgetType {
-	#[serde(rename = "help_url")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "HelpUrl")]
 	help_url: String,
-	#[serde(rename = "object_type")]
+	#[serde(rename = "ObjectType")]
 	object_type: custom_widgets::WidgetObjectType,
-	#[serde(rename = "offline_capable")]
+	#[serde(rename = "OfflineCapable")]
 	offline_capable: bool,
-	#[serde(rename = "studio_category")]
+	#[serde(rename = "StudioCategory")]
 	studio_category: String,
-	#[serde(rename = "studio_pro_category")]
+	#[serde(rename = "StudioProCategory")]
 	studio_pro_category: String,
-	#[serde(rename = "supported_platform")]
+	#[serde(rename = "SupportedPlatform")]
 	supported_platform: String,
-	#[serde(rename = "widget_description")]
+	#[serde(rename = "WidgetDescription")]
 	widget_description: String,
-	#[serde(rename = "widget_id")]
+	#[serde(rename = "WidgetId")]
 	widget_id: String,
-	#[serde(rename = "widget_name")]
+	#[serde(rename = "WidgetName")]
 	widget_name: String,
-	#[serde(rename = "widget_needs_entity_context")]
+	#[serde(rename = "WidgetNeedsEntityContext")]
 	widget_needs_entity_context: bool,
-	#[serde(rename = "widget_phone_gap_enabled")]
+	#[serde(rename = "WidgetPhoneGapEnabled")]
 	widget_phone_gap_enabled: bool,
-	#[serde(rename = "widget_plugin_widget")]
+	#[serde(rename = "WidgetPluginWidget")]
 	widget_plugin_widget: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct WidgetEnumerationValue {
-	#[serde(rename = "key")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "_Key")]
 	key: String,
-	#[serde(rename = "caption")]
+	#[serde(rename = "Caption")]
 	caption: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct WidgetObject {
-	#[serde(rename = "properties")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Properties")]
 	properties: Vec<custom_widgets::WidgetProperty, >,
-	#[serde(rename = "type_pointer")]
+	#[serde(rename = "TypePointer")]
 	type_pointer: Binary,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct WidgetObjectType {
-	#[serde(rename = "property_types")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "PropertyTypes")]
 	property_types: Vec<custom_widgets::WidgetPropertyType, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct WidgetProperty {
-	#[serde(rename = "type_pointer")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "TypePointer")]
 	type_pointer: Binary,
-	#[serde(rename = "value")]
+	#[serde(rename = "Value")]
 	value: custom_widgets::WidgetValue,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct WidgetPropertyType {
-	#[serde(rename = "caption")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Caption")]
 	caption: String,
-	#[serde(rename = "category")]
+	#[serde(rename = "Category")]
 	category: String,
-	#[serde(rename = "description")]
+	#[serde(rename = "Description")]
 	description: String,
-	#[serde(rename = "is_default")]
+	#[serde(rename = "IsDefault")]
 	is_default: bool,
-	#[serde(rename = "property_key")]
+	#[serde(rename = "PropertyKey")]
 	property_key: String,
-	#[serde(rename = "value_type")]
+	#[serde(rename = "ValueType")]
 	value_type: custom_widgets::WidgetValueType,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct WidgetReturnType {
-	#[serde(rename = "assignable_to")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AssignableTo")]
 	assignable_to: String,
-	#[serde(rename = "entity_property")]
+	#[serde(rename = "EntityProperty")]
 	entity_property: String,
-	#[serde(rename = "is_list")]
+	#[serde(rename = "IsList")]
 	is_list: bool,
-	#[serde(rename = "_type")]
-	_type: String,
+	#[serde(rename = "Type")]
+	var_type: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct WidgetTranslation {
-	#[serde(rename = "language_code")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "LanguageCode")]
 	language_code: String,
-	#[serde(rename = "text")]
+	#[serde(rename = "Text")]
 	text: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct WidgetValue {
-	#[serde(rename = "action")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Action")]
 	action: forms::NoAction,
-	#[serde(rename = "attribute_ref")]
+	#[serde(rename = "AttributeRef")]
 	attribute_ref: Empty,
-	#[serde(rename = "data_source")]
+	#[serde(rename = "DataSource")]
 	data_source: Empty,
-	#[serde(rename = "entity_ref")]
+	#[serde(rename = "EntityRef")]
 	entity_ref: Empty,
-	#[serde(rename = "expression")]
+	#[serde(rename = "Expression")]
 	expression: String,
-	#[serde(rename = "form")]
+	#[serde(rename = "Form")]
 	form: String,
-	#[serde(rename = "icon")]
+	#[serde(rename = "Icon")]
 	icon: Empty,
-	#[serde(rename = "image")]
+	#[serde(rename = "Image")]
 	image: String,
-	#[serde(rename = "microflow")]
+	#[serde(rename = "Microflow")]
 	microflow: String,
-	#[serde(rename = "nanoflow")]
+	#[serde(rename = "Nanoflow")]
 	nanoflow: String,
-	#[serde(rename = "objects")]
+	#[serde(rename = "Objects")]
 	objects: Vec<custom_widgets::WidgetObject, >,
-	#[serde(rename = "primitive_value")]
+	#[serde(rename = "PrimitiveValue")]
 	primitive_value: String,
-	#[serde(rename = "selection")]
+	#[serde(rename = "Selection")]
 	selection: String,
-	#[serde(rename = "source_variable")]
+	#[serde(rename = "SourceVariable")]
 	source_variable: Empty,
-	#[serde(rename = "text_template")]
+	#[serde(rename = "TextTemplate")]
 	text_template: Empty,
-	#[serde(rename = "translatable_value")]
+	#[serde(rename = "TranslatableValue")]
 	translatable_value: Empty,
-	#[serde(rename = "type_pointer")]
+	#[serde(rename = "TypePointer")]
 	type_pointer: Binary,
-	#[serde(rename = "widgets")]
-	widgets: Vec<forms::LayoutGrid, custom_widgets::CustomWidget, forms::DivContainer, >,
-	#[serde(rename = "x_path_constraint")]
+	#[serde(rename = "Widgets")]
+	widgets: Vec<custom_widgets::CustomWidget, forms::LayoutGrid, forms::DivContainer, >,
+	#[serde(rename = "XPathConstraint")]
 	x_path_constraint: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct WidgetValueType {
-	#[serde(rename = "allowed_types")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AllowedTypes")]
 	allowed_types: Vec<String>,
-	#[serde(rename = "allow_non_persistable_entities")]
+	#[serde(rename = "AllowNonPersistableEntities")]
 	allow_non_persistable_entities: bool,
-	#[serde(rename = "association_types")]
+	#[serde(rename = "AssociationTypes")]
 	association_types: Vec<UnknownType>,
-	#[serde(rename = "data_source_property")]
+	#[serde(rename = "DataSourceProperty")]
 	data_source_property: String,
-	#[serde(rename = "default_value")]
+	#[serde(rename = "DefaultValue")]
 	default_value: String,
-	#[serde(rename = "entity_property")]
+	#[serde(rename = "EntityProperty")]
 	entity_property: String,
-	#[serde(rename = "enumeration_values")]
+	#[serde(rename = "EnumerationValues")]
 	enumeration_values: Vec<custom_widgets::WidgetEnumerationValue, >,
-	#[serde(rename = "is_list")]
+	#[serde(rename = "IsList")]
 	is_list: bool,
-	#[serde(rename = "is_path")]
+	#[serde(rename = "IsPath")]
 	is_path: String,
-	#[serde(rename = "multiline")]
+	#[serde(rename = "Multiline")]
 	multiline: bool,
-	#[serde(rename = "object_type")]
+	#[serde(rename = "ObjectType")]
 	object_type: Empty,
-	#[serde(rename = "on_change_property")]
+	#[serde(rename = "OnChangeProperty")]
 	on_change_property: String,
-	#[serde(rename = "parameter_is_list")]
+	#[serde(rename = "ParameterIsList")]
 	parameter_is_list: bool,
-	#[serde(rename = "path_type")]
+	#[serde(rename = "PathType")]
 	path_type: String,
-	#[serde(rename = "required")]
+	#[serde(rename = "Required")]
 	required: bool,
-	#[serde(rename = "return_type")]
+	#[serde(rename = "ReturnType")]
 	return_type: Empty,
-	#[serde(rename = "selectable_objects_property")]
+	#[serde(rename = "SelectableObjectsProperty")]
 	selectable_objects_property: String,
-	#[serde(rename = "selection_types")]
+	#[serde(rename = "SelectionTypes")]
 	selection_types: Vec<String>,
-	#[serde(rename = "translations")]
+	#[serde(rename = "Translations")]
 	translations: Vec<custom_widgets::WidgetTranslation, >,
-	#[serde(rename = "_type")]
-	_type: String,
+	#[serde(rename = "Type")]
+	var_type: String,
 }
 

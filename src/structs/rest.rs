@@ -1,93 +1,109 @@
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct CorsConfiguration {
-	#[serde(rename = "allow_authentication")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AllowAuthentication")]
 	allow_authentication: bool,
-	#[serde(rename = "allowed_origins")]
+	#[serde(rename = "AllowedOrigins")]
 	allowed_origins: String,
-	#[serde(rename = "max_age")]
+	#[serde(rename = "MaxAge")]
 	max_age: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct PublishedRestService {
-	#[serde(rename = "allowed_roles")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AllowedRoles")]
 	allowed_roles: Vec<UnknownType>,
-	#[serde(rename = "authentication_microflow")]
+	#[serde(rename = "AuthenticationMicroflow")]
 	authentication_microflow: String,
-	#[serde(rename = "authentication_types")]
+	#[serde(rename = "AuthenticationTypes")]
 	authentication_types: Vec<UnknownType>,
-	#[serde(rename = "cors_configuration")]
+	#[serde(rename = "CorsConfiguration")]
 	cors_configuration: rest::CorsConfiguration,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "excluded")]
+	#[serde(rename = "Excluded")]
 	excluded: bool,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "parameters")]
+	#[serde(rename = "Parameters")]
 	parameters: Vec<UnknownType>,
-	#[serde(rename = "path")]
+	#[serde(rename = "Path")]
 	path: String,
-	#[serde(rename = "resources")]
+	#[serde(rename = "Resources")]
 	resources: Vec<rest::PublishedRestServiceResource, >,
-	#[serde(rename = "service_name")]
+	#[serde(rename = "ServiceName")]
 	service_name: String,
-	#[serde(rename = "version")]
+	#[serde(rename = "Version")]
 	version: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct PublishedRestServiceOperation {
-	#[serde(rename = "commit")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Commit")]
 	commit: String,
-	#[serde(rename = "deprecated")]
+	#[serde(rename = "Deprecated")]
 	deprecated: bool,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "export_mapping")]
+	#[serde(rename = "ExportMapping")]
 	export_mapping: String,
-	#[serde(rename = "http_method")]
+	#[serde(rename = "HttpMethod")]
 	http_method: String,
-	#[serde(rename = "import_mapping")]
+	#[serde(rename = "ImportMapping")]
 	import_mapping: String,
-	#[serde(rename = "microflow")]
+	#[serde(rename = "Microflow")]
 	microflow: String,
-	#[serde(rename = "object_handling_backup")]
+	#[serde(rename = "ObjectHandlingBackup")]
 	object_handling_backup: String,
-	#[serde(rename = "parameters")]
+	#[serde(rename = "Parameters")]
 	parameters: Vec<rest::RestOperationParameter, >,
-	#[serde(rename = "path")]
+	#[serde(rename = "Path")]
 	path: String,
-	#[serde(rename = "summary")]
+	#[serde(rename = "Summary")]
 	summary: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct PublishedRestServiceResource {
-	#[serde(rename = "documentation")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "operations")]
+	#[serde(rename = "Operations")]
 	operations: Vec<rest::PublishedRestServiceOperation, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct RestOperationParameter {
-	#[serde(rename = "description")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Description")]
 	description: String,
-	#[serde(rename = "microflow_parameter")]
+	#[serde(rename = "MicroflowParameter")]
 	microflow_parameter: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "parameter_type")]
+	#[serde(rename = "ParameterType")]
 	parameter_type: String,
-	#[serde(rename = "_type")]
-	_type: data_types::ObjectType,
+	#[serde(rename = "Type")]
+	var_type: data_types::ObjectType,
 }
 

@@ -1,21 +1,25 @@
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct Constant {
-	#[serde(rename = "default_value")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DefaultValue")]
 	default_value: String,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "excluded")]
+	#[serde(rename = "Excluded")]
 	excluded: bool,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "exposed_to_client")]
+	#[serde(rename = "ExposedToClient")]
 	exposed_to_client: bool,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "_type")]
-	_type: data_types::StringType,
+	#[serde(rename = "Type")]
+	var_type: data_types::StringType,
 }
 

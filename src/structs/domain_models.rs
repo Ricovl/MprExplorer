@@ -1,343 +1,443 @@
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct AccessRule {
-	#[serde(rename = "allow_create")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AllowCreate")]
 	allow_create: bool,
-	#[serde(rename = "allow_delete")]
+	#[serde(rename = "AllowDelete")]
 	allow_delete: bool,
-	#[serde(rename = "allowed_module_roles")]
+	#[serde(rename = "AllowedModuleRoles")]
 	allowed_module_roles: Vec<String>,
-	#[serde(rename = "default_member_access_rights")]
+	#[serde(rename = "DefaultMemberAccessRights")]
 	default_member_access_rights: String,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "member_accesses")]
+	#[serde(rename = "MemberAccesses")]
 	member_accesses: Vec<domain_models::MemberAccess, >,
-	#[serde(rename = "x_path_constraint")]
+	#[serde(rename = "XPathConstraint")]
 	x_path_constraint: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Annotation {
-	#[serde(rename = "caption")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Caption")]
 	caption: String,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "location")]
+	#[serde(rename = "Location")]
 	location: String,
-	#[serde(rename = "width")]
+	#[serde(rename = "Width")]
 	width: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Association {
-	#[serde(rename = "child_connection")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ChildConnection")]
 	child_connection: String,
-	#[serde(rename = "child_pointer")]
+	#[serde(rename = "ChildPointer")]
 	child_pointer: Binary,
-	#[serde(rename = "delete_behavior")]
+	#[serde(rename = "DeleteBehavior")]
 	delete_behavior: domain_models::DeleteBehavior,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "guid")]
+	#[serde(rename = "GUID")]
 	guid: Binary,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "owner")]
+	#[serde(rename = "Owner")]
 	owner: String,
-	#[serde(rename = "parent_connection")]
+	#[serde(rename = "ParentConnection")]
 	parent_connection: String,
-	#[serde(rename = "parent_pointer")]
+	#[serde(rename = "ParentPointer")]
 	parent_pointer: Binary,
-	#[serde(rename = "source")]
+	#[serde(rename = "Source")]
 	source: Empty,
-	#[serde(rename = "_type")]
-	_type: String,
+	#[serde(rename = "Type")]
+	var_type: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Attribute {
-	#[serde(rename = "documentation")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "guid")]
+	#[serde(rename = "GUID")]
 	guid: Binary,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "new_type")]
+	#[serde(rename = "NewType")]
 	new_type: domain_models::StringAttributeType,
-	#[serde(rename = "value")]
+	#[serde(rename = "Value")]
 	value: domain_models::StoredValue,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct AttributeRef {
-	#[serde(rename = "attribute")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Attribute")]
 	attribute: String,
-	#[serde(rename = "entity_ref")]
+	#[serde(rename = "EntityRef")]
 	entity_ref: Empty,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct AutoNumberAttributeType {
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct BooleanAttributeType {
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CalculatedValue {
-	#[serde(rename = "microflow")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Microflow")]
 	microflow: String,
-	#[serde(rename = "pass_entity")]
+	#[serde(rename = "PassEntity")]
 	pass_entity: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CrossAssociation {
-	#[serde(rename = "child")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Child")]
 	child: String,
-	#[serde(rename = "delete_behavior")]
+	#[serde(rename = "DeleteBehavior")]
 	delete_behavior: domain_models::DeleteBehavior,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "guid")]
+	#[serde(rename = "GUID")]
 	guid: Binary,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "owner")]
+	#[serde(rename = "Owner")]
 	owner: String,
-	#[serde(rename = "parent_pointer")]
+	#[serde(rename = "ParentPointer")]
 	parent_pointer: Binary,
-	#[serde(rename = "source")]
+	#[serde(rename = "Source")]
 	source: Empty,
-	#[serde(rename = "_type")]
-	_type: String,
+	#[serde(rename = "Type")]
+	var_type: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DateTimeAttributeType {
-	#[serde(rename = "localize_date")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "LocalizeDate")]
 	localize_date: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DecimalAttributeType {
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DeleteBehavior {
-	#[serde(rename = "child_delete_behavior")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ChildDeleteBehavior")]
 	child_delete_behavior: String,
-	#[serde(rename = "child_error_message")]
+	#[serde(rename = "ChildErrorMessage")]
 	child_error_message: Empty,
-	#[serde(rename = "parent_delete_behavior")]
+	#[serde(rename = "ParentDeleteBehavior")]
 	parent_delete_behavior: String,
-	#[serde(rename = "parent_error_message")]
+	#[serde(rename = "ParentErrorMessage")]
 	parent_error_message: Empty,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DirectEntityRef {
-	#[serde(rename = "entity")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Entity")]
 	entity: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DomainModel {
-	#[serde(rename = "annotations")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Annotations")]
 	annotations: Vec<domain_models::Annotation, >,
-	#[serde(rename = "associations")]
+	#[serde(rename = "Associations")]
 	associations: Vec<domain_models::Association, >,
-	#[serde(rename = "cross_associations")]
+	#[serde(rename = "CrossAssociations")]
 	cross_associations: Vec<domain_models::CrossAssociation, >,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "entities")]
+	#[serde(rename = "Entities")]
 	entities: Vec<domain_models::EntityImpl, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct EntityEvent {
-	#[serde(rename = "microflow")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Microflow")]
 	microflow: String,
-	#[serde(rename = "moment")]
+	#[serde(rename = "Moment")]
 	moment: String,
-	#[serde(rename = "raise_error_on_false")]
+	#[serde(rename = "RaiseErrorOnFalse")]
 	raise_error_on_false: bool,
-	#[serde(rename = "send_input_parameter")]
+	#[serde(rename = "SendInputParameter")]
 	send_input_parameter: bool,
-	#[serde(rename = "_type")]
-	_type: String,
+	#[serde(rename = "Type")]
+	var_type: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct EntityImpl {
-	#[serde(rename = "access_rules")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AccessRules")]
 	access_rules: Vec<domain_models::AccessRule, >,
-	#[serde(rename = "attributes")]
+	#[serde(rename = "Attributes")]
 	attributes: Vec<domain_models::Attribute, >,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "events")]
+	#[serde(rename = "Events")]
 	events: Vec<domain_models::EntityEvent, >,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "guid")]
+	#[serde(rename = "GUID")]
 	guid: Binary,
-	#[serde(rename = "image")]
+	#[serde(rename = "Image")]
 	image: String,
-	#[serde(rename = "image_data")]
+	#[serde(rename = "ImageData")]
 	image_data: Binary,
-	#[serde(rename = "indexes")]
+	#[serde(rename = "Indexes")]
 	indexes: Vec<domain_models::EntityIndex, >,
-	#[serde(rename = "location")]
+	#[serde(rename = "Location")]
 	location: String,
-	#[serde(rename = "maybe_generalization")]
+	#[serde(rename = "MaybeGeneralization")]
 	maybe_generalization: domain_models::NoGeneralization,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "source")]
+	#[serde(rename = "Source")]
 	source: Empty,
-	#[serde(rename = "validation_rules")]
+	#[serde(rename = "ValidationRules")]
 	validation_rules: Vec<domain_models::ValidationRule, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct EntityIndex {
-	#[serde(rename = "attributes")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Attributes")]
 	attributes: Vec<domain_models::IndexedAttribute, >,
-	#[serde(rename = "guid")]
+	#[serde(rename = "GUID")]
 	guid: Binary,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct EntityRefStep {
-	#[serde(rename = "association")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Association")]
 	association: String,
-	#[serde(rename = "destination_entity")]
+	#[serde(rename = "DestinationEntity")]
 	destination_entity: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct EnumerationAttributeType {
-	#[serde(rename = "enumeration")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Enumeration")]
 	enumeration: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Generalization {
-	#[serde(rename = "generalization")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Generalization")]
 	generalization: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct IndexedAttribute {
-	#[serde(rename = "ascending")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Ascending")]
 	ascending: bool,
-	#[serde(rename = "attribute_pointer")]
+	#[serde(rename = "AttributePointer")]
 	attribute_pointer: Binary,
-	#[serde(rename = "_type")]
-	_type: String,
+	#[serde(rename = "Type")]
+	var_type: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct IndirectEntityRef {
-	#[serde(rename = "steps")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Steps")]
 	steps: Vec<domain_models::EntityRefStep, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct IntegerAttributeType {
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct LongAttributeType {
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct MemberAccess {
-	#[serde(rename = "access_rights")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AccessRights")]
 	access_rights: String,
-	#[serde(rename = "association")]
+	#[serde(rename = "Association")]
 	association: String,
-	#[serde(rename = "attribute")]
+	#[serde(rename = "Attribute")]
 	attribute: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct NoGeneralization {
-	#[serde(rename = "has_changed_by_attr")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "HasChangedByAttr")]
 	has_changed_by_attr: bool,
-	#[serde(rename = "has_changed_date_attr")]
+	#[serde(rename = "HasChangedDateAttr")]
 	has_changed_date_attr: bool,
-	#[serde(rename = "has_created_date_attr")]
+	#[serde(rename = "HasCreatedDateAttr")]
 	has_created_date_attr: bool,
-	#[serde(rename = "has_owner_attr")]
+	#[serde(rename = "HasOwnerAttr")]
 	has_owner_attr: bool,
-	#[serde(rename = "persistable")]
+	#[serde(rename = "Persistable")]
 	persistable: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct RangeRuleInfo {
-	#[serde(rename = "max_attribute")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "MaxAttribute")]
 	max_attribute: String,
-	#[serde(rename = "max_value")]
+	#[serde(rename = "MaxValue")]
 	max_value: String,
-	#[serde(rename = "min_attribute")]
+	#[serde(rename = "MinAttribute")]
 	min_attribute: String,
-	#[serde(rename = "min_value")]
+	#[serde(rename = "MinValue")]
 	min_value: String,
-	#[serde(rename = "type_of_range")]
+	#[serde(rename = "TypeOfRange")]
 	type_of_range: String,
-	#[serde(rename = "use_max_value")]
+	#[serde(rename = "UseMaxValue")]
 	use_max_value: bool,
-	#[serde(rename = "use_min_value")]
+	#[serde(rename = "UseMinValue")]
 	use_min_value: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct RegExRuleInfo {
-	#[serde(rename = "reg_ex_identifier")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "RegExIdentifier")]
 	reg_ex_identifier: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct RequiredRuleInfo {
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct StoredValue {
-	#[serde(rename = "default_value")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DefaultValue")]
 	default_value: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct StringAttributeType {
-	#[serde(rename = "length")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Length")]
 	length: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct UniqueRuleInfo {
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ValidationRule {
-	#[serde(rename = "attribute")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Attribute")]
 	attribute: String,
-	#[serde(rename = "message")]
+	#[serde(rename = "Message")]
 	message: texts::Text,
-	#[serde(rename = "rule_info")]
+	#[serde(rename = "RuleInfo")]
 	rule_info: domain_models::UniqueRuleInfo,
 }
 

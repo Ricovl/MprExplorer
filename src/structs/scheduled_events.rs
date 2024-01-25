@@ -1,75 +1,91 @@
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct DaySchedule {
-	#[serde(rename = "hour_of_day")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "HourOfDay")]
 	hour_of_day: i64,
-	#[serde(rename = "minute_of_hour")]
+	#[serde(rename = "MinuteOfHour")]
 	minute_of_hour: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct HourSchedule {
-	#[serde(rename = "minute_offset")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "MinuteOffset")]
 	minute_offset: i64,
-	#[serde(rename = "multiplier")]
+	#[serde(rename = "Multiplier")]
 	multiplier: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct MinuteSchedule {
-	#[serde(rename = "multiplier")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Multiplier")]
 	multiplier: i64,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ScheduledEvent {
-	#[serde(rename = "documentation")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "enabled")]
+	#[serde(rename = "Enabled")]
 	enabled: bool,
-	#[serde(rename = "excluded")]
+	#[serde(rename = "Excluded")]
 	excluded: bool,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "interval")]
+	#[serde(rename = "Interval")]
 	interval: i64,
-	#[serde(rename = "interval_type")]
+	#[serde(rename = "IntervalType")]
 	interval_type: String,
-	#[serde(rename = "microflow")]
+	#[serde(rename = "Microflow")]
 	microflow: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "on_overlap")]
+	#[serde(rename = "OnOverlap")]
 	on_overlap: String,
-	#[serde(rename = "schedule")]
+	#[serde(rename = "Schedule")]
 	schedule: scheduled_events::MinuteSchedule,
-	#[serde(rename = "start_date_time")]
+	#[serde(rename = "StartDateTime")]
 	start_date_time: DateTime,
-	#[serde(rename = "time_zone")]
+	#[serde(rename = "TimeZone")]
 	time_zone: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct WeekSchedule {
-	#[serde(rename = "friday")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Friday")]
 	friday: bool,
-	#[serde(rename = "hour_of_day")]
+	#[serde(rename = "HourOfDay")]
 	hour_of_day: i64,
-	#[serde(rename = "minute_of_hour")]
+	#[serde(rename = "MinuteOfHour")]
 	minute_of_hour: i64,
-	#[serde(rename = "monday")]
+	#[serde(rename = "Monday")]
 	monday: bool,
-	#[serde(rename = "saturday")]
+	#[serde(rename = "Saturday")]
 	saturday: bool,
-	#[serde(rename = "sunday")]
+	#[serde(rename = "Sunday")]
 	sunday: bool,
-	#[serde(rename = "thursday")]
+	#[serde(rename = "Thursday")]
 	thursday: bool,
-	#[serde(rename = "tuesday")]
+	#[serde(rename = "Tuesday")]
 	tuesday: bool,
-	#[serde(rename = "wednesday")]
+	#[serde(rename = "Wednesday")]
 	wednesday: bool,
 }
 

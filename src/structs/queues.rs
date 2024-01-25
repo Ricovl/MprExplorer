@@ -1,33 +1,43 @@
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct BasicQueueConfig {
-	#[serde(rename = "cluster_wide")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ClusterWide")]
 	cluster_wide: bool,
-	#[serde(rename = "parallelism_expression")]
+	#[serde(rename = "ParallelismExpression")]
 	parallelism_expression: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Queue {
-	#[serde(rename = "config")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Config")]
 	config: queues::BasicQueueConfig,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "excluded")]
+	#[serde(rename = "Excluded")]
 	excluded: bool,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct QueueSettings {
-	#[serde(rename = "queue")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Queue")]
 	queue: String,
-	#[serde(rename = "retry")]
+	#[serde(rename = "Retry")]
 	retry: Empty,
 }
 

@@ -1,47 +1,60 @@
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct DataSet {
-	#[serde(rename = "data_set_access")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "DataSetAccess")]
 	data_set_access: data_sets::DataSetAccess,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "excluded")]
+	#[serde(rename = "Excluded")]
 	excluded: bool,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "parameters")]
+	#[serde(rename = "Parameters")]
 	parameters: Vec<data_sets::DataSetParameter, >,
-	#[serde(rename = "source")]
+	#[serde(rename = "Source")]
 	source: data_sets::OqlDataSetSource,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DataSetAccess {
-	#[serde(rename = "module_role_access_list")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "ModuleRoleAccessList")]
 	module_role_access_list: Vec<UnknownType>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct DataSetParameter {
-	#[serde(rename = "constraints")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Constraints")]
 	constraints: Vec<UnknownType>,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "parameter_type")]
+	#[serde(rename = "ParameterType")]
 	parameter_type: data_types::ObjectType,
-	#[serde(rename = "parameter_type_is_range")]
+	#[serde(rename = "ParameterTypeIsRange")]
 	parameter_type_is_range: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct OqlDataSetSource {
-	#[serde(rename = "ieiq")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "IEIQ")]
 	ieiq: bool,
-	#[serde(rename = "query")]
+	#[serde(rename = "Query")]
 	query: String,
 }
 

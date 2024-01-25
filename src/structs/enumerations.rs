@@ -1,35 +1,45 @@
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct Condition {
-	#[serde(rename = "attribute_value")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "AttributeValue")]
 	attribute_value: String,
-	#[serde(rename = "editable_visible")]
+	#[serde(rename = "EditableVisible")]
 	editable_visible: bool,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Enumeration {
-	#[serde(rename = "documentation")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "excluded")]
+	#[serde(rename = "Excluded")]
 	excluded: bool,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "values")]
+	#[serde(rename = "Values")]
 	values: Vec<enumerations::EnumerationValue, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct EnumerationValue {
-	#[serde(rename = "caption")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Caption")]
 	caption: texts::Text,
-	#[serde(rename = "image")]
+	#[serde(rename = "Image")]
 	image: String,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
 }
 

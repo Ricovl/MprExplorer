@@ -1,33 +1,40 @@
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct CustomIcon {
-	#[serde(rename = "character_code")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "CharacterCode")]
 	character_code: i64,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "tags")]
+	#[serde(rename = "Tags")]
 	tags: Vec<String>,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CustomIconCollection {
-	#[serde(rename = "collection_class")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "CollectionClass")]
 	collection_class: String,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "excluded")]
+	#[serde(rename = "Excluded")]
 	excluded: bool,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "font_data")]
+	#[serde(rename = "FontData")]
 	font_data: Binary,
-	#[serde(rename = "icons")]
+	#[serde(rename = "Icons")]
 	icons: Vec<custom_icons::CustomIcon, >,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "prefix")]
+	#[serde(rename = "Prefix")]
 	prefix: String,
 }
 

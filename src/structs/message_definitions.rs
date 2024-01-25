@@ -1,155 +1,171 @@
 use serde::{Deserialize, Serialize};
+use uuid::Uuid;
 use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct EntityMessageDefinition {
-	#[serde(rename = "documentation")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "exposed_entity")]
+	#[serde(rename = "ExposedEntity")]
 	exposed_entity: message_definitions::ExposedEntity,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ExposedAssociation {
-	#[serde(rename = "association")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Association")]
 	association: String,
-	#[serde(rename = "children")]
-	children: Vec<message_definitions::ExposedAttribute, message_definitions::ExposedAssociation, >,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Children")]
+	children: Vec<message_definitions::ExposedAssociation, message_definitions::ExposedAttribute, >,
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "element_type")]
+	#[serde(rename = "ElementType")]
 	element_type: String,
-	#[serde(rename = "entity")]
+	#[serde(rename = "Entity")]
 	entity: String,
-	#[serde(rename = "error_message")]
+	#[serde(rename = "ErrorMessage")]
 	error_message: String,
-	#[serde(rename = "example")]
+	#[serde(rename = "Example")]
 	example: String,
-	#[serde(rename = "exposed_item_name")]
+	#[serde(rename = "ExposedItemName")]
 	exposed_item_name: String,
-	#[serde(rename = "exposed_name")]
+	#[serde(rename = "ExposedName")]
 	exposed_name: String,
-	#[serde(rename = "fraction_digits")]
+	#[serde(rename = "FractionDigits")]
 	fraction_digits: i64,
-	#[serde(rename = "is_default_type")]
+	#[serde(rename = "IsDefaultType")]
 	is_default_type: bool,
-	#[serde(rename = "max_length")]
+	#[serde(rename = "MaxLength")]
 	max_length: i64,
-	#[serde(rename = "max_occurs")]
+	#[serde(rename = "MaxOccurs")]
 	max_occurs: i64,
-	#[serde(rename = "min_occurs")]
+	#[serde(rename = "MinOccurs")]
 	min_occurs: i64,
-	#[serde(rename = "nillable")]
+	#[serde(rename = "Nillable")]
 	nillable: bool,
-	#[serde(rename = "original_name")]
+	#[serde(rename = "OriginalName")]
 	original_name: String,
-	#[serde(rename = "path")]
+	#[serde(rename = "Path")]
 	path: String,
-	#[serde(rename = "primitive_type")]
+	#[serde(rename = "PrimitiveType")]
 	primitive_type: String,
-	#[serde(rename = "total_digits")]
+	#[serde(rename = "TotalDigits")]
 	total_digits: i64,
-	#[serde(rename = "warning_message")]
+	#[serde(rename = "WarningMessage")]
 	warning_message: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ExposedAttribute {
-	#[serde(rename = "attribute")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Attribute")]
 	attribute: String,
-	#[serde(rename = "children")]
+	#[serde(rename = "Children")]
 	children: Vec<UnknownType>,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "element_type")]
+	#[serde(rename = "ElementType")]
 	element_type: String,
-	#[serde(rename = "error_message")]
+	#[serde(rename = "ErrorMessage")]
 	error_message: String,
-	#[serde(rename = "example")]
+	#[serde(rename = "Example")]
 	example: String,
-	#[serde(rename = "exposed_item_name")]
+	#[serde(rename = "ExposedItemName")]
 	exposed_item_name: String,
-	#[serde(rename = "exposed_name")]
+	#[serde(rename = "ExposedName")]
 	exposed_name: String,
-	#[serde(rename = "fraction_digits")]
+	#[serde(rename = "FractionDigits")]
 	fraction_digits: i64,
-	#[serde(rename = "is_default_type")]
+	#[serde(rename = "IsDefaultType")]
 	is_default_type: bool,
-	#[serde(rename = "max_length")]
+	#[serde(rename = "MaxLength")]
 	max_length: i64,
-	#[serde(rename = "max_occurs")]
+	#[serde(rename = "MaxOccurs")]
 	max_occurs: i64,
-	#[serde(rename = "min_occurs")]
+	#[serde(rename = "MinOccurs")]
 	min_occurs: i64,
-	#[serde(rename = "nillable")]
+	#[serde(rename = "Nillable")]
 	nillable: bool,
-	#[serde(rename = "original_name")]
+	#[serde(rename = "OriginalName")]
 	original_name: String,
-	#[serde(rename = "path")]
+	#[serde(rename = "Path")]
 	path: String,
-	#[serde(rename = "primitive_type")]
+	#[serde(rename = "PrimitiveType")]
 	primitive_type: String,
-	#[serde(rename = "total_digits")]
+	#[serde(rename = "TotalDigits")]
 	total_digits: i64,
-	#[serde(rename = "warning_message")]
+	#[serde(rename = "WarningMessage")]
 	warning_message: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ExposedEntity {
-	#[serde(rename = "children")]
-	children: Vec<message_definitions::ExposedAssociation, message_definitions::ExposedAttribute, >,
-	#[serde(rename = "documentation")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Children")]
+	children: Vec<message_definitions::ExposedAttribute, message_definitions::ExposedAssociation, >,
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "element_type")]
+	#[serde(rename = "ElementType")]
 	element_type: String,
-	#[serde(rename = "entity")]
+	#[serde(rename = "Entity")]
 	entity: String,
-	#[serde(rename = "error_message")]
+	#[serde(rename = "ErrorMessage")]
 	error_message: String,
-	#[serde(rename = "example")]
+	#[serde(rename = "Example")]
 	example: String,
-	#[serde(rename = "exposed_item_name")]
+	#[serde(rename = "ExposedItemName")]
 	exposed_item_name: String,
-	#[serde(rename = "exposed_name")]
+	#[serde(rename = "ExposedName")]
 	exposed_name: String,
-	#[serde(rename = "fraction_digits")]
+	#[serde(rename = "FractionDigits")]
 	fraction_digits: i64,
-	#[serde(rename = "is_default_type")]
+	#[serde(rename = "IsDefaultType")]
 	is_default_type: bool,
-	#[serde(rename = "max_length")]
+	#[serde(rename = "MaxLength")]
 	max_length: i64,
-	#[serde(rename = "max_occurs")]
+	#[serde(rename = "MaxOccurs")]
 	max_occurs: i64,
-	#[serde(rename = "min_occurs")]
+	#[serde(rename = "MinOccurs")]
 	min_occurs: i64,
-	#[serde(rename = "nillable")]
+	#[serde(rename = "Nillable")]
 	nillable: bool,
-	#[serde(rename = "original_name")]
+	#[serde(rename = "OriginalName")]
 	original_name: String,
-	#[serde(rename = "path")]
+	#[serde(rename = "Path")]
 	path: String,
-	#[serde(rename = "primitive_type")]
+	#[serde(rename = "PrimitiveType")]
 	primitive_type: String,
-	#[serde(rename = "total_digits")]
+	#[serde(rename = "TotalDigits")]
 	total_digits: i64,
-	#[serde(rename = "warning_message")]
+	#[serde(rename = "WarningMessage")]
 	warning_message: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct MessageDefinitionCollection {
-	#[serde(rename = "documentation")]
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "excluded")]
+	#[serde(rename = "Excluded")]
 	excluded: bool,
-	#[serde(rename = "export_level")]
+	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "message_definitions")]
+	#[serde(rename = "MessageDefinitions")]
 	message_definitions: Vec<message_definitions::EntityMessageDefinition, >,
-	#[serde(rename = "name")]
+	#[serde(rename = "Name")]
 	name: String,
 }
 

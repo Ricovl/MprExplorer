@@ -194,10 +194,13 @@ impl MendixType {
         writeln!(file, "#[derive(Serialize, Deserialize)]").unwrap();
         writeln!(file, "pub struct {} {{", self.name).unwrap();
 
-        for (_attr_name, attr_type) in self.values.iter() {
-            let attr_name = if _attr_name.eq("Type") { "_type".to_string() } else { _attr_name.to_case(convert_case::Case::Snake) };
+        writeln!(file, "\t#[serde(rename = \"$ID\")]").unwrap();
+        writeln!(file, "\t_id: Uuid,\n").unwrap();
 
-            writeln!(file, "\t#[serde(rename = \"{}\")]", attr_name).unwrap();
+        for (_attr_name, attr_type) in self.values.iter() {
+            let attr_name = if _attr_name.eq("Type") { "var_type".to_string() } else { _attr_name.to_case(convert_case::Case::Snake) };
+
+            writeln!(file, "\t#[serde(rename = \"{}\")]", _attr_name).unwrap();
             writeln!(file, "\t{}: {},", attr_name, attr_type).unwrap();
         }
         writeln!(file, "}}\n").unwrap();
@@ -238,6 +241,7 @@ impl Module {
             .unwrap();
 
         writeln!(file, "use serde::{{Deserialize, Serialize}};").unwrap();
+        writeln!(file, "use uuid::Uuid;").unwrap();
         writeln!(file, "use super::*;\n").unwrap();
 
         for (_, mendix_type) in self.types.iter() {
