@@ -100,7 +100,7 @@ pub struct ExposedAttribute {
 #[derive(Serialize, Deserialize)]
 pub struct ExposedEntity {
 	#[serde(rename = "children")]
-	children: Vec<message_definitions::ExposedAttribute, message_definitions::ExposedAssociation, >,
+	children: Vec<message_definitions::ExposedAssociation, message_definitions::ExposedAttribute, >,
 	#[serde(rename = "documentation")]
 	documentation: String,
 	#[serde(rename = "element_type")]

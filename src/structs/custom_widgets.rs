@@ -164,7 +164,7 @@ pub struct WidgetValue {
 	#[serde(rename = "type_pointer")]
 	type_pointer: Binary,
 	#[serde(rename = "widgets")]
-	widgets: Vec<forms::DivContainer, custom_widgets::CustomWidget, forms::LayoutGrid, >,
+	widgets: Vec<forms::LayoutGrid, custom_widgets::CustomWidget, forms::DivContainer, >,
 	#[serde(rename = "x_path_constraint")]
 	x_path_constraint: String,
 }

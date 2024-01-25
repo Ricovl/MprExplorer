@@ -1,11 +1,10 @@
-use bson::{document, Document};
+use bson::Document;
 use convert_case::Casing;
 use indexmap::IndexMap;
 use rayon::iter::{IntoParallelRefMutIterator, ParallelIterator};
 use rusqlite::Connection;
-use serde::de::value;
 use std::{
-    borrow::BorrowMut, collections::{BTreeMap, HashSet}, fmt::{self, write, Debug, Formatter}, fs::{OpenOptions, File}, io::{Write}, str::FromStr
+    io::{Write}, collections::{BTreeMap, HashSet}, fmt::{self, Debug, Formatter}, fs::{OpenOptions, File}, str::FromStr
 };
 use uuid::Uuid;
 
@@ -163,7 +162,7 @@ impl MendixType {
             let other_value = other_values.next();
 
             if let Some((_other_key, other_type)) = other_value {
-                let (_self_key, self_type) = self_values.next().unwrap();
+                let (_self_key, mut self_type) = self_values.next().unwrap();
 
                 match self_type {
                     SpecialTypes::Array(_, map) => {
@@ -174,12 +173,13 @@ impl MendixType {
                         }
                     },
                     SpecialTypes::Empty() => {
-                        // self_type = other_type.into();
-                        // match other_type {
-                        //     SpecialTypes::Array(_, map) => other_type = ,
-                        //     SpecialTypes::Reference(refe) => other_type = refe,
-                        //     _ => (),
-                        // }
+                        // self_type = &mut SpecialTypes::Normal("()".to_string());
+                        // self_type = other_type.clone();
+                        match other_type {
+                            SpecialTypes::Array(val, map) => self_type = &mut SpecialTypes::Array(val.clone(), map.clone()),
+                            SpecialTypes::Reference(refe) => self_type = &mut SpecialTypes::Reference(refe.clone()),
+                            _ => (),
+                        }
                     },
                     _ => ()
                 }
@@ -227,8 +227,9 @@ impl Module {
         }
     }
 
-    fn write(&self) {
+    fn write(&self, modfile: &mut File) {
         let module_name = self.name.to_case(convert_case::Case::Snake);
+        writeln!(modfile, "pub mod {};", module_name).unwrap();
 
         let mut file = OpenOptions::new()
             .write(true)
@@ -310,9 +311,14 @@ impl ModuleExplorer {
 
 
     fn write_to_folder(&self, dir: &str) {
+        let mut modfile: File = OpenOptions::new()
+            .write(true)
+            .create(true)
+            .open("src/structs.rs")
+            .unwrap();
 
         for (_, module) in self.modules.iter() {
-            module.write();
+            module.write(&mut modfile);
         }
     }
 
@@ -337,11 +343,6 @@ impl std::fmt::Display for SpecialTypes {
                     let val = _attributes.iter().next().unwrap();
                     write!(f, "Vec<{}>", val)
                 }
-                // else if _attributes.len() == 1 {
-                //     let (_module, structname) = _attributes[0].split_once("$").unwrap();
-                //     let module = _module.to_case(convert_case::Case::Snake);
-                //     writeln!(file, "\t{}: Vec<{}::{}>,", attr_name, module, structname).unwrap();
-                // }
                 else {
                     let mut attributes = String::new();
                     for attr in _attributes {
@@ -390,63 +391,4 @@ fn main() {
     
 
     module_explr.write_to_folder("test");
-    
-    // let mut modfile: File = OpenOptions::new()
-    //     .write(true)
-    //     .create(true)
-    //     .open("src/structs.rs")
-    //     .unwrap();
-
-    // for (_module_name, structs) in types {
-    //     let module_name = _module_name.to_case(convert_case::Case::Snake);
-    //     writeln!(modfile, "pub mod {};", module_name).unwrap();
-
-    //     let mut file = OpenOptions::new()
-    //         .write(true)
-    //         .create(true)
-    //         .open(format!("src/structs/{}.rs", module_name))
-    //         .unwrap();
-
-    //     writeln!(file, "use serde::{{Deserialize, Serialize}};").unwrap();
-    //     writeln!(file, "use super::*;\n").unwrap();
-
-    //     for (struct_name, attributes) in structs.iter() {
-    //         writeln!(file, "#[derive(Serialize, Deserialize)]").unwrap();
-    //         writeln!(file, "pub struct {} {{", struct_name).unwrap();
-
-    //         for (_attr_name, attr_type) in attributes {
-    //             let attr_name = _attr_name.to_case(convert_case::Case::Snake);
-    //             writeln!(file, "\t#[serde(rename = \"{}\")]", attr_name).unwrap();
-    //             match attr_type {
-    //                 SpecialTypes::Normal(_type) => {
-    //                     writeln!(file, "\t{}: {},", attr_name, _type).unwrap();
-    //                 }
-    //                 SpecialTypes::Array(arraytype, _attributes) => {
-    //                     if _attributes.len() == 0 {
-    //                         writeln!(file, "\t{}: Vec<UnknownType>,", attr_name).unwrap();
-    //                     }
-    //                     else if arraytype.to_owned() == 1 {
-    //                         writeln!(file, "\t{}: Vec<{}>,", attr_name, _attributes[0]).unwrap();
-    //                     }
-    //                     else if _attributes.len() == 1 {
-    //                         let (_module, structname) = _attributes[0].split_once("$").unwrap();
-    //                         let module = _module.to_case(convert_case::Case::Snake);
-    //                         writeln!(file, "\t{}: Vec<{}::{}>,", attr_name, module, structname).unwrap();
-    //                     }
-    //                     else {
-    //                         writeln!(file, "\t{}: Vec<{:?}>,", attr_name, _attributes).unwrap();
-    //                     }
-    //                 },
-    //                 SpecialTypes::Reference(_type) => {
-    //                     let (_module, structname) = _type.split_once("$").unwrap();
-    //                     let module = _module.to_case(convert_case::Case::Snake);
-    //                     writeln!(file, "\t{}: {}::{},", attr_name, module, structname).unwrap();
-    //                 },
-    //                 SpecialTypes::Empty() => todo!(),
-    //             }
-    //         }
-    //         writeln!(file, "}}\n").unwrap();
-    //     }
-    // }
-    // println!("Finished struct write.");
 }

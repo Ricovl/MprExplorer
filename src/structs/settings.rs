@@ -104,7 +104,7 @@ pub struct ModelSettings {
 #[derive(Serialize, Deserialize)]
 pub struct ProjectSettings {
 	#[serde(rename = "settings")]
-	settings: Vec<settings::LanguageSettings, settings::IntegrationProjectSettingsPart, settings::CertificateSettings, forms::WebUIProjectSettingsPart, settings::ConfigurationSettings, settings::ConventionSettings, settings::ModelSettings, settings::WorkflowsProjectSettingsPart, settings::DistributionSettings, settings::JarDeploymentSettings, >,
+	settings: Vec<settings::WorkflowsProjectSettingsPart, settings::ConventionSettings, forms::WebUIProjectSettingsPart, settings::IntegrationProjectSettingsPart, settings::CertificateSettings, settings::DistributionSettings, settings::ConfigurationSettings, settings::LanguageSettings, settings::ModelSettings, settings::JarDeploymentSettings, >,
 }
 
 #[derive(Serialize, Deserialize)]

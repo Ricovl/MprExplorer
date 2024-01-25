@@ -40,7 +40,7 @@ pub struct ObjectMappingElement {
 	#[serde(rename = "association")]
 	association: String,
 	#[serde(rename = "children")]
-	children: Vec<import_mappings::ValueMappingElement, import_mappings::ObjectMappingElement, >,
+	children: Vec<import_mappings::ObjectMappingElement, import_mappings::ValueMappingElement, >,
 	#[serde(rename = "custom_handler_call")]
 	custom_handler_call: Empty,
 	#[serde(rename = "documentation")]

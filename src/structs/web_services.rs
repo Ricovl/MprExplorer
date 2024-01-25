@@ -6,7 +6,7 @@ pub struct DataAssociationImpl {
 	#[serde(rename = "association")]
 	association: String,
 	#[serde(rename = "child_members")]
-	child_members: Vec<web_services::DataAssociationImpl, web_services::DataAttributeImpl, >,
+	child_members: Vec<web_services::DataAttributeImpl, web_services::DataAssociationImpl, >,
 	#[serde(rename = "description")]
 	description: String,
 	#[serde(rename = "element_name")]

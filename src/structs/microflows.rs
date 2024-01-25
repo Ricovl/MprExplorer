@@ -734,7 +734,7 @@ pub struct MicroflowCallParameterMapping {
 #[derive(Serialize, Deserialize)]
 pub struct MicroflowObjectCollection {
 	#[serde(rename = "objects")]
-	objects: Vec<microflows::ContinueEvent, microflows::StartEvent, microflows::ExclusiveMerge, microflows::Annotation, microflows::EndEvent, microflows::MicroflowParameter, microflows::ErrorEvent, microflows::LoopedActivity, microflows::InheritanceSplit, microflows::ActionActivity, microflows::BreakEvent, microflows::ExclusiveSplit, >,
+	objects: Vec<microflows::ErrorEvent, microflows::MicroflowParameter, microflows::ActionActivity, microflows::ExclusiveSplit, microflows::BreakEvent, microflows::InheritanceSplit, microflows::EndEvent, microflows::StartEvent, microflows::ContinueEvent, microflows::Annotation, microflows::ExclusiveMerge, microflows::LoopedActivity, >,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -770,7 +770,7 @@ pub struct Nanoflow {
 	#[serde(rename = "export_level")]
 	export_level: String,
 	#[serde(rename = "flows")]
-	flows: Vec<microflows::SequenceFlow, microflows::AnnotationFlow, >,
+	flows: Vec<microflows::AnnotationFlow, microflows::SequenceFlow, >,
 	#[serde(rename = "mark_as_used")]
 	mark_as_used: bool,
 	#[serde(rename = "microflow_return_type")]
