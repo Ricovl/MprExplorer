@@ -2,6 +2,12 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 use super::*;
 
+// Todo: Rename this
+pub enum MessageExposure {
+	ExposedAssociation(message_definitions::ExposedAssociation), 
+	ExposedAttribute(message_definitions::ExposedAttribute)
+}
+
 #[derive(Serialize, Deserialize)]
 pub struct EntityMessageDefinition {
 	#[serde(rename = "$ID")]
@@ -23,7 +29,7 @@ pub struct ExposedAssociation {
 	#[serde(rename = "Association")]
 	association: String,
 	#[serde(rename = "Children")]
-	children: Vec<message_definitions::ExposedAssociation, message_definitions::ExposedAttribute, >,
+	children: Vec<MessageExposure>,
 	#[serde(rename = "Documentation")]
 	documentation: String,
 	#[serde(rename = "ElementType")]
@@ -113,7 +119,7 @@ pub struct ExposedEntity {
 	_id: Uuid,
 
 	#[serde(rename = "Children")]
-	children: Vec<message_definitions::ExposedAttribute, message_definitions::ExposedAssociation, >,
+	children: Vec<MessageExposure>,
 	#[serde(rename = "Documentation")]
 	documentation: String,
 	#[serde(rename = "ElementType")]

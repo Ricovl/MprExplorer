@@ -2,6 +2,11 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 use super::*;
 
+pub enum ImportMappingElement {
+	ObjectMappingElement(import_mappings::ObjectMappingElement),
+	ValueMappingElement(import_mappings::ValueMappingElement),
+}
+
 #[derive(Serialize, Deserialize)]
 pub struct ImportMapping {
 	#[serde(rename = "$ID")]
@@ -10,7 +15,7 @@ pub struct ImportMapping {
 	#[serde(rename = "Documentation")]
 	documentation: String,
 	#[serde(rename = "Elements")]
-	elements: Vec<import_mappings::ObjectMappingElement, >,
+	elements: Vec<import_mappings::ObjectMappingElement>,
 	#[serde(rename = "Excluded")]
 	excluded: bool,
 	#[serde(rename = "ExportLevel")]
@@ -47,7 +52,7 @@ pub struct ObjectMappingElement {
 	#[serde(rename = "Association")]
 	association: String,
 	#[serde(rename = "Children")]
-	children: Vec<import_mappings::ObjectMappingElement, import_mappings::ValueMappingElement, >,
+	children: Vec<ImportMappingElement>,
 	#[serde(rename = "CustomHandlerCall")]
 	custom_handler_call: Empty,
 	#[serde(rename = "Documentation")]

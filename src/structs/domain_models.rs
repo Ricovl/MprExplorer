@@ -1,3 +1,4 @@
+use bson::Binary;
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 use super::*;
@@ -18,7 +19,7 @@ pub struct AccessRule {
 	#[serde(rename = "Documentation")]
 	documentation: String,
 	#[serde(rename = "MemberAccesses")]
-	member_accesses: Vec<domain_models::MemberAccess, >,
+	member_accesses: Vec<domain_models::MemberAccess>,
 	#[serde(rename = "XPathConstraint")]
 	x_path_constraint: String,
 }
@@ -197,15 +198,15 @@ pub struct DomainModel {
 	_id: Uuid,
 
 	#[serde(rename = "Annotations")]
-	annotations: Vec<domain_models::Annotation, >,
+	annotations: Vec<domain_models::Annotation>,
 	#[serde(rename = "Associations")]
-	associations: Vec<domain_models::Association, >,
+	associations: Vec<domain_models::Association>,
 	#[serde(rename = "CrossAssociations")]
-	cross_associations: Vec<domain_models::CrossAssociation, >,
+	cross_associations: Vec<domain_models::CrossAssociation>,
 	#[serde(rename = "Documentation")]
 	documentation: String,
 	#[serde(rename = "Entities")]
-	entities: Vec<domain_models::EntityImpl, >,
+	entities: Vec<domain_models::EntityImpl>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -231,13 +232,13 @@ pub struct EntityImpl {
 	_id: Uuid,
 
 	#[serde(rename = "AccessRules")]
-	access_rules: Vec<domain_models::AccessRule, >,
+	access_rules: Vec<domain_models::AccessRule>,
 	#[serde(rename = "Attributes")]
-	attributes: Vec<domain_models::Attribute, >,
+	attributes: Vec<domain_models::Attribute>,
 	#[serde(rename = "Documentation")]
 	documentation: String,
 	#[serde(rename = "Events")]
-	events: Vec<domain_models::EntityEvent, >,
+	events: Vec<domain_models::EntityEvent>,
 	#[serde(rename = "ExportLevel")]
 	export_level: String,
 	#[serde(rename = "GUID")]
@@ -247,7 +248,7 @@ pub struct EntityImpl {
 	#[serde(rename = "ImageData")]
 	image_data: Binary,
 	#[serde(rename = "Indexes")]
-	indexes: Vec<domain_models::EntityIndex, >,
+	indexes: Vec<domain_models::EntityIndex>,
 	#[serde(rename = "Location")]
 	location: String,
 	#[serde(rename = "MaybeGeneralization")]
@@ -257,7 +258,7 @@ pub struct EntityImpl {
 	#[serde(rename = "Source")]
 	source: Empty,
 	#[serde(rename = "ValidationRules")]
-	validation_rules: Vec<domain_models::ValidationRule, >,
+	validation_rules: Vec<domain_models::ValidationRule>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -266,7 +267,7 @@ pub struct EntityIndex {
 	_id: Uuid,
 
 	#[serde(rename = "Attributes")]
-	attributes: Vec<domain_models::IndexedAttribute, >,
+	attributes: Vec<domain_models::IndexedAttribute>,
 	#[serde(rename = "GUID")]
 	guid: Binary,
 }
@@ -319,7 +320,7 @@ pub struct IndirectEntityRef {
 	_id: Uuid,
 
 	#[serde(rename = "Steps")]
-	steps: Vec<domain_models::EntityRefStep, >,
+	steps: Vec<domain_models::EntityRefStep>,
 }
 
 #[derive(Serialize, Deserialize)]

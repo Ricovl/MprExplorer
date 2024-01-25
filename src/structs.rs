@@ -1,3 +1,6 @@
+use serde::{Deserialize, Serialize};
+use uuid::Uuid;
+
 pub mod code_actions;
 pub mod constants;
 pub mod custom_icons;
@@ -30,3 +33,17 @@ pub mod settings;
 pub mod texts;
 pub mod web_services;
 pub mod xml_schemas;
+
+
+
+#[derive(Serialize, Deserialize)]
+pub struct Empty {
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct UnknownType {
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+}

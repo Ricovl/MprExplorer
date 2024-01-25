@@ -1,3 +1,4 @@
+use bson::Binary;
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 use super::*;
@@ -88,7 +89,7 @@ pub struct WidgetObject {
 	_id: Uuid,
 
 	#[serde(rename = "Properties")]
-	properties: Vec<custom_widgets::WidgetProperty, >,
+	properties: Vec<custom_widgets::WidgetProperty>,
 	#[serde(rename = "TypePointer")]
 	type_pointer: Binary,
 }
@@ -99,7 +100,7 @@ pub struct WidgetObjectType {
 	_id: Uuid,
 
 	#[serde(rename = "PropertyTypes")]
-	property_types: Vec<custom_widgets::WidgetPropertyType, >,
+	property_types: Vec<custom_widgets::WidgetPropertyType>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -184,7 +185,7 @@ pub struct WidgetValue {
 	#[serde(rename = "Nanoflow")]
 	nanoflow: String,
 	#[serde(rename = "Objects")]
-	objects: Vec<custom_widgets::WidgetObject, >,
+	objects: Vec<custom_widgets::WidgetObject>,
 	#[serde(rename = "PrimitiveValue")]
 	primitive_value: String,
 	#[serde(rename = "Selection")]
@@ -198,7 +199,7 @@ pub struct WidgetValue {
 	#[serde(rename = "TypePointer")]
 	type_pointer: Binary,
 	#[serde(rename = "Widgets")]
-	widgets: Vec<custom_widgets::CustomWidget, forms::LayoutGrid, forms::DivContainer, >,
+	widgets: Vec<Widgets>,
 	#[serde(rename = "XPathConstraint")]
 	x_path_constraint: String,
 }
@@ -221,7 +222,7 @@ pub struct WidgetValueType {
 	#[serde(rename = "EntityProperty")]
 	entity_property: String,
 	#[serde(rename = "EnumerationValues")]
-	enumeration_values: Vec<custom_widgets::WidgetEnumerationValue, >,
+	enumeration_values: Vec<custom_widgets::WidgetEnumerationValue>,
 	#[serde(rename = "IsList")]
 	is_list: bool,
 	#[serde(rename = "IsPath")]
@@ -245,7 +246,7 @@ pub struct WidgetValueType {
 	#[serde(rename = "SelectionTypes")]
 	selection_types: Vec<String>,
 	#[serde(rename = "Translations")]
-	translations: Vec<custom_widgets::WidgetTranslation, >,
+	translations: Vec<custom_widgets::WidgetTranslation>,
 	#[serde(rename = "Type")]
 	var_type: String,
 }

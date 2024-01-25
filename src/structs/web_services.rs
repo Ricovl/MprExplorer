@@ -2,6 +2,11 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 use super::*;
 
+pub enum DataImpls {
+	DataAssociationImpl(web_services::DataAssociationImpl), 
+	DataAttributeImpl(web_services::DataAttributeImpl),
+}
+
 #[derive(Serialize, Deserialize)]
 pub struct DataAssociationImpl {
 	#[serde(rename = "$ID")]
@@ -10,7 +15,7 @@ pub struct DataAssociationImpl {
 	#[serde(rename = "Association")]
 	association: String,
 	#[serde(rename = "ChildMembers")]
-	child_members: Vec<web_services::DataAssociationImpl, web_services::DataAttributeImpl, >,
+	child_members: Vec<DataImpls>,
 	#[serde(rename = "Description")]
 	description: String,
 	#[serde(rename = "ElementName")]
@@ -64,7 +69,7 @@ pub struct DataEntityImpl {
 	_id: Uuid,
 
 	#[serde(rename = "ChildMembers")]
-	child_members: Vec<web_services::DataAssociationImpl, web_services::DataAttributeImpl, >,
+	child_members: Vec<DataImpls>,
 	#[serde(rename = "ElementName")]
 	element_name: String,
 	#[serde(rename = "Entity")]

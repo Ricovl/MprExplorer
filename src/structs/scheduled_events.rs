@@ -1,3 +1,4 @@
+use bson::DateTime;
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 use super::*;

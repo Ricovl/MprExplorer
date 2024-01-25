@@ -1,6 +1,28 @@
+use bson::Binary;
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 use super::*;
+
+pub enum Flow {
+	AnnotationFlow(microflows::AnnotationFlow), 
+	SequenceFlow(microflows::SequenceFlow),
+}
+
+pub enum MicroFlowObject {
+	MicroflowParameter(microflows::MicroflowParameter),
+	EndEvent(microflows::EndEvent),
+	StartEvent(microflows::StartEvent),
+	ContinueEvent(microflows::ContinueEvent),
+	LoopedActivity(microflows::LoopedActivity),
+	ExclusiveMerge(microflows::ExclusiveMerge),
+	InheritanceSplit(microflows::InheritanceSplit),
+	ErrorEvent(microflows::ErrorEvent),
+	ExclusiveSplit(microflows::ExclusiveSplit),
+	Annotation(microflows::Annotation),
+	ActionActivity(microflows::ActionActivity),
+	BreakEvent(microflows::BreakEvent),
+}
+
 
 #[derive(Serialize, Deserialize)]
 pub struct ActionActivity {
@@ -867,7 +889,7 @@ pub struct Microflow {
 	#[serde(rename = "ExportLevel")]
 	export_level: String,
 	#[serde(rename = "Flows")]
-	flows: Vec<microflows::AnnotationFlow, microflows::SequenceFlow, >,
+	flows: Vec<Flow>,
 	#[serde(rename = "MarkAsUsed")]
 	mark_as_used: bool,
 	#[serde(rename = "MicroflowActionInfo")]
@@ -890,7 +912,7 @@ pub struct MicroflowCall {
 	#[serde(rename = "Microflow")]
 	microflow: String,
 	#[serde(rename = "ParameterMappings")]
-	parameter_mappings: Vec<microflows::MicroflowCallParameterMapping, >,
+	parameter_mappings: Vec<microflows::MicroflowCallParameterMapping>,
 	#[serde(rename = "QueueSettings")]
 	queue_settings: Empty,
 }
@@ -927,7 +949,7 @@ pub struct MicroflowObjectCollection {
 	_id: Uuid,
 
 	#[serde(rename = "Objects")]
-	objects: Vec<microflows::MicroflowParameter, microflows::EndEvent, microflows::StartEvent, microflows::ContinueEvent, microflows::LoopedActivity, microflows::ExclusiveMerge, microflows::InheritanceSplit, microflows::ErrorEvent, microflows::ExclusiveSplit, microflows::Annotation, microflows::ActionActivity, microflows::BreakEvent, >,
+	objects: Vec<MicroFlowObject>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -972,7 +994,7 @@ pub struct Nanoflow {
 	#[serde(rename = "ExportLevel")]
 	export_level: String,
 	#[serde(rename = "Flows")]
-	flows: Vec<microflows::AnnotationFlow, microflows::SequenceFlow, >,
+	flows: Vec<Flow>,
 	#[serde(rename = "MarkAsUsed")]
 	mark_as_used: bool,
 	#[serde(rename = "MicroflowReturnType")]

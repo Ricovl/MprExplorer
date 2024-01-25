@@ -75,7 +75,7 @@ pub struct DocumentTemplate {
 	#[serde(rename = "Style")]
 	style: document_templates::Style,
 	#[serde(rename = "Toplevels")]
-	toplevels: Vec<document_templates::DataView, >,
+	toplevels: Vec<document_templates::DataView>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -170,7 +170,7 @@ pub struct Table {
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "Rows")]
-	rows: Vec<document_templates::TableRow, >,
+	rows: Vec<document_templates::TableRow>,
 	#[serde(rename = "Style")]
 	style: document_templates::Style,
 }
@@ -198,7 +198,7 @@ pub struct TableRow {
 	_id: Uuid,
 
 	#[serde(rename = "Cells")]
-	cells: Vec<document_templates::TableCell, >,
+	cells: Vec<document_templates::TableCell>,
 	#[serde(rename = "ConditionSettings")]
 	condition_settings: document_templates::ConditionSettings,
 }

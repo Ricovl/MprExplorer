@@ -1,6 +1,32 @@
+use bson::Binary;
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 use super::*;
+
+#[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
+pub enum ProjectSetting {
+	#[serde(rename = "Settings$CertificateSettings")]
+	CertificateSettings(settings::CertificateSettings),
+	#[serde(rename = "Settings$ConfigurationSettings")]
+	ConfigurationSettings(settings::ConfigurationSettings),
+	#[serde(rename = "Settings$ConventionSettings")]
+	ConventionSettings(settings::ConventionSettings),
+	#[serde(rename = "Settings$DistributionSettings")]
+	DistributionSettings(settings::DistributionSettings),
+	#[serde(rename = "Settings$IntegrationProjectSettingsPart")]
+	IntegrationProjectSettingsPart(settings::IntegrationProjectSettingsPart),
+	#[serde(rename = "Settings$JarDeploymentSettings")]
+	JarDeploymentSettings(settings::JarDeploymentSettings),
+	#[serde(rename = "Settings$LanguageSettings")]
+	LanguageSettings(settings::LanguageSettings),
+	#[serde(rename = "Settings$ModelSettings")]
+	ModelSettings(settings::ModelSettings),
+	#[serde(rename = "Forms$WebUIProjectSettingsPart")]
+	WebUIProjectSettingsPart(forms::WebUIProjectSettingsPart),
+	#[serde(rename = "Settings$WorkflowsProjectSettingsPart")]
+	WorkflowsProjectSettingsPart(settings::WorkflowsProjectSettingsPart),
+}
 
 #[derive(Serialize, Deserialize)]
 pub struct ActionActivityDefaultColor {
@@ -141,7 +167,7 @@ pub struct ProjectSettings {
 	_id: Uuid,
 
 	#[serde(rename = "Settings")]
-	settings: Vec<settings::WorkflowsProjectSettingsPart, settings::DistributionSettings, settings::JarDeploymentSettings, settings::LanguageSettings, settings::ModelSettings, settings::CertificateSettings, forms::WebUIProjectSettingsPart, settings::IntegrationProjectSettingsPart, settings::ConfigurationSettings, settings::ConventionSettings, >,
+	settings: Vec<ProjectSetting>,
 }
 
 #[derive(Serialize, Deserialize)]

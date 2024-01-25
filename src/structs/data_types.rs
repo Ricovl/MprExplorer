@@ -1,6 +1,5 @@
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
-use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct BinaryType {

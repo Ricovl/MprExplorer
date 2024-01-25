@@ -146,7 +146,7 @@ impl Debug for MendixType {
 impl MendixType {
     fn add_attribute(&mut self, attr_name: &str, attr_type: SpecialTypes) {
         match attr_type {
-            SpecialTypes::Array(_, _) | SpecialTypes::Empty() => {
+            SpecialTypes::Array(_, _) | SpecialTypes::Empty() | SpecialTypes::Reference(_) => {
                 self.is_dead_end = false;
             }
             _ => {},
@@ -178,6 +178,14 @@ impl MendixType {
                         match other_type {
                             SpecialTypes::Array(val, map) => self_type = &mut SpecialTypes::Array(val.clone(), map.clone()),
                             SpecialTypes::Reference(refe) => self_type = &mut SpecialTypes::Reference(refe.clone()),
+                            _ => (),
+                        }
+                    },
+                    SpecialTypes::Reference(set) => {
+                        match other_type {
+                            SpecialTypes::Reference(other_set) => {
+                                set.insert(other_set.iter().next().unwrap().to_string());
+                            },
                             _ => (),
                         }
                     },
@@ -296,7 +304,9 @@ impl ModuleExplorer {
                 }
                 bson::Bson::Document(_doc) => {
                     let arg = self.explore_mpr(&_doc);
-                    mendixtype.add_attribute(key, SpecialTypes::Reference(arg));
+                    let mut set = HashSet::new();
+                    set.insert(arg);
+                    mendixtype.add_attribute(key, SpecialTypes::Reference(set));
                 }
                 bson::Bson::Null => { 
                     mendixtype.add_attribute(key, SpecialTypes::Empty());
@@ -331,7 +341,7 @@ impl ModuleExplorer {
 enum SpecialTypes {
     Normal(String),
     Array(i32, HashSet<String>),
-    Reference(String),
+    Reference(HashSet<String>),
     Empty(),
 }
 
@@ -358,10 +368,15 @@ impl std::fmt::Display for SpecialTypes {
                     write!(f, "Vec<{}>", attributes)
                 }
             },
-            SpecialTypes::Reference(_type) => {
-                let (_module, structname) = _type.split_once("$").unwrap();
-                let module = _module.to_case(convert_case::Case::Snake);
-                write!(f, "{}::{}", module, structname)
+            SpecialTypes::Reference(_attributes) => {
+                let mut attributes = String::new();
+                for attr in _attributes {
+                    let (_module, structname) = attr.split_once("$").unwrap();
+                    let module = _module.to_case(convert_case::Case::Snake);
+                    attributes.push_str(format!("{}::{}, ", module, structname).as_str());
+                    
+                }
+                write!(f, "Type<{}>", attributes)
             },
             SpecialTypes::Empty() => write!(f, "Empty"),
         }
