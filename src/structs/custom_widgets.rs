@@ -6,21 +6,21 @@ pub struct CustomWidget {
 	#[serde(rename = "appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "conditional_editability_settings")]
-	conditional_editability_settings: NULL,
+	conditional_editability_settings: Empty,
 	#[serde(rename = "conditional_visibility_settings")]
-	conditional_visibility_settings: NULL,
+	conditional_visibility_settings: Empty,
 	#[serde(rename = "editable")]
 	editable: String,
 	#[serde(rename = "label_template")]
-	label_template: NULL,
+	label_template: Empty,
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "object")]
 	object: custom_widgets::WidgetObject,
 	#[serde(rename = "tab_index")]
 	tab_index: i64,
-	#[serde(rename = "type")]
-	type: custom_widgets::CustomWidgetType,
+	#[serde(rename = "_type")]
+	_type: custom_widgets::CustomWidgetType,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -72,7 +72,7 @@ pub struct WidgetEnumerationValue {
 #[derive(Serialize, Deserialize)]
 pub struct WidgetObject {
 	#[serde(rename = "properties")]
-	properties: Vec<custom_widgets::WidgetProperty>,
+	properties: Vec<custom_widgets::WidgetProperty, >,
 	#[serde(rename = "type_pointer")]
 	type_pointer: Binary,
 }
@@ -80,7 +80,7 @@ pub struct WidgetObject {
 #[derive(Serialize, Deserialize)]
 pub struct WidgetObjectType {
 	#[serde(rename = "property_types")]
-	property_types: Vec<custom_widgets::WidgetPropertyType>,
+	property_types: Vec<custom_widgets::WidgetPropertyType, >,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -115,8 +115,8 @@ pub struct WidgetReturnType {
 	entity_property: String,
 	#[serde(rename = "is_list")]
 	is_list: bool,
-	#[serde(rename = "type")]
-	type: String,
+	#[serde(rename = "_type")]
+	_type: String,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -132,17 +132,17 @@ pub struct WidgetValue {
 	#[serde(rename = "action")]
 	action: forms::NoAction,
 	#[serde(rename = "attribute_ref")]
-	attribute_ref: NULL,
+	attribute_ref: Empty,
 	#[serde(rename = "data_source")]
-	data_source: NULL,
+	data_source: Empty,
 	#[serde(rename = "entity_ref")]
-	entity_ref: NULL,
+	entity_ref: Empty,
 	#[serde(rename = "expression")]
 	expression: String,
 	#[serde(rename = "form")]
 	form: String,
 	#[serde(rename = "icon")]
-	icon: NULL,
+	icon: Empty,
 	#[serde(rename = "image")]
 	image: String,
 	#[serde(rename = "microflow")]
@@ -150,21 +150,21 @@ pub struct WidgetValue {
 	#[serde(rename = "nanoflow")]
 	nanoflow: String,
 	#[serde(rename = "objects")]
-	objects: Vec<UnknownType>,
+	objects: Vec<custom_widgets::WidgetObject, >,
 	#[serde(rename = "primitive_value")]
 	primitive_value: String,
 	#[serde(rename = "selection")]
 	selection: String,
 	#[serde(rename = "source_variable")]
-	source_variable: NULL,
+	source_variable: Empty,
 	#[serde(rename = "text_template")]
-	text_template: NULL,
+	text_template: Empty,
 	#[serde(rename = "translatable_value")]
-	translatable_value: NULL,
+	translatable_value: Empty,
 	#[serde(rename = "type_pointer")]
 	type_pointer: Binary,
 	#[serde(rename = "widgets")]
-	widgets: Vec<UnknownType>,
+	widgets: Vec<forms::DivContainer, custom_widgets::CustomWidget, forms::LayoutGrid, >,
 	#[serde(rename = "x_path_constraint")]
 	x_path_constraint: String,
 }
@@ -172,7 +172,7 @@ pub struct WidgetValue {
 #[derive(Serialize, Deserialize)]
 pub struct WidgetValueType {
 	#[serde(rename = "allowed_types")]
-	allowed_types: Vec<UnknownType>,
+	allowed_types: Vec<String>,
 	#[serde(rename = "allow_non_persistable_entities")]
 	allow_non_persistable_entities: bool,
 	#[serde(rename = "association_types")]
@@ -184,7 +184,7 @@ pub struct WidgetValueType {
 	#[serde(rename = "entity_property")]
 	entity_property: String,
 	#[serde(rename = "enumeration_values")]
-	enumeration_values: Vec<UnknownType>,
+	enumeration_values: Vec<custom_widgets::WidgetEnumerationValue, >,
 	#[serde(rename = "is_list")]
 	is_list: bool,
 	#[serde(rename = "is_path")]
@@ -192,7 +192,7 @@ pub struct WidgetValueType {
 	#[serde(rename = "multiline")]
 	multiline: bool,
 	#[serde(rename = "object_type")]
-	object_type: NULL,
+	object_type: Empty,
 	#[serde(rename = "on_change_property")]
 	on_change_property: String,
 	#[serde(rename = "parameter_is_list")]
@@ -202,14 +202,14 @@ pub struct WidgetValueType {
 	#[serde(rename = "required")]
 	required: bool,
 	#[serde(rename = "return_type")]
-	return_type: NULL,
+	return_type: Empty,
 	#[serde(rename = "selectable_objects_property")]
 	selectable_objects_property: String,
 	#[serde(rename = "selection_types")]
-	selection_types: Vec<UnknownType>,
+	selection_types: Vec<String>,
 	#[serde(rename = "translations")]
-	translations: Vec<UnknownType>,
-	#[serde(rename = "type")]
-	type: String,
+	translations: Vec<custom_widgets::WidgetTranslation, >,
+	#[serde(rename = "_type")]
+	_type: String,
 }
 

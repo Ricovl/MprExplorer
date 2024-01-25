@@ -18,20 +18,20 @@ pub struct MenuDocument {
 #[derive(Serialize, Deserialize)]
 pub struct MenuItem {
 	#[serde(rename = "action")]
-	action: forms::NoAction,
+	action: forms::MicroflowAction,
 	#[serde(rename = "alternative_text")]
-	alternative_text: NULL,
+	alternative_text: Empty,
 	#[serde(rename = "caption")]
 	caption: texts::Text,
 	#[serde(rename = "icon")]
-	icon: forms::IconCollectionIcon,
+	icon: Empty,
 	#[serde(rename = "items")]
-	items: Vec<UnknownType>,
+	items: Vec<menus::MenuItem, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct MenuItemCollection {
 	#[serde(rename = "items")]
-	items: Vec<menus::MenuItem>,
+	items: Vec<menus::MenuItem, >,
 }
 

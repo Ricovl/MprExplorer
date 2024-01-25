@@ -4,7 +4,7 @@ use super::*;
 #[derive(Serialize, Deserialize)]
 pub struct JsonElement {
 	#[serde(rename = "children")]
-	children: Vec<json_structures::JsonElement>,
+	children: Vec<json_structures::JsonElement, >,
 	#[serde(rename = "element_type")]
 	element_type: String,
 	#[serde(rename = "error_message")]
@@ -42,7 +42,7 @@ pub struct JsonStructure {
 	#[serde(rename = "documentation")]
 	documentation: String,
 	#[serde(rename = "elements")]
-	elements: Vec<json_structures::JsonElement>,
+	elements: Vec<json_structures::JsonElement, >,
 	#[serde(rename = "excluded")]
 	excluded: bool,
 	#[serde(rename = "export_level")]

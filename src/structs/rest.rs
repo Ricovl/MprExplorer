@@ -20,7 +20,7 @@ pub struct PublishedRestService {
 	#[serde(rename = "authentication_types")]
 	authentication_types: Vec<UnknownType>,
 	#[serde(rename = "cors_configuration")]
-	cors_configuration: NULL,
+	cors_configuration: rest::CorsConfiguration,
 	#[serde(rename = "documentation")]
 	documentation: String,
 	#[serde(rename = "excluded")]
@@ -34,7 +34,7 @@ pub struct PublishedRestService {
 	#[serde(rename = "path")]
 	path: String,
 	#[serde(rename = "resources")]
-	resources: Vec<rest::PublishedRestServiceResource>,
+	resources: Vec<rest::PublishedRestServiceResource, >,
 	#[serde(rename = "service_name")]
 	service_name: String,
 	#[serde(rename = "version")]
@@ -60,7 +60,7 @@ pub struct PublishedRestServiceOperation {
 	#[serde(rename = "object_handling_backup")]
 	object_handling_backup: String,
 	#[serde(rename = "parameters")]
-	parameters: Vec<rest::RestOperationParameter>,
+	parameters: Vec<rest::RestOperationParameter, >,
 	#[serde(rename = "path")]
 	path: String,
 	#[serde(rename = "summary")]
@@ -74,7 +74,7 @@ pub struct PublishedRestServiceResource {
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "operations")]
-	operations: Vec<rest::PublishedRestServiceOperation>,
+	operations: Vec<rest::PublishedRestServiceOperation, >,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -87,7 +87,7 @@ pub struct RestOperationParameter {
 	name: String,
 	#[serde(rename = "parameter_type")]
 	parameter_type: String,
-	#[serde(rename = "type")]
-	type: data_types::StringType,
+	#[serde(rename = "_type")]
+	_type: data_types::ObjectType,
 }
 

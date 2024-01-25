@@ -24,7 +24,7 @@ pub struct ModuleRole {
 #[derive(Serialize, Deserialize)]
 pub struct ModuleSecurity {
 	#[serde(rename = "module_roles")]
-	module_roles: Vec<security::ModuleRole>,
+	module_roles: Vec<security::ModuleRole, >,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -70,7 +70,7 @@ pub struct ProjectSecurity {
 	#[serde(rename = "strict_page_url_check")]
 	strict_page_url_check: bool,
 	#[serde(rename = "user_roles")]
-	user_roles: Vec<security::UserRole>,
+	user_roles: Vec<security::UserRole, >,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -82,7 +82,7 @@ pub struct UserRole {
 	#[serde(rename = "guid")]
 	guid: Binary,
 	#[serde(rename = "manageable_roles")]
-	manageable_roles: Vec<UnknownType>,
+	manageable_roles: Vec<String>,
 	#[serde(rename = "manage_all_roles")]
 	manage_all_roles: bool,
 	#[serde(rename = "manage_users_without_roles")]

@@ -6,7 +6,7 @@ pub struct ExportMapping {
 	#[serde(rename = "documentation")]
 	documentation: String,
 	#[serde(rename = "elements")]
-	elements: Vec<export_mappings::ObjectMappingElement>,
+	elements: Vec<export_mappings::ObjectMappingElement, >,
 	#[serde(rename = "excluded")]
 	excluded: bool,
 	#[serde(rename = "export_level")]
@@ -42,9 +42,9 @@ pub struct ObjectMappingElement {
 	#[serde(rename = "association")]
 	association: String,
 	#[serde(rename = "children")]
-	children: Vec<["ExportMappings$ValueMappingElement", "ExportMappings$ObjectMappingElement"]>,
+	children: Vec<export_mappings::ObjectMappingElement, export_mappings::ValueMappingElement, >,
 	#[serde(rename = "custom_handler_call")]
-	custom_handler_call: NULL,
+	custom_handler_call: Empty,
 	#[serde(rename = "documentation")]
 	documentation: String,
 	#[serde(rename = "element_type")]
@@ -105,8 +105,8 @@ pub struct ValueMappingElement {
 	nillable: bool,
 	#[serde(rename = "total_digits")]
 	total_digits: i64,
-	#[serde(rename = "type")]
-	type: data_types::IntegerType,
+	#[serde(rename = "_type")]
+	_type: data_types::BooleanType,
 	#[serde(rename = "xml_path")]
 	xml_path: String,
 	#[serde(rename = "xml_primitive_type")]

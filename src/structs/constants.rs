@@ -15,7 +15,7 @@ pub struct Constant {
 	exposed_to_client: bool,
 	#[serde(rename = "name")]
 	name: String,
-	#[serde(rename = "type")]
-	type: data_types::StringType,
+	#[serde(rename = "_type")]
+	_type: data_types::StringType,
 }
 

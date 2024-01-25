@@ -26,13 +26,13 @@ pub struct SystemText {
 #[derive(Serialize, Deserialize)]
 pub struct SystemTextCollection {
 	#[serde(rename = "system_texts")]
-	system_texts: Vec<texts::SystemText>,
+	system_texts: Vec<texts::SystemText, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct Text {
 	#[serde(rename = "items")]
-	items: Vec<texts::Translation>,
+	items: Vec<texts::Translation, >,
 }
 
 #[derive(Serialize, Deserialize)]

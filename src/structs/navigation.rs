@@ -12,7 +12,7 @@ pub struct HomePage {
 #[derive(Serialize, Deserialize)]
 pub struct NavigationDocument {
 	#[serde(rename = "profiles")]
-	profiles: Vec<navigation::NavigationProfile>,
+	profiles: Vec<navigation::NavigationProfile, >,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -22,7 +22,7 @@ pub struct NavigationProfile {
 	#[serde(rename = "app_title")]
 	app_title: texts::Text,
 	#[serde(rename = "home_items")]
-	home_items: Vec<navigation::RoleBasedHomePage>,
+	home_items: Vec<navigation::RoleBasedHomePage, >,
 	#[serde(rename = "home_page")]
 	home_page: navigation::HomePage,
 	#[serde(rename = "kind")]
@@ -36,7 +36,7 @@ pub struct NavigationProfile {
 	#[serde(rename = "offline_entity_configs")]
 	offline_entity_configs: Vec<UnknownType>,
 	#[serde(rename = "progressive_web_app_settings")]
-	progressive_web_app_settings: NULL,
+	progressive_web_app_settings: Empty,
 }
 
 #[derive(Serialize, Deserialize)]

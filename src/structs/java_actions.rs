@@ -14,13 +14,13 @@ pub struct JavaAction {
 	#[serde(rename = "java_return_type")]
 	java_return_type: code_actions::BooleanType,
 	#[serde(rename = "microflow_action_info")]
-	microflow_action_info: NULL,
+	microflow_action_info: Empty,
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "parameters")]
-	parameters: Vec<java_actions::JavaActionParameter>,
+	parameters: Vec<java_actions::JavaActionParameter, >,
 	#[serde(rename = "type_parameters")]
-	type_parameters: Vec<code_actions::TypeParameter>,
+	type_parameters: Vec<code_actions::TypeParameter, >,
 }
 
 #[derive(Serialize, Deserialize)]

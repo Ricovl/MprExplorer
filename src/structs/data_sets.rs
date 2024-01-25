@@ -14,7 +14,7 @@ pub struct DataSet {
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "parameters")]
-	parameters: Vec<data_sets::DataSetParameter>,
+	parameters: Vec<data_sets::DataSetParameter, >,
 	#[serde(rename = "source")]
 	source: data_sets::OqlDataSetSource,
 }

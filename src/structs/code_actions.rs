@@ -3,8 +3,8 @@ use super::*;
 
 #[derive(Serialize, Deserialize)]
 pub struct BasicParameterType {
-	#[serde(rename = "type")]
-	type: code_actions::ParameterizedEntityType,
+	#[serde(rename = "_type")]
+	_type: code_actions::StringType,
 }
 
 #[derive(Serialize, Deserialize)]

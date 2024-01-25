@@ -16,7 +16,7 @@ pub struct ExposedAssociation {
 	#[serde(rename = "association")]
 	association: String,
 	#[serde(rename = "children")]
-	children: Vec<["MessageDefinitions$ExposedAttribute", "MessageDefinitions$ExposedAssociation"]>,
+	children: Vec<message_definitions::ExposedAttribute, message_definitions::ExposedAssociation, >,
 	#[serde(rename = "documentation")]
 	documentation: String,
 	#[serde(rename = "element_type")]
@@ -100,7 +100,7 @@ pub struct ExposedAttribute {
 #[derive(Serialize, Deserialize)]
 pub struct ExposedEntity {
 	#[serde(rename = "children")]
-	children: Vec<["MessageDefinitions$ExposedAttribute", "MessageDefinitions$ExposedAssociation"]>,
+	children: Vec<message_definitions::ExposedAttribute, message_definitions::ExposedAssociation, >,
 	#[serde(rename = "documentation")]
 	documentation: String,
 	#[serde(rename = "element_type")]
@@ -148,7 +148,7 @@ pub struct MessageDefinitionCollection {
 	#[serde(rename = "export_level")]
 	export_level: String,
 	#[serde(rename = "message_definitions")]
-	message_definitions: Vec<message_definitions::EntityMessageDefinition>,
+	message_definitions: Vec<message_definitions::EntityMessageDefinition, >,
 	#[serde(rename = "name")]
 	name: String,
 }

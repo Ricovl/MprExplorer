@@ -13,20 +13,20 @@ pub struct ActionActivityDefaultColor {
 pub struct Certificate {
 	#[serde(rename = "data")]
 	data: Binary,
-	#[serde(rename = "type")]
-	type: String,
+	#[serde(rename = "_type")]
+	_type: String,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct CertificateSettings {
 	#[serde(rename = "certificates")]
-	certificates: Vec<settings::Certificate>,
+	certificates: Vec<settings::Certificate, >,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct ConfigurationSettings {
 	#[serde(rename = "configurations")]
-	configurations: Vec<settings::ServerConfiguration>,
+	configurations: Vec<settings::ServerConfiguration, >,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -40,7 +40,7 @@ pub struct ConstantValue {
 #[derive(Serialize, Deserialize)]
 pub struct ConventionSettings {
 	#[serde(rename = "action_activity_default_colors")]
-	action_activity_default_colors: Vec<settings::ActionActivityDefaultColor>,
+	action_activity_default_colors: Vec<settings::ActionActivityDefaultColor, >,
 	#[serde(rename = "lower_case_microflow_variables")]
 	lower_case_microflow_variables: bool,
 }
@@ -70,7 +70,7 @@ pub struct LanguageSettings {
 	#[serde(rename = "default_language_code")]
 	default_language_code: String,
 	#[serde(rename = "languages")]
-	languages: Vec<texts::Language>,
+	languages: Vec<texts::Language, >,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -104,7 +104,7 @@ pub struct ModelSettings {
 #[derive(Serialize, Deserialize)]
 pub struct ProjectSettings {
 	#[serde(rename = "settings")]
-	settings: Vec<["Forms$WebUIProjectSettingsPart", "Settings$IntegrationProjectSettingsPart", "Settings$ConfigurationSettings", "Settings$ModelSettings", "Settings$ConventionSettings", "Settings$LanguageSettings", "Settings$CertificateSettings", "Settings$WorkflowsProjectSettingsPart", "Settings$JarDeploymentSettings", "Settings$DistributionSettings"]>,
+	settings: Vec<settings::LanguageSettings, settings::IntegrationProjectSettingsPart, settings::CertificateSettings, forms::WebUIProjectSettingsPart, settings::ConfigurationSettings, settings::ConventionSettings, settings::ModelSettings, settings::WorkflowsProjectSettingsPart, settings::DistributionSettings, settings::JarDeploymentSettings, >,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -112,7 +112,7 @@ pub struct ServerConfiguration {
 	#[serde(rename = "application_root_url")]
 	application_root_url: String,
 	#[serde(rename = "constant_values")]
-	constant_values: Vec<settings::ConstantValue>,
+	constant_values: Vec<settings::ConstantValue, >,
 	#[serde(rename = "custom_settings")]
 	custom_settings: Vec<UnknownType>,
 	#[serde(rename = "database_name")]
@@ -156,10 +156,10 @@ pub struct WorkflowsProjectSettingsPart {
 	#[serde(rename = "user_entity")]
 	user_entity: String,
 	#[serde(rename = "usertask_on_state_change_event")]
-	usertask_on_state_change_event: NULL,
+	usertask_on_state_change_event: Empty,
 	#[serde(rename = "workflow_engine_parallelism")]
 	workflow_engine_parallelism: i64,
 	#[serde(rename = "workflow_on_state_change_event")]
-	workflow_on_state_change_event: NULL,
+	workflow_on_state_change_event: Empty,
 }
 

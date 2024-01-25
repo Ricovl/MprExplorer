@@ -38,9 +38,9 @@ pub struct DocumentTemplate {
 	#[serde(rename = "export_level")]
 	export_level: String,
 	#[serde(rename = "footer")]
-	footer: NULL,
+	footer: Empty,
 	#[serde(rename = "header")]
-	header: NULL,
+	header: Empty,
 	#[serde(rename = "margin_bottom_in_inch")]
 	margin_bottom_in_inch: f64,
 	#[serde(rename = "margin_left_in_inch")]
@@ -62,7 +62,7 @@ pub struct DocumentTemplate {
 	#[serde(rename = "style")]
 	style: document_templates::Style,
 	#[serde(rename = "toplevels")]
-	toplevels: Vec<UnknownType>,
+	toplevels: Vec<document_templates::DataView, >,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -148,7 +148,7 @@ pub struct Table {
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "rows")]
-	rows: Vec<document_templates::TableRow>,
+	rows: Vec<document_templates::TableRow, >,
 	#[serde(rename = "style")]
 	style: document_templates::Style,
 }
@@ -170,7 +170,7 @@ pub struct TableCell {
 #[derive(Serialize, Deserialize)]
 pub struct TableRow {
 	#[serde(rename = "cells")]
-	cells: Vec<document_templates::TableCell>,
+	cells: Vec<document_templates::TableCell, >,
 	#[serde(rename = "condition_settings")]
 	condition_settings: document_templates::ConditionSettings,
 }

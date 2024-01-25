@@ -6,7 +6,7 @@ pub struct MappingMicroflowCallImpl {
 	#[serde(rename = "microflow")]
 	microflow: String,
 	#[serde(rename = "parameter_mappings")]
-	parameter_mappings: Vec<mappings::MicroflowCallParameterMappingImpl>,
+	parameter_mappings: Vec<mappings::MicroflowCallParameterMappingImpl, >,
 }
 
 #[derive(Serialize, Deserialize)]

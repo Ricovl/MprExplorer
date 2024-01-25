@@ -279,6 +279,7 @@ dependencies = [
  "bson",
  "convert_case",
  "hex",
+ "indexmap 2.1.0",
  "rayon",
  "rusqlite",
  "serde",

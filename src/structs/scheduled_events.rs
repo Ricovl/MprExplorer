@@ -44,7 +44,7 @@ pub struct ScheduledEvent {
 	#[serde(rename = "on_overlap")]
 	on_overlap: String,
 	#[serde(rename = "schedule")]
-	schedule: scheduled_events::HourSchedule,
+	schedule: scheduled_events::MinuteSchedule,
 	#[serde(rename = "start_date_time")]
 	start_date_time: DateTime,
 	#[serde(rename = "time_zone")]

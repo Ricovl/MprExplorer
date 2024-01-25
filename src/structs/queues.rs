@@ -28,6 +28,6 @@ pub struct QueueSettings {
 	#[serde(rename = "queue")]
 	queue: String,
 	#[serde(rename = "retry")]
-	retry: NULL,
+	retry: Empty,
 }
 

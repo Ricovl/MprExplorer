@@ -14,15 +14,15 @@ pub struct JavaScriptAction {
 	#[serde(rename = "java_return_type")]
 	java_return_type: code_actions::VoidType,
 	#[serde(rename = "microflow_action_info")]
-	microflow_action_info: NULL,
+	microflow_action_info: Empty,
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "parameters")]
-	parameters: Vec<java_script_actions::JavaScriptActionParameter>,
+	parameters: Vec<java_script_actions::JavaScriptActionParameter, >,
 	#[serde(rename = "platform")]
 	platform: String,
 	#[serde(rename = "type_parameters")]
-	type_parameters: Vec<UnknownType>,
+	type_parameters: Vec<code_actions::TypeParameter, >,
 }
 
 #[derive(Serialize, Deserialize)]

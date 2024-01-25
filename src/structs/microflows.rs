@@ -4,7 +4,7 @@ use super::*;
 #[derive(Serialize, Deserialize)]
 pub struct ActionActivity {
 	#[serde(rename = "action")]
-	action: microflows::MicroflowCallAction,
+	action: microflows::RetrieveAction,
 	#[serde(rename = "auto_generate_caption")]
 	auto_generate_caption: bool,
 	#[serde(rename = "background_color")]
@@ -104,7 +104,7 @@ pub struct CallWebServiceAction {
 	#[serde(rename = "operation_name")]
 	operation_name: String,
 	#[serde(rename = "proxy_configuration")]
-	proxy_configuration: NULL,
+	proxy_configuration: Empty,
 	#[serde(rename = "request_body_handling")]
 	request_body_handling: microflows::SimpleRequestHandling,
 	#[serde(rename = "request_header_handling")]
@@ -136,7 +136,7 @@ pub struct ChangeAction {
 	#[serde(rename = "error_handling_type")]
 	error_handling_type: String,
 	#[serde(rename = "items")]
-	items: Vec<microflows::ChangeActionItem>,
+	items: Vec<microflows::ChangeActionItem, >,
 	#[serde(rename = "refresh_in_client")]
 	refresh_in_client: bool,
 }
@@ -147,8 +147,8 @@ pub struct ChangeActionItem {
 	association: String,
 	#[serde(rename = "attribute")]
 	attribute: String,
-	#[serde(rename = "type")]
-	type: String,
+	#[serde(rename = "_type")]
+	_type: String,
 	#[serde(rename = "value")]
 	value: String,
 }
@@ -159,8 +159,8 @@ pub struct ChangeListAction {
 	change_variable_name: String,
 	#[serde(rename = "error_handling_type")]
 	error_handling_type: String,
-	#[serde(rename = "type")]
-	type: String,
+	#[serde(rename = "_type")]
+	_type: String,
 	#[serde(rename = "value")]
 	value: String,
 }
@@ -226,7 +226,7 @@ pub struct CreateChangeAction {
 	#[serde(rename = "error_handling_type")]
 	error_handling_type: String,
 	#[serde(rename = "items")]
-	items: Vec<UnknownType>,
+	items: Vec<microflows::ChangeActionItem, >,
 	#[serde(rename = "refresh_in_client")]
 	refresh_in_client: bool,
 	#[serde(rename = "variable_name")]
@@ -252,7 +252,7 @@ pub struct CreateVariableAction {
 	#[serde(rename = "variable_name")]
 	variable_name: String,
 	#[serde(rename = "variable_type")]
-	variable_type: data_types::DateTimeType,
+	variable_type: data_types::StringType,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -276,7 +276,7 @@ pub struct DatabaseRetrieveSource {
 	#[serde(rename = "new_sortings")]
 	new_sortings: microflows::SortingsList,
 	#[serde(rename = "range")]
-	range: microflows::CustomRange,
+	range: microflows::ConstantRange,
 	#[serde(rename = "xpath_constraint")]
 	xpath_constraint: String,
 }
@@ -372,7 +372,7 @@ pub struct ExportXmlAction {
 	#[serde(rename = "is_validation_required")]
 	is_validation_required: bool,
 	#[serde(rename = "output_method")]
-	output_method: export_xml_action::FileDocumentExport,
+	output_method: export_xml_action::StringExport,
 	#[serde(rename = "result_handling")]
 	result_handling: microflows::MappingRequestHandling,
 }
@@ -454,7 +454,7 @@ pub struct GenerateDocumentAction {
 	#[serde(rename = "override_top_margin")]
 	override_top_margin: bool,
 	#[serde(rename = "parameter_mappings")]
-	parameter_mappings: Vec<UnknownType>,
+	parameter_mappings: Vec<microflows::DocumentTemplateParameterMapping, >,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -476,7 +476,7 @@ pub struct HttpConfiguration {
 	#[serde(rename = "http_authentication_user_name")]
 	http_authentication_user_name: String,
 	#[serde(rename = "http_header_entries")]
-	http_header_entries: Vec<microflows::HttpHeaderEntry>,
+	http_header_entries: Vec<microflows::HttpHeaderEntry, >,
 	#[serde(rename = "http_method")]
 	http_method: String,
 	#[serde(rename = "override_location")]
@@ -578,9 +578,9 @@ pub struct JavaActionCallAction {
 	#[serde(rename = "java_action")]
 	java_action: String,
 	#[serde(rename = "parameter_mappings")]
-	parameter_mappings: Vec<microflows::JavaActionParameterMapping>,
+	parameter_mappings: Vec<microflows::JavaActionParameterMapping, >,
 	#[serde(rename = "queue_settings")]
-	queue_settings: NULL,
+	queue_settings: Empty,
 	#[serde(rename = "result_variable_name")]
 	result_variable_name: String,
 	#[serde(rename = "use_return_variable")]
@@ -604,7 +604,7 @@ pub struct JavaScriptActionCallAction {
 	#[serde(rename = "output_variable_name")]
 	output_variable_name: String,
 	#[serde(rename = "parameter_mappings")]
-	parameter_mappings: Vec<microflows::JavaScriptActionParameterMapping>,
+	parameter_mappings: Vec<microflows::JavaScriptActionParameterMapping, >,
 	#[serde(rename = "use_return_variable")]
 	use_return_variable: bool,
 }
@@ -686,11 +686,11 @@ pub struct Microflow {
 	#[serde(rename = "export_level")]
 	export_level: String,
 	#[serde(rename = "flows")]
-	flows: Vec<microflows::SequenceFlow>,
+	flows: Vec<microflows::AnnotationFlow, microflows::SequenceFlow, >,
 	#[serde(rename = "mark_as_used")]
 	mark_as_used: bool,
 	#[serde(rename = "microflow_action_info")]
-	microflow_action_info: NULL,
+	microflow_action_info: Empty,
 	#[serde(rename = "microflow_return_type")]
 	microflow_return_type: data_types::VoidType,
 	#[serde(rename = "name")]
@@ -698,7 +698,7 @@ pub struct Microflow {
 	#[serde(rename = "object_collection")]
 	object_collection: microflows::MicroflowObjectCollection,
 	#[serde(rename = "workflow_action_info")]
-	workflow_action_info: NULL,
+	workflow_action_info: Empty,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -706,9 +706,9 @@ pub struct MicroflowCall {
 	#[serde(rename = "microflow")]
 	microflow: String,
 	#[serde(rename = "parameter_mappings")]
-	parameter_mappings: Vec<microflows::MicroflowCallParameterMapping>,
+	parameter_mappings: Vec<microflows::MicroflowCallParameterMapping, >,
 	#[serde(rename = "queue_settings")]
-	queue_settings: NULL,
+	queue_settings: Empty,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -734,7 +734,7 @@ pub struct MicroflowCallParameterMapping {
 #[derive(Serialize, Deserialize)]
 pub struct MicroflowObjectCollection {
 	#[serde(rename = "objects")]
-	objects: Vec<["Microflows$StartEvent", "Microflows$MicroflowParameter", "Microflows$ActionActivity", "Microflows$ExclusiveSplit", "Microflows$EndEvent"]>,
+	objects: Vec<microflows::ContinueEvent, microflows::StartEvent, microflows::ExclusiveMerge, microflows::Annotation, microflows::EndEvent, microflows::MicroflowParameter, microflows::ErrorEvent, microflows::LoopedActivity, microflows::InheritanceSplit, microflows::ActionActivity, microflows::BreakEvent, microflows::ExclusiveSplit, >,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -770,11 +770,11 @@ pub struct Nanoflow {
 	#[serde(rename = "export_level")]
 	export_level: String,
 	#[serde(rename = "flows")]
-	flows: Vec<microflows::SequenceFlow>,
+	flows: Vec<microflows::SequenceFlow, microflows::AnnotationFlow, >,
 	#[serde(rename = "mark_as_used")]
 	mark_as_used: bool,
 	#[serde(rename = "microflow_return_type")]
-	microflow_return_type: data_types::VoidType,
+	microflow_return_type: data_types::BooleanType,
 	#[serde(rename = "name")]
 	name: String,
 	#[serde(rename = "object_collection")]
@@ -786,7 +786,7 @@ pub struct NanoflowCall {
 	#[serde(rename = "nanoflow")]
 	nanoflow: String,
 	#[serde(rename = "parameter_mappings")]
-	parameter_mappings: Vec<microflows::NanoflowCallParameterMapping>,
+	parameter_mappings: Vec<microflows::NanoflowCallParameterMapping, >,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -822,9 +822,9 @@ pub struct RestCallAction {
 	#[serde(rename = "http_configuration")]
 	http_configuration: microflows::HttpConfiguration,
 	#[serde(rename = "proxy_configuration")]
-	proxy_configuration: NULL,
+	proxy_configuration: Empty,
 	#[serde(rename = "request_handling")]
-	request_handling: microflows::CustomRequestHandling,
+	request_handling: microflows::BinaryRequestHandling,
 	#[serde(rename = "request_handling_type")]
 	request_handling_type: String,
 	#[serde(rename = "request_proxy_type")]
@@ -858,7 +858,7 @@ pub struct RetrieveAction {
 	#[serde(rename = "result_variable_name")]
 	result_variable_name: String,
 	#[serde(rename = "retrieve_source")]
-	retrieve_source: microflows::DatabaseRetrieveSource,
+	retrieve_source: microflows::AssociationRetrieveSource,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -890,7 +890,7 @@ pub struct Rule {
 	#[serde(rename = "export_level")]
 	export_level: String,
 	#[serde(rename = "flows")]
-	flows: Vec<microflows::SequenceFlow>,
+	flows: Vec<microflows::SequenceFlow, >,
 	#[serde(rename = "mark_as_used")]
 	mark_as_used: bool,
 	#[serde(rename = "microflow_return_type")]
@@ -906,7 +906,7 @@ pub struct RuleCall {
 	#[serde(rename = "microflow")]
 	microflow: String,
 	#[serde(rename = "parameter_mappings")]
-	parameter_mappings: Vec<microflows::RuleCallParameterMapping>,
+	parameter_mappings: Vec<microflows::RuleCallParameterMapping, >,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -967,8 +967,8 @@ pub struct ShowMessageAction {
 	error_handling_type: String,
 	#[serde(rename = "template")]
 	template: microflows::TextTemplate,
-	#[serde(rename = "type")]
-	type: String,
+	#[serde(rename = "_type")]
+	_type: String,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -976,7 +976,7 @@ pub struct SimpleRequestHandling {
 	#[serde(rename = "null_value_option")]
 	null_value_option: String,
 	#[serde(rename = "parameter_mappings")]
-	parameter_mappings: Vec<microflows::WebServiceOperationSimpleParameterMapping>,
+	parameter_mappings: Vec<microflows::WebServiceOperationSimpleParameterMapping, >,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -990,7 +990,7 @@ pub struct Sort {
 #[derive(Serialize, Deserialize)]
 pub struct SortingsList {
 	#[serde(rename = "sortings")]
-	sortings: Vec<microflows::RetrieveSorting>,
+	sortings: Vec<microflows::RetrieveSorting, >,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1004,7 +1004,7 @@ pub struct StartEvent {
 #[derive(Serialize, Deserialize)]
 pub struct StringTemplate {
 	#[serde(rename = "parameters")]
-	parameters: Vec<microflows::TemplateParameter>,
+	parameters: Vec<microflows::TemplateParameter, >,
 	#[serde(rename = "text")]
 	text: String,
 }
@@ -1021,8 +1021,8 @@ pub struct Subtract {
 pub struct SynchronizeAction {
 	#[serde(rename = "error_handling_type")]
 	error_handling_type: String,
-	#[serde(rename = "type")]
-	type: String,
+	#[serde(rename = "_type")]
+	_type: String,
 	#[serde(rename = "variable_names")]
 	variable_names: Vec<String>,
 }
@@ -1042,7 +1042,7 @@ pub struct TemplateParameter {
 #[derive(Serialize, Deserialize)]
 pub struct TextTemplate {
 	#[serde(rename = "parameters")]
-	parameters: Vec<UnknownType>,
+	parameters: Vec<microflows::TemplateParameter, >,
 	#[serde(rename = "text")]
 	text: texts::Text,
 }
