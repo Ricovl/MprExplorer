@@ -16,15 +16,15 @@ pub struct JavaAction {
 	#[serde(rename = "ExportLevel")]
 	export_level: String,
 	#[serde(rename = "JavaReturnType")]
-	java_return_type: code_actions::BooleanType,
+	java_return_type: code_actions::ParameterType,
 	#[serde(rename = "MicroflowActionInfo")]
 	microflow_action_info: Empty,
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "Parameters")]
-	parameters: Vec<java_actions::JavaActionParameter, >,
+	parameters: Vec<java_actions::JavaActionParameter>,
 	#[serde(rename = "TypeParameters")]
-	type_parameters: Vec<code_actions::TypeParameter, >,
+	type_parameters: Vec<code_actions::TypeParameter>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -41,7 +41,7 @@ pub struct JavaActionParameter {
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "ParameterType")]
-	parameter_type: code_actions::BasicParameterType,
+	parameter_type: code_actions::ParameterType,
 }
 
 #[derive(Serialize, Deserialize)]

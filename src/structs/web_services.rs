@@ -2,8 +2,12 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 use super::*;
 
+#[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
 pub enum DataImpls {
+	#[serde(rename = "WebServices$DataAssociationImpl")]
 	DataAssociationImpl(web_services::DataAssociationImpl), 
+	#[serde(rename = "WebServices$DataAttributeImpl")]
 	DataAttributeImpl(web_services::DataAttributeImpl),
 }
 
@@ -119,7 +123,7 @@ pub struct OperationInfoImpl {
 	#[serde(rename = "RequestBodyEncoded")]
 	request_body_encoded: bool,
 	#[serde(rename = "RequestBodyPartEncodings")]
-	request_body_part_encodings: Vec<web_services::PartEncodingImpl, >,
+	request_body_part_encodings: Vec<web_services::PartEncodingImpl>,
 	#[serde(rename = "RequestBodyRpcElement")]
 	request_body_rpc_element: web_services::RpcOperationElementImpl,
 	#[serde(rename = "RequestHeaderElementName")]
@@ -192,7 +196,7 @@ pub struct PublishedService {
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "VersionedWebServices")]
-	versioned_web_services: Vec<web_services::VersionedServiceImpl, >,
+	versioned_web_services: Vec<web_services::VersionedServiceImpl>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -220,7 +224,7 @@ pub struct ServiceInfoImpl {
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "Operations")]
-	operations: Vec<web_services::OperationInfoImpl, >,
+	operations: Vec<web_services::OperationInfoImpl>,
 	#[serde(rename = "PortName")]
 	port_name: String,
 	#[serde(rename = "SoapVersion")]
@@ -251,7 +255,7 @@ pub struct VersionedServiceImpl {
 	#[serde(rename = "ObjectHandlingBackup")]
 	object_handling_backup: String,
 	#[serde(rename = "Operations")]
-	operations: Vec<web_services::PublishedOperationImpl, >,
+	operations: Vec<web_services::PublishedOperationImpl>,
 	#[serde(rename = "OptimizedXml")]
 	optimized_xml: bool,
 	#[serde(rename = "TargetNamespace")]
@@ -270,13 +274,13 @@ pub struct WsdlDescriptionImpl {
 	#[serde(rename = "ImportsHaveLocations")]
 	imports_have_locations: bool,
 	#[serde(rename = "SchemaContentss")]
-	schema_contentss: Vec<xml_schemas::XmlSchemaContents, >,
+	schema_contentss: Vec<xml_schemas::XmlSchemaContents>,
 	#[serde(rename = "Services")]
-	services: Vec<web_services::ServiceInfoImpl, >,
+	services: Vec<web_services::ServiceInfoImpl>,
 	#[serde(rename = "TargetNamespace")]
 	target_namespace: String,
 	#[serde(rename = "WsdlContentss")]
-	wsdl_contentss: Vec<web_services::WsdlEntryImpl, >,
+	wsdl_contentss: Vec<web_services::WsdlEntryImpl>,
 }
 
 #[derive(Serialize, Deserialize)]

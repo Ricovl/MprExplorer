@@ -71,6 +71,6 @@ pub struct ProjectConversion {
 	_id: Uuid,
 
 	#[serde(rename = "OneTimeConversions")]
-	one_time_conversions: Vec<projects::OneTimeConversion, >,
+	one_time_conversions: Vec<projects::OneTimeConversion>,
 }
 

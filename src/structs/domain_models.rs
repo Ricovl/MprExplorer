@@ -4,6 +4,59 @@ use uuid::Uuid;
 use super::*;
 
 #[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
+pub enum AttributeType {
+	#[serde(rename = "DomainModels$IntegerAttributeType")]
+	IntegerAttributeType(IntegerAttributeType),
+	#[serde(rename = "DomainModels$DecimalAttributeType")]
+	DecimalAttributeType(DecimalAttributeType),
+	#[serde(rename = "DomainModels$BooleanAttributeType")]
+	BooleanAttributeType(BooleanAttributeType),
+	#[serde(rename = "DomainModels$EnumerationAttributeType")]
+	EnumerationAttributeType(EnumerationAttributeType),
+	#[serde(rename = "DomainModels$DateTimeAttributeType")]
+	DateTimeAttributeType(DateTimeAttributeType),
+	#[serde(rename = "DomainModels$StringAttributeType")]
+	StringAttributeType(StringAttributeType),
+	#[serde(rename = "DomainModels$AutoNumberAttributeType")]
+	AutoNumberAttributeType(AutoNumberAttributeType),
+	#[serde(rename = "DomainModels$LongAttributeType")]
+	LongAttributeType(LongAttributeType)
+}
+
+#[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
+pub enum AttributeValue {
+	#[serde(rename = "DomainModels$StoredValue")]
+	StoredValue(StoredValue),
+	#[serde(rename = "DomainModels$CalculatedValue")]
+	CalculatedValue(CalculatedValue),
+}
+
+#[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
+pub enum MaybeGeneralization {
+	#[serde(rename = "DomainModels$NoGeneralization")]
+	NoGeneralization(NoGeneralization), 
+	#[serde(rename = "DomainModels$Generalization")]
+	Generalization(Generalization),
+}
+
+#[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
+pub enum RuleInfo {
+	#[serde(rename = "DomainModels$UniqueRuleInfo")]
+	UniqueRuleInfo(UniqueRuleInfo),
+	#[serde(rename = "DomainModels$RequiredRuleInfo")]
+	RequiredRuleInfo(RequiredRuleInfo),
+	#[serde(rename = "DomainModels$RangeRuleInfo")]
+	RangeRuleInfo(RangeRuleInfo),
+	#[serde(rename = "DomainModels$RegExRuleInfo")]
+	RegExRuleInfo(RegExRuleInfo),
+}
+
+
+#[derive(Serialize, Deserialize)]
 pub struct AccessRule {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
@@ -84,9 +137,9 @@ pub struct Attribute {
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "NewType")]
-	new_type: domain_models::StringAttributeType,
+	new_type: AttributeType,
 	#[serde(rename = "Value")]
-	value: domain_models::StoredValue,
+	value: AttributeValue,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -252,7 +305,7 @@ pub struct EntityImpl {
 	#[serde(rename = "Location")]
 	location: String,
 	#[serde(rename = "MaybeGeneralization")]
-	maybe_generalization: domain_models::NoGeneralization,
+	maybe_generalization: MaybeGeneralization,
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "Source")]
@@ -439,6 +492,6 @@ pub struct ValidationRule {
 	#[serde(rename = "Message")]
 	message: texts::Text,
 	#[serde(rename = "RuleInfo")]
-	rule_info: domain_models::UniqueRuleInfo,
+	rule_info: RuleInfo,
 }
 

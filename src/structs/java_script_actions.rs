@@ -16,17 +16,17 @@ pub struct JavaScriptAction {
 	#[serde(rename = "ExportLevel")]
 	export_level: String,
 	#[serde(rename = "JavaReturnType")]
-	java_return_type: code_actions::VoidType,
+	java_return_type: code_actions::ParameterType,
 	#[serde(rename = "MicroflowActionInfo")]
 	microflow_action_info: Empty,
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "Parameters")]
-	parameters: Vec<java_script_actions::JavaScriptActionParameter, >,
+	parameters: Vec<java_script_actions::JavaScriptActionParameter>,
 	#[serde(rename = "Platform")]
 	platform: String,
 	#[serde(rename = "TypeParameters")]
-	type_parameters: Vec<code_actions::TypeParameter, >,
+	type_parameters: Vec<code_actions::TypeParameter>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -43,6 +43,6 @@ pub struct JavaScriptActionParameter {
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "ParameterType")]
-	parameter_type: code_actions::BasicParameterType,
+	parameter_type: code_actions::ParameterType,
 }
 

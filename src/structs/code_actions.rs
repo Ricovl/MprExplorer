@@ -3,13 +3,49 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 use super::*;
 
+// Todo: add all types that are in this file
+#[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
+pub enum ParameterType {
+	#[serde(rename = "CodeActions$BooleanType")]
+	BooleanType(code_actions::BooleanType),
+	#[serde(rename = "CodeActions$ConcreteEntityType")]
+	ConcreteEntityType(code_actions::ConcreteEntityType),
+	#[serde(rename = "CodeActions$DateTimeType")]
+	DateTimeType(code_actions::DateTimeType),
+	#[serde(rename = "CodeActions$DecimalType")]
+	DecimalType(code_actions::DecimalType),
+	#[serde(rename = "CodeActions$EntityTypeParameterType")]
+	EntityTypeParameterType(code_actions::EntityTypeParameterType),
+	#[serde(rename = "CodeActions$EnumerationType")]
+	EnumerationType(code_actions::EnumerationType),
+	#[serde(rename = "CodeActions$IntegerType")]
+	IntegerType(code_actions::IntegerType),
+	#[serde(rename = "CodeActions$ListType")]
+	ListType(code_actions::ListType),
+	#[serde(rename = "CodeActions$MicroflowActionInfo")]
+	MicroflowActionInfo(code_actions::MicroflowActionInfo),
+	#[serde(rename = "CodeActions$ParameterizedEntityType")]
+	ParameterizedEntityType(code_actions::ParameterizedEntityType),
+	#[serde(rename = "CodeActions$StringTemplateParameterType")]
+	StringTemplateParameterType(code_actions::StringTemplateParameterType),
+	#[serde(rename = "CodeActions$StringType")]
+	StringType(code_actions::StringType),
+	#[serde(rename = "CodeActions$TypeParameter")]
+	TypeParameter(code_actions::TypeParameter),
+	#[serde(rename = "CodeActions$VoidType")]
+	VoidType(code_actions::VoidType),
+	#[serde(rename = "JavaActions$MicroflowJavaActionParameterType")]
+	MicroflowJavaActionParameterType(java_actions::MicroflowJavaActionParameterType),
+}
+
 #[derive(Serialize, Deserialize)]
 pub struct BasicParameterType {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
 	#[serde(rename = "Type")]
-	var_type: code_actions::StringType,
+	var_type: ParameterType,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -73,7 +109,7 @@ pub struct ListType {
 	_id: Uuid,
 
 	#[serde(rename = "Parameter")]
-	parameter: code_actions::ConcreteEntityType,
+	parameter: Box<code_actions::ParameterType>,
 }
 
 #[derive(Serialize, Deserialize)]

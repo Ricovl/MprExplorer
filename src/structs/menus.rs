@@ -25,7 +25,7 @@ pub struct MenuItem {
 	_id: Uuid,
 
 	#[serde(rename = "Action")]
-	action: forms::MicroflowAction,
+	action: forms::OnAction,
 	#[serde(rename = "AlternativeText")]
 	alternative_text: Empty,
 	#[serde(rename = "Caption")]
@@ -33,7 +33,7 @@ pub struct MenuItem {
 	#[serde(rename = "Icon")]
 	icon: Empty,
 	#[serde(rename = "Items")]
-	items: Vec<menus::MenuItem, >,
+	items: Vec<menus::MenuItem>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -42,6 +42,6 @@ pub struct MenuItemCollection {
 	_id: Uuid,
 
 	#[serde(rename = "Items")]
-	items: Vec<menus::MenuItem, >,
+	items: Vec<menus::MenuItem>,
 }
 

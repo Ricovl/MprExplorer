@@ -365,6 +365,8 @@ impl std::fmt::Display for SpecialTypes {
                         attributes.push_str(format!("{}::{}, ", module, structname).as_str());
                         
                     }
+                    attributes.pop();
+                    attributes.pop();
                     write!(f, "Vec<{}>", attributes)
                 }
             },
@@ -376,7 +378,14 @@ impl std::fmt::Display for SpecialTypes {
                     attributes.push_str(format!("{}::{}, ", module, structname).as_str());
                     
                 }
-                write!(f, "Type<{}>", attributes)
+                attributes.pop();
+                attributes.pop();
+                if _attributes.len() != 1 {
+                    write!(f, "Type<{}>", attributes)
+                }
+                else {
+                    write!(f, "{}", attributes)
+                }
             },
             SpecialTypes::Empty() => write!(f, "Empty"),
         }

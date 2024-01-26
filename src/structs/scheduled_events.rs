@@ -4,6 +4,19 @@ use uuid::Uuid;
 use super::*;
 
 #[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
+pub enum Schedule {
+	#[serde(rename = "ScheduledEvents$WeekSchedule")]
+	WeekSchedule(scheduled_events::WeekSchedule),
+	#[serde(rename = "ScheduledEvents$DaySchedule")]
+	DaySchedule(scheduled_events::DaySchedule),
+	#[serde(rename = "ScheduledEvents$HourSchedule")]
+	HourSchedule(scheduled_events::HourSchedule),
+	#[serde(rename = "ScheduledEvents$MinuteSchedule")]
+	MinuteSchedule(scheduled_events::MinuteSchedule),
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct DaySchedule {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
@@ -58,7 +71,7 @@ pub struct ScheduledEvent {
 	#[serde(rename = "OnOverlap")]
 	on_overlap: String,
 	#[serde(rename = "Schedule")]
-	schedule: scheduled_events::MinuteSchedule,
+	schedule: Schedule,
 	#[serde(rename = "StartDateTime")]
 	start_date_time: DateTime,
 	#[serde(rename = "TimeZone")]

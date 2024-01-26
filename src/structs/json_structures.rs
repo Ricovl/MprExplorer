@@ -8,7 +8,7 @@ pub struct JsonElement {
 	_id: Uuid,
 
 	#[serde(rename = "Children")]
-	children: Vec<json_structures::JsonElement, >,
+	children: Vec<json_structures::JsonElement>,
 	#[serde(rename = "ElementType")]
 	element_type: String,
 	#[serde(rename = "ErrorMessage")]
@@ -49,7 +49,7 @@ pub struct JsonStructure {
 	#[serde(rename = "Documentation")]
 	documentation: String,
 	#[serde(rename = "Elements")]
-	elements: Vec<json_structures::JsonElement, >,
+	elements: Vec<json_structures::JsonElement>,
 	#[serde(rename = "Excluded")]
 	excluded: bool,
 	#[serde(rename = "ExportLevel")]

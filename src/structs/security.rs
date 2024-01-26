@@ -38,7 +38,7 @@ pub struct ModuleSecurity {
 	_id: Uuid,
 
 	#[serde(rename = "ModuleRoles")]
-	module_roles: Vec<security::ModuleRole, >,
+	module_roles: Vec<security::ModuleRole>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -90,7 +90,7 @@ pub struct ProjectSecurity {
 	#[serde(rename = "StrictPageUrlCheck")]
 	strict_page_url_check: bool,
 	#[serde(rename = "UserRoles")]
-	user_roles: Vec<security::UserRole, >,
+	user_roles: Vec<security::UserRole>,
 }
 
 #[derive(Serialize, Deserialize)]

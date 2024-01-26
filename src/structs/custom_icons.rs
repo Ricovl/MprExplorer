@@ -32,7 +32,7 @@ pub struct CustomIconCollection {
 	#[serde(rename = "FontData")]
 	font_data: Binary,
 	#[serde(rename = "Icons")]
-	icons: Vec<custom_icons::CustomIcon, >,
+	icons: Vec<custom_icons::CustomIcon>,
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "Prefix")]

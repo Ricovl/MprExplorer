@@ -41,7 +41,7 @@ pub struct PublishedRestService {
 	#[serde(rename = "Path")]
 	path: String,
 	#[serde(rename = "Resources")]
-	resources: Vec<rest::PublishedRestServiceResource, >,
+	resources: Vec<rest::PublishedRestServiceResource>,
 	#[serde(rename = "ServiceName")]
 	service_name: String,
 	#[serde(rename = "Version")]
@@ -70,7 +70,7 @@ pub struct PublishedRestServiceOperation {
 	#[serde(rename = "ObjectHandlingBackup")]
 	object_handling_backup: String,
 	#[serde(rename = "Parameters")]
-	parameters: Vec<rest::RestOperationParameter, >,
+	parameters: Vec<rest::RestOperationParameter>,
 	#[serde(rename = "Path")]
 	path: String,
 	#[serde(rename = "Summary")]
@@ -87,7 +87,7 @@ pub struct PublishedRestServiceResource {
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "Operations")]
-	operations: Vec<rest::PublishedRestServiceOperation, >,
+	operations: Vec<rest::PublishedRestServiceOperation>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -104,6 +104,6 @@ pub struct RestOperationParameter {
 	#[serde(rename = "ParameterType")]
 	parameter_type: String,
 	#[serde(rename = "Type")]
-	var_type: data_types::ObjectType,
+	var_type: data_types::DataType,
 }
 

@@ -28,7 +28,7 @@ pub struct ImageCollection {
 	#[serde(rename = "ExportLevel")]
 	export_level: String,
 	#[serde(rename = "Images")]
-	images: Vec<images::Image, >,
+	images: Vec<images::Image>,
 	#[serde(rename = "Name")]
 	name: String,
 }

@@ -3,8 +3,12 @@ use uuid::Uuid;
 use super::*;
 
 // Todo: Rename this
+#[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
 pub enum MessageExposure {
+	#[serde(rename = "MessageDefinitions$ExposedAssociation")]
 	ExposedAssociation(message_definitions::ExposedAssociation), 
+	#[serde(rename = "MessageDefinitions$ExposedAttribute")]
 	ExposedAttribute(message_definitions::ExposedAttribute)
 }
 
@@ -170,7 +174,7 @@ pub struct MessageDefinitionCollection {
 	#[serde(rename = "ExportLevel")]
 	export_level: String,
 	#[serde(rename = "MessageDefinitions")]
-	message_definitions: Vec<message_definitions::EntityMessageDefinition, >,
+	message_definitions: Vec<message_definitions::EntityMessageDefinition>,
 	#[serde(rename = "Name")]
 	name: String,
 }

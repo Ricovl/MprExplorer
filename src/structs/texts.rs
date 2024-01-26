@@ -36,7 +36,7 @@ pub struct SystemTextCollection {
 	_id: Uuid,
 
 	#[serde(rename = "SystemTexts")]
-	system_texts: Vec<texts::SystemText, >,
+	system_texts: Vec<texts::SystemText>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -45,7 +45,7 @@ pub struct Text {
 	_id: Uuid,
 
 	#[serde(rename = "Items")]
-	items: Vec<texts::Translation, >,
+	items: Vec<texts::Translation>,
 }
 
 #[derive(Serialize, Deserialize)]

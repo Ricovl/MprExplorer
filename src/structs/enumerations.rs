@@ -27,7 +27,7 @@ pub struct Enumeration {
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "Values")]
-	values: Vec<enumerations::EnumerationValue, >,
+	values: Vec<enumerations::EnumerationValue>,
 }
 
 #[derive(Serialize, Deserialize)]

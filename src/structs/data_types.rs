@@ -2,6 +2,33 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
 #[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
+pub enum DataType {
+	#[serde(rename = "DataTypes$BinaryType")]
+	BinaryType(BinaryType),
+	#[serde(rename = "DataTypes$BooleanType")]
+	BooleanType(BooleanType),
+	#[serde(rename = "DataTypes$DateTimeType")]
+	DateTimeType(DateTimeType),
+	#[serde(rename = "DataTypes$DecimalType")]
+	DecimalType(DecimalType),
+	#[serde(rename = "DataTypes$EnumerationType")]
+	EnumerationType(EnumerationType),
+	#[serde(rename = "DataTypes$IntegerType")]
+	IntegerType(IntegerType),
+	#[serde(rename = "DataTypes$ListType")]
+	ListType(ListType),
+	#[serde(rename = "DataTypes$ObjectType")]
+	ObjectType(ObjectType),
+	#[serde(rename = "DataTypes$StringType")]
+	StringType(StringType),
+	#[serde(rename = "DataTypes$UnknownType")]
+	UnknownType(UnknownType),
+	#[serde(rename = "DataTypes$VoidType")]
+	VoidType(VoidType),
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct BinaryType {
 	#[serde(rename = "$ID")]
 	_id: Uuid,

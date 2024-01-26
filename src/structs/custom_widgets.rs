@@ -165,7 +165,7 @@ pub struct WidgetValue {
 	_id: Uuid,
 
 	#[serde(rename = "Action")]
-	action: forms::NoAction,
+	action: forms::OnAction,
 	#[serde(rename = "AttributeRef")]
 	attribute_ref: Empty,
 	#[serde(rename = "DataSource")]
@@ -199,7 +199,7 @@ pub struct WidgetValue {
 	#[serde(rename = "TypePointer")]
 	type_pointer: Binary,
 	#[serde(rename = "Widgets")]
-	widgets: Vec<Widgets>,
+	widgets: Vec<forms::Widgets>,
 	#[serde(rename = "XPathConstraint")]
 	x_path_constraint: String,
 }

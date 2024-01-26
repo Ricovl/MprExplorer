@@ -56,7 +56,7 @@ pub struct CertificateSettings {
 	_id: Uuid,
 
 	#[serde(rename = "Certificates")]
-	certificates: Vec<settings::Certificate, >,
+	certificates: Vec<settings::Certificate>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -65,7 +65,7 @@ pub struct ConfigurationSettings {
 	_id: Uuid,
 
 	#[serde(rename = "Configurations")]
-	configurations: Vec<settings::ServerConfiguration, >,
+	configurations: Vec<settings::ServerConfiguration>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -85,7 +85,7 @@ pub struct ConventionSettings {
 	_id: Uuid,
 
 	#[serde(rename = "ActionActivityDefaultColors")]
-	action_activity_default_colors: Vec<settings::ActionActivityDefaultColor, >,
+	action_activity_default_colors: Vec<settings::ActionActivityDefaultColor>,
 	#[serde(rename = "LowerCaseMicroflowVariables")]
 	lower_case_microflow_variables: bool,
 }
@@ -127,7 +127,7 @@ pub struct LanguageSettings {
 	#[serde(rename = "DefaultLanguageCode")]
 	default_language_code: String,
 	#[serde(rename = "Languages")]
-	languages: Vec<texts::Language, >,
+	languages: Vec<texts::Language>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -178,7 +178,7 @@ pub struct ServerConfiguration {
 	#[serde(rename = "ApplicationRootUrl")]
 	application_root_url: String,
 	#[serde(rename = "ConstantValues")]
-	constant_values: Vec<settings::ConstantValue, >,
+	constant_values: Vec<settings::ConstantValue>,
 	#[serde(rename = "CustomSettings")]
 	custom_settings: Vec<UnknownType>,
 	#[serde(rename = "DatabaseName")]

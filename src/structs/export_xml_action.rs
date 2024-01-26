@@ -1,6 +1,16 @@
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 
+
+#[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
+pub enum XmlExportAction {
+	#[serde(rename = "ExportXmlAction$StringExport")]
+	StringExport(StringExport),
+	#[serde(rename = "ExportXmlAction$FileDocumentExport")]
+	FileDocumentExport(FileDocumentExport),
+}
+
 #[derive(Serialize, Deserialize)]
 pub struct FileDocumentExport {
 	#[serde(rename = "$ID")]

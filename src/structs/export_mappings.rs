@@ -2,8 +2,12 @@ use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 use super::*;
 
+#[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
 pub enum ExportMappingElement {
+	#[serde(rename = "ExportMappings$ObjectMappingElement")]
 	ObjectMappingElement(export_mappings::ObjectMappingElement),
+	#[serde(rename = "ExportMappings$ValueMappingElement")]
 	ValueMappingElement(export_mappings::ValueMappingElement),
 }
 
@@ -121,7 +125,7 @@ pub struct ValueMappingElement {
 	#[serde(rename = "TotalDigits")]
 	total_digits: i64,
 	#[serde(rename = "Type")]
-	var_type: data_types::BooleanType,
+	var_type: data_types::DataType,
 	#[serde(rename = "XmlPath")]
 	xml_path: String,
 	#[serde(rename = "XmlPrimitiveType")]

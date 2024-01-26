@@ -19,7 +19,7 @@ pub struct NavigationDocument {
 	_id: Uuid,
 
 	#[serde(rename = "Profiles")]
-	profiles: Vec<navigation::NavigationProfile, >,
+	profiles: Vec<navigation::NavigationProfile>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -32,7 +32,7 @@ pub struct NavigationProfile {
 	#[serde(rename = "AppTitle")]
 	app_title: texts::Text,
 	#[serde(rename = "HomeItems")]
-	home_items: Vec<navigation::RoleBasedHomePage, >,
+	home_items: Vec<navigation::RoleBasedHomePage>,
 	#[serde(rename = "HomePage")]
 	home_page: navigation::HomePage,
 	#[serde(rename = "Kind")]

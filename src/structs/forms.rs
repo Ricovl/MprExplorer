@@ -4,56 +4,199 @@ use uuid::Uuid;
 use super::*;
 
 
+#[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
 pub enum Widgets {
+	#[serde(rename = "Forms$ActionButton")]
 	ActionButton(forms::ActionButton),
+	#[serde(rename = "Forms$CheckBox")]
 	CheckBox(forms::CheckBox),
+	#[serde(rename = "CustomWidgets$CustomWidget")]
 	CustomWidget(custom_widgets::CustomWidget), 
+	#[serde(rename = "Forms$DataGrid")]
 	DataGrid(forms::DataGrid),
+	#[serde(rename = "Forms$DataView")]
 	DataView(forms::DataView),
+	#[serde(rename = "Forms$DatePicker")]
 	DatePicker(forms::DatePicker),
+	#[serde(rename = "Forms$DivContainer")]
 	DivContainer(forms::DivContainer),
+	#[serde(rename = "Forms$DropDown")]
 	DropDown(forms::DropDown),
+	#[serde(rename = "Forms$DynamicText")]
 	DynamicText(forms::DynamicText),
+	#[serde(rename = "Forms$FileManager")]
 	FileManager(forms::FileManager),
+	#[serde(rename = "Forms$FormForSpecialization")]
 	FormForSpecialization(forms::FormForSpecialization),
+	#[serde(rename = "Forms$GroupBox")]
 	GroupBox(forms::GroupBox),
+	#[serde(rename = "Forms$Header")]
 	Header(forms::Header), 
+	#[serde(rename = "Forms$ImageViewer")]
 	ImageViewer(forms::ImageViewer),
+	#[serde(rename = "Forms$InputReferenceSetSelector")]
 	InputReferenceSetSelector(forms::InputReferenceSetSelector),
+	#[serde(rename = "Forms$Label")]
 	Label(forms::Label), 
+	#[serde(rename = "Forms$LayoutGrid")]
 	LayoutGrid(forms::LayoutGrid),
+	#[serde(rename = "Forms$ListView")]
 	ListView(forms::ListView),
+	#[serde(rename = "Forms$LoginButton")]
 	LoginButton(forms::LoginButton),
+	#[serde(rename = "Forms$LoginIdTextBox")]
 	LoginIdTextBox(forms::LoginIdTextBox),
+	#[serde(rename = "Forms$MenuBar")]
 	MenuBar(forms::MenuBar), 
+	#[serde(rename = "Forms$NavigationTree")]
 	NavigationTree(forms::NavigationTree),
+	#[serde(rename = "Forms$PageParameterMapping")]
 	PageParameterMapping(forms::PageParameterMapping),
+	#[serde(rename = "Forms$PasswordTextBox")]
 	PasswordTextBox(forms::PasswordTextBox),
+	#[serde(rename = "Forms$Placeholder")]
 	Placeholder(forms::Placeholder), 
+	#[serde(rename = "Forms$RadioButtonGroup")]
 	RadioButtonGroup(forms::RadioButtonGroup),
+	#[serde(rename = "Forms$ReferenceSelector")]
 	ReferenceSelector(forms::ReferenceSelector),
+	#[serde(rename = "Forms$ScrollContainer")]
 	ScrollContainer(forms::ScrollContainer),
+	#[serde(rename = "Forms$SidebarToggleButton")]
 	SidebarToggleButton(forms::SidebarToggleButton), 
+	#[serde(rename = "Forms$SimpleMenuBar")]
 	SimpleMenuBar(forms::SimpleMenuBar), 
+	#[serde(rename = "Forms$SnippetCallWidget")]
 	SnippetCallWidget(forms::SnippetCallWidget),
+	#[serde(rename = "Forms$StaticImageViewer")]
 	StaticImageViewer(forms::StaticImageViewer), 
+	#[serde(rename = "Forms$TabControl")]
 	TabControl(forms::TabControl),
+	#[serde(rename = "Forms$Table")]
 	Table(forms::Table),
+	#[serde(rename = "Forms$TemplateGrid")]
 	TemplateGrid(forms::TemplateGrid),
+	#[serde(rename = "Forms$TextArea")]
 	TextArea(forms::TextArea),
+	#[serde(rename = "Forms$TextBox")]
 	TextBox(forms::TextBox),
+	#[serde(rename = "Forms$Title")]
 	Title(forms::Title),
+	#[serde(rename = "Forms$ValidationMessage")]
 	ValidationMessage(forms::ValidationMessage),
-	
+
+
 	// Buttons?
+	#[serde(rename = "Forms$ComparisonSearchField")]
 	ComparisonSearchField(forms::ComparisonSearchField),
+	#[serde(rename = "Forms$DataGridSelectButton")]
 	DataGridSelectButton(forms::DataGridSelectButton),
+	#[serde(rename = "Forms$DropDownSearchField")]
 	DropDownSearchField(forms::DropDownSearchField),
+	#[serde(rename = "Forms$GridActionButton")]
 	GridActionButton(forms::GridActionButton),
+	#[serde(rename = "Forms$GridNewButton")]
 	GridNewButton(forms::GridNewButton),
+	#[serde(rename = "Forms$GridSearchButton")]
 	GridSearchButton(forms::GridSearchButton),
+	#[serde(rename = "Forms$GridSelectAllButton")]
 	GridSelectAllButton(forms::GridSelectAllButton),
+	#[serde(rename = "Forms$RangeSearchField")]
 	RangeSearchField(forms::RangeSearchField),
+}
+
+#[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
+pub enum ButtonAction {
+	#[serde(rename = "Forms$FormAction")]
+	FormAction(forms::FormAction),
+	#[serde(rename = "Forms$OpenLinkClientAction")]
+	OpenLinkClientAction(forms::OpenLinkClientAction),
+	#[serde(rename = "Forms$CancelChangesClientAction")]
+	CancelChangesClientAction(forms::CancelChangesClientAction),
+	#[serde(rename = "Forms$DeleteClientAction")]
+	DeleteClientAction(forms::DeleteClientAction),
+	#[serde(rename = "Forms$SaveChangesClientAction")]
+	SaveChangesClientAction(forms::SaveChangesClientAction),
+	#[serde(rename = "Forms$MicroflowAction")]
+	MicroflowAction(forms::MicroflowAction),
+	#[serde(rename = "Forms$NoAction")]
+	NoAction(forms::NoAction),
+	#[serde(rename = "Forms$CreateObjectClientAction")]
+	CreateObjectClientAction(forms::CreateObjectClientAction),
+	#[serde(rename = "Forms$CallNanoflowClientAction")]
+	CallNanoflowClientAction(forms::CallNanoflowClientAction),
+	#[serde(rename = "Forms$ClosePageClientAction")]
+	ClosePageClientAction(forms::ClosePageClientAction),
+	#[serde(rename = "Forms$SignOutClientAction")]
+	SignOutClientAction(forms::SignOutClientAction)
+}
+
+#[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
+pub enum OnAction {
+	#[serde(rename = "Forms$MicroflowAction")]
+	MicroflowAction(forms::MicroflowAction),
+	#[serde(rename = "Forms$NoAction")]
+	NoAction(forms::NoAction),
+	#[serde(rename = "Forms$SaveChangesClientAction")]
+	SaveChangesClientAction(forms::SaveChangesClientAction),
+	#[serde(rename = "Forms$CallNanoflowClientAction")]
+	CallNanoflowClientAction(forms::CallNanoflowClientAction),
+	#[serde(rename = "Forms$SignOutClientAction")]
+	SignOutClientAction(forms::SignOutClientAction),
+	#[serde(rename = "Forms$CancelChangesClientAction")]
+	CancelChangesClientAction(forms::CancelChangesClientAction),
+	#[serde(rename = "Forms$ClosePageClientAction")]
+	ClosePageClientAction(forms::ClosePageClientAction),
+	#[serde(rename = "Forms$FormAction")]
+	FormAction(forms::FormAction),
+	#[serde(rename = "Forms$DeleteClientAction")]
+	DeleteClientAction(forms::DeleteClientAction),
+	#[serde(rename = "Forms$OpenLinkClientAction")]
+	OpenLinkClientAction(forms::OpenLinkClientAction),
+}
+
+#[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
+pub enum DataSource {
+	#[serde(rename = "Forms$AssociationSource")]
+	AssociationSource(forms::AssociationSource),
+	#[serde(rename = "Forms$DataViewSource")]
+	DataViewSource(forms::DataViewSource),
+	#[serde(rename = "Forms$GridXPathSource")]
+	GridXPathSource(forms::GridXPathSource),
+	#[serde(rename = "Forms$ListenTargetSource")]
+	ListenTargetSource(forms::ListenTargetSource),
+	#[serde(rename = "Forms$ListViewXPathSource")]
+	ListViewXPathSource(forms::ListViewXPathSource),
+	#[serde(rename = "Forms$MicroflowSource")]
+	MicroflowSource(forms::MicroflowSource),
+	#[serde(rename = "Forms$NanoflowSource")]
+	NanoflowSource(forms::NanoflowSource),
+	#[serde(rename = "Forms$NewGridDatabaseSource")]
+	NewGridDatabaseSource(forms::NewGridDatabaseSource),
+	#[serde(rename = "Forms$NewListViewDatabaseSource")]
+	NewListViewDatabaseSource(forms::NewListViewDatabaseSource),
+}
+
+#[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
+pub enum EntityRef {
+	#[serde(rename = "Forms$IndirectEntityRef")]
+	IndirectEntityRef(domain_models::IndirectEntityRef), 
+	#[serde(rename = "Forms$DirectEntityRef")]
+	DirectEntityRef(domain_models::DirectEntityRef),
+}
+
+#[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
+pub enum MenuSource {
+	#[serde(rename = "Forms$NavigationSource")]
+	NavigationSource(forms::NavigationSource),
+	#[serde(rename = "Forms$MenuDocumentSource")]
+	MenuDocumentSource(forms::MenuDocumentSource),
 }
 
 
@@ -63,7 +206,7 @@ pub struct ActionButton {
 	_id: Uuid,
 
 	#[serde(rename = "Action")]
-	action: forms::MicroflowAction,
+	action: ButtonAction,
 	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "AriaRole")]
@@ -203,11 +346,11 @@ pub struct CheckBox {
 	#[serde(rename = "NativeRenderMode")]
 	native_render_mode: String,
 	#[serde(rename = "OnChangeAction")]
-	on_change_action: forms::NoAction,
+	on_change_action: OnAction,
 	#[serde(rename = "OnEnterAction")]
-	on_enter_action: forms::NoAction,
+	on_enter_action: OnAction,
 	#[serde(rename = "OnLeaveAction")]
-	on_leave_action: forms::NoAction,
+	on_leave_action: OnAction,
 	#[serde(rename = "ReadOnlyStyle")]
 	read_only_style: String,
 	#[serde(rename = "ScreenReaderLabel")]
@@ -360,7 +503,7 @@ pub struct DataGrid {
 	#[serde(rename = "ControlBar")]
 	control_bar: forms::GridControlBar,
 	#[serde(rename = "DataSource")]
-	data_source: forms::GridXPathSource,
+	data_source: DataSource,
 	#[serde(rename = "DefaultButtonTrigger")]
 	default_button_trigger: String,
 	#[serde(rename = "IsControlBarVisible")]
@@ -445,7 +588,7 @@ pub struct DataView {
 	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
 	#[serde(rename = "DataSource")]
-	data_source: forms::DataViewSource,
+	data_source: DataSource,
 	#[serde(rename = "Editable")]
 	editable: bool,
 	#[serde(rename = "FooterWidgets")]
@@ -472,7 +615,7 @@ pub struct DataViewSource {
 	_id: Uuid,
 
 	#[serde(rename = "EntityRef")]
-	entity_ref: domain_models::DirectEntityRef,
+	entity_ref: EntityRef,
 	#[serde(rename = "PageParameter")]
 	page_parameter: String,
 	#[serde(rename = "SnippetParameter")]
@@ -505,11 +648,11 @@ pub struct DatePicker {
 	#[serde(rename = "NativeAccessibilitySettings")]
 	native_accessibility_settings: Empty,
 	#[serde(rename = "OnChangeAction")]
-	on_change_action: forms::NoAction,
+	on_change_action: OnAction,
 	#[serde(rename = "OnEnterAction")]
-	on_enter_action: forms::NoAction,
+	on_enter_action: OnAction,
 	#[serde(rename = "OnLeaveAction")]
-	on_leave_action: forms::NoAction,
+	on_leave_action: OnAction,
 	#[serde(rename = "Placeholder")]
 	placeholder: texts::Text,
 	#[serde(rename = "ReadOnlyStyle")]
@@ -585,7 +728,7 @@ pub struct DivContainer {
 	#[serde(rename = "NativeAccessibilitySettings")]
 	native_accessibility_settings: Empty,
 	#[serde(rename = "OnClickAction")]
-	on_click_action: forms::NoAction,
+	on_click_action: OnAction,
 	#[serde(rename = "RenderMode")]
 	render_mode: String,
 	#[serde(rename = "ScreenReaderHidden")]
@@ -622,11 +765,11 @@ pub struct DropDown {
 	#[serde(rename = "NativeAccessibilitySettings")]
 	native_accessibility_settings: Empty,
 	#[serde(rename = "OnChangeAction")]
-	on_change_action: forms::NoAction,
+	on_change_action: OnAction,
 	#[serde(rename = "OnEnterAction")]
-	on_enter_action: forms::NoAction,
+	on_enter_action: OnAction,
 	#[serde(rename = "OnLeaveAction")]
-	on_leave_action: forms::NoAction,
+	on_leave_action: OnAction,
 	#[serde(rename = "ReadOnlyStyle")]
 	read_only_style: String,
 	#[serde(rename = "ScreenReaderLabel")]
@@ -804,7 +947,7 @@ pub struct GridActionButton {
 	_id: Uuid,
 
 	#[serde(rename = "Action")]
-	action: forms::MicroflowAction,
+	action: OnAction,
 	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "ButtonStyle")]
@@ -931,7 +1074,7 @@ pub struct GridXPathSource {
 	_id: Uuid,
 
 	#[serde(rename = "EntityRef")]
-	entity_ref: domain_models::DirectEntityRef,
+	entity_ref: EntityRef,
 	#[serde(rename = "SearchBar")]
 	search_bar: forms::SearchBar,
 	#[serde(rename = "SortBar")]
@@ -1008,7 +1151,7 @@ pub struct ImageViewer {
 	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "ClickAction")]
-	click_action: forms::CallNanoflowClientAction,
+	click_action: OnAction,
 	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
 	#[serde(rename = "DataSource")]
@@ -1066,7 +1209,7 @@ pub struct InputReferenceSetSelector {
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "OnChangeAction")]
-	on_change_action: forms::NoAction,
+	on_change_action: OnAction,
 	#[serde(rename = "PopupFormSettings")]
 	popup_form_settings: forms::FormSettings,
 	#[serde(rename = "ReadOnlyStyle")]
@@ -1099,6 +1242,15 @@ pub struct Label {
 }
 
 #[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
+pub enum LayoutContent {
+	#[serde(rename = "Forms$WebLayoutContent")]
+	WebLayoutContent(forms::WebLayoutContent), 
+	#[serde(rename = "Forms$NativeLayoutContent")]
+	NativeLayoutContent(forms::NativeLayoutContent),
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct Layout {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
@@ -1110,7 +1262,7 @@ pub struct Layout {
 	#[serde(rename = "CanvasWidth")]
 	canvas_width: i64,
 	#[serde(rename = "Content")]
-	content: forms::WebLayoutContent,
+	content: LayoutContent,
 	#[serde(rename = "Documentation")]
 	documentation: String,
 	#[serde(rename = "Excluded")]
@@ -1199,11 +1351,11 @@ pub struct ListView {
 	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "ClickAction")]
-	click_action: forms::NoAction,
+	click_action: OnAction,
 	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
 	#[serde(rename = "DataSource")]
-	data_source: forms::MicroflowSource,
+	data_source: DataSource,
 	#[serde(rename = "Editable")]
 	editable: bool,
 	#[serde(rename = "Name")]
@@ -1239,7 +1391,7 @@ pub struct ListViewXPathSource {
 	_id: Uuid,
 
 	#[serde(rename = "EntityRef")]
-	entity_ref: domain_models::DirectEntityRef,
+	entity_ref: EntityRef,
 	#[serde(rename = "Search")]
 	search: forms::ListViewSearch,
 	#[serde(rename = "SortBar")]
@@ -1311,7 +1463,7 @@ pub struct MenuBar {
 	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "MenuSource")]
-	menu_source: forms::NavigationSource,
+	menu_source: MenuSource,
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "TabIndex")]
@@ -1437,7 +1589,7 @@ pub struct NavigationTree {
 	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "MenuSource")]
-	menu_source: forms::NavigationSource,
+	menu_source: MenuSource,
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "TabIndex")]
@@ -1452,7 +1604,7 @@ pub struct NewGridDatabaseSource {
 	#[serde(rename = "DatabaseConstraints")]
 	database_constraints: Vec<UnknownType>,
 	#[serde(rename = "EntityRef")]
-	entity_ref: domain_models::DirectEntityRef,
+	entity_ref: EntityRef,
 	#[serde(rename = "SearchBar")]
 	search_bar: forms::SearchBar,
 	#[serde(rename = "SortBar")]
@@ -1467,7 +1619,7 @@ pub struct NewListViewDatabaseSource {
 	#[serde(rename = "DatabaseConstraints")]
 	database_constraints: Vec<UnknownType>,
 	#[serde(rename = "EntityRef")]
-	entity_ref: domain_models::IndirectEntityRef,
+	entity_ref: EntityRef,
 	#[serde(rename = "Search")]
 	search: forms::ListViewSearch,
 	#[serde(rename = "SortBar")]
@@ -1641,11 +1793,11 @@ pub struct RadioButtonGroup {
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "OnChangeAction")]
-	on_change_action: forms::NoAction,
+	on_change_action: OnAction,
 	#[serde(rename = "OnEnterAction")]
-	on_enter_action: forms::NoAction,
+	on_enter_action: OnAction,
 	#[serde(rename = "OnLeaveAction")]
-	on_leave_action: forms::NoAction,
+	on_leave_action: OnAction,
 	#[serde(rename = "ReadOnlyStyle")]
 	read_only_style: String,
 	#[serde(rename = "RenderHorizontal")]
@@ -1688,6 +1840,17 @@ pub struct RangeSearchField {
 }
 
 #[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
+pub enum SelectorSource {
+	#[serde(rename = "Forms$SelectorMicroflowSource")]
+	SelectorMicroflowSource(forms::SelectorMicroflowSource),
+	#[serde(rename = "Forms$NewSelectorDatabaseSource")]
+	NewSelectorDatabaseSource(forms::NewSelectorDatabaseSource),
+	#[serde(rename = "Forms$SelectorXPathSource")]
+	SelectorXPathSource(forms::SelectorXPathSource),
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct ReferenceSelector {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
@@ -1715,7 +1878,7 @@ pub struct ReferenceSelector {
 	#[serde(rename = "NativeAccessibilitySettings")]
 	native_accessibility_settings: Empty,
 	#[serde(rename = "OnChangeAction")]
-	on_change_action: forms::NoAction,
+	on_change_action: OnAction,
 	#[serde(rename = "PopupFormSettings")]
 	popup_form_settings: forms::FormSettings,
 	#[serde(rename = "ReadOnlyStyle")]
@@ -1725,7 +1888,7 @@ pub struct ReferenceSelector {
 	#[serde(rename = "ScreenReaderLabel")]
 	screen_reader_label: Empty,
 	#[serde(rename = "SelectorSource")]
-	selector_source: forms::NewSelectorDatabaseSource,
+	selector_source: SelectorSource,
 	#[serde(rename = "SourceVariable")]
 	source_variable: Empty,
 	#[serde(rename = "TabIndex")]
@@ -1760,7 +1923,7 @@ pub struct ReferenceSetSelector {
 	#[serde(rename = "NumberOfRows")]
 	number_of_rows: i64,
 	#[serde(rename = "OnChangeAction")]
-	on_change_action: forms::NoAction,
+	on_change_action: OnAction,
 	#[serde(rename = "RefreshTime")]
 	refresh_time: i64,
 	#[serde(rename = "SelectableXPathConstraint")]
@@ -1895,6 +2058,15 @@ pub struct SelectorXPathSource {
 }
 
 #[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
+pub enum Icon {
+	#[serde(rename = "Forms$GlyphIcon")]
+	GlyphIcon(forms::GlyphIcon),
+	#[serde(rename = "Forms$IconCollectionIcon")]
+	IconCollectionIcon(forms::IconCollectionIcon),
+}
+
+#[derive(Serialize, Deserialize)]
 pub struct SidebarToggleButton {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
@@ -1908,7 +2080,7 @@ pub struct SidebarToggleButton {
 	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
 	#[serde(rename = "Icon")]
-	icon: forms::GlyphIcon,
+	icon: Icon,
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "RenderType")]
@@ -1936,7 +2108,7 @@ pub struct SimpleMenuBar {
 	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "MenuSource")]
-	menu_source: forms::NavigationSource,
+	menu_source: MenuSource,
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "Orientation")]
@@ -2017,7 +2189,7 @@ pub struct StaticImageViewer {
 	#[serde(rename = "Appearance")]
 	appearance: forms::Appearance,
 	#[serde(rename = "ClickAction")]
-	click_action: forms::NoAction,
+	click_action: OnAction,
 	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Empty,
 	#[serde(rename = "Height")]
@@ -2148,7 +2320,7 @@ pub struct TemplateGrid {
 	#[serde(rename = "ControlBar")]
 	control_bar: forms::GridControlBar,
 	#[serde(rename = "DataSource")]
-	data_source: forms::MicroflowSource,
+	data_source: DataSource,
 	#[serde(rename = "DefaultButtonTrigger")]
 	default_button_trigger: String,
 	#[serde(rename = "IsControlBarVisible")]
@@ -2214,11 +2386,11 @@ pub struct TextArea {
 	#[serde(rename = "NumberOfLines")]
 	number_of_lines: i64,
 	#[serde(rename = "OnChangeAction")]
-	on_change_action: forms::NoAction,
+	on_change_action: OnAction,
 	#[serde(rename = "OnEnterAction")]
-	on_enter_action: forms::NoAction,
+	on_enter_action: OnAction,
 	#[serde(rename = "OnLeaveAction")]
-	on_leave_action: forms::NoAction,
+	on_leave_action: OnAction,
 	#[serde(rename = "Placeholder")]
 	placeholder: texts::Text,
 	#[serde(rename = "ReadOnlyStyle")]
@@ -2279,13 +2451,13 @@ pub struct TextBox {
 	#[serde(rename = "NativeAccessibilitySettings")]
 	native_accessibility_settings: Empty,
 	#[serde(rename = "OnChangeAction")]
-	on_change_action: forms::MicroflowAction,
+	on_change_action: OnAction,
 	#[serde(rename = "OnEnterAction")]
-	on_enter_action: forms::NoAction,
+	on_enter_action: OnAction,
 	#[serde(rename = "OnEnterKeyPressAction")]
-	on_enter_key_press_action: forms::NoAction,
+	on_enter_key_press_action: OnAction,
 	#[serde(rename = "OnLeaveAction")]
-	on_leave_action: forms::NoAction,
+	on_leave_action: OnAction,
 	#[serde(rename = "Placeholder")]
 	placeholder: texts::Text,
 	#[serde(rename = "ReadOnlyStyle")]
