@@ -1,5 +1,4 @@
 use bson::Binary;
-use serde::{Deserialize, Serialize};
 use uuid::Uuid;
 use super::*;
 
@@ -55,7 +54,7 @@ pub struct CertificateSettings {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "Certificates")]
+	#[serde(rename = "Certificates", deserialize_with = "deserialize_settings")]
 	certificates: Vec<settings::Certificate>,
 }
 
@@ -64,7 +63,7 @@ pub struct ConfigurationSettings {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "Configurations")]
+	#[serde(rename = "Configurations", deserialize_with = "deserialize_settings")]
 	configurations: Vec<settings::ServerConfiguration>,
 }
 
@@ -84,7 +83,7 @@ pub struct ConventionSettings {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "ActionActivityDefaultColors")]
+	#[serde(rename = "ActionActivityDefaultColors", deserialize_with = "deserialize_settings")]
 	action_activity_default_colors: Vec<settings::ActionActivityDefaultColor>,
 	#[serde(rename = "LowerCaseMicroflowVariables")]
 	lower_case_microflow_variables: bool,
@@ -115,7 +114,7 @@ pub struct JarDeploymentSettings {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "Exclusions")]
+	#[serde(rename = "Exclusions", deserialize_with = "deserialize_settings")]
 	exclusions: Vec<UnknownType>,
 }
 
@@ -126,7 +125,7 @@ pub struct LanguageSettings {
 
 	#[serde(rename = "DefaultLanguageCode")]
 	default_language_code: String,
-	#[serde(rename = "Languages")]
+	#[serde(rename = "Languages", deserialize_with = "deserialize_settings")]
 	languages: Vec<texts::Language>,
 }
 
@@ -166,7 +165,7 @@ pub struct ProjectSettings {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "Settings")]
+	#[serde(rename = "Settings", deserialize_with = "deserialize_settings")]
 	settings: Vec<ProjectSetting>,
 }
 
@@ -177,9 +176,9 @@ pub struct ServerConfiguration {
 
 	#[serde(rename = "ApplicationRootUrl")]
 	application_root_url: String,
-	#[serde(rename = "ConstantValues")]
+	#[serde(rename = "ConstantValues", deserialize_with = "deserialize_settings")]
 	constant_values: Vec<settings::ConstantValue>,
-	#[serde(rename = "CustomSettings")]
+	#[serde(rename = "CustomSettings", deserialize_with = "deserialize_settings")]
 	custom_settings: Vec<UnknownType>,
 	#[serde(rename = "DatabaseName")]
 	database_name: String,
@@ -228,10 +227,10 @@ pub struct WorkflowsProjectSettingsPart {
 	#[serde(rename = "UserEntity")]
 	user_entity: String,
 	#[serde(rename = "UsertaskOnStateChangeEvent")]
-	usertask_on_state_change_event: Empty,
+	usertask_on_state_change_event: Option<Empty>,
 	#[serde(rename = "WorkflowEngineParallelism")]
 	workflow_engine_parallelism: i64,
 	#[serde(rename = "WorkflowOnStateChangeEvent")]
-	workflow_on_state_change_event: Empty,
+	workflow_on_state_change_event: Option<Empty>,
 }
 

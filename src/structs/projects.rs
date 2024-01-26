@@ -70,7 +70,7 @@ pub struct ProjectConversion {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "OneTimeConversions")]
+	#[serde(rename = "OneTimeConversions", deserialize_with = "deserialize_settings")]
 	one_time_conversions: Vec<projects::OneTimeConversion>,
 }
 

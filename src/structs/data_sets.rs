@@ -8,7 +8,7 @@ pub struct DataSet {
 	_id: Uuid,
 
 	#[serde(rename = "DataSetAccess")]
-	data_set_access: data_sets::DataSetAccess,
+	data_set_access: Option<data_sets::DataSetAccess>,
 	#[serde(rename = "Documentation")]
 	documentation: String,
 	#[serde(rename = "Excluded")]
@@ -17,10 +17,10 @@ pub struct DataSet {
 	export_level: String,
 	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "Parameters")]
+	#[serde(rename = "Parameters", deserialize_with = "deserialize_settings")]
 	parameters: Vec<data_sets::DataSetParameter>,
 	#[serde(rename = "Source")]
-	source: data_sets::OqlDataSetSource,
+	source: Option<data_sets::OqlDataSetSource>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -28,7 +28,7 @@ pub struct DataSetAccess {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "ModuleRoleAccessList")]
+	#[serde(rename = "ModuleRoleAccessList", deserialize_with = "deserialize_settings")]
 	module_role_access_list: Vec<UnknownType>,
 }
 
@@ -37,12 +37,12 @@ pub struct DataSetParameter {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "Constraints")]
+	#[serde(rename = "Constraints", deserialize_with = "deserialize_settings")]
 	constraints: Vec<UnknownType>,
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "ParameterType")]
-	parameter_type: data_types::ObjectType,
+	parameter_type: Option<data_types::ObjectType>,
 	#[serde(rename = "ParameterTypeIsRange")]
 	parameter_type_is_range: bool,
 }

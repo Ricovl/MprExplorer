@@ -55,6 +55,15 @@ pub enum RuleInfo {
 	RegExRuleInfo(RegExRuleInfo),
 }
 
+#[derive(Serialize, Deserialize)]
+#[serde(tag = "$Type")]
+pub enum EntityRef {
+	#[serde(rename = "DomainModels$IndirectEntityRef")]
+	IndirectEntityRef(domain_models::IndirectEntityRef), 
+	#[serde(rename = "DomainModels$DirectEntityRef")]
+	DirectEntityRef(domain_models::DirectEntityRef),
+}
+
 
 #[derive(Serialize, Deserialize)]
 pub struct AccessRule {
@@ -65,13 +74,13 @@ pub struct AccessRule {
 	allow_create: bool,
 	#[serde(rename = "AllowDelete")]
 	allow_delete: bool,
-	#[serde(rename = "AllowedModuleRoles")]
+	#[serde(rename = "AllowedModuleRoles", deserialize_with = "deserialize_settings")]
 	allowed_module_roles: Vec<String>,
 	#[serde(rename = "DefaultMemberAccessRights")]
 	default_member_access_rights: String,
 	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "MemberAccesses")]
+	#[serde(rename = "MemberAccesses", deserialize_with = "deserialize_settings")]
 	member_accesses: Vec<domain_models::MemberAccess>,
 	#[serde(rename = "XPathConstraint")]
 	x_path_constraint: String,
@@ -100,15 +109,15 @@ pub struct Association {
 	#[serde(rename = "ChildConnection")]
 	child_connection: String,
 	#[serde(rename = "ChildPointer")]
-	child_pointer: Binary,
+	child_pointer: Uuid,
 	#[serde(rename = "DeleteBehavior")]
-	delete_behavior: domain_models::DeleteBehavior,
+	delete_behavior: Option<domain_models::DeleteBehavior>,
 	#[serde(rename = "Documentation")]
 	documentation: String,
 	#[serde(rename = "ExportLevel")]
 	export_level: String,
 	#[serde(rename = "GUID")]
-	guid: Binary,
+	guid: Uuid,
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "Owner")]
@@ -116,9 +125,9 @@ pub struct Association {
 	#[serde(rename = "ParentConnection")]
 	parent_connection: String,
 	#[serde(rename = "ParentPointer")]
-	parent_pointer: Binary,
+	parent_pointer: Uuid,
 	#[serde(rename = "Source")]
-	source: Empty,
+	source: Option<Empty>,
 	#[serde(rename = "Type")]
 	var_type: String,
 }
@@ -133,7 +142,7 @@ pub struct Attribute {
 	#[serde(rename = "ExportLevel")]
 	export_level: String,
 	#[serde(rename = "GUID")]
-	guid: Binary,
+	guid: Uuid,
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "NewType")]
@@ -150,7 +159,7 @@ pub struct AttributeRef {
 	#[serde(rename = "Attribute")]
 	attribute: String,
 	#[serde(rename = "EntityRef")]
-	entity_ref: Empty,
+	entity_ref: Option<Empty>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -186,21 +195,21 @@ pub struct CrossAssociation {
 	#[serde(rename = "Child")]
 	child: String,
 	#[serde(rename = "DeleteBehavior")]
-	delete_behavior: domain_models::DeleteBehavior,
+	delete_behavior: Option<domain_models::DeleteBehavior>,
 	#[serde(rename = "Documentation")]
 	documentation: String,
 	#[serde(rename = "ExportLevel")]
 	export_level: String,
 	#[serde(rename = "GUID")]
-	guid: Binary,
+	guid: Uuid,
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "Owner")]
 	owner: String,
 	#[serde(rename = "ParentPointer")]
-	parent_pointer: Binary,
+	parent_pointer: Uuid,
 	#[serde(rename = "Source")]
-	source: Empty,
+	source: Option<Empty>,
 	#[serde(rename = "Type")]
 	var_type: String,
 }
@@ -229,11 +238,11 @@ pub struct DeleteBehavior {
 	#[serde(rename = "ChildDeleteBehavior")]
 	child_delete_behavior: String,
 	#[serde(rename = "ChildErrorMessage")]
-	child_error_message: Empty,
+	child_error_message: Option<Empty>,
 	#[serde(rename = "ParentDeleteBehavior")]
 	parent_delete_behavior: String,
 	#[serde(rename = "ParentErrorMessage")]
-	parent_error_message: Empty,
+	parent_error_message: Option<Empty>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -250,15 +259,15 @@ pub struct DomainModel {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "Annotations")]
+	#[serde(rename = "Annotations", deserialize_with = "deserialize_settings")]
 	annotations: Vec<domain_models::Annotation>,
-	#[serde(rename = "Associations")]
+	#[serde(rename = "Associations", deserialize_with = "deserialize_settings")]
 	associations: Vec<domain_models::Association>,
-	#[serde(rename = "CrossAssociations")]
+	#[serde(rename = "CrossAssociations", deserialize_with = "deserialize_settings")]
 	cross_associations: Vec<domain_models::CrossAssociation>,
 	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "Entities")]
+	#[serde(rename = "Entities", deserialize_with = "deserialize_settings")]
 	entities: Vec<domain_models::EntityImpl>,
 }
 
@@ -284,23 +293,23 @@ pub struct EntityImpl {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "AccessRules")]
+	#[serde(rename = "AccessRules", deserialize_with = "deserialize_settings")]
 	access_rules: Vec<domain_models::AccessRule>,
-	#[serde(rename = "Attributes")]
+	#[serde(rename = "Attributes", deserialize_with = "deserialize_settings")]
 	attributes: Vec<domain_models::Attribute>,
 	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "Events")]
+	#[serde(rename = "Events", deserialize_with = "deserialize_settings")]
 	events: Vec<domain_models::EntityEvent>,
 	#[serde(rename = "ExportLevel")]
 	export_level: String,
 	#[serde(rename = "GUID")]
-	guid: Binary,
+	guid: Uuid,
 	#[serde(rename = "Image")]
 	image: String,
 	#[serde(rename = "ImageData")]
 	image_data: Binary,
-	#[serde(rename = "Indexes")]
+	#[serde(rename = "Indexes", deserialize_with = "deserialize_settings")]
 	indexes: Vec<domain_models::EntityIndex>,
 	#[serde(rename = "Location")]
 	location: String,
@@ -309,8 +318,8 @@ pub struct EntityImpl {
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "Source")]
-	source: Empty,
-	#[serde(rename = "ValidationRules")]
+	source: Option<Empty>,
+	#[serde(rename = "ValidationRules", deserialize_with = "deserialize_settings")]
 	validation_rules: Vec<domain_models::ValidationRule>,
 }
 
@@ -319,10 +328,10 @@ pub struct EntityIndex {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "Attributes")]
+	#[serde(rename = "Attributes", deserialize_with = "deserialize_settings")]
 	attributes: Vec<domain_models::IndexedAttribute>,
 	#[serde(rename = "GUID")]
-	guid: Binary,
+	guid: Uuid,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -362,7 +371,7 @@ pub struct IndexedAttribute {
 	#[serde(rename = "Ascending")]
 	ascending: bool,
 	#[serde(rename = "AttributePointer")]
-	attribute_pointer: Binary,
+	attribute_pointer: Uuid,
 	#[serde(rename = "Type")]
 	var_type: String,
 }
@@ -372,7 +381,7 @@ pub struct IndirectEntityRef {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "Steps")]
+	#[serde(rename = "Steps", deserialize_with = "deserialize_settings")]
 	steps: Vec<domain_models::EntityRefStep>,
 }
 
@@ -490,7 +499,7 @@ pub struct ValidationRule {
 	#[serde(rename = "Attribute")]
 	attribute: String,
 	#[serde(rename = "Message")]
-	message: texts::Text,
+	message: Option<texts::Text>,
 	#[serde(rename = "RuleInfo")]
 	rule_info: RuleInfo,
 }

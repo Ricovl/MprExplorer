@@ -6,129 +6,129 @@ use super::*;
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "$Type")]
 pub enum Flow {
-	#[serde(rename = "MicroFlows$AnnotationFlow")]
+	#[serde(rename = "Microflows$AnnotationFlow")]
 	AnnotationFlow(microflows::AnnotationFlow), 
-	#[serde(rename = "MicroFlows$SequenceFlow")]
+	#[serde(rename = "Microflows$SequenceFlow")]
 	SequenceFlow(microflows::SequenceFlow),
 }
 
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "$Type")]
 pub enum MicroFlowObject {
-	#[serde(rename = "MicroFlows$MicroflowParameter")]
+	#[serde(rename = "Microflows$MicroflowParameter")]
 	MicroflowParameter(microflows::MicroflowParameter),
-	#[serde(rename = "MicroFlows$EndEvent")]
+	#[serde(rename = "Microflows$EndEvent")]
 	EndEvent(microflows::EndEvent),
-	#[serde(rename = "MicroFlows$StartEvent")]
+	#[serde(rename = "Microflows$StartEvent")]
 	StartEvent(microflows::StartEvent),
-	#[serde(rename = "MicroFlows$ContinueEvent")]
+	#[serde(rename = "Microflows$ContinueEvent")]
 	ContinueEvent(microflows::ContinueEvent),
-	#[serde(rename = "MicroFlows$LoopedActivity")]
+	#[serde(rename = "Microflows$LoopedActivity")]
 	LoopedActivity(microflows::LoopedActivity),
-	#[serde(rename = "MicroFlows$ExclusiveMerge")]
+	#[serde(rename = "Microflows$ExclusiveMerge")]
 	ExclusiveMerge(microflows::ExclusiveMerge),
-	#[serde(rename = "MicroFlows$InheritanceSplit")]
+	#[serde(rename = "Microflows$InheritanceSplit")]
 	InheritanceSplit(microflows::InheritanceSplit),
-	#[serde(rename = "MicroFlows$ErrorEvent")]
+	#[serde(rename = "Microflows$ErrorEvent")]
 	ErrorEvent(microflows::ErrorEvent),
-	#[serde(rename = "MicroFlows$ExclusiveSplit")]
+	#[serde(rename = "Microflows$ExclusiveSplit")]
 	ExclusiveSplit(microflows::ExclusiveSplit),
-	#[serde(rename = "MicroFlows$Annotation")]
+	#[serde(rename = "Microflows$Annotation")]
 	Annotation(microflows::Annotation),
-	#[serde(rename = "MicroFlows$ActionActivity")]
+	#[serde(rename = "Microflows$ActionActivity")]
 	ActionActivity(microflows::ActionActivity),
-	#[serde(rename = "MicroFlows$BreakEvent")]
+	#[serde(rename = "Microflows$BreakEvent")]
 	BreakEvent(microflows::BreakEvent),
 }
 
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "$Type")]
 pub enum MicroflowAction {
-	#[serde(rename = "MicroFlows$ShowFormAction")]
+	#[serde(rename = "Microflows$ShowFormAction")]
 	ShowFormAction(microflows::ShowFormAction),
-	#[serde(rename = "MicroFlows$SynchronizeAction")]
+	#[serde(rename = "Microflows$SynchronizeAction")]
 	SynchronizeAction(microflows::SynchronizeAction),
-	#[serde(rename = "MicroFlows$NanoflowCallAction")]
+	#[serde(rename = "Microflows$NanoflowCallAction")]
 	NanoflowCallAction(microflows::NanoflowCallAction),
-	#[serde(rename = "MicroFlows$LogMessageAction")]
+	#[serde(rename = "Microflows$LogMessageAction")]
 	LogMessageAction(microflows::LogMessageAction),
-	#[serde(rename = "MicroFlows$JavaScriptActionCallAction")]
+	#[serde(rename = "Microflows$JavaScriptActionCallAction")]
 	JavaScriptActionCallAction(microflows::JavaScriptActionCallAction),
-	#[serde(rename = "MicroFlows$RollbackAction")]
+	#[serde(rename = "Microflows$RollbackAction")]
 	RollbackAction(microflows::RollbackAction),
-	#[serde(rename = "MicroFlows$CallWebServiceAction")]
+	#[serde(rename = "Microflows$CallWebServiceAction")]
 	CallWebServiceAction(microflows::CallWebServiceAction),
-	#[serde(rename = "MicroFlows$RestCallAction")]
+	#[serde(rename = "Microflows$RestCallAction")]
 	RestCallAction(microflows::RestCallAction),
-	#[serde(rename = "MicroFlows$CreateChangeAction")]
+	#[serde(rename = "Microflows$CreateChangeAction")]
 	CreateChangeAction(microflows::CreateChangeAction),
-	#[serde(rename = "MicroFlows$RetrieveAction")]
+	#[serde(rename = "Microflows$RetrieveAction")]
 	RetrieveAction(microflows::RetrieveAction),
-	#[serde(rename = "MicroFlows$ExportXmlAction")]
+	#[serde(rename = "Microflows$ExportXmlAction")]
 	ExportXmlAction(microflows::ExportXmlAction),
-	#[serde(rename = "MicroFlows$CreateVariableAction")]
+	#[serde(rename = "Microflows$CreateVariableAction")]
 	CreateVariableAction(microflows::CreateVariableAction),
-	#[serde(rename = "MicroFlows$DeleteAction")]
+	#[serde(rename = "Microflows$DeleteAction")]
 	DeleteAction(microflows::DeleteAction),
-	#[serde(rename = "MicroFlows$ChangeListAction")]
+	#[serde(rename = "Microflows$ChangeListAction")]
 	ChangeListAction(microflows::ChangeListAction),
-	#[serde(rename = "MicroFlows$CreateListAction")]
+	#[serde(rename = "Microflows$CreateListAction")]
 	CreateListAction(microflows::CreateListAction),
-	#[serde(rename = "MicroFlows$ChangeVariableAction")]
+	#[serde(rename = "Microflows$ChangeVariableAction")]
 	ChangeVariableAction(microflows::ChangeVariableAction),
-	#[serde(rename = "MicroFlows$AggregateAction")]
+	#[serde(rename = "Microflows$AggregateAction")]
 	AggregateAction(microflows::AggregateAction),
-	#[serde(rename = "MicroFlows$ValidationFeedbackAction")]
+	#[serde(rename = "Microflows$ValidationFeedbackAction")]
 	ValidationFeedbackAction(microflows::ValidationFeedbackAction),
-	#[serde(rename = "MicroFlows$ListOperationsAction")]
+	#[serde(rename = "Microflows$ListOperationsAction")]
 	ListOperationsAction(microflows::ListOperationsAction),
-	#[serde(rename = "MicroFlows$ImportXmlAction")]
+	#[serde(rename = "Microflows$ImportXmlAction")]
 	ImportXmlAction(microflows::ImportXmlAction),
-	#[serde(rename = "MicroFlows$ShowMessageAction")]
+	#[serde(rename = "Microflows$ShowMessageAction")]
 	ShowMessageAction(microflows::ShowMessageAction),
-	#[serde(rename = "MicroFlows$MicroflowCallAction")]
+	#[serde(rename = "Microflows$MicroflowCallAction")]
 	MicroflowCallAction(microflows::MicroflowCallAction),
-	#[serde(rename = "MicroFlows$CloseFormAction")]
+	#[serde(rename = "Microflows$CloseFormAction")]
 	CloseFormAction(microflows::CloseFormAction),
-	#[serde(rename = "MicroFlows$CommitAction")]
+	#[serde(rename = "Microflows$CommitAction")]
 	CommitAction(microflows::CommitAction),
-	#[serde(rename = "MicroFlows$ShowHomePageAction")]
+	#[serde(rename = "Microflows$ShowHomePageAction")]
 	ShowHomePageAction(microflows::ShowHomePageAction),
-	#[serde(rename = "MicroFlows$CastAction")]
+	#[serde(rename = "Microflows$CastAction")]
 	CastAction(microflows::CastAction),
-	#[serde(rename = "MicroFlows$DownloadFileAction")]
+	#[serde(rename = "Microflows$DownloadFileAction")]
 	DownloadFileAction(microflows::DownloadFileAction),
-	#[serde(rename = "MicroFlows$IncrementCounterMeterAction")]
+	#[serde(rename = "Microflows$IncrementCounterMeterAction")]
 	IncrementCounterMeterAction(microflows::IncrementCounterMeterAction),
-	#[serde(rename = "MicroFlows$GenerateDocumentAction")]
+	#[serde(rename = "Microflows$GenerateDocumentAction")]
 	GenerateDocumentAction(microflows::GenerateDocumentAction),
-	#[serde(rename = "MicroFlows$ChangeAction")]
+	#[serde(rename = "Microflows$ChangeAction")]
 	ChangeAction(microflows::ChangeAction),
-	#[serde(rename = "MicroFlows$JavaActionCallAction")]
+	#[serde(rename = "Microflows$JavaActionCallAction")]
 	JavaActionCallAction(microflows::JavaActionCallAction),
 }
 
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "$Type")]
 pub enum ActionParameterValue {
-	#[serde(rename = "MicroFlows$MicroflowParameterValue")]
+	#[serde(rename = "Microflows$MicroflowParameterValue")]
 	MicroflowParameterValue(microflows::MicroflowParameterValue),
-	#[serde(rename = "MicroFlows$EntityTypeCodeActionParameterValue")]
+	#[serde(rename = "Microflows$EntityTypeCodeActionParameterValue")]
 	EntityTypeCodeActionParameterValue(microflows::EntityTypeCodeActionParameterValue),
-	#[serde(rename = "MicroFlows$BasicCodeActionParameterValue")]
+	#[serde(rename = "Microflows$BasicCodeActionParameterValue")]
 	BasicCodeActionParameterValue(microflows::BasicCodeActionParameterValue)
 }
 
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "$Type")]
 pub enum RequestHandler {
-	#[serde(rename = "MicroFlows$MappingRequestHandling")]
+	#[serde(rename = "Microflows$MappingRequestHandling")]
 	MappingRequestHandling(microflows::MappingRequestHandling),
-	#[serde(rename = "MicroFlows$SimpleRequestHandling")]
+	#[serde(rename = "Microflows$SimpleRequestHandling")]
 	SimpleRequestHandling(microflows::SimpleRequestHandling),
-	#[serde(rename = "MicroFlows$CustomRequestHandling")]
+	#[serde(rename = "Microflows$CustomRequestHandling")]
 	CustomRequestHandling(microflows::CustomRequestHandling),
-	#[serde(rename = "MicroFlows$BinaryRequestHandling")]
+	#[serde(rename = "Microflows$BinaryRequestHandling")]
 	BinaryRequestHandling(microflows::BinaryRequestHandling),
 }
 
@@ -139,7 +139,7 @@ pub struct ActionActivity {
 	_id: Uuid,
 
 	#[serde(rename = "Action")]
-	action: MicroflowAction,
+	action: Option<MicroflowAction>,
 	#[serde(rename = "AutoGenerateCaption")]
 	auto_generate_caption: bool,
 	#[serde(rename = "BackgroundColor")]
@@ -196,13 +196,13 @@ pub struct AnnotationFlow {
 	#[serde(rename = "DestinationConnectionIndex")]
 	destination_connection_index: i64,
 	#[serde(rename = "DestinationPointer")]
-	destination_pointer: Binary,
+	destination_pointer: Uuid,
 	#[serde(rename = "OriginBezierVector")]
 	origin_bezier_vector: String,
 	#[serde(rename = "OriginConnectionIndex")]
 	origin_connection_index: i64,
 	#[serde(rename = "OriginPointer")]
-	origin_pointer: Binary,
+	origin_pointer: Uuid,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -253,21 +253,21 @@ pub struct CallWebServiceAction {
 	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
 	#[serde(rename = "HttpConfiguration")]
-	http_configuration: microflows::HttpConfiguration,
+	http_configuration: Option<microflows::HttpConfiguration>,
 	#[serde(rename = "ImportedService")]
 	imported_service: String,
 	#[serde(rename = "IsValidationRequired")]
 	is_validation_required: bool,
 	#[serde(rename = "NewResultHandling")]
-	new_result_handling: microflows::ResultHandling,
+	new_result_handling: Option<microflows::ResultHandling>,
 	#[serde(rename = "OperationName")]
 	operation_name: String,
 	#[serde(rename = "ProxyConfiguration")]
-	proxy_configuration: Empty,
+	proxy_configuration: Option<Empty>,
 	#[serde(rename = "RequestBodyHandling")]
 	request_body_handling: RequestHandler,
 	#[serde(rename = "RequestHeaderHandling")]
-	request_header_handling: microflows::SimpleRequestHandling,
+	request_header_handling: Option<microflows::SimpleRequestHandling>,
 	#[serde(rename = "RequestProxyType")]
 	request_proxy_type: String,
 	#[serde(rename = "ServiceName")]
@@ -300,7 +300,7 @@ pub struct ChangeAction {
 	commit: String,
 	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "Items")]
+	#[serde(rename = "Items", deserialize_with = "deserialize_settings")]
 	items: Vec<microflows::ChangeActionItem>,
 	#[serde(rename = "RefreshInClient")]
 	refresh_in_client: bool,
@@ -417,7 +417,7 @@ pub struct CreateChangeAction {
 	entity: String,
 	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
-	#[serde(rename = "Items")]
+	#[serde(rename = "Items", deserialize_with = "deserialize_settings")]
 	items: Vec<microflows::ChangeActionItem>,
 	#[serde(rename = "RefreshInClient")]
 	refresh_in_client: bool,
@@ -450,7 +450,7 @@ pub struct CreateVariableAction {
 	#[serde(rename = "VariableName")]
 	variable_name: String,
 	#[serde(rename = "VariableType")]
-	variable_type: data_types::DataType,
+	variable_type: Option<data_types::DataType>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -470,15 +470,15 @@ pub struct CustomRequestHandling {
 	_id: Uuid,
 
 	#[serde(rename = "Template")]
-	template: microflows::StringTemplate,
+	template: Option<microflows::StringTemplate>,
 }
 
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "$Type")]
 pub enum SourceRange {
-	#[serde(rename = "MicroFlows$ConstantRange")]
+	#[serde(rename = "Microflows$ConstantRange")]
 	ConstantRange(microflows::ConstantRange),
-	#[serde(rename = "MicroFlows$CustomRange")]
+	#[serde(rename = "Microflows$CustomRange")]
 	CustomRange(microflows::CustomRange),
 }
 
@@ -490,7 +490,7 @@ pub struct DatabaseRetrieveSource {
 	#[serde(rename = "Entity")]
 	entity: String,
 	#[serde(rename = "NewSortings")]
-	new_sortings: microflows::SortingsList,
+	new_sortings: Option<microflows::SortingsList>,
 	#[serde(rename = "Range")]
 	range: SourceRange,
 	#[serde(rename = "XpathConstraint")]
@@ -592,9 +592,9 @@ pub struct ExclusiveMerge {
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "$Type")]
 pub enum SplitCondition {
-	#[serde(rename = "MicroFlows$ExpressionSplitCondition")]
+	#[serde(rename = "Microflows$ExpressionSplitCondition")]
 	ExpressionSplitCondition(microflows::ExpressionSplitCondition),
-	#[serde(rename = "MicroFlows$RuleSplitCondition")]
+	#[serde(rename = "Microflows$RuleSplitCondition")]
 	RuleSplitCondition(microflows::RuleSplitCondition),
 }
 
@@ -627,9 +627,9 @@ pub struct ExportXmlAction {
 	#[serde(rename = "IsValidationRequired")]
 	is_validation_required: bool,
 	#[serde(rename = "OutputMethod")]
-	output_method: export_xml_action::XmlExportAction,
+	output_method: Option<export_xml_action::XmlExportAction>,
 	#[serde(rename = "ResultHandling")]
-	result_handling: microflows::MappingRequestHandling,
+	result_handling: Option<microflows::MappingRequestHandling>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -726,7 +726,7 @@ pub struct GenerateDocumentAction {
 	override_right_margin: bool,
 	#[serde(rename = "OverrideTopMargin")]
 	override_top_margin: bool,
-	#[serde(rename = "ParameterMappings")]
+	#[serde(rename = "ParameterMappings", deserialize_with = "deserialize_settings")]
 	parameter_mappings: Vec<microflows::DocumentTemplateParameterMapping>,
 }
 
@@ -749,12 +749,12 @@ pub struct HttpConfiguration {
 	#[serde(rename = "CustomLocation")]
 	custom_location: String,
 	#[serde(rename = "CustomLocationTemplate")]
-	custom_location_template: microflows::StringTemplate,
+	custom_location_template: Option<microflows::StringTemplate>,
 	#[serde(rename = "HttpAuthenticationPassword")]
 	http_authentication_password: String,
 	#[serde(rename = "HttpAuthenticationUserName")]
 	http_authentication_user_name: String,
-	#[serde(rename = "HttpHeaderEntries")]
+	#[serde(rename = "HttpHeaderEntries", deserialize_with = "deserialize_settings")]
 	http_header_entries: Vec<microflows::HttpHeaderEntry>,
 	#[serde(rename = "HttpMethod")]
 	http_method: String,
@@ -791,7 +791,7 @@ pub struct ImportMappingCall {
 	#[serde(rename = "ParameterVariableName")]
 	parameter_variable_name: String,
 	#[serde(rename = "Range")]
-	range: microflows::ConstantRange,
+	range: Option<microflows::ConstantRange>,
 	#[serde(rename = "ReturnValueMapping")]
 	return_value_mapping: String,
 }
@@ -806,7 +806,7 @@ pub struct ImportXmlAction {
 	#[serde(rename = "IsValidationRequired")]
 	is_validation_required: bool,
 	#[serde(rename = "ResultHandling")]
-	result_handling: microflows::ResultHandling,
+	result_handling: Option<microflows::ResultHandling>,
 	#[serde(rename = "XmlDocumentVariableName")]
 	xml_document_variable_name: String,
 }
@@ -822,7 +822,7 @@ pub struct IncrementCounterMeterAction {
 	error_handling_type: String,
 	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "Tags")]
+	#[serde(rename = "Tags", deserialize_with = "deserialize_settings")]
 	tags: Vec<UnknownType>,
 }
 
@@ -883,10 +883,10 @@ pub struct JavaActionCallAction {
 	error_handling_type: String,
 	#[serde(rename = "JavaAction")]
 	java_action: String,
-	#[serde(rename = "ParameterMappings")]
+	#[serde(rename = "ParameterMappings", deserialize_with = "deserialize_settings")]
 	parameter_mappings: Vec<microflows::JavaActionParameterMapping>,
 	#[serde(rename = "QueueSettings")]
-	queue_settings: Empty,
+	queue_settings: Option<Empty>,
 	#[serde(rename = "ResultVariableName")]
 	result_variable_name: String,
 	#[serde(rename = "UseReturnVariable")]
@@ -915,7 +915,7 @@ pub struct JavaScriptActionCallAction {
 	java_script_action: String,
 	#[serde(rename = "OutputVariableName")]
 	output_variable_name: String,
-	#[serde(rename = "ParameterMappings")]
+	#[serde(rename = "ParameterMappings", deserialize_with = "deserialize_settings")]
 	parameter_mappings: Vec<microflows::JavaScriptActionParameterMapping>,
 	#[serde(rename = "UseReturnVariable")]
 	use_return_variable: bool,
@@ -935,27 +935,27 @@ pub struct JavaScriptActionParameterMapping {
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "$Type")]
 pub enum ListOperation {
-	#[serde(rename = "MicroFlows$Head")]
+	#[serde(rename = "Microflows$Head")]
 	Head(microflows::Head),
-	#[serde(rename = "MicroFlows$Subtract")]
+	#[serde(rename = "Microflows$Subtract")]
 	Subtract(microflows::Subtract),
-	#[serde(rename = "MicroFlows$Filter")]
+	#[serde(rename = "Microflows$Filter")]
 	Filter(microflows::Filter),
-	#[serde(rename = "MicroFlows$FindByExpression")]
+	#[serde(rename = "Microflows$FindByExpression")]
 	FindByExpression(microflows::FindByExpression),
-	#[serde(rename = "MicroFlows$Contains")]
+	#[serde(rename = "Microflows$Contains")]
 	Contains(microflows::Contains),
-	#[serde(rename = "MicroFlows$Find")]
+	#[serde(rename = "Microflows$Find")]
 	Find(microflows::Find),
-	#[serde(rename = "MicroFlows$Sort")]
+	#[serde(rename = "Microflows$Sort")]
 	Sort(microflows::Sort),
-	#[serde(rename = "MicroFlows$Union")]
+	#[serde(rename = "Microflows$Union")]
 	Union(microflows::Union),
-	#[serde(rename = "MicroFlows$Tail")]
+	#[serde(rename = "Microflows$Tail")]
 	Tail(microflows::Tail),
-	#[serde(rename = "MicroFlows$Intersect")]
+	#[serde(rename = "Microflows$Intersect")]
 	Intersect(microflows::Intersect),
-	#[serde(rename = "MicroFlows$FilterByExpression")]
+	#[serde(rename = "Microflows$FilterByExpression")]
 	FilterByExpression(microflows::FilterByExpression),
 }
 
@@ -984,7 +984,7 @@ pub struct LogMessageAction {
 	#[serde(rename = "Level")]
 	level: String,
 	#[serde(rename = "MessageTemplate")]
-	message_template: microflows::StringTemplate,
+	message_template: Option<microflows::StringTemplate>,
 	#[serde(rename = "Node")]
 	node: String,
 }
@@ -992,9 +992,9 @@ pub struct LogMessageAction {
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "$Type")]
 pub enum LoopSource {
-	#[serde(rename = "MicroFlows$IterableList")]
+	#[serde(rename = "Microflows$IterableList")]
 	IterableList(microflows::IterableList),
-	#[serde(rename = "MicroFlows$WhileLoopCondition")]
+	#[serde(rename = "Microflows$WhileLoopCondition")]
 	WhileLoopCondition(microflows::WhileLoopCondition),
 }
 
@@ -1010,7 +1010,7 @@ pub struct LoopedActivity {
 	#[serde(rename = "LoopSource")]
 	loop_source: LoopSource,
 	#[serde(rename = "ObjectCollection")]
-	object_collection: microflows::MicroflowObjectCollection,
+	object_collection: Option<microflows::MicroflowObjectCollection>,
 	#[serde(rename = "RelativeMiddlePoint")]
 	relative_middle_point: String,
 	#[serde(rename = "Size")]
@@ -1037,34 +1037,34 @@ pub struct Microflow {
 
 	#[serde(rename = "AllowConcurrentExecution")]
 	allow_concurrent_execution: bool,
-	#[serde(rename = "AllowedModuleRoles")]
+	#[serde(rename = "AllowedModuleRoles", deserialize_with = "deserialize_settings")]
 	allowed_module_roles: Vec<String>,
 	#[serde(rename = "ApplyEntityAccess")]
 	apply_entity_access: bool,
 	#[serde(rename = "ConcurrencyErrorMicroflow")]
 	concurrency_error_microflow: String,
 	#[serde(rename = "ConcurrenyErrorMessage")]
-	concurreny_error_message: texts::Text,
+	concurreny_error_message: Option<texts::Text>,
 	#[serde(rename = "Documentation")]
 	documentation: String,
 	#[serde(rename = "Excluded")]
 	excluded: bool,
 	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "Flows")]
+	#[serde(rename = "Flows", deserialize_with = "deserialize_settings")]
 	flows: Vec<Flow>,
 	#[serde(rename = "MarkAsUsed")]
 	mark_as_used: bool,
 	#[serde(rename = "MicroflowActionInfo")]
-	microflow_action_info: Empty,
+	microflow_action_info: Option<Empty>,
 	#[serde(rename = "MicroflowReturnType")]
-	microflow_return_type: data_types::DataType,
+	microflow_return_type: Option<data_types::DataType>,
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "ObjectCollection")]
-	object_collection: microflows::MicroflowObjectCollection,
+	object_collection: Option<microflows::MicroflowObjectCollection>,
 	#[serde(rename = "WorkflowActionInfo")]
-	workflow_action_info: Empty,
+	workflow_action_info: Option<Empty>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1074,10 +1074,10 @@ pub struct MicroflowCall {
 
 	#[serde(rename = "Microflow")]
 	microflow: String,
-	#[serde(rename = "ParameterMappings")]
+	#[serde(rename = "ParameterMappings", deserialize_with = "deserialize_settings")]
 	parameter_mappings: Vec<microflows::MicroflowCallParameterMapping>,
 	#[serde(rename = "QueueSettings")]
-	queue_settings: Empty,
+	queue_settings: Option<Empty>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1088,7 +1088,7 @@ pub struct MicroflowCallAction {
 	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
 	#[serde(rename = "MicroflowCall")]
-	microflow_call: microflows::MicroflowCall,
+	microflow_call: Option<microflows::MicroflowCall>,
 	#[serde(rename = "ResultVariableName")]
 	result_variable_name: String,
 	#[serde(rename = "UseReturnVariable")]
@@ -1111,7 +1111,7 @@ pub struct MicroflowObjectCollection {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "Objects")]
+	#[serde(rename = "Objects", deserialize_with = "deserialize_settings")]
 	objects: Vec<MicroFlowObject>,
 }
 
@@ -1131,7 +1131,7 @@ pub struct MicroflowParameter {
 	#[serde(rename = "Size")]
 	size: String,
 	#[serde(rename = "VariableType")]
-	variable_type: data_types::DataType,
+	variable_type: Option<data_types::DataType>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1148,7 +1148,7 @@ pub struct Nanoflow {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "AllowedModuleRoles")]
+	#[serde(rename = "AllowedModuleRoles", deserialize_with = "deserialize_settings")]
 	allowed_module_roles: Vec<String>,
 	#[serde(rename = "Documentation")]
 	documentation: String,
@@ -1156,16 +1156,16 @@ pub struct Nanoflow {
 	excluded: bool,
 	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "Flows")]
+	#[serde(rename = "Flows", deserialize_with = "deserialize_settings")]
 	flows: Vec<Flow>,
 	#[serde(rename = "MarkAsUsed")]
 	mark_as_used: bool,
 	#[serde(rename = "MicroflowReturnType")]
-	microflow_return_type: data_types::DataType,
+	microflow_return_type: Option<data_types::DataType>,
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "ObjectCollection")]
-	object_collection: microflows::MicroflowObjectCollection,
+	object_collection: Option<microflows::MicroflowObjectCollection>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1175,7 +1175,7 @@ pub struct NanoflowCall {
 
 	#[serde(rename = "Nanoflow")]
 	nanoflow: String,
-	#[serde(rename = "ParameterMappings")]
+	#[serde(rename = "ParameterMappings", deserialize_with = "deserialize_settings")]
 	parameter_mappings: Vec<microflows::NanoflowCallParameterMapping>,
 }
 
@@ -1187,7 +1187,7 @@ pub struct NanoflowCallAction {
 	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
 	#[serde(rename = "NanoflowCall")]
-	nanoflow_call: microflows::NanoflowCall,
+	nanoflow_call: Option<microflows::NanoflowCall>,
 	#[serde(rename = "OutputVariableName")]
 	output_variable_name: String,
 	#[serde(rename = "UseReturnVariable")]
@@ -1223,9 +1223,9 @@ pub struct RestCallAction {
 	#[serde(rename = "ErrorResultHandlingType")]
 	error_result_handling_type: String,
 	#[serde(rename = "HttpConfiguration")]
-	http_configuration: microflows::HttpConfiguration,
+	http_configuration: Option<microflows::HttpConfiguration>,
 	#[serde(rename = "ProxyConfiguration")]
-	proxy_configuration: Empty,
+	proxy_configuration: Option<Empty>,
 	#[serde(rename = "RequestHandling")]
 	request_handling: RequestHandler,
 	#[serde(rename = "RequestHandlingType")]
@@ -1233,7 +1233,7 @@ pub struct RestCallAction {
 	#[serde(rename = "RequestProxyType")]
 	request_proxy_type: String,
 	#[serde(rename = "ResultHandling")]
-	result_handling: microflows::ResultHandling,
+	result_handling: Option<microflows::ResultHandling>,
 	#[serde(rename = "ResultHandlingType")]
 	result_handling_type: String,
 	#[serde(rename = "TimeOutExpression")]
@@ -1250,19 +1250,19 @@ pub struct ResultHandling {
 	#[serde(rename = "Bind")]
 	bind: bool,
 	#[serde(rename = "ImportMappingCall")]
-	import_mapping_call: microflows::ImportMappingCall,
+	import_mapping_call: Option<microflows::ImportMappingCall>,
 	#[serde(rename = "ResultVariableName")]
 	result_variable_name: String,
 	#[serde(rename = "VariableType")]
-	variable_type: data_types::DataType,
+	variable_type: Option<data_types::DataType>,
 }
 
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "$Type")]
 pub enum RetrieveSource {
-	#[serde(rename = "MicroFlows$AssociationRetrieveSource")]
+	#[serde(rename = "Microflows$AssociationRetrieveSource")]
 	AssociationRetrieveSource(microflows::AssociationRetrieveSource),
-	#[serde(rename = "MicroFlows$DatabaseRetrieveSource")]
+	#[serde(rename = "Microflows$DatabaseRetrieveSource")]
 	DatabaseRetrieveSource(microflows::DatabaseRetrieveSource),
 }
 
@@ -1285,7 +1285,7 @@ pub struct RetrieveSorting {
 	_id: Uuid,
 
 	#[serde(rename = "AttributeRef")]
-	attribute_ref: domain_models::AttributeRef,
+	attribute_ref: Option<domain_models::AttributeRef>,
 	#[serde(rename = "SortOrder")]
 	sort_order: String,
 }
@@ -1316,16 +1316,16 @@ pub struct Rule {
 	excluded: bool,
 	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "Flows")]
+	#[serde(rename = "Flows", deserialize_with = "deserialize_settings")]
 	flows: Vec<microflows::SequenceFlow>,
 	#[serde(rename = "MarkAsUsed")]
 	mark_as_used: bool,
 	#[serde(rename = "MicroflowReturnType")]
-	microflow_return_type: data_types::DataType,
+	microflow_return_type: Option<data_types::DataType>,
 	#[serde(rename = "Name")]
-	name: String,
+	pub name: String,
 	#[serde(rename = "ObjectCollection")]
-	object_collection: microflows::MicroflowObjectCollection,
+	object_collection: Option<microflows::MicroflowObjectCollection>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1335,7 +1335,7 @@ pub struct RuleCall {
 
 	#[serde(rename = "Microflow")]
 	microflow: String,
-	#[serde(rename = "ParameterMappings")]
+	#[serde(rename = "ParameterMappings", deserialize_with = "deserialize_settings")]
 	parameter_mappings: Vec<microflows::RuleCallParameterMapping>,
 }
 
@@ -1356,17 +1356,17 @@ pub struct RuleSplitCondition {
 	_id: Uuid,
 
 	#[serde(rename = "RuleCall")]
-	rule_call: microflows::RuleCall,
+	rule_call: Option<microflows::RuleCall>,
 }
 
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "$Type")]
 pub enum SequenceFlowCase {
-	#[serde(rename = "MicroFlows$EnumerationCase")]
+	#[serde(rename = "Microflows$EnumerationCase")]
 	EnumerationCase(microflows::EnumerationCase),
-	#[serde(rename = "MicroFlows$InheritanceCase")]
+	#[serde(rename = "Microflows$InheritanceCase")]
 	InheritanceCase(microflows::InheritanceCase),
-	#[serde(rename = "MicroFlows$NoCase")]
+	#[serde(rename = "Microflows$NoCase")]
 	NoCase(microflows::NoCase),
 }
 
@@ -1380,7 +1380,7 @@ pub struct SequenceFlow {
 	#[serde(rename = "DestinationConnectionIndex")]
 	destination_connection_index: i64,
 	#[serde(rename = "DestinationPointer")]
-	destination_pointer: Binary,
+	destination_pointer: Uuid,
 	#[serde(rename = "IsErrorHandler")]
 	is_error_handler: bool,
 	#[serde(rename = "NewCaseValue")]
@@ -1390,7 +1390,7 @@ pub struct SequenceFlow {
 	#[serde(rename = "OriginConnectionIndex")]
 	origin_connection_index: i64,
 	#[serde(rename = "OriginPointer")]
-	origin_pointer: Binary,
+	origin_pointer: Uuid,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1401,7 +1401,7 @@ pub struct ShowFormAction {
 	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
 	#[serde(rename = "FormSettings")]
-	form_settings: forms::FormSettings,
+	form_settings: Option<forms::FormSettings>,
 	#[serde(rename = "NumberOfPagesToClose")]
 	number_of_pages_to_close: String,
 }
@@ -1425,7 +1425,7 @@ pub struct ShowMessageAction {
 	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
 	#[serde(rename = "Template")]
-	template: microflows::TextTemplate,
+	template: Option<microflows::TextTemplate>,
 	#[serde(rename = "Type")]
 	var_type: String,
 }
@@ -1437,7 +1437,7 @@ pub struct SimpleRequestHandling {
 
 	#[serde(rename = "NullValueOption")]
 	null_value_option: String,
-	#[serde(rename = "ParameterMappings")]
+	#[serde(rename = "ParameterMappings", deserialize_with = "deserialize_settings")]
 	parameter_mappings: Vec<microflows::WebServiceOperationSimpleParameterMapping>,
 }
 
@@ -1449,7 +1449,7 @@ pub struct Sort {
 	#[serde(rename = "ListName")]
 	list_name: String,
 	#[serde(rename = "Sortings")]
-	sortings: microflows::SortingsList,
+	sortings: Option<microflows::SortingsList>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1457,7 +1457,7 @@ pub struct SortingsList {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "Sortings")]
+	#[serde(rename = "Sortings", deserialize_with = "deserialize_settings")]
 	sortings: Vec<microflows::RetrieveSorting>,
 }
 
@@ -1477,7 +1477,7 @@ pub struct StringTemplate {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "Parameters")]
+	#[serde(rename = "Parameters", deserialize_with = "deserialize_settings")]
 	parameters: Vec<microflows::TemplateParameter>,
 	#[serde(rename = "Text")]
 	text: String,
@@ -1503,7 +1503,7 @@ pub struct SynchronizeAction {
 	error_handling_type: String,
 	#[serde(rename = "Type")]
 	var_type: String,
-	#[serde(rename = "VariableNames")]
+	#[serde(rename = "VariableNames", deserialize_with = "deserialize_settings")]
 	variable_names: Vec<String>,
 }
 
@@ -1530,10 +1530,10 @@ pub struct TextTemplate {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "Parameters")]
+	#[serde(rename = "Parameters", deserialize_with = "deserialize_settings")]
 	parameters: Vec<microflows::TemplateParameter>,
 	#[serde(rename = "Text")]
-	text: texts::Text,
+	text: Option<texts::Text>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1559,7 +1559,7 @@ pub struct ValidationFeedbackAction {
 	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
 	#[serde(rename = "FeedbackTemplate")]
-	feedback_template: microflows::TextTemplate,
+	feedback_template: Option<microflows::TextTemplate>,
 	#[serde(rename = "ValidationVariableName")]
 	validation_variable_name: String,
 }

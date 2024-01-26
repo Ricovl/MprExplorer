@@ -20,6 +20,6 @@ pub struct Constant {
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "Type")]
-	var_type: data_types::DataType,
+	var_type: Option<data_types::DataType>,
 }
 

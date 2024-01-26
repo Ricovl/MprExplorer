@@ -9,7 +9,7 @@ pub struct ConditionSettings {
 
 	#[serde(rename = "Attribute")]
 	attribute: String,
-	#[serde(rename = "NewConditions")]
+	#[serde(rename = "NewConditions", deserialize_with = "deserialize_settings")]
 	new_conditions: Vec<UnknownType>,
 }
 
@@ -19,9 +19,9 @@ pub struct DataView {
 	_id: Uuid,
 
 	#[serde(rename = "Contents")]
-	contents: document_templates::DataViewDropZone,
+	contents: Option<document_templates::DataViewDropZone>,
 	#[serde(rename = "EntityRef")]
-	entity_ref: domain_models::DirectEntityRef,
+	entity_ref: Option<domain_models::DirectEntityRef>,
 	#[serde(rename = "Microflow")]
 	microflow: String,
 	#[serde(rename = "Name")]
@@ -34,7 +34,7 @@ pub struct DataViewDropZone {
 	_id: Uuid,
 
 	#[serde(rename = "Widget")]
-	widget: document_templates::Table,
+	widget: Option<document_templates::Table>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -51,9 +51,9 @@ pub struct DocumentTemplate {
 	#[serde(rename = "ExportLevel")]
 	export_level: String,
 	#[serde(rename = "Footer")]
-	footer: Empty,
+	footer: Option<Empty>,
 	#[serde(rename = "Header")]
-	header: Empty,
+	header: Option<Empty>,
 	#[serde(rename = "MarginBottomInInch")]
 	margin_bottom_in_inch: f64,
 	#[serde(rename = "MarginLeftInInch")]
@@ -73,8 +73,8 @@ pub struct DocumentTemplate {
 	#[serde(rename = "ShowHeaderFooterFirstPage")]
 	show_header_footer_first_page: bool,
 	#[serde(rename = "Style")]
-	style: document_templates::Style,
-	#[serde(rename = "Toplevels")]
+	style: Option<document_templates::Style>,
+	#[serde(rename = "Toplevels", deserialize_with = "deserialize_settings")]
 	toplevels: Vec<document_templates::DataView>,
 }
 
@@ -86,7 +86,7 @@ pub struct DynamicImageViewer {
 	#[serde(rename = "DefaultImageName")]
 	default_image_name: String,
 	#[serde(rename = "EntityRef")]
-	entity_ref: domain_models::DirectEntityRef,
+	entity_ref: Option<domain_models::DirectEntityRef>,
 	#[serde(rename = "Height")]
 	height: i64,
 	#[serde(rename = "Name")]
@@ -165,14 +165,14 @@ pub struct Table {
 	cell_padding: i64,
 	#[serde(rename = "CellSpacing")]
 	cell_spacing: i64,
-	#[serde(rename = "ColumnWeights")]
+	#[serde(rename = "ColumnWeights", deserialize_with = "deserialize_settings")]
 	column_weights: Vec<i64>,
 	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "Rows")]
+	#[serde(rename = "Rows", deserialize_with = "deserialize_settings")]
 	rows: Vec<document_templates::TableRow>,
 	#[serde(rename = "Style")]
-	style: document_templates::Style,
+	style: Option<document_templates::Style>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -187,9 +187,9 @@ pub struct TableCell {
 	#[serde(rename = "RowSpan")]
 	row_span: i64,
 	#[serde(rename = "Style")]
-	style: document_templates::Style,
+	style: Option<document_templates::Style>,
 	#[serde(rename = "Widget")]
-	widget: document_templates::DynamicImageViewer,
+	widget: Option<document_templates::DynamicImageViewer>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -197,9 +197,9 @@ pub struct TableRow {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "Cells")]
+	#[serde(rename = "Cells", deserialize_with = "deserialize_settings")]
 	cells: Vec<document_templates::TableCell>,
 	#[serde(rename = "ConditionSettings")]
-	condition_settings: document_templates::ConditionSettings,
+	condition_settings: Option<document_templates::ConditionSettings>,
 }
 

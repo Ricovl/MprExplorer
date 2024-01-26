@@ -26,7 +26,7 @@ pub struct Enumeration {
 	export_level: String,
 	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "Values")]
+	#[serde(rename = "Values", deserialize_with = "deserialize_settings")]
 	values: Vec<enumerations::EnumerationValue>,
 }
 
@@ -36,7 +36,7 @@ pub struct EnumerationValue {
 	_id: Uuid,
 
 	#[serde(rename = "Caption")]
-	caption: texts::Text,
+	caption: Option<texts::Text>,
 	#[serde(rename = "Image")]
 	image: String,
 	#[serde(rename = "Name")]

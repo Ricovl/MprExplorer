@@ -27,7 +27,7 @@ pub struct SystemText {
 	#[serde(rename = "InternalKey")]
 	internal_key: String,
 	#[serde(rename = "Text")]
-	text: texts::Text,
+	text: Option<texts::Text>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -35,7 +35,7 @@ pub struct SystemTextCollection {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "SystemTexts")]
+	#[serde(rename = "SystemTexts", deserialize_with = "deserialize_settings")]
 	system_texts: Vec<texts::SystemText>,
 }
 
@@ -44,7 +44,7 @@ pub struct Text {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "Items")]
+	#[serde(rename = "Items", deserialize_with = "deserialize_settings")]
 	items: Vec<texts::Translation>,
 }
 

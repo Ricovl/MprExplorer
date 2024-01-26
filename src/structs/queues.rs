@@ -19,7 +19,7 @@ pub struct Queue {
 	_id: Uuid,
 
 	#[serde(rename = "Config")]
-	config: queues::BasicQueueConfig,
+	config: Option<queues::BasicQueueConfig>,
 	#[serde(rename = "Documentation")]
 	documentation: String,
 	#[serde(rename = "Excluded")]
@@ -38,6 +38,6 @@ pub struct QueueSettings {
 	#[serde(rename = "Queue")]
 	queue: String,
 	#[serde(rename = "Retry")]
-	retry: Empty,
+	retry: Option<Empty>,
 }
 

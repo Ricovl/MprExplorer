@@ -8,7 +8,7 @@ pub struct FileDocumentAccessRuleContainer {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "AccessRules")]
+	#[serde(rename = "AccessRules", deserialize_with = "deserialize_settings")]
 	access_rules: Vec<UnknownType>,
 }
 
@@ -17,7 +17,7 @@ pub struct ImageAccessRuleContainer {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "AccessRules")]
+	#[serde(rename = "AccessRules", deserialize_with = "deserialize_settings")]
 	access_rules: Vec<UnknownType>,
 }
 
@@ -37,7 +37,7 @@ pub struct ModuleSecurity {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "ModuleRoles")]
+	#[serde(rename = "ModuleRoles", deserialize_with = "deserialize_settings")]
 	module_roles: Vec<security::ModuleRole>,
 }
 
@@ -69,27 +69,27 @@ pub struct ProjectSecurity {
 	admin_user_role: String,
 	#[serde(rename = "CheckSecurity")]
 	check_security: bool,
-	#[serde(rename = "DemoUsers")]
+	#[serde(rename = "DemoUsers", deserialize_with = "deserialize_settings")]
 	demo_users: Vec<UnknownType>,
 	#[serde(rename = "EnableDemoUsers")]
 	enable_demo_users: bool,
 	#[serde(rename = "EnableGuestAccess")]
 	enable_guest_access: bool,
 	#[serde(rename = "FileDocumentAccess")]
-	file_document_access: security::FileDocumentAccessRuleContainer,
+	file_document_access: Option<security::FileDocumentAccessRuleContainer>,
 	#[serde(rename = "GuestUserRole")]
 	guest_user_role: String,
 	#[serde(rename = "ImageAccess")]
-	image_access: security::ImageAccessRuleContainer,
+	image_access: Option<security::ImageAccessRuleContainer>,
 	#[serde(rename = "PasswordPolicySettings")]
-	password_policy_settings: security::PasswordPolicySettings,
+	password_policy_settings: Option<security::PasswordPolicySettings>,
 	#[serde(rename = "SecurityLevel")]
 	security_level: String,
 	#[serde(rename = "StrictMode")]
 	strict_mode: bool,
 	#[serde(rename = "StrictPageUrlCheck")]
 	strict_page_url_check: bool,
-	#[serde(rename = "UserRoles")]
+	#[serde(rename = "UserRoles", deserialize_with = "deserialize_settings")]
 	user_roles: Vec<security::UserRole>,
 }
 
@@ -103,14 +103,14 @@ pub struct UserRole {
 	#[serde(rename = "Description")]
 	description: String,
 	#[serde(rename = "GUID")]
-	guid: Binary,
-	#[serde(rename = "ManageableRoles")]
+	guid: Uuid,
+	#[serde(rename = "ManageableRoles", deserialize_with = "deserialize_settings")]
 	manageable_roles: Vec<String>,
 	#[serde(rename = "ManageAllRoles")]
 	manage_all_roles: bool,
 	#[serde(rename = "ManageUsersWithoutRoles")]
 	manage_users_without_roles: bool,
-	#[serde(rename = "ModuleRoles")]
+	#[serde(rename = "ModuleRoles", deserialize_with = "deserialize_settings")]
 	module_roles: Vec<String>,
 	#[serde(rename = "Name")]
 	name: String,

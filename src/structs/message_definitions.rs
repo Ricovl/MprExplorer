@@ -20,7 +20,7 @@ pub struct EntityMessageDefinition {
 	#[serde(rename = "Documentation")]
 	documentation: String,
 	#[serde(rename = "ExposedEntity")]
-	exposed_entity: message_definitions::ExposedEntity,
+	exposed_entity: Option<message_definitions::ExposedEntity>,
 	#[serde(rename = "Name")]
 	name: String,
 }
@@ -32,7 +32,7 @@ pub struct ExposedAssociation {
 
 	#[serde(rename = "Association")]
 	association: String,
-	#[serde(rename = "Children")]
+	#[serde(rename = "Children", deserialize_with = "deserialize_settings")]
 	children: Vec<MessageExposure>,
 	#[serde(rename = "Documentation")]
 	documentation: String,
@@ -79,7 +79,7 @@ pub struct ExposedAttribute {
 
 	#[serde(rename = "Attribute")]
 	attribute: String,
-	#[serde(rename = "Children")]
+	#[serde(rename = "Children", deserialize_with = "deserialize_settings")]
 	children: Vec<UnknownType>,
 	#[serde(rename = "Documentation")]
 	documentation: String,
@@ -122,7 +122,7 @@ pub struct ExposedEntity {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "Children")]
+	#[serde(rename = "Children", deserialize_with = "deserialize_settings")]
 	children: Vec<MessageExposure>,
 	#[serde(rename = "Documentation")]
 	documentation: String,
@@ -173,7 +173,7 @@ pub struct MessageDefinitionCollection {
 	excluded: bool,
 	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "MessageDefinitions")]
+	#[serde(rename = "MessageDefinitions", deserialize_with = "deserialize_settings")]
 	message_definitions: Vec<message_definitions::EntityMessageDefinition>,
 	#[serde(rename = "Name")]
 	name: String,

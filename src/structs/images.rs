@@ -9,7 +9,7 @@ pub struct Image {
 	_id: Uuid,
 
 	#[serde(rename = "Image")]
-	image: Binary,
+	image: Box<Binary>,
 	#[serde(rename = "ImageFormat")]
 	image_format: String,
 	#[serde(rename = "Name")]
@@ -27,7 +27,7 @@ pub struct ImageCollection {
 	excluded: bool,
 	#[serde(rename = "ExportLevel")]
 	export_level: String,
-	#[serde(rename = "Images")]
+	#[serde(rename = "Images", deserialize_with = "deserialize_settings")]
 	images: Vec<images::Image>,
 	#[serde(rename = "Name")]
 	name: String,

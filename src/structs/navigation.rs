@@ -18,7 +18,7 @@ pub struct NavigationDocument {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "Profiles")]
+	#[serde(rename = "Profiles", deserialize_with = "deserialize_settings")]
 	profiles: Vec<navigation::NavigationProfile>,
 }
 
@@ -30,23 +30,23 @@ pub struct NavigationProfile {
 	#[serde(rename = "AppIcon")]
 	app_icon: String,
 	#[serde(rename = "AppTitle")]
-	app_title: texts::Text,
-	#[serde(rename = "HomeItems")]
+	app_title: Option<texts::Text>,
+	#[serde(rename = "HomeItems", deserialize_with = "deserialize_settings")]
 	home_items: Vec<navigation::RoleBasedHomePage>,
 	#[serde(rename = "HomePage")]
-	home_page: navigation::HomePage,
+	home_page: Option<navigation::HomePage>,
 	#[serde(rename = "Kind")]
 	kind: String,
 	#[serde(rename = "LoginPageSettings")]
-	login_page_settings: forms::FormSettings,
+	login_page_settings: Option<forms::FormSettings>,
 	#[serde(rename = "Menu")]
-	menu: menus::MenuItemCollection,
+	menu: Option<menus::MenuItemCollection>,
 	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "OfflineEntityConfigs")]
+	#[serde(rename = "OfflineEntityConfigs", deserialize_with = "deserialize_settings")]
 	offline_entity_configs: Vec<UnknownType>,
 	#[serde(rename = "ProgressiveWebAppSettings")]
-	progressive_web_app_settings: Empty,
+	progressive_web_app_settings: Option<Empty>,
 }
 
 #[derive(Serialize, Deserialize)]

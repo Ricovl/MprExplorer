@@ -1,12 +1,8 @@
-use bson::{document, Document};
+use bson::Document;
 use rayon::iter::{IntoParallelRefMutIterator, ParallelIterator};
 use rusqlite::Connection;
-use std::{any::Any, collections::{HashMap, HashSet}, fs::OpenOptions, io::{Seek, Write}, num::NonZeroU64, str::FromStr, sync::mpsc::channel, thread, time::Instant};
+use std::{collections::{HashMap, HashSet}, fs::OpenOptions, io::{Seek, Write}, str::FromStr};
 use uuid::Uuid;
-
-use crate::structs::MendixThings;
-
-mod structs;
 
 #[derive(Debug, PartialEq)]
 enum UnitType {
@@ -48,7 +44,7 @@ struct Unit {
     contents_hash: String,
     contents_conflicts: String,
     contents: Vec<u8>,
-    doc: Option<structs::MendixThings>,
+    doc: Option<Document>,
 }
 
 impl Unit {
@@ -95,44 +91,38 @@ fn get_all_units(conn: &Connection) -> Result<Vec<Unit>, &str> {
         .map(|unit| unit.unwrap())
         .collect();
 
-    // units
-    //     .iter_mut()
-    //     .for_each(|unit| unit.doc = Some(bson::from_reader(unit.contents.as_slice()).unwrap()));
-    // let mut i = 0;
-    // let mut failed = 0;
-
-    units.iter_mut().for_each( |unit| {
-        // if unit.contents.len() >= 60000 && unit.contents.len() < 70000 {
-        println!("{:? }processing unit {:?}, {:?}", unit.unit_id, unit.containment_name, unit.contents.len());
-        let slice = unit.contents.as_slice();
-
-            let _result: Result<MendixThings, _> = bson::from_slice(slice);
-
-            match _result {
-                Ok(obj) => {
-                    unit.doc = Some(obj);
-                    // match obj {
-                    //     MendixThings::Rule(rule) => {
-                    //         println!("rule: {}", rule.name);
-                    //     },
-                    //     _ => (),
-                    // };
-                },
-                Err(e) => {
-                    let test = Document::from_reader(slice).unwrap();
-                    println!("==Document==\ndoc: {:?}\n==End Doc==", test);
-                    println!("failed to process: {:?}", e);
-                },
-            }
-        // }
-
-    });
-    // println!("failed {} out of {}", failed, i);
-    println!("done processing all documents!");
+    units
+        .par_iter_mut()
+        .for_each(|unit| unit.doc = Some(Document::from_reader(unit.contents.as_slice()).unwrap()));
 
     Ok(units)
 }
 
+
+fn bson_to_string(bson: &bson::Bson) -> &'static str {
+    match bson {
+        bson::Bson::Double(_) => "Double",
+        bson::Bson::String(_) => "String",
+        bson::Bson::Boolean(_) => "bool",
+        bson::Bson::Null => "Null",
+        bson::Bson::RegularExpression(_) => "RegEx",
+        bson::Bson::JavaScriptCode(_) => "JavaScript",
+        bson::Bson::JavaScriptCodeWithScope(_) => "JavaScriptScope",
+        bson::Bson::Int32(_) => "i32",
+        bson::Bson::Int64(_) => "i64",
+        bson::Bson::Timestamp(_) => "Timestamp",
+        bson::Bson::Binary(_) => "Binary",
+        bson::Bson::ObjectId(_) => "ObjectId",
+        bson::Bson::DateTime(_) => "DateTime",
+        bson::Bson::Symbol(_) => "Symbol",
+        bson::Bson::Decimal128(_) => "Decimal128",
+        bson::Bson::Undefined => "Undefined",
+        bson::Bson::MaxKey => "MinKey",
+        bson::Bson::MinKey => "MaxKey",
+        bson::Bson::DbPointer(_) => "DbPointer",
+        _ => "unknown",
+    }
+}
 
 fn main() {
     let mpr = "resources/plarge.mpr";
@@ -141,27 +131,17 @@ fn main() {
     println!("Starting mpr read.");
     let units = get_all_units(&conn).unwrap();
 
-    // let mut types = HashSet::new();
-
-    let start = Instant::now();
+    let mut types = HashSet::new();
 
     for unit in units {
-        if let Some(mendix_thing) = &unit.doc {
-            match mendix_thing {
-                MendixThings::Rule(rule) => {
-                    println!("rule thing: {}", rule.name);
-                },
-                _ => (),
-            }
+        if let Some(doc) = &unit.doc {
+            let name = doc.get_str("$Type").unwrap();
+            types.insert(name.to_string());
         }
     }
-
-    let duration = start.elapsed();
-    println!("elapsed: {duration:?}");
-
     
 
-    // for _type in types {
-    //     println!("type: {}", _type);
-    // }
+    for _type in types {
+        println!("type: {}", _type);
+    }
 }

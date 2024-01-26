@@ -14,7 +14,7 @@ pub struct MenuDocument {
 	#[serde(rename = "ExportLevel")]
 	export_level: String,
 	#[serde(rename = "ItemCollection")]
-	item_collection: menus::MenuItemCollection,
+	item_collection: Option<menus::MenuItemCollection>,
 	#[serde(rename = "Name")]
 	name: String,
 }
@@ -25,14 +25,14 @@ pub struct MenuItem {
 	_id: Uuid,
 
 	#[serde(rename = "Action")]
-	action: forms::OnAction,
+	action: Option<forms::OnAction>,
 	#[serde(rename = "AlternativeText")]
-	alternative_text: Empty,
+	alternative_text: Option<Empty>,
 	#[serde(rename = "Caption")]
-	caption: texts::Text,
+	caption: Option<texts::Text>,
 	#[serde(rename = "Icon")]
-	icon: Empty,
-	#[serde(rename = "Items")]
+	icon: Option<Empty>,
+	#[serde(rename = "Items", deserialize_with = "deserialize_settings")]
 	items: Vec<menus::MenuItem>,
 }
 
@@ -41,7 +41,7 @@ pub struct MenuItemCollection {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "Items")]
+	#[serde(rename = "Items", deserialize_with = "deserialize_settings")]
 	items: Vec<menus::MenuItem>,
 }
 

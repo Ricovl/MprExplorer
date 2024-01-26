@@ -12,7 +12,7 @@ pub struct CustomIcon {
 	character_code: i64,
 	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "Tags")]
+	#[serde(rename = "Tags", deserialize_with = "deserialize_settings")]
 	tags: Vec<String>,
 }
 
@@ -31,7 +31,7 @@ pub struct CustomIconCollection {
 	export_level: String,
 	#[serde(rename = "FontData")]
 	font_data: Binary,
-	#[serde(rename = "Icons")]
+	#[serde(rename = "Icons", deserialize_with = "deserialize_settings")]
 	icons: Vec<custom_icons::CustomIcon>,
 	#[serde(rename = "Name")]
 	name: String,

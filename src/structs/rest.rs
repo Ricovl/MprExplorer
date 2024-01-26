@@ -20,14 +20,14 @@ pub struct PublishedRestService {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "AllowedRoles")]
+	#[serde(rename = "AllowedRoles", deserialize_with = "deserialize_settings")]
 	allowed_roles: Vec<UnknownType>,
 	#[serde(rename = "AuthenticationMicroflow")]
 	authentication_microflow: String,
-	#[serde(rename = "AuthenticationTypes")]
+	#[serde(rename = "AuthenticationTypes", deserialize_with = "deserialize_settings")]
 	authentication_types: Vec<UnknownType>,
 	#[serde(rename = "CorsConfiguration")]
-	cors_configuration: rest::CorsConfiguration,
+	cors_configuration: Option<rest::CorsConfiguration>,
 	#[serde(rename = "Documentation")]
 	documentation: String,
 	#[serde(rename = "Excluded")]
@@ -36,11 +36,11 @@ pub struct PublishedRestService {
 	export_level: String,
 	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "Parameters")]
+	#[serde(rename = "Parameters", deserialize_with = "deserialize_settings")]
 	parameters: Vec<UnknownType>,
 	#[serde(rename = "Path")]
 	path: String,
-	#[serde(rename = "Resources")]
+	#[serde(rename = "Resources", deserialize_with = "deserialize_settings")]
 	resources: Vec<rest::PublishedRestServiceResource>,
 	#[serde(rename = "ServiceName")]
 	service_name: String,
@@ -69,7 +69,7 @@ pub struct PublishedRestServiceOperation {
 	microflow: String,
 	#[serde(rename = "ObjectHandlingBackup")]
 	object_handling_backup: String,
-	#[serde(rename = "Parameters")]
+	#[serde(rename = "Parameters", deserialize_with = "deserialize_settings")]
 	parameters: Vec<rest::RestOperationParameter>,
 	#[serde(rename = "Path")]
 	path: String,
@@ -86,7 +86,7 @@ pub struct PublishedRestServiceResource {
 	documentation: String,
 	#[serde(rename = "Name")]
 	name: String,
-	#[serde(rename = "Operations")]
+	#[serde(rename = "Operations", deserialize_with = "deserialize_settings")]
 	operations: Vec<rest::PublishedRestServiceOperation>,
 }
 
@@ -104,6 +104,6 @@ pub struct RestOperationParameter {
 	#[serde(rename = "ParameterType")]
 	parameter_type: String,
 	#[serde(rename = "Type")]
-	var_type: data_types::DataType,
+	var_type: Option<data_types::DataType>,
 }
 

@@ -45,7 +45,7 @@ pub struct BasicParameterType {
 	_id: Uuid,
 
 	#[serde(rename = "Type")]
-	var_type: ParameterType,
+	var_type: Option<ParameterType>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -84,7 +84,7 @@ pub struct EntityTypeParameterType {
 	_id: Uuid,
 
 	#[serde(rename = "TypeParameterPointer")]
-	type_parameter_pointer: Binary,
+	type_parameter_pointer: Uuid,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -137,7 +137,7 @@ pub struct ParameterizedEntityType {
 	_id: Uuid,
 
 	#[serde(rename = "TypeParameterPointer")]
-	type_parameter_pointer: Binary,
+	type_parameter_pointer: Uuid,
 }
 
 #[derive(Serialize, Deserialize)]

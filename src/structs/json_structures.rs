@@ -7,7 +7,7 @@ pub struct JsonElement {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "Children")]
+	#[serde(rename = "Children", deserialize_with = "deserialize_settings")]
 	children: Vec<json_structures::JsonElement>,
 	#[serde(rename = "ElementType")]
 	element_type: String,
@@ -48,7 +48,7 @@ pub struct JsonStructure {
 
 	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "Elements")]
+	#[serde(rename = "Elements", deserialize_with = "deserialize_settings")]
 	elements: Vec<json_structures::JsonElement>,
 	#[serde(rename = "Excluded")]
 	excluded: bool,
