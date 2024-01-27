@@ -1,5 +1,5 @@
 use bson::{document, Document};
-use rayon::iter::{IntoParallelRefMutIterator, ParallelIterator};
+use rayon::{iter::{IntoParallelRefIterator, IntoParallelRefMutIterator, ParallelIterator}, ThreadPoolBuilder};
 use rusqlite::Connection;
 use std::{any::Any, collections::{HashMap, HashSet}, fs::OpenOptions, io::{Seek, Write}, num::NonZeroU64, str::FromStr, sync::mpsc::channel, thread, time::Instant};
 use uuid::Uuid;
@@ -79,6 +79,8 @@ fn get_all_units(conn: &Connection) -> Result<Vec<Unit>, &str> {
     let query = "SELECT * FROM Unit";
     let mut stmt = conn.prepare(query).unwrap();
 
+    let start = Instant::now();
+    
     let mut units: Vec<Unit> = stmt
         .query_map([], |row| {
             Ok(Unit::new(
@@ -95,28 +97,18 @@ fn get_all_units(conn: &Connection) -> Result<Vec<Unit>, &str> {
         .map(|unit| unit.unwrap())
         .collect();
 
-    // units
-    //     .iter_mut()
-    //     .for_each(|unit| unit.doc = Some(bson::from_reader(unit.contents.as_slice()).unwrap()));
-    // let mut i = 0;
-    // let mut failed = 0;
+    let duration = start.elapsed();
+    println!("elapsed: {duration:?}");
 
-    units.iter_mut().for_each( |unit| {
-        // if unit.contents.len() >= 60000 && unit.contents.len() < 70000 {
-        println!("{:? }processing unit {:?}, {:?}", unit.unit_id, unit.containment_name, unit.contents.len());
-        let slice = unit.contents.as_slice();
+
+    units.par_iter_mut().for_each( |unit| {
+        let slice = unit.contents.as_ref();
 
             let _result: Result<MendixThings, _> = bson::from_slice(slice);
 
             match _result {
                 Ok(obj) => {
                     unit.doc = Some(obj);
-                    // match obj {
-                    //     MendixThings::Rule(rule) => {
-                    //         println!("rule: {}", rule.name);
-                    //     },
-                    //     _ => (),
-                    // };
                 },
                 Err(e) => {
                     let test = Document::from_reader(slice).unwrap();
@@ -124,40 +116,65 @@ fn get_all_units(conn: &Connection) -> Result<Vec<Unit>, &str> {
                     println!("failed to process: {:?}", e);
                 },
             }
-        // }
-
     });
+    let duration = start.elapsed();
+    println!("elapsed: {duration:?}");
     // println!("failed {} out of {}", failed, i);
-    println!("done processing all documents!");
+    println!("done processing all {} documents!", units.len());
 
     Ok(units)
 }
 
 
 fn main() {
+    let res = ThreadPoolBuilder::new().stack_size(4*1024*1024).build_global();
     let mpr = "resources/plarge.mpr";
     let conn = Connection::open(mpr).unwrap();
 
     println!("Starting mpr read.");
+    
     let units = get_all_units(&conn).unwrap();
 
-    // let mut types = HashSet::new();
-
     let start = Instant::now();
-
-    for unit in units {
-        if let Some(mendix_thing) = &unit.doc {
-            match mendix_thing {
-                MendixThings::Rule(rule) => {
-                    println!("rule thing: {}", rule.name);
-                },
-                _ => (),
+    let modules = units.par_iter().filter(|unit| {
+        if let Some(thing) = &unit.doc {
+            match thing {
+                MendixThings::ModuleImpl(_) => true,
+                _ => false,
             }
+        }
+        else {
+            false
+        }
+    });
+
+    let modules: Vec<_> = modules.collect();
+    let duration = start.elapsed();
+    println!("elapsed: {duration:?}");
+    
+    for module in modules {
+        if let Some(MendixThings::ModuleImpl(imp)) = &module.doc {
+            println!("module: {}", imp.name);
         }
     }
 
-    let duration = start.elapsed();
-    println!("elapsed: {duration:?}");
+    // let mut types = HashSet::new();
+
+    // let start = Instant::now();
+
+    // for unit in units {
+    //     if let Some(mendix_thing) = &unit.doc {
+    //         match mendix_thing {
+    //             MendixThings::Rule(rule) => {
+    //                 println!("rule thing: {}", rule.name);
+    //             },
+    //             _ => (),
+    //         }
+    //     }
+    // }
+
+    // let duration = start.elapsed();
+    // println!("elapsed: {duration:?}");
 
     
 

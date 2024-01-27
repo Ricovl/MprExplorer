@@ -255,19 +255,19 @@ pub struct DirectEntityRef {
 }
 
 #[derive(Serialize, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct DomainModel {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "Annotations", deserialize_with = "deserialize_settings")]
+	#[serde(deserialize_with = "deserialize_settings")]
 	annotations: Vec<domain_models::Annotation>,
-	#[serde(rename = "Associations", deserialize_with = "deserialize_settings")]
+	#[serde(deserialize_with = "deserialize_settings")]
 	associations: Vec<domain_models::Association>,
-	#[serde(rename = "CrossAssociations", deserialize_with = "deserialize_settings")]
+	#[serde(deserialize_with = "deserialize_settings")]
 	cross_associations: Vec<domain_models::CrossAssociation>,
-	#[serde(rename = "Documentation")]
 	documentation: String,
-	#[serde(rename = "Entities", deserialize_with = "deserialize_settings")]
+	#[serde(deserialize_with = "deserialize_settings")]
 	entities: Vec<domain_models::EntityImpl>,
 }
 

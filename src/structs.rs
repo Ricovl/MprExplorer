@@ -1,4 +1,5 @@
-use serde::{de::{self, SeqAccess, Visitor}, Deserialize, Deserializer, Serialize};
+use bson::Bson;
+use serde::{de::{self, SeqAccess, Visitor}, Deserialize, Deserializer, Serialize, Serializer};
 use std::{fmt, marker::PhantomData};
 use uuid::Uuid;
 
@@ -173,3 +174,26 @@ where
     let visitor = VecVisitor { marker: PhantomData };
     deserializer.deserialize_seq(visitor)
 }
+
+fn serialize_settings<S, T>(settings: &[T], serializer: S) -> Result<S::Ok, S::Error>
+where
+    S: Serializer,
+    T: Serialize,
+{
+    let mut array = Vec::new();
+    // Insert the first element as bson::Int32(1)
+    array.push(Bson::Int32(1));
+
+    // Serialize the rest of the elements and add them to the array
+    for setting in settings {
+        let bson_value = bson::to_bson(setting)
+            .map_err(serde::ser::Error::custom)?;
+        array.push(bson_value);
+    }
+
+    // Convert the array to a Bson::Array and serialize it
+    Bson::Array(array).serialize(serializer)
+}
+
+// Usage example
+// let serialized = bson::to_bson(&project_settings)?;

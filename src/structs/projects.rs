@@ -12,25 +12,18 @@ pub struct Folder {
 }
 
 #[derive(Serialize, Deserialize)]
+#[serde(rename_all = "PascalCase")]
 pub struct ModuleImpl {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
 
-	#[serde(rename = "AppStoreGuid")]
 	app_store_guid: String,
-	#[serde(rename = "AppStorePackageId")]
 	app_store_package_id: i64,
-	#[serde(rename = "AppStoreVersion")]
 	app_store_version: String,
-	#[serde(rename = "AppStoreVersionGuid")]
 	app_store_version_guid: String,
-	#[serde(rename = "FromAppStore")]
 	from_app_store: bool,
-	#[serde(rename = "IsThemeModule")]
 	is_theme_module: bool,
-	#[serde(rename = "Name")]
-	name: String,
-	#[serde(rename = "NewSortIndex")]
+	pub name: String,
 	new_sort_index: f64,
 }
 
