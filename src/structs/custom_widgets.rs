@@ -214,7 +214,7 @@ pub struct WidgetValueType {
 	#[serde(rename = "AllowNonPersistableEntities")]
 	allow_non_persistable_entities: bool,
 	#[serde(rename = "AssociationTypes", deserialize_with = "deserialize_settings")]
-	association_types: Vec<UnknownType>,
+	association_types: Vec<String>,
 	#[serde(rename = "DataSourceProperty")]
 	data_source_property: String,
 	#[serde(rename = "DefaultValue")]

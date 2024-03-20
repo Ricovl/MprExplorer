@@ -393,7 +393,7 @@ impl std::fmt::Display for SpecialTypes {
 }
 
 fn main() {
-    let mpr = "resources/plarge.mpr";
+    let mpr = "resources/Pnew.mpr";
     let conn = Connection::open(mpr).unwrap();
 
     println!("Starting mpr read.");

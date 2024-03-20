@@ -15,10 +15,10 @@ pub enum Widgets {
 	CustomWidget(custom_widgets::CustomWidget), 
 	#[serde(rename = "Forms$DataGrid")]
 	DataGrid(forms::DataGrid),
-	#[serde(rename = "Forms$DataGridExportToCSVButton")]
-	DataGridExportToCSVButton(forms::DataGridExportToCSVButton),
 	#[serde(rename = "Forms$DataView")]
 	DataView(forms::DataView),
+	#[serde(rename = "Forms$DataGridExportToCSVButton")]
+	DataGridExportToCSVButton(forms::DataGridExportToCSVButton),
 	#[serde(rename = "Forms$DatePicker")]
 	DatePicker(forms::DatePicker),
 	#[serde(rename = "Forms$DivContainer")]
@@ -526,14 +526,6 @@ pub struct DataGrid {
 }
 
 #[derive(Serialize, Deserialize)]
-pub struct DataGridExportToCSVButton {
-	#[serde(rename = "$ID")]
-	_id: Uuid,
-
-}
-
-
-#[derive(Serialize, Deserialize)]
 pub struct DataGridColumn {
 	#[serde(rename = "$ID")]
 	_id: Uuid,
@@ -558,6 +550,64 @@ pub struct DataGridColumn {
 	show_tooltip: bool,
 	#[serde(rename = "WidthValue")]
 	width_value: i64,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct DataGridExportToCSVButton {
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
+	appearance: forms::Appearance,
+	#[serde(rename = "ButtonStyle")]
+	button_style: String,
+	#[serde(rename = "CaptionTemplate")]
+	caption_template: forms::ClientTemplate,
+	#[serde(rename = "ConditionalVisibilitySettings")]
+	conditional_visibility_settings: Empty,
+	#[serde(rename = "DecimalSeparator")]
+	decimal_separator: String,
+	#[serde(rename = "Delimiter")]
+	delimiter: String,
+	#[serde(rename = "GenerateExcelHint")]
+	generate_excel_hint: bool,
+	#[serde(rename = "GroupSeparator")]
+	group_separator: String,
+	#[serde(rename = "Icon")]
+	icon: Option<Empty>,
+	#[serde(rename = "MaxNumberOfRows")]
+	max_number_of_rows: i64,
+	#[serde(rename = "Name")]
+	name: String,
+	#[serde(rename = "Tooltip")]
+	tooltip: texts::Text,
+	#[serde(rename = "UseGridDateFormat")]
+	use_grid_date_format: bool,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct DataGridExportToExcelButton {
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+	#[serde(rename = "Appearance")]
+	appearance: forms::Appearance,
+	#[serde(rename = "ButtonStyle")]
+	button_style: String,
+	#[serde(rename = "CaptionTemplate")]
+	caption_template: forms::ClientTemplate,
+	#[serde(rename = "ConditionalVisibilitySettings")]
+	conditional_visibility_settings: Empty,
+	#[serde(rename = "Icon")]
+	icon: Option<Empty>,
+	#[serde(rename = "MaxNumberOfRows")]
+	max_number_of_rows: i64,
+	#[serde(rename = "Name")]
+	name: String,
+	#[serde(rename = "Tooltip")]
+	tooltip: texts::Text,
+	#[serde(rename = "UseExcelDateType")]
+	use_excel_date_type: bool,
 }
 
 #[derive(Serialize, Deserialize)]
