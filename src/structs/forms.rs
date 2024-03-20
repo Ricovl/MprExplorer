@@ -1,6 +1,8 @@
 use bson::Binary;
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
+use self::microflows::TextTemplate;
+
 use super::*;
 
 
@@ -19,6 +21,8 @@ pub enum Widgets {
 	DataView(forms::DataView),
 	#[serde(rename = "Forms$DataGridExportToCSVButton")]
 	DataGridExportToCSVButton(forms::DataGridExportToCSVButton),
+	#[serde(rename = "Forms$DataGridExportToExcelButton")]
+	DataGridExportToExcelButton(forms::DataGridExportToExcelButton),
 	#[serde(rename = "Forms$DatePicker")]
 	DatePicker(forms::DatePicker),
 	#[serde(rename = "Forms$DivContainer")]
@@ -211,9 +215,9 @@ pub struct ActionButton {
 	#[serde(rename = "CaptionTemplate")]
 	caption_template: Option<forms::ClientTemplate>,
 	#[serde(rename = "ConditionalVisibilitySettings")]
-	conditional_visibility_settings: Option<forms::ConditionalVisibilitySettings>,
+	conditional_visibility_settings: Option<ConditionalVisibilitySettings>,
 	#[serde(rename = "Icon")]
-	icon: Option<Empty>,
+	icon: Option<Icon>,
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "NativeAccessibilitySettings")]
@@ -327,7 +331,7 @@ pub struct CheckBox {
 	#[serde(rename = "ConditionalEditabilitySettings")]
 	conditional_editability_settings: Option<ConditionalEditabilitySettings>,
 	#[serde(rename = "ConditionalVisibilitySettings")]
-	conditional_visibility_settings: Option<forms::ConditionalVisibilitySettings>,
+	conditional_visibility_settings: Option<ConditionalVisibilitySettings>,
 	#[serde(rename = "Editable")]
 	editable: String,
 	#[serde(rename = "LabelPosition")]
@@ -349,7 +353,7 @@ pub struct CheckBox {
 	#[serde(rename = "ReadOnlyStyle")]
 	read_only_style: String,
 	#[serde(rename = "ScreenReaderLabel")]
-	screen_reader_label: Option<Empty>,
+	screen_reader_label: Option<ClientTemplate>,
 	#[serde(rename = "SourceVariable")]
 	source_variable: Option<Empty>,
 	#[serde(rename = "TabIndex")]
@@ -564,7 +568,7 @@ pub struct DataGridExportToCSVButton {
 	#[serde(rename = "CaptionTemplate")]
 	caption_template: forms::ClientTemplate,
 	#[serde(rename = "ConditionalVisibilitySettings")]
-	conditional_visibility_settings: Empty,
+	conditional_visibility_settings: Option<ConditionalVisibilitySettings>,
 	#[serde(rename = "DecimalSeparator")]
 	decimal_separator: String,
 	#[serde(rename = "Delimiter")]
@@ -574,7 +578,7 @@ pub struct DataGridExportToCSVButton {
 	#[serde(rename = "GroupSeparator")]
 	group_separator: String,
 	#[serde(rename = "Icon")]
-	icon: Option<Empty>,
+	icon: Option<Icon>,
 	#[serde(rename = "MaxNumberOfRows")]
 	max_number_of_rows: i64,
 	#[serde(rename = "Name")]
@@ -597,9 +601,9 @@ pub struct DataGridExportToExcelButton {
 	#[serde(rename = "CaptionTemplate")]
 	caption_template: forms::ClientTemplate,
 	#[serde(rename = "ConditionalVisibilitySettings")]
-	conditional_visibility_settings: Empty,
+	conditional_visibility_settings: Option<ConditionalVisibilitySettings>,
 	#[serde(rename = "Icon")]
-	icon: Option<Empty>,
+	icon: Option<Icon>,
 	#[serde(rename = "MaxNumberOfRows")]
 	max_number_of_rows: i64,
 	#[serde(rename = "Name")]
@@ -624,7 +628,7 @@ pub struct DataGridSelectButton {
 	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Option<ConditionalVisibilitySettings>,
 	#[serde(rename = "Icon")]
-	icon: Option<Empty>,
+	icon: Option<Icon>,
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "Tooltip")]
@@ -711,7 +715,7 @@ pub struct DatePicker {
 	#[serde(rename = "ReadOnlyStyle")]
 	read_only_style: String,
 	#[serde(rename = "ScreenReaderLabel")]
-	screen_reader_label: Option<Empty>,
+	screen_reader_label: Option<ClientTemplate>,
 	#[serde(rename = "SourceVariable")]
 	source_variable: Option<Empty>,
 	#[serde(rename = "TabIndex")]
@@ -826,7 +830,7 @@ pub struct DropDown {
 	#[serde(rename = "ReadOnlyStyle")]
 	read_only_style: String,
 	#[serde(rename = "ScreenReaderLabel")]
-	screen_reader_label: Option<Empty>,
+	screen_reader_label: Option<ClientTemplate>,
 	#[serde(rename = "SourceVariable")]
 	source_variable: Option<forms::PageVariable>,
 	#[serde(rename = "TabIndex")]
@@ -909,7 +913,7 @@ pub struct FileManager {
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "ScreenReaderLabel")]
-	screen_reader_label: Option<Empty>,
+	screen_reader_label: Option<ClientTemplate>,
 	#[serde(rename = "ShowFileInBrowser")]
 	show_file_in_browser: bool,
 	#[serde(rename = "TabIndex")]
@@ -965,7 +969,7 @@ pub struct FormSettings {
 	#[serde(rename = "ParameterMappings", deserialize_with = "deserialize_settings")]
 	parameter_mappings: Vec<forms::PageParameterMapping>,
 	#[serde(rename = "TitleOverride")]
-	title_override: Option<Empty>,
+	title_override: Option<microflows::TextTemplate>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1010,7 +1014,7 @@ pub struct GridActionButton {
 	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Option<ConditionalVisibilitySettings>,
 	#[serde(rename = "Icon")]
-	icon: Option<Empty>,
+	icon: Option<Icon>,
 	#[serde(rename = "MaintainSelectionAfterMicroflow")]
 	maintain_selection_after_microflow: bool,
 	#[serde(rename = "Name")]
@@ -1050,7 +1054,7 @@ pub struct GridNewButton {
 	#[serde(rename = "FormSettings")]
 	form_settings: Option<forms::FormSettings>,
 	#[serde(rename = "Icon")]
-	icon: Option<Empty>,
+	icon: Option<Icon>,
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "Tooltip")]
@@ -1071,7 +1075,7 @@ pub struct GridSearchButton {
 	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Option<ConditionalVisibilitySettings>,
 	#[serde(rename = "Icon")]
-	icon: Option<Empty>,
+	icon: Option<Icon>,
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "Tooltip")]
@@ -1092,7 +1096,7 @@ pub struct GridSelectAllButton {
 	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Option<ConditionalVisibilitySettings>,
 	#[serde(rename = "Icon")]
-	icon: Option<forms::ImageIcon>,
+	icon: Option<Icon>,
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "SelectionType")]
@@ -1268,7 +1272,7 @@ pub struct InputReferenceSetSelector {
 	#[serde(rename = "ReadOnlyStyle")]
 	read_only_style: String,
 	#[serde(rename = "ScreenReaderLabel")]
-	screen_reader_label: Option<Empty>,
+	screen_reader_label: Option<ClientTemplate>,
 	#[serde(rename = "SelectorSource")]
 	selector_source: Option<forms::SelectorXPathSource>,
 	#[serde(rename = "SourceVariable")]
@@ -1476,7 +1480,7 @@ pub struct LoginButton {
 	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Option<ConditionalVisibilitySettings>,
 	#[serde(rename = "Icon")]
-	icon: Option<Empty>,
+	icon: Option<Icon>,
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "RenderType")]
@@ -1856,7 +1860,7 @@ pub struct RadioButtonGroup {
 	#[serde(rename = "RenderHorizontal")]
 	render_horizontal: bool,
 	#[serde(rename = "ScreenReaderLabel")]
-	screen_reader_label: Option<Empty>,
+	screen_reader_label: Option<ClientTemplate>,
 	#[serde(rename = "SourceVariable")]
 	source_variable: Option<forms::PageVariable>,
 	#[serde(rename = "TabIndex")]
@@ -1939,7 +1943,7 @@ pub struct ReferenceSelector {
 	#[serde(rename = "RenderMode")]
 	render_mode: String,
 	#[serde(rename = "ScreenReaderLabel")]
-	screen_reader_label: Option<Empty>,
+	screen_reader_label: Option<ClientTemplate>,
 	#[serde(rename = "SelectorSource")]
 	selector_source: SelectorSource,
 	#[serde(rename = "SourceVariable")]
@@ -2117,6 +2121,8 @@ pub enum Icon {
 	GlyphIcon(forms::GlyphIcon),
 	#[serde(rename = "Forms$IconCollectionIcon")]
 	IconCollectionIcon(forms::IconCollectionIcon),
+	#[serde(rename = "Forms$ImageIcon")]
+	ImageIcon(forms::ImageIcon),
 }
 
 #[derive(Serialize, Deserialize)]
@@ -2133,7 +2139,7 @@ pub struct SidebarToggleButton {
 	#[serde(rename = "ConditionalVisibilitySettings")]
 	conditional_visibility_settings: Option<ConditionalVisibilitySettings>,
 	#[serde(rename = "Icon")]
-	icon: Icon,
+	icon: Option<Icon>,
 	#[serde(rename = "Name")]
 	name: String,
 	#[serde(rename = "RenderType")]
@@ -2449,7 +2455,7 @@ pub struct TextArea {
 	#[serde(rename = "ReadOnlyStyle")]
 	read_only_style: String,
 	#[serde(rename = "ScreenReaderLabel")]
-	screen_reader_label: Option<forms::ClientTemplate>,
+	screen_reader_label: Option<ClientTemplate>,
 	#[serde(rename = "SourceVariable")]
 	source_variable: Option<Empty>,
 	#[serde(rename = "SubmitBehaviour")]
@@ -2516,7 +2522,7 @@ pub struct TextBox {
 	#[serde(rename = "ReadOnlyStyle")]
 	read_only_style: String,
 	#[serde(rename = "ScreenReaderLabel")]
-	screen_reader_label: Option<Empty>,
+	screen_reader_label: Option<ClientTemplate>,
 	#[serde(rename = "SourceVariable")]
 	source_variable: Option<forms::PageVariable>,
 	#[serde(rename = "SubmitBehaviour")]
@@ -2565,7 +2571,7 @@ pub struct WebLayoutContent {
 	_id: Uuid,
 
 	#[serde(rename = "LayoutCall")]
-	layout_call: Option<Empty>,
+	layout_call: Option<LayoutCall>, // Todo: get rid of Option?
 	#[serde(rename = "LayoutType")]
 	layout_type: String,
 	#[serde(rename = "Widgets", deserialize_with = "deserialize_settings")]
