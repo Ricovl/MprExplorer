@@ -15,6 +15,8 @@ pub enum Widgets {
 	CustomWidget(custom_widgets::CustomWidget), 
 	#[serde(rename = "Forms$DataGrid")]
 	DataGrid(forms::DataGrid),
+	#[serde(rename = "Forms$DataGridExportToCSVButton")]
+	DataGridExportToCSVButton(forms::DataGridExportToCSVButton),
 	#[serde(rename = "Forms$DataView")]
 	DataView(forms::DataView),
 	#[serde(rename = "Forms$DatePicker")]
@@ -522,6 +524,14 @@ pub struct DataGrid {
 	#[serde(rename = "WidthUnit")]
 	width_unit: String,
 }
+
+#[derive(Serialize, Deserialize)]
+pub struct DataGridExportToCSVButton {
+	#[serde(rename = "$ID")]
+	_id: Uuid,
+
+}
+
 
 #[derive(Serialize, Deserialize)]
 pub struct DataGridColumn {

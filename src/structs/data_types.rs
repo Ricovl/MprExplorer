@@ -78,7 +78,7 @@ pub struct ListType {
 	_id: Uuid,
 
 	#[serde(rename = "Entity")]
-	entity: String,
+	pub entity: String,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -87,7 +87,7 @@ pub struct ObjectType {
 	_id: Uuid,
 
 	#[serde(rename = "Entity")]
-	entity: String,
+	pub entity: String,
 }
 
 #[derive(Serialize, Deserialize)]

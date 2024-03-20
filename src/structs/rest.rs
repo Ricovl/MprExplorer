@@ -21,11 +21,11 @@ pub struct PublishedRestService {
 	_id: Uuid,
 
 	#[serde(rename = "AllowedRoles", deserialize_with = "deserialize_settings")]
-	allowed_roles: Vec<UnknownType>,
+	allowed_roles: Vec<String>,
 	#[serde(rename = "AuthenticationMicroflow")]
 	authentication_microflow: String,
 	#[serde(rename = "AuthenticationTypes", deserialize_with = "deserialize_settings")]
-	authentication_types: Vec<UnknownType>,
+	authentication_types: Vec<String>,
 	#[serde(rename = "CorsConfiguration")]
 	cors_configuration: Option<rest::CorsConfiguration>,
 	#[serde(rename = "Documentation")]

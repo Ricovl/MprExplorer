@@ -43,7 +43,7 @@ pub enum MicroFlowObject {
 
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "$Type")]
-pub enum MicroflowAction {
+pub enum MicroflowActionType {
 	#[serde(rename = "Microflows$ShowFormAction")]
 	ShowFormAction(microflows::ShowFormAction),
 	#[serde(rename = "Microflows$SynchronizeAction")]
@@ -139,7 +139,7 @@ pub struct ActionActivity {
 	_id: Uuid,
 
 	#[serde(rename = "Action")]
-	action: Option<MicroflowAction>,
+	pub action: Option<MicroflowActionType>,
 	#[serde(rename = "AutoGenerateCaption")]
 	auto_generate_caption: bool,
 	#[serde(rename = "BackgroundColor")]
@@ -1060,9 +1060,9 @@ pub struct Microflow {
 	#[serde(rename = "MicroflowReturnType")]
 	microflow_return_type: Option<data_types::DataType>,
 	#[serde(rename = "Name")]
-	name: String,
+	pub name: String,
 	#[serde(rename = "ObjectCollection")]
-	object_collection: Option<microflows::MicroflowObjectCollection>,
+	pub object_collection: Option<microflows::MicroflowObjectCollection>,
 	#[serde(rename = "WorkflowActionInfo")]
 	workflow_action_info: Option<Empty>,
 }
@@ -1073,9 +1073,9 @@ pub struct MicroflowCall {
 	_id: Uuid,
 
 	#[serde(rename = "Microflow")]
-	microflow: String,
+	pub microflow: String,
 	#[serde(rename = "ParameterMappings", deserialize_with = "deserialize_settings")]
-	parameter_mappings: Vec<microflows::MicroflowCallParameterMapping>,
+	pub parameter_mappings: Vec<microflows::MicroflowCallParameterMapping>,
 	#[serde(rename = "QueueSettings")]
 	queue_settings: Option<Empty>,
 }
@@ -1088,7 +1088,7 @@ pub struct MicroflowCallAction {
 	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
 	#[serde(rename = "MicroflowCall")]
-	microflow_call: Option<microflows::MicroflowCall>,
+	pub microflow_call: Option<microflows::MicroflowCall>,
 	#[serde(rename = "ResultVariableName")]
 	result_variable_name: String,
 	#[serde(rename = "UseReturnVariable")]
@@ -1101,9 +1101,9 @@ pub struct MicroflowCallParameterMapping {
 	_id: Uuid,
 
 	#[serde(rename = "Argument")]
-	argument: String,
+	pub argument: String,
 	#[serde(rename = "Parameter")]
-	parameter: String,
+	pub parameter: String,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1112,7 +1112,7 @@ pub struct MicroflowObjectCollection {
 	_id: Uuid,
 
 	#[serde(rename = "Objects", deserialize_with = "deserialize_settings")]
-	objects: Vec<MicroFlowObject>,
+	pub objects: Vec<MicroFlowObject>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -1125,13 +1125,13 @@ pub struct MicroflowParameter {
 	#[serde(rename = "HasVariableNameBeenChanged")]
 	has_variable_name_been_changed: bool,
 	#[serde(rename = "Name")]
-	name: String,
+	pub name: String,
 	#[serde(rename = "RelativeMiddlePoint")]
 	relative_middle_point: String,
 	#[serde(rename = "Size")]
 	size: String,
 	#[serde(rename = "VariableType")]
-	variable_type: Option<data_types::DataType>,
+	pub variable_type: Option<data_types::DataType>,
 }
 
 #[derive(Serialize, Deserialize)]

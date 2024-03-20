@@ -107,9 +107,9 @@ pub struct Association {
 	_id: Uuid,
 
 	#[serde(rename = "ChildConnection")]
-	child_connection: String,
+	pub child_connection: String,
 	#[serde(rename = "ChildPointer")]
-	child_pointer: Uuid,
+	pub child_pointer: Uuid,
 	#[serde(rename = "DeleteBehavior")]
 	delete_behavior: Option<domain_models::DeleteBehavior>,
 	#[serde(rename = "Documentation")]
@@ -117,15 +117,15 @@ pub struct Association {
 	#[serde(rename = "ExportLevel")]
 	export_level: String,
 	#[serde(rename = "GUID")]
-	guid: Uuid,
+	pub guid: Uuid,
 	#[serde(rename = "Name")]
-	name: String,
+	pub name: String,
 	#[serde(rename = "Owner")]
-	owner: String,
+	pub owner: String,
 	#[serde(rename = "ParentConnection")]
-	parent_connection: String,
+	pub parent_connection: String,
 	#[serde(rename = "ParentPointer")]
-	parent_pointer: Uuid,
+	pub parent_pointer: Uuid,
 	#[serde(rename = "Source")]
 	source: Option<Empty>,
 	#[serde(rename = "Type")]
@@ -263,12 +263,12 @@ pub struct DomainModel {
 	#[serde(deserialize_with = "deserialize_settings")]
 	annotations: Vec<domain_models::Annotation>,
 	#[serde(deserialize_with = "deserialize_settings")]
-	associations: Vec<domain_models::Association>,
+	pub associations: Vec<domain_models::Association>,
 	#[serde(deserialize_with = "deserialize_settings")]
 	cross_associations: Vec<domain_models::CrossAssociation>,
 	documentation: String,
 	#[serde(deserialize_with = "deserialize_settings")]
-	entities: Vec<domain_models::EntityImpl>,
+	pub entities: Vec<domain_models::EntityImpl>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -291,7 +291,7 @@ pub struct EntityEvent {
 #[derive(Serialize, Deserialize)]
 pub struct EntityImpl {
 	#[serde(rename = "$ID")]
-	_id: Uuid,
+	pub _id: Uuid,
 
 	#[serde(rename = "AccessRules", deserialize_with = "deserialize_settings")]
 	access_rules: Vec<domain_models::AccessRule>,
@@ -304,7 +304,7 @@ pub struct EntityImpl {
 	#[serde(rename = "ExportLevel")]
 	export_level: String,
 	#[serde(rename = "GUID")]
-	guid: Uuid,
+	pub guid: Uuid,
 	#[serde(rename = "Image")]
 	image: String,
 	#[serde(rename = "ImageData")]
@@ -316,7 +316,7 @@ pub struct EntityImpl {
 	#[serde(rename = "MaybeGeneralization")]
 	maybe_generalization: MaybeGeneralization,
 	#[serde(rename = "Name")]
-	name: String,
+	pub name: String,
 	#[serde(rename = "Source")]
 	source: Option<Empty>,
 	#[serde(rename = "ValidationRules", deserialize_with = "deserialize_settings")]

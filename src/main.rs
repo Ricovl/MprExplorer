@@ -1,10 +1,11 @@
 use bson::{document, Document};
+use indexmap::map;
 use rayon::{iter::{IntoParallelRefIterator, IntoParallelRefMutIterator, ParallelIterator}, ThreadPoolBuilder};
 use rusqlite::Connection;
-use std::{any::Any, collections::{HashMap, HashSet}, fs::OpenOptions, io::{Seek, Write}, num::NonZeroU64, str::FromStr, sync::mpsc::channel, thread, time::Instant};
+use std::{any::Any, collections::{HashMap, HashSet}, fs::OpenOptions, io::{Seek, Write}, num::NonZeroU64, path::Path, str::FromStr, sync::mpsc::channel, thread, time::Instant};
 use uuid::Uuid;
 
-use crate::structs::MendixThings;
+use crate::structs::{forms::MicroflowAction, microflows::{MicroFlowObject, MicroflowActionType}, MendixThings};
 
 mod structs;
 
@@ -126,59 +127,171 @@ fn get_all_units(conn: &Connection) -> Result<Vec<Unit>, &str> {
 }
 
 
-fn main() {
-    let res = ThreadPoolBuilder::new().stack_size(4*1024*1024).build_global();
-    let mpr = "resources/plarge.mpr";
-    let conn = Connection::open(mpr).unwrap();
+struct Project {
+    units: Vec<Unit>,
+}
 
-    println!("Starting mpr read.");
-    
-    let units = get_all_units(&conn).unwrap();
+impl Project {
+    fn open_new(path: &Path) -> Project {
+        println!("Starting mpr read.");
+        let conn = Connection::open(path).unwrap();
+        let units = get_all_units(&conn).unwrap();
 
-    let start = Instant::now();
-    let modules = units.par_iter().filter(|unit| {
-        if let Some(thing) = &unit.doc {
-            match thing {
-                MendixThings::ModuleImpl(_) => true,
+        Project { units }
+    }
+
+
+
+    fn get_module_id_by_name(&self, name: String) -> Uuid {
+        let start = Instant::now();
+        let modules = self.units.par_iter().filter(|unit| {
+            match &unit.doc {
+                Some(MendixThings::ModuleImpl(imp)) => {
+                    imp.name == name
+                },
                 _ => false,
+                
             }
-        }
-        else {
-            false
-        }
-    });
+        });
 
-    let modules: Vec<_> = modules.collect();
-    let duration = start.elapsed();
-    println!("elapsed: {duration:?}");
-    
-    for module in modules {
-        if let Some(MendixThings::ModuleImpl(imp)) = &module.doc {
-            println!("module: {}", imp.name);
+        let module: Vec<_> = modules.collect();
+        let module = module.first();
+        module.unwrap().unit_id
+    }
+
+    fn list_modules(&self) {
+        let start = Instant::now();
+        let modules = self.units.par_iter().filter(|unit| {
+            matches!(&unit.doc, Some(MendixThings::ModuleImpl(_)))
+        });
+
+        let modules: Vec<_> = modules.collect();
+        let duration = start.elapsed();
+        println!("elapsed: {duration:?}");
+
+        for module in modules {
+            if let Some(MendixThings::ModuleImpl(imp)) = &module.doc {
+                println!("module: {}", imp.name);
+            }
         }
     }
 
-    // let mut types = HashSet::new();
+    fn list_commit_flows_withparams(self) {
+        let start = Instant::now();
+        let flows = self.units.par_iter().filter(|unit| {
+            matches!(unit.doc, Some(MendixThings::Microflow(_)))
+        });
 
-    // let start = Instant::now();
+        let modules: Vec<_> = flows.collect();
+        let duration = start.elapsed();
+        println!("elapsed: {duration:?}");
 
-    // for unit in units {
-    //     if let Some(mendix_thing) = &unit.doc {
-    //         match mendix_thing {
-    //             MendixThings::Rule(rule) => {
-    //                 println!("rule thing: {}", rule.name);
-    //             },
-    //             _ => (),
-    //         }
-    //     }
-    // }
+        for module in modules {
+            if let Some(MendixThings::Microflow(imp)) = &module.doc {
+                if imp.name.contains("CD_") && imp.name.contains("_Commit") {
+                    println!("flow: {}", imp.name);
 
-    // let duration = start.elapsed();
-    // println!("elapsed: {duration:?}");
+                    if let Some(object_collection) = &imp.object_collection {
+                        for obj in &object_collection.objects {
+                            if let MicroFlowObject::MicroflowParameter(parameter) = obj {
+                                println!("\tparameter: {}", parameter.name);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
-    
+    fn list_commit_usage_bp_flows(self) {
+        let start = Instant::now();
+        let flows = self.units.par_iter().filter(|unit| {
+            matches!(unit.doc, Some(MendixThings::Microflow(_)))
+        });
 
-    // for _type in types {
-    //     println!("type: {}", _type);
-    // }
+        let modules: Vec<_> = flows.collect();
+        let duration = start.elapsed();
+        println!("elapsed: {duration:?}");
+
+        for module in modules {
+            if let Some(MendixThings::Microflow(imp)) = &module.doc {
+                if imp.name.contains("BP_") {
+                    
+                    if let Some(object_collection) = &imp.object_collection {
+                        for obj in &object_collection.objects {
+                            if let MicroFlowObject::ActionActivity(action) = obj {
+                                if let Some(action) = &action.action {
+                                    if let MicroflowActionType::MicroflowCallAction(action) = &action {
+                                        if let Some(call) = &action.microflow_call {
+                                            if call.microflow.contains("CD_Onboarding_") && call.microflow.contains("_Commit") {
+                                                println!("flow: {}", imp.name);
+                                                println!("\tcall: {}", call.microflow);
+                                                
+                                                let mappings = &call.parameter_mappings;
+                                                for mapping in mappings {
+                                                    if mapping.argument == "empty" {
+                                                        println!("\t\tmapping: empty -> {}", mapping.parameter);
+                                                    }
+                                                    else {
+                                                        println!("\t\tmapping: full -> {}", mapping.parameter);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    fn list_enity_parents(&self, parent: Uuid) {
+        let start = Instant::now();
+        let model = self.units.par_iter().find_first(|unit| {
+            unit.container_id == parent && matches!(&unit.doc, Some(MendixThings::DomainModel(_)))
+        });
+
+        let duration = start.elapsed();
+        println!("elapsed: {duration:?}");
+
+        if let Some(module) = model {
+            if let Some(MendixThings::DomainModel(imp)) = &module.doc {
+                let assocations = &imp.associations;
+                let entities = &imp.entities;
+
+                for entity in entities {
+                    println!("entity: {}", entity.name);
+
+                    let associations = assocations.iter().filter(|assoc| {
+                        assoc.parent_pointer == entity._id || assoc.child_pointer == entity._id
+                    });
+                    for assoc in associations {
+                        let child = entities.iter().find(|ent| {
+                            ent._id == assoc.child_pointer
+                        });
+                        // println!("\tassociation: {}", child.unwrap().name);
+                        println!("\tp:{} c:{}, assoc: {}, {}, child: {}", assoc.parent_pointer == entity._id, assoc.child_pointer == entity._id ,assoc.name, assoc.owner, child.unwrap().name);
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+
+fn main() {
+    let res = ThreadPoolBuilder::new().stack_size(4*1024*1024).build_global();
+    let mpr = Path::new("resources/Pnew.mpr");
+
+    let project = Project::open_new(mpr);
+
+    let module_id = project.get_module_id_by_name("OnboardingV2".to_string());
+    println!("module_id: {}", module_id);
+    project.list_enity_parents(module_id);
+
+
 }
