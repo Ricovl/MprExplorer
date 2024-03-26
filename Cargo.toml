@@ -14,6 +14,7 @@ rayon = "1.8.0"
 rusqlite = { version = "0.30.0", features = ["bundled", "blob", "i128_blob"] }
 serde = "1.0.194"
 uuid = "1.6.1"
+proc_macros = { path = "proc_macros" }
 
 [profile.release]
 debug = true

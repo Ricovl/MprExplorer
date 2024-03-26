@@ -53,7 +53,7 @@ pub struct UnknownType {
 
 #[derive(Serialize, Deserialize)]
 #[serde(tag = "$Type")]
-pub enum MendixThings {
+pub enum ModuleDocuments {
 	#[serde(rename = "Navigation$NavigationDocument")]
 	NavigationDocument(navigation::NavigationDocument),
 	#[serde(rename = "CustomIcons$CustomIconCollection")]

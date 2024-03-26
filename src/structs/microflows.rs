@@ -1553,9 +1553,9 @@ pub struct ValidationFeedbackAction {
 	_id: Uuid,
 
 	#[serde(rename = "Association")]
-	association: String,
+	association: Option<String>,
 	#[serde(rename = "Attribute")]
-	attribute: String,
+	attribute: Option<String>,
 	#[serde(rename = "ErrorHandlingType")]
 	error_handling_type: String,
 	#[serde(rename = "FeedbackTemplate")]

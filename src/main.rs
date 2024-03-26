@@ -5,7 +5,7 @@ use rusqlite::Connection;
 use std::{any::Any, collections::{HashMap, HashSet}, fs::OpenOptions, io::{Seek, Write}, num::NonZeroU64, path::Path, str::FromStr, sync::mpsc::channel, thread, time::Instant};
 use uuid::Uuid;
 
-use crate::structs::{forms::MicroflowAction, microflows::{MicroFlowObject, MicroflowActionType}, MendixThings};
+use crate::structs::{forms::MicroflowAction, microflows::{MicroFlowObject, MicroflowActionType}, ModuleDocuments};
 
 mod structs;
 
@@ -49,7 +49,7 @@ struct Unit {
     contents_hash: String,
     contents_conflicts: String,
     contents: Vec<u8>,
-    doc: Option<structs::MendixThings>,
+    doc: Option<structs::ModuleDocuments>,
 }
 
 impl Unit {
@@ -105,7 +105,7 @@ fn get_all_units(conn: &Connection) -> Result<Vec<Unit>, &str> {
     units.par_iter_mut().for_each( |unit| {
         let slice = unit.contents.as_ref();
 
-            let _result: Result<MendixThings, _> = bson::from_slice(slice);
+            let _result: Result<ModuleDocuments, _> = bson::from_slice(slice);
 
             match _result {
                 Ok(obj) => {
@@ -146,7 +146,7 @@ impl Project {
         let start = Instant::now();
         let modules = self.units.par_iter().filter(|unit| {
             match &unit.doc {
-                Some(MendixThings::ModuleImpl(imp)) => {
+                Some(ModuleDocuments::ModuleImpl(imp)) => {
                     imp.name == name
                 },
                 _ => false,
@@ -162,7 +162,7 @@ impl Project {
     fn list_modules(&self) {
         let start = Instant::now();
         let modules = self.units.par_iter().filter(|unit| {
-            matches!(&unit.doc, Some(MendixThings::ModuleImpl(_)))
+            matches!(&unit.doc, Some(ModuleDocuments::ModuleImpl(_)))
         });
 
         let modules: Vec<_> = modules.collect();
@@ -170,7 +170,7 @@ impl Project {
         println!("elapsed: {duration:?}");
 
         for module in modules {
-            if let Some(MendixThings::ModuleImpl(imp)) = &module.doc {
+            if let Some(ModuleDocuments::ModuleImpl(imp)) = &module.doc {
                 println!("module: {}", imp.name);
             }
         }
@@ -179,7 +179,7 @@ impl Project {
     fn list_commit_flows_withparams(self) {
         let start = Instant::now();
         let flows = self.units.par_iter().filter(|unit| {
-            matches!(unit.doc, Some(MendixThings::Microflow(_)))
+            matches!(unit.doc, Some(ModuleDocuments::Microflow(_)))
         });
 
         let modules: Vec<_> = flows.collect();
@@ -187,7 +187,7 @@ impl Project {
         println!("elapsed: {duration:?}");
 
         for module in modules {
-            if let Some(MendixThings::Microflow(imp)) = &module.doc {
+            if let Some(ModuleDocuments::Microflow(imp)) = &module.doc {
                 if imp.name.contains("CD_") && imp.name.contains("_Commit") {
                     println!("flow: {}", imp.name);
 
@@ -206,7 +206,7 @@ impl Project {
     fn list_commit_usage_bp_flows(self) {
         let start = Instant::now();
         let flows = self.units.par_iter().filter(|unit| {
-            matches!(unit.doc, Some(MendixThings::Microflow(_)))
+            matches!(unit.doc, Some(ModuleDocuments::Microflow(_)))
         });
 
         let modules: Vec<_> = flows.collect();
@@ -214,7 +214,7 @@ impl Project {
         println!("elapsed: {duration:?}");
 
         for module in modules {
-            if let Some(MendixThings::Microflow(imp)) = &module.doc {
+            if let Some(ModuleDocuments::Microflow(imp)) = &module.doc {
                 if imp.name.contains("BP_") {
                     
                     if let Some(object_collection) = &imp.object_collection {
@@ -251,14 +251,14 @@ impl Project {
     fn list_enity_parents(&self, parent: Uuid) {
         let start = Instant::now();
         let model = self.units.par_iter().find_first(|unit| {
-            unit.container_id == parent && matches!(&unit.doc, Some(MendixThings::DomainModel(_)))
+            unit.container_id == parent && matches!(&unit.doc, Some(ModuleDocuments::DomainModel(_)))
         });
 
         let duration = start.elapsed();
         println!("elapsed: {duration:?}");
 
         if let Some(module) = model {
-            if let Some(MendixThings::DomainModel(imp)) = &module.doc {
+            if let Some(ModuleDocuments::DomainModel(imp)) = &module.doc {
                 let assocations = &imp.associations;
                 let entities = &imp.entities;
 
