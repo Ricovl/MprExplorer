@@ -8,15 +8,15 @@ struct Microflow {
     actions: Vec<MicroflowAction>,
 }
 
-// impl Identifiable for Microflow {
-//     fn identifiers(&self) -> Vec<Identifier> {
-//         let mut identifiers = Vec::new();
-//         for item in &self.actions {
-//             identifiers.extend(item.identifiers());
-//         }
-//         identifiers
-//     }
-// }
+impl Identifiable for Microflow {
+    fn identifiers(&self) -> Vec<Identifier> {
+        let mut identifiers = Vec::new();
+        for item in &self.actions {
+            identifiers.extend(item.identifiers());
+        }
+        identifiers
+    }
+}
 
 
 enum MicroflowAction {
